@@ -60,7 +60,7 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ onSubmitCase }) => {
   // Sincronizar etapa cuando cambia el curso seleccionado
   const handleGradeChange = (newGrade: string) => {
     setGrade(newGrade);
-    if (newGrade.includes('Infantil')) {
+    if (newGrade.includes('Infantil') || newGrade.includes('años')) {
       setStage('INFANTIL');
       setAffectedSubjects(['Lenguaje Oral / Comunicación', 'Atención en Asamblea']);
       setAppliedMeasuresList(['Apoyo visual y pictogramas en la rutina diaria', 'Ubicación cerca de la tutora en asamblea']);
@@ -78,7 +78,7 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ onSubmitCase }) => {
   const handleStageSwitch = (newStage: EducationalStage) => {
     setStage(newStage);
     if (newStage === 'INFANTIL') {
-      setGrade('2º Educación Infantil (4 años)');
+      setGrade('2º Infantil (4 años A)');
       setAffectedSubjects(['Lenguaje Oral / Comunicación', 'Atención en Asamblea']);
       setAppliedMeasuresList(['Apoyo visual y pictogramas en la rutina diaria', 'Ubicación cerca de la tutora en asamblea']);
     } else {
@@ -470,23 +470,58 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ onSubmitCase }) => {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Curso y Grupo *</label>
+            <label className="form-label">Curso y Grupo / Línea *</label>
             <select className="select-input" value={grade} onChange={(e) => handleGradeChange(e.target.value)}>
               {stage === 'INFANTIL' ? (
                 <>
-                  <option value="1º Educación Infantil (3 años)">1º Educación Infantil (3 años)</option>
-                  <option value="2º Educación Infantil (4 años)">2º Educación Infantil (4 años)</option>
-                  <option value="3º Educación Infantil (5 años)">3º Educación Infantil (5 años)</option>
+                  <optgroup label="1º Infantil (3 años)">
+                    <option value="1º Infantil (3 años A)">1º Infantil (3 años A)</option>
+                    <option value="1º Infantil (3 años B)">1º Infantil (3 años B)</option>
+                    <option value="1º Infantil (3 años C)">1º Infantil (3 años C)</option>
+                  </optgroup>
+                  <optgroup label="2º Infantil (4 años)">
+                    <option value="2º Infantil (4 años A)">2º Infantil (4 años A)</option>
+                    <option value="2º Infantil (4 años B)">2º Infantil (4 años B)</option>
+                    <option value="2º Infantil (4 años C)">2º Infantil (4 años C)</option>
+                  </optgroup>
+                  <optgroup label="3º Infantil (5 años)">
+                    <option value="3º Infantil (5 años A)">3º Infantil (5 años A)</option>
+                    <option value="3º Infantil (5 años B)">3º Infantil (5 años B)</option>
+                    <option value="3º Infantil (5 años C)">3º Infantil (5 años C)</option>
+                  </optgroup>
                 </>
               ) : (
                 <>
-                  <option value="1º Educación Primaria">1º Educación Primaria</option>
-                  <option value="2º Educación Primaria">2º Educación Primaria</option>
-                  <option value="3º Educación Primaria A">3º Educación Primaria A</option>
-                  <option value="4º Educación Primaria B">4º Educación Primaria B</option>
-                  <option value="5º Educación Primaria">5º Educación Primaria</option>
-                  <option value="6º Educación Primaria">6º Educación Primaria</option>
-                  <option value="1º ESO">1º ESO</option>
+                  <optgroup label="1º Primaria">
+                    <option value="1º Educación Primaria A">1º Educación Primaria A</option>
+                    <option value="1º Educación Primaria B">1º Educación Primaria B</option>
+                    <option value="1º Educación Primaria C">1º Educación Primaria C</option>
+                  </optgroup>
+                  <optgroup label="2º Primaria">
+                    <option value="2º Educación Primaria A">2º Educación Primaria A</option>
+                    <option value="2º Educación Primaria B">2º Educación Primaria B</option>
+                    <option value="2º Educación Primaria C">2º Educación Primaria C</option>
+                  </optgroup>
+                  <optgroup label="3º Primaria">
+                    <option value="3º Educación Primaria A">3º Educación Primaria A</option>
+                    <option value="3º Educación Primaria B">3º Educación Primaria B</option>
+                    <option value="3º Educación Primaria C">3º Educación Primaria C</option>
+                  </optgroup>
+                  <optgroup label="4º Primaria">
+                    <option value="4º Educación Primaria A">4º Educación Primaria A</option>
+                    <option value="4º Educación Primaria B">4º Educación Primaria B</option>
+                    <option value="4º Educación Primaria C">4º Educación Primaria C</option>
+                  </optgroup>
+                  <optgroup label="5º Primaria">
+                    <option value="5º Educación Primaria A">5º Educación Primaria A</option>
+                    <option value="5º Educación Primaria B">5º Educación Primaria B</option>
+                    <option value="5º Educación Primaria C">5º Educación Primaria C</option>
+                  </optgroup>
+                  <optgroup label="6º Primaria">
+                    <option value="6º Educación Primaria A">6º Educación Primaria A</option>
+                    <option value="6º Educación Primaria B">6º Educación Primaria B</option>
+                    <option value="6º Educación Primaria C">6º Educación Primaria C</option>
+                  </optgroup>
                 </>
               )}
             </select>
