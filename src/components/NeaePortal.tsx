@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StudentNEAE } from '../types';
-import { Sparkles, BookOpen, Printer, CheckCircle2, User, ChevronDown, ChevronUp, Search, Filter } from 'lucide-react';
+import { Sparkles, BookOpen, Printer } from 'lucide-react';
 
 interface NeaePortalProps {
   students: StudentNEAE[];
@@ -30,7 +30,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
         borderRadius: 'var(--radius-xl)',
         padding: '1.75rem 2rem',
         display: 'flex',
-        justify-content: 'space-between',
+        justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
         gap: '1rem'
@@ -69,9 +69,9 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
             >
               <option value="ALL">Todas las Categorías</option>
               <option value="TDAH">TDAH</option>
-              <option value="DEA Lectura">DEA Lectura (Dislexia)</option>
+              <option value="Lectoescritor">Perfil Lectoescritor / Dislexia</option>
               <option value="Altas Capacidades">Altas Capacidades</option>
-              <option value="TEL">TEL (Trastorno Lenguaje)</option>
+              <option value="Lenguaje">Lenguaje / TEL</option>
             </select>
           </div>
 

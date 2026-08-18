@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { UserRole, ReferralCase, StudentNEAE, EvaluationSession, QuarterlyReview } from './types';
+import { ReferralCase, StudentNEAE, EvaluationSession, QuarterlyReview } from './types';
 import { INITIAL_CASES, INITIAL_STUDENTS_NEAE } from './data/initialData';
 import { FirebaseService } from './services/firebaseService';
 import { Header } from './components/Header';
-import { TeacherDashboard } from './components/TeacherDashboard';
 import { CounselorDashboard } from './components/CounselorDashboard';
 import { ReferralForm } from './components/ReferralForm';
 import { NeaePortal } from './components/NeaePortal';
@@ -15,14 +14,13 @@ import { SpecialistSchedulePortal } from './components/SpecialistSchedulePortal'
 import { CabinetAnnualReport } from './components/CabinetAnnualReport';
 import { CaseLookupModal } from './components/CaseLookupModal';
 import { TutorDevolutionSheet } from './components/TutorDevolutionSheet';
-import { LayoutDashboard, FilePlus, BookOpen, ShieldCheck, Lock, CheckCircle2, Calendar, PieChart, Search, Database } from 'lucide-react';
+import { LayoutDashboard, FilePlus, BookOpen, Lock, CheckCircle2, Calendar, PieChart, Search, Database } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('NEW_FORM');
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [isFirebaseConnected, setIsFirebaseConnected] = useState<boolean>(true);
 
-  // Clean Dual Authentication State
+  // Authentication State
   const [authLevel, setAuthLevel] = useState<'PUBLIC' | 'DOCENTE_NEAE' | 'ORIENTADOR_ADMIN'>('PUBLIC');
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
   const [isLookupModalOpen, setIsLookupModalOpen] = useState<boolean>(false);
@@ -52,7 +50,6 @@ export function App() {
         if (remoteNeae && remoteNeae.length > 0) {
           setNeaeStudents(remoteNeae);
         }
-        setIsFirebaseConnected(true);
       } catch (err) {
         console.warn('Usando almacenamiento local de respaldo:', err);
       }
@@ -128,7 +125,7 @@ export function App() {
           id: `NEAE-${Math.floor(100 + Math.random() * 900)}`,
           name: updatedCase.studentName,
           grade: updatedCase.grade,
-          category: `ACNEAE - ${updatedCase.triage.primaryHypothesis.replace('_', ' ')}` as any,
+          category: `ACNEAE - ${updatedCase.triage.primaryHypothesis.replace('_', ' ')}`,
           tutor: updatedCase.teacherName,
           curricularAdaptation: 'No Significativa (ACNS)',
           status: 'Activo',
@@ -201,7 +198,7 @@ export function App() {
             marginBottom: '1.25rem',
             display: 'flex',
             alignItems: 'center',
-            justify-content: 'space-between',
+            justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '0.75rem'
           }}>
