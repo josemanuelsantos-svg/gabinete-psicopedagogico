@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ReferralCase, CaseStatus, CasePriority, ActionPlanGuidelines } from '../types';
-import { Stethoscope, Filter, AlertCircle, CheckCircle2, Clock, FileText, Sparkles, Activity, Edit3, Send, Check } from 'lucide-react';
+import { Stethoscope, Filter, AlertCircle, CheckCircle2, Clock, FileText, Sparkles, Activity, Edit3, Send, Check, Baby, School } from 'lucide-react';
 
 interface CounselorDashboardProps {
   cases: ReferralCase[];
@@ -15,6 +15,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
 }) => {
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [filterPriority, setFilterPriority] = useState<string>('ALL');
+  const [filterStage, setFilterStage] = useState<string>('ALL');
   const [selectedCaseForAction, setSelectedCaseForAction] = useState<ReferralCase | null>(null);
 
   // Decision Form State
@@ -38,6 +39,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   const filteredCases = cases.filter(c => {
     if (filterStatus !== 'ALL' && c.status !== filterStatus) return false;
     if (filterPriority !== 'ALL' && c.priority !== filterPriority) return false;
+    if (filterStage !== 'ALL' && c.stage !== filterStage) return false;
     return true;
   });
 
@@ -83,19 +85,19 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
         padding: '1.75rem 2rem',
         display: 'flex',
         alignItems: 'center',
-        justify-content: 'space-between',
+        justifyContent: 'space-between',
         flexWrap: 'wrap',
         gap: '1rem'
       }}>
         <div>
           <span style={{ background: 'rgba(255,255,255,0.15)', color: '#a5b4fc', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>
-            Panel Técnico de Orientación
+            Gabinete de Orientación • Col. San Buenaventura
           </span>
           <h2 style={{ fontSize: '1.6rem', color: 'white', marginTop: '0.3rem' }}>
-            Gestión de Derivaciones y Dictámenes Psicopedagógicos
+            Bandeja de Derivaciones y Dictámenes Psicopedagógicos
           </h2>
           <p style={{ opacity: 0.85, fontSize: '0.88rem' }}>
-            Revisa las solicitudes enviadas por los profesores, valida las sugerencias del motor de triaje y asigna las baterías de pruebas o pautas de aula.
+            Revisa las solicitudes de <strong>Infantil y Primaria</strong>, valida el triaje automático y asigna baterías de pruebas psicométricas o pautas de aula.
           </p>
         </div>
 
@@ -116,6 +118,15 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 700 }}>
             <Filter size={16} /> Filtros:
+          </div>
+
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Etapa:</span>
+            <select className="select-input" style={{ width: 'auto', padding: '0.35rem 0.75rem', fontSize: '0.82rem' }} value={filterStage} onChange={(e) => setFilterStage(e.target.value)}>
+              <option value="ALL">Todas las Etapas</option>
+              <option value="INFANTIL">2º Ciclo Infantil (3-5 años)</option>
+              <option value="PRIMARIA">Educación Primaria (1º-6º)</option>
+            </select>
           </div>
 
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
@@ -146,191 +157,145 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
         <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Bandeja de Derivaciones Recibidas ({filteredCases.length})</h3>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {filteredCases.map((c) => (
-            <div key={c.id} style={{
-              border: `1px solid ${c.status === 'PENDIENTE_REVISION' ? 'var(--primary-500)' : 'var(--border-light)'}`,
-              borderRadius: 'var(--radius-md)',
-              padding: '1.1rem 1.25rem',
-              background: c.status === 'PENDIENTE_REVISION' ? '#f0fdfa' : '#ffffff',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '1rem'
-            }}>
-              <div style={{ flex: '1 1 400px' }}>
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.3rem' }}>
-                  <span className={`badge badge-${c.priority.toLowerCase()}`}>{c.priority}</span>
-                  <span className={`status-badge status-${c.status}`}>
-                    {c.status === 'PENDIENTE_REVISION' && 'Por Dictaminar'}
-                    {c.status === 'EN_EVALUACION' && 'En Evaluación'}
-                    {c.status === 'DICTAMINADO_CON_PAUTAS' && 'Dictaminado'}
-                  </span>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>ID: {c.id} • {c.dateSubmitted}</span>
+          {filteredCases.map((c) => {
+            const isInfantil = c.stage === 'INFANTIL';
+            return (
+              <div key={c.id} style={{
+                border: `1px solid ${c.status === 'PENDIENTE_REVISION' ? 'var(--primary-500)' : 'var(--border-light)'}`,
+                borderRadius: 'var(--radius-md)',
+                padding: '1.1rem 1.25rem',
+                background: c.status === 'PENDIENTE_REVISION' ? '#f0fdfa' : '#ffffff',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '1rem'
+              }}>
+                <div style={{ flex: '1 1 400px' }}>
+                  <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', marginBottom: '0.3rem', flexWrap: 'wrap' }}>
+                    <span style={{ background: isInfantil ? '#fef3c7' : '#e0e7ff', color: isInfantil ? '#92400e' : '#3730a3', padding: '0.15rem 0.45rem', borderRadius: '10px', fontSize: '0.72rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+                      {isInfantil ? <Baby size={13} /> : <School size={13} />}
+                      {isInfantil ? 'Infantil' : 'Primaria'}
+                    </span>
+                    <span className={`badge badge-${c.priority.toLowerCase()}`}>{c.priority}</span>
+                    <span className={`status-badge status-${c.status}`}>
+                      {c.status === 'PENDIENTE_REVISION' && 'Por Dictaminar'}
+                      {c.status === 'EN_EVALUACION' && 'En Evaluación'}
+                      {c.status === 'DICTAMINADO_CON_PAUTAS' && 'Dictaminado'}
+                    </span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>ID: {c.id} • {c.dateSubmitted}</span>
+                  </div>
+
+                  <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '0.2rem' }}>
+                    {c.studentName} <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>({c.grade})</span>
+                  </h4>
+                  <p style={{ fontSize: '0.83rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
+                    <strong>Solicitado por:</strong> {c.teacherName}
+                  </p>
+
+                  <p style={{ fontSize: '0.85rem', color: '#334155', fontStyle: 'italic', background: 'rgba(255,255,255,0.7)', padding: '0.4rem 0.6rem', borderRadius: '6px', borderLeft: '3px solid var(--primary-600)' }}>
+                    "{c.questionnaire.mainReason}"
+                  </p>
+
+                  {/* AI Triage Snippet */}
+                  <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginTop: '0.5rem', fontSize: '0.78rem', color: 'var(--primary-800)' }}>
+                    <Sparkles size={14} color="var(--primary-600)" />
+                    <span><strong>Perfil Objetivo:</strong> {c.triage.riskProfileTitle} (Confianza {c.triage.confidenceScore}%)</span>
+                  </div>
                 </div>
 
-                <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '0.2rem' }}>
-                  {c.studentName} <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>({c.grade})</span>
-                </h4>
-                <p style={{ fontSize: '0.83rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
-                  <strong>Solicitado por:</strong> {c.teacherName}
-                </p>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button
+                    className="btn btn-secondary"
+                    style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
+                    onClick={() => onSelectCase(c)}
+                  >
+                    <FileText size={15} /> Ver Cuestionario
+                  </button>
 
-                <p style={{ fontSize: '0.85rem', color: '#334155', fontStyle: 'italic', background: 'rgba(255,255,255,0.7)', padding: '0.4rem 0.6rem', borderRadius: '6px', borderLeft: '3px solid var(--primary-600)' }}>
-                  "{c.questionnaire.mainReason}"
-                </p>
-
-                {/* AI Triage Snippet */}
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginTop: '0.5rem', fontSize: '0.78rem', color: 'var(--primary-800)' }}>
-                  <Sparkles size={14} color="var(--primary-600)" />
-                  <span><strong>Sugerencia de Triaje:</strong> {c.triage.primaryHypothesis.replace('_', ' ')} (Confianza {c.triage.confidenceScore}%)</span>
+                  <button
+                    className="btn btn-primary"
+                    style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
+                    onClick={() => handleOpenActionModal(c)}
+                  >
+                    <Edit3 size={15} /> Dictaminar / Gestionar
+                  </button>
                 </div>
               </div>
-
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button
-                  className="btn btn-secondary"
-                  style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
-                  onClick={() => onSelectCase(c)}
-                >
-                  <FileText size={15} /> Ver Cuestionario Completo
-                </button>
-
-                <button
-                  className="btn btn-primary"
-                  style={{ padding: '0.45rem 0.95rem', fontSize: '0.8rem' }}
-                  onClick={() => handleOpenActionModal(c)}
-                >
-                  <Edit3 size={15} /> Dictaminar / Asignar Pruebas
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Action / Decision Modal */}
+      {/* MODAL GESTIONAR DICTAMEN */}
       {selectedCaseForAction && (
         <div className="modal-overlay">
-          <div className="modal-content" style={{ maxWidth: '800px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem' }}>
+          <div className="modal-content" style={{ maxWidth: '650px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem', marginBottom: '1rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--primary-700)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Stethoscope size={22} /> Dictamen de Orientación Psicopedagógica
+                <span style={{ fontSize: '0.75rem', background: selectedCaseForAction.stage === 'INFANTIL' ? '#fef3c7' : '#e0e7ff', color: selectedCaseForAction.stage === 'INFANTIL' ? '#92400e' : '#3730a3', padding: '0.15rem 0.5rem', borderRadius: '10px', fontWeight: 700 }}>
+                  {selectedCaseForAction.stage === 'INFANTIL' ? '🧸 Infantil' : '🎒 Primaria'}
+                </span>
+                <h3 style={{ fontSize: '1.2rem', color: 'var(--text-main)', marginTop: '0.2rem' }}>
+                  Dictaminar Expediente: {selectedCaseForAction.studentName}
                 </h3>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  Alumno: <strong>{selectedCaseForAction.studentName}</strong> ({selectedCaseForAction.grade})
-                </p>
               </div>
-              <button className="btn btn-secondary" onClick={() => setSelectedCaseForAction(null)} style={{ padding: '0.3rem 0.6rem', fontSize: '0.78rem' }}>
-                Cerrar
-              </button>
-            </div>
-
-            {/* AI Triage Recommendation Alert */}
-            <div style={{ background: '#f0fdfa', border: '1px solid var(--primary-500)', borderRadius: 'var(--radius-md)', padding: '0.85rem', marginBottom: '1.25rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary-900)', fontWeight: 700, fontSize: '0.88rem' }}>
-                <Sparkles size={18} color="var(--primary-600)" /> Recomendación Automática del Cuestionario
-              </div>
-              <p style={{ fontSize: '0.82rem', color: '#1e293b', marginTop: '0.3rem' }}>
-                {selectedCaseForAction.triage.explanation}
-              </p>
+              <button className="btn btn-secondary" onClick={() => setSelectedCaseForAction(null)} style={{ padding: '0.35rem' }}>✕</button>
             </div>
 
             <div className="form-group">
-              <label className="form-label">Estado de la Solicitud</label>
-              <select
-                className="select-input"
-                value={newStatus}
-                onChange={(e) => setNewStatus(e.target.value as CaseStatus)}
-              >
-                <option value="EN_EVALUACION">Proceder con Evaluación Psicopedagógica (En curso)</option>
-                <option value="DICTAMINADO_CON_PAUTAS">Emitir Dictamen y Pautas de Aula para el Tutor</option>
-                <option value="OBSERVACION_AULA">Mantener en Observación de Aula (Pautas ordinarias primero)</option>
-                <option value="EVALUACION_RECHAZADA">Desestimar Evaluación Psicopedagógica</option>
+              <label className="form-label">Estado de la Derivación *</label>
+              <select className="select-input" value={newStatus} onChange={(e) => setNewStatus(e.target.value as CaseStatus)}>
+                <option value="PENDIENTE_REVISION">Pendiente de Revisión</option>
+                <option value="EN_EVALUACION">Aceptar e Iniciar Evaluación Psicopedagógica</option>
+                <option value="DICTAMINADO_CON_PAUTAS">Dictaminar y Asignar Pautas NEAE de Aula</option>
+                <option value="OBSERVACION_AULA">Recomendar 4 Semanas de Observación y Medidas</option>
+                <option value="EVALUACION_RECHAZADA">Desestimar / Derivación Prematura</option>
               </select>
             </div>
 
-            {/* If in evaluation status, pick psychometric tests */}
-            {newStatus === 'EN_EVALUACION' && (
-              <div className="form-group">
-                <label className="form-label">Batería de Pruebas Psicométricas Acreditadas</label>
-                <p className="form-sublabel">Selecciona las pruebas que aplicará el orientador/a en la sala de evaluación:</p>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.6rem' }}>
-                  {['WISC-V', 'EDAH', 'PROLEC-R', 'PROESC', 'SENA', 'BADYG', 'd2', 'CELF-5'].map((testCode) => {
-                    const isSelected = selectedTests.includes(testCode);
-                    return (
-                      <div
-                        key={testCode}
-                        onClick={() => handleTestToggle(testCode)}
-                        style={{
-                          background: isSelected ? 'var(--primary-50)' : 'var(--bg-subtle)',
-                          border: `1px solid ${isSelected ? 'var(--primary-600)' : 'var(--border-light)'}`,
-                          borderRadius: 'var(--radius-md)',
-                          padding: '0.6rem 0.75rem',
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justify-content: 'space-between',
-                          fontSize: '0.85rem',
-                          fontWeight: 600,
-                          color: isSelected ? 'var(--primary-800)' : 'var(--text-main)'
-                        }}
-                      >
-                        <span>{testCode}</span>
-                        {isSelected && <Check size={16} color="var(--primary-600)" />}
-                      </div>
-                    );
-                  })}
-                </div>
+            <div className="form-group">
+              <label className="form-label">Batería de Pruebas Psicométricas a Aplicar:</label>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.35rem' }}>
+                {selectedCaseForAction.triage.recommendedTests.map(t => {
+                  const isChecked = selectedTests.includes(t.code);
+                  return (
+                    <button
+                      type="button"
+                      key={t.code}
+                      onClick={() => handleTestToggle(t.code)}
+                      style={{
+                        padding: '0.35rem 0.75rem',
+                        borderRadius: '20px',
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        border: isChecked ? '1px solid var(--primary-600)' : '1px solid var(--border-light)',
+                        background: isChecked ? 'var(--primary-100)' : '#ffffff',
+                        color: isChecked ? 'var(--primary-900)' : 'var(--text-muted)'
+                      }}
+                    >
+                      {isChecked ? '✓ ' : '+ '}{t.code} ({t.area})
+                    </button>
+                  );
+                })}
               </div>
-            )}
-
-            {/* If issuing dictamen, configure guidelines */}
-            {newStatus === 'DICTAMINADO_CON_PAUTAS' && (
-              <div style={{ background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', padding: '1rem', marginBottom: '1rem', border: '1px solid var(--border-light)' }}>
-                <h4 style={{ fontSize: '0.9rem', marginBottom: '0.6rem', color: 'var(--primary-700)' }}>Pautas de Intervención en el Aula (Visibles para el Profesor)</h4>
-
-                <div className="form-group">
-                  <label className="form-label" style={{ fontSize: '0.8rem' }}>Objetivo General</label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    value={actionPlan.generalGoal}
-                    onChange={(e) => setActionPlan({ ...actionPlan, generalGoal: e.target.value })}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label" style={{ fontSize: '0.8rem' }}>Adaptaciones Metodológicas (separadas por línea)</label>
-                  <textarea
-                    rows={3}
-                    className="textarea-input"
-                    value={actionPlan.methodologicalAdaptations.join('\n')}
-                    onChange={(e) => setActionPlan({ ...actionPlan, methodologicalAdaptations: e.target.value.split('\n') })}
-                  />
-                </div>
-              </div>
-            )}
+            </div>
 
             <div className="form-group">
-              <label className="form-label">Notas e Instrucciones del Orientador/a para la Ficha</label>
+              <label className="form-label">Dictamen Clínico / Observaciones de Orientación *</label>
               <textarea
-                rows={3}
+                rows={4}
                 className="textarea-input"
-                placeholder="Escribe aquí las observaciones dirigidas al equipo docente..."
                 value={counselorNotes}
                 onChange={(e) => setCounselorNotes(e.target.value)}
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1.25rem' }}>
-              <button className="btn btn-secondary" onClick={() => setSelectedCaseForAction(null)}>
-                Cancelar
-              </button>
-              <button className="btn btn-primary" onClick={handleSaveDecision}>
-                <Send size={16} /> Guardar Dictamen y Notificar al Profesor
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: '1rem' }}>
+              <button type="button" className="btn btn-secondary" onClick={() => setSelectedCaseForAction(null)}>Cancelar</button>
+              <button type="button" className="btn btn-primary" onClick={handleSaveDecision}>
+                <Check size={16} /> Guardar Dictamen en Firebase
               </button>
             </div>
           </div>
