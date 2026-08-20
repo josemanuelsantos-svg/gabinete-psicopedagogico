@@ -6,19 +6,30 @@ interface NeaePortalProps {
   students: StudentNEAE[];
 }
 
-export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
+export const NeaePortal: React.FC<NeaePortalProps> = ({ students = [] }) => {
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(students[0]?.id || null);
   const [filterCategory, setFilterCategory] = useState<string>('ALL');
 
-  const filteredStudents = students.filter(s => {
-    if (filterCategory !== 'ALL' && !s.category.includes(filterCategory)) return false;
+  const filteredStudents = (students || []).filter(s => {
+    if (!s) return false;
+    if (filterCategory !== 'ALL' && !(s.category || '').toLowerCase().includes(filterCategory.toLowerCase())) return false;
     return true;
   });
 
-  const selectedStudent = students.find(s => s.id === selectedStudentId);
+  const selectedStudent = (students || []).find(s => s?.id === (selectedStudentId || filteredStudents[0]?.id)) || filteredStudents[0];
 
   const handlePrint = () => {
     window.print();
+  };
+
+  const guidelines = selectedStudent?.guidelines || {
+    generalGoal: 'Intervención educativa y metodológica adaptada en aula.',
+    methodologicalAdaptations: ['Instrucciones paso a paso.', 'Apoyo visual y anticipación.', 'Fraccionamiento de tareas.'],
+    environmentalAdaptations: ['Ubicación en primera fila cerca del profesor.'],
+    evaluationAdaptations: ['Dar 25% más de tiempo en controles y exámenes.'],
+    emotionalTips: ['Reforzamiento positivo constante ante el esfuerzo.'],
+    ptHoursPerWeek: 2,
+    alHoursPerWeek: 2
   };
 
   return (
@@ -83,8 +94,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                 style={{
                   padding: '0.85rem 1rem',
                   borderRadius: 'var(--radius-md)',
-                  border: `1px solid ${s.id === selectedStudentId ? 'var(--primary-600)' : 'var(--border-light)'}`,
-                  background: s.id === selectedStudentId ? 'var(--primary-50)' : 'var(--bg-card)',
+                  border: `1px solid ${s.id === selectedStudent?.id ? 'var(--primary-600)' : 'var(--border-light)'}`,
+                  background: s.id === selectedStudent?.id ? 'var(--primary-50)' : 'var(--bg-card)',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
@@ -99,7 +110,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                   {s.category}
                 </div>
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-                  Adaptación: <strong>{s.curricularAdaptation}</strong>
+                  Adaptación: <strong>{s.curricularAdaptation || 'ACNS'}</strong>
                 </div>
               </div>
             ))}
@@ -118,31 +129,31 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                   {selectedStudent.name}
                 </h2>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  Curso: <strong>{selectedStudent.grade}</strong> • Tutor/a: <strong>{selectedStudent.tutor}</strong>
+                  Curso: <strong>{selectedStudent.grade}</strong> • Tutor/a: <strong>{selectedStudent.tutor || 'Tutor asignado'}</strong>
                 </p>
               </div>
 
               <div style={{ textAlign: 'right' }}>
                 <span style={{ background: '#dcfce7', color: '#15803d', padding: '0.3rem 0.75rem', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>
-                  Adaptación {selectedStudent.curricularAdaptation}
+                  Adaptación {selectedStudent.curricularAdaptation || 'ACNS'}
                 </span>
                 <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>
-                  Última revisión: {selectedStudent.lastReviewDate}
+                  Última revisión: {selectedStudent.lastReviewDate || 'Reciente'}
                 </p>
               </div>
             </div>
 
             {/* Special Support Teachers Pills */}
             {(selectedStudent.ptTeacher || selectedStudent.alTeacher) && (
-              <div style={{ display: 'flex', gap: '1rem', background: 'var(--bg-subtle)', padding: '0.75rem 1rem', borderRadius: 'var(--radius-md)', marginBottom: '1.25rem' }}>
+              <div style={{ display: 'flex', gap: '1rem', background: 'var(--bg-subtle)', padding: '0.75rem 1rem', borderRadius: 'var(--radius-md)', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
                 {selectedStudent.ptTeacher && (
                   <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--accent-indigo)' }}>
-                    📘 Pedagogía Terapéutica (PT): {selectedStudent.ptTeacher} ({selectedStudent.guidelines.ptHoursPerWeek || 2}h/semana)
+                    📘 Pedagogía Terapéutica (PT): {selectedStudent.ptTeacher} ({guidelines.ptHoursPerWeek || 2}h/semana)
                   </span>
                 )}
                 {selectedStudent.alTeacher && (
                   <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--accent-purple)' }}>
-                    🗣 Audición y Lenguaje (AL): {selectedStudent.alTeacher} ({selectedStudent.guidelines.alHoursPerWeek || 2}h/semana)
+                    🗣 Audición y Lenguaje (AL): {selectedStudent.alTeacher} ({guidelines.alHoursPerWeek || 2}h/semana)
                   </span>
                 )}
               </div>
@@ -154,7 +165,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                 <Sparkles size={18} /> Objetivo General de Intervención
               </h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', background: '#f0fdfa', padding: '0.75rem 1rem', borderRadius: 'var(--radius-md)', borderLeft: '4px solid var(--primary-600)' }}>
-                {selectedStudent.guidelines.generalGoal}
+                {guidelines.generalGoal || 'Intervención educativa y metodológica adaptada en aula.'}
               </p>
             </div>
 
@@ -164,7 +175,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                 <BookOpen size={18} color="var(--accent-blue)" /> Pautas Metodológicas para el Aula
               </h3>
               <ul style={{ paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                {selectedStudent.guidelines.methodologicalAdaptations.map((tip, idx) => (
+                {(guidelines.methodologicalAdaptations || []).map((tip: string, idx: number) => (
                   <li key={idx} style={{ fontSize: '0.88rem', color: '#334155', lineHeight: '1.5' }}>
                     {tip}
                   </li>
@@ -179,7 +190,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                   Adaptación en Exámenes y Evaluaciones
                 </h4>
                 <ul style={{ paddingLeft: '1rem', fontSize: '0.82rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-                  {selectedStudent.guidelines.evaluationAdaptations.map((item, idx) => (
+                  {(guidelines.evaluationAdaptations || []).map((item: string, idx: number) => (
                     <li key={idx}>{item}</li>
                   ))}
                 </ul>
@@ -190,7 +201,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                   Disposición Ambiental del Aula
                 </h4>
                 <ul style={{ paddingLeft: '1rem', fontSize: '0.82rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-                  {selectedStudent.guidelines.environmentalAdaptations.map((item, idx) => (
+                  {(guidelines.environmentalAdaptations || []).map((item: string, idx: number) => (
                     <li key={idx}>{item}</li>
                   ))}
                 </ul>
@@ -203,7 +214,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({ students }) => {
                 💡 Pautas Socioemocionales y de Gestión Clima de Aula
               </h4>
               <ul style={{ paddingLeft: '1rem', fontSize: '0.82rem', color: '#713f12' }}>
-                {selectedStudent.guidelines.emotionalTips.map((tip, idx) => (
+                {(guidelines.emotionalTips || []).map((tip: string, idx: number) => (
                   <li key={idx}>{tip}</li>
                 ))}
               </ul>

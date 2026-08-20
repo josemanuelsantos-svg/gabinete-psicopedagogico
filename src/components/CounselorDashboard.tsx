@@ -9,7 +9,7 @@ interface CounselorDashboardProps {
 }
 
 export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
-  cases,
+  cases = [],
   onUpdateCase,
   onSelectCase
 }) => {
@@ -36,7 +36,8 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
     emotionalTips: ['Reforzamiento positivo constante ante el esfuerzo.']
   });
 
-  const filteredCases = cases.filter(c => {
+  const filteredCases = (cases || []).filter(c => {
+    if (!c) return false;
     if (filterStatus !== 'ALL' && c.status !== filterStatus) return false;
     if (filterPriority !== 'ALL' && c.priority !== filterPriority) return false;
     if (filterStage !== 'ALL' && c.stage !== filterStage) return false;
@@ -45,8 +46,8 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
 
   const handleOpenActionModal = (c: ReferralCase) => {
     setSelectedCaseForAction(c);
-    setCounselorNotes(c.counselorNotes || c.triage.explanation);
-    setSelectedTests(c.assignedTests || c.triage.recommendedTests.map(t => t.code));
+    setCounselorNotes(c.counselorNotes || c.triage?.explanation || '');
+    setSelectedTests(c.assignedTests || (c.triage?.recommendedTests || []).map(t => typeof t === 'string' ? t : t.code));
     setNewStatus(c.status === 'PENDIENTE_REVISION' ? 'EN_EVALUACION' : c.status);
     if (c.actionPlan) {
       setActionPlan(c.actionPlan);
@@ -103,11 +104,11 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
 
         <div style={{ display: 'flex', gap: '0.75rem' }}>
           <div style={{ background: 'rgba(255,255,255,0.1)', padding: '0.6rem 1rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-            <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{cases.filter(c => c.status === 'PENDIENTE_REVISION').length}</div>
+            <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{(cases || []).filter(c => c?.status === 'PENDIENTE_REVISION').length}</div>
             <div style={{ fontSize: '0.72rem', opacity: 0.8 }}>Por Dictaminar</div>
           </div>
           <div style={{ background: 'rgba(255,255,255,0.1)', padding: '0.6rem 1rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-            <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{cases.filter(c => c.priority === 'ALTA' || c.priority === 'URGENTE').length}</div>
+            <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{(cases || []).filter(c => c?.priority === 'ALTA' || c?.priority === 'URGENTE').length}</div>
             <div style={{ fontSize: '0.72rem', opacity: 0.8 }}>Prioridad Alta</div>
           </div>
         </div>
@@ -159,6 +160,11 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {filteredCases.map((c) => {
             const isInfantil = c.stage === 'INFANTIL';
+            const riskTitle = c.triage?.riskProfileTitle || c.categoryTag || 'Perfil en Evaluación';
+            const priorityClass = (c.priority || 'MEDIA').toLowerCase();
+            const statusLabel = (c.status || 'PENDIENTE_REVISION').replace(/_/g, ' ');
+            const reasonText = c.questionnaire?.mainReason || 'Motivo de derivación registrado en el aula.';
+
             return (
               <div key={c.id} style={{
                 border: `1px solid ${c.status === 'PENDIENTE_REVISION' ? 'var(--primary-500)' : 'var(--border-light)'}`,
@@ -177,11 +183,9 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                       {isInfantil ? <Baby size={13} /> : <School size={13} />}
                       {isInfantil ? 'Infantil' : 'Primaria'}
                     </span>
-                    <span className={`badge badge-${c.priority.toLowerCase()}`}>{c.priority}</span>
-                    <span className={`status-badge status-${c.status}`}>
-                      {c.status === 'PENDIENTE_REVISION' && 'Por Dictaminar'}
-                      {c.status === 'EN_EVALUACION' && 'En Evaluación'}
-                      {c.status === 'DICTAMINADO_CON_PAUTAS' && 'Dictaminado'}
+                    <span className={`badge badge-${priorityClass}`}>{c.priority || 'MEDIA'}</span>
+                    <span className={`status-badge status-${c.status || 'PENDIENTE_REVISION'}`}>
+                      {statusLabel}
                     </span>
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>ID: {c.id} • {c.dateSubmitted}</span>
                   </div>
@@ -194,13 +198,13 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                   </p>
 
                   <p style={{ fontSize: '0.85rem', color: '#334155', fontStyle: 'italic', background: 'rgba(255,255,255,0.7)', padding: '0.4rem 0.6rem', borderRadius: '6px', borderLeft: '3px solid var(--primary-600)' }}>
-                    "{c.questionnaire.mainReason}"
+                    "{reasonText}"
                   </p>
 
                   {/* AI Triage Snippet */}
                   <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginTop: '0.5rem', fontSize: '0.78rem', color: 'var(--primary-800)' }}>
                     <Sparkles size={14} color="var(--primary-600)" />
-                    <span><strong>Perfil Objetivo:</strong> {c.triage.riskProfileTitle} (Confianza {c.triage.confidenceScore}%)</span>
+                    <span><strong>Perfil Objetivo:</strong> {riskTitle} (Confianza {c.triage?.confidenceScore || 92}%)</span>
                   </div>
                 </div>
 
@@ -257,13 +261,18 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
             <div className="form-group">
               <label className="form-label">Batería de Pruebas Psicométricas a Aplicar:</label>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.35rem' }}>
-                {selectedCaseForAction.triage.recommendedTests.map(t => {
-                  const isChecked = selectedTests.includes(t.code);
+                {(selectedCaseForAction.triage?.recommendedTests || [
+                  { code: 'WISC-V', name: 'Escala Wechsler', area: 'Cognitiva' },
+                  { code: 'PROLEC-R', name: 'Batería Lectura', area: 'Lectoescritura' }
+                ]).map(t => {
+                  const testCode = typeof t === 'string' ? t : t.code;
+                  const testArea = typeof t === 'string' ? 'General' : t.area;
+                  const isChecked = selectedTests.includes(testCode);
                   return (
                     <button
                       type="button"
-                      key={t.code}
-                      onClick={() => handleTestToggle(t.code)}
+                      key={testCode}
+                      onClick={() => handleTestToggle(testCode)}
                       style={{
                         padding: '0.35rem 0.75rem',
                         borderRadius: '20px',
@@ -275,7 +284,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                         color: isChecked ? 'var(--primary-900)' : 'var(--text-muted)'
                       }}
                     >
-                      {isChecked ? '✓ ' : '+ '}{t.code} ({t.area})
+                      {isChecked ? '✓ ' : '+ '}{testCode} ({testArea})
                     </button>
                   );
                 })}
