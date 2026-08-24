@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Lock, X, ShieldCheck, UserCheck, GraduationCap } from 'lucide-react';
+import { Lock, X, GraduationCap, ShieldCheck } from 'lucide-react';
+import { verifyRolePassword } from '../utils/security';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -15,29 +16,34 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
   const [selectedRole, setSelectedRole] = useState<'DOCENTE' | 'ORIENTADOR'>('DOCENTE');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [isValidating, setIsValidating] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanPwd = password.trim();
+    setIsValidating(true);
+    setError(false);
 
-    if (selectedRole === 'ORIENTADOR') {
-      if (cleanPwd.toLowerCase() === 'orientancisco26' || cleanPwd.toLowerCase() === 'orienta2026') {
-        onLoginSuccess('ORIENTADOR_ADMIN', { name: 'Equipo de Orientación', email: 'orientacion@sanbuenaventura.es' });
+    try {
+      const isValid = await verifyRolePassword(selectedRole, password);
+
+      if (isValid) {
+        if (selectedRole === 'ORIENTADOR') {
+          onLoginSuccess('ORIENTADOR_ADMIN', { name: 'Equipo de Orientación', email: 'orientacion@sanbuenaventura.es' });
+        } else {
+          onLoginSuccess('DOCENTE_NEAE', { name: 'Claustro Docente', email: 'docentes@sanbuenaventura.es' });
+        }
         setPassword('');
         setError(false);
       } else {
         setError(true);
       }
-    } else {
-      if (cleanPwd.toLowerCase() === 'profescano26' || cleanPwd.toLowerCase() === 'docentes2026') {
-        onLoginSuccess('DOCENTE_NEAE', { name: 'Claustro Docente', email: 'docentes@sanbuenaventura.es' });
-        setPassword('');
-        setError(false);
-      } else {
-        setError(true);
-      }
+    } catch (err) {
+      console.error('Error al validar credenciales:', err);
+      setError(true);
+    } finally {
+      setIsValidating(false);
     }
   };
 
@@ -106,38 +112,41 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
           </button>
         </div>
 
+        {/* PASSWORD FORM */}
         <form onSubmit={handleSubmit}>
           <div className="form-group" style={{ marginBottom: '0.85rem' }}>
             <label className="form-label" style={{ fontSize: '0.8rem' }}>
-              Contraseña de {selectedRole === 'ORIENTADOR' ? 'Orientación' : 'Docentes'} *
+              {selectedRole === 'DOCENTE' ? 'Contraseña de Docentes *' : 'Contraseña de Orientación *'}
             </label>
             <input
               type="password"
               required
               className="input-text"
-              placeholder={selectedRole === 'ORIENTADOR' ? 'Introduce clave de Orientación...' : 'Introduce clave de Docentes...'}
+              placeholder="Introduce contraseña..."
               value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setError(false);
-              }}
+              onChange={(e) => { setPassword(e.target.value); setError(false); }}
               style={{ fontSize: '0.88rem', minHeight: '42px' }}
               autoFocus
             />
           </div>
 
           {error && (
-            <div style={{ background: '#fee2e2', color: '#991b1b', padding: '0.45rem 0.65rem', borderRadius: '6px', fontSize: '0.78rem', marginBottom: '0.85rem' }}>
-              ⚠ Contraseña incorrecta para el acceso de {selectedRole === 'ORIENTADOR' ? 'Orientación' : 'Docentes'}.
+            <div style={{ background: '#fee2e2', color: '#991b1b', padding: '0.5rem 0.75rem', borderRadius: '6px', fontSize: '0.78rem', marginBottom: '0.85rem' }}>
+              ⚠ Contraseña incorrecta. Por favor, verifica la clave de acceso.
             </div>
           )}
 
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
             <button type="button" className="btn btn-secondary" onClick={onClose} style={{ flex: 1, minHeight: '40px', fontSize: '0.82rem' }}>
               Cancelar
             </button>
-            <button type="submit" className="btn btn-primary" style={{ flex: 1.5, minHeight: '40px', fontSize: '0.82rem' }}>
-              🛡 Entrar al Portal
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={isValidating}
+              style={{ flex: 1.5, minHeight: '40px', fontSize: '0.82rem' }}
+            >
+              {isValidating ? 'Verificando...' : '🛡 Entrar al Portal'}
             </button>
           </div>
         </form>

@@ -30,14 +30,15 @@
 - Sincronización instantánea de expedientes y pautas de aula.
 - Códigos únicos de consulta pública para profesorado (`DER-2026-xxx`).
 
-### 🔐 3. Control de Accesos Institucionales
-- **Claustro Docente** (`Profescano26`): Acceso a pautas metodológicas y adaptaciones curriculares NEAE de aula.
-- **Equipo de Orientación** (`Orientancisco26`): Gestión de expedientes, triaje automático, cuadrante de apoyos PT/AL, emisión de dictámenes y Memoria Anual.
+### 🔐 3. Control de Accesos Institucionales con Seguridad Criptográfica
+- **Claustro Docente**: Acceso restringido a pautas metodológicas y adaptaciones curriculares NEAE de aula.
+- **Equipo de Orientación**: Gestión completa de expedientes, triaje automático, cuadrante de apoyos PT/AL, emisión de dictámenes y Memoria Anual.
+- *Nota de seguridad*: Autenticación validada mediante hashes criptográficos SHA-256 (Web Crypto API).
 
 ---
 
 ## 🚀 Despliegue en Vercel
 
-1. Importar el repositorio `josemanuelsantos-svg/gabinete-psicopedagogico` en **[Vercel](https://vercel.com/new)**.
+1. Conectar con el repositorio `josemanuelsantos-svg/gabinete-psicopedagogico` en **[Vercel](https://vercel.com/new)**.
 2. Framework preset: **Vite**.
 3. Pulsa **Deploy**.
