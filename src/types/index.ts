@@ -1,3 +1,5 @@
+import { PrivacyConsentRecord } from '../utils/privacyAudit';
+
 export type EducationalStage = 'INFANTIL' | 'PRIMARIA';
 
 export type UserRole = 'DOCENTE' | 'ORIENTADOR';
@@ -12,26 +14,11 @@ export type CaseStatus =
   | 'OBSERVACION_AULA' 
   | 'DICTAMINADO_CON_PAUTAS';
 
-export type DiagnosticHypothesis = 
-  | 'TDAH_INATENTO'
-  | 'TDAH_HIPERACTIVO_IMPULSIVO'
-  | 'DEA_LECTURA_DISLEXIA'
-  | 'DEA_ESCRITURA_DISGRAFIA'
-  | 'DEA_CALCULO_DISCALCULIA'
-  | 'ALTAS_CAPACIDADES'
-  | 'TEL_TRASTORNO_LENGUAJE'
-  | 'RETRASO_MADURATIVO_INFANTIL'
-  | 'TRASTORNO_DESARROLLO_PSICOMOTRIZ'
-  | 'DIFICULTAD_COMUNICACION_INTERACCION'
-  | 'DIFICULTAD_SOCIOEMOCIONAL'
-  | 'RETRASO_MADURATIVO_GENERAL'
-  | 'OTRO_SITUACIONAL';
-
 export interface StudentSelfPerception {
-  perceivedDifficulty: 'NINGUNA' | 'LEVE' | 'MODERADA' | 'ALTA';
+  perceivedDifficulty: 'NINGUNA' | 'LEVE' | 'MODERADA' | 'ALTA' | '';
   favoriteSubjects: string;
   hardestSubjects: string;
-  schoolMotivation: 'ALTA' | 'MEDIA' | 'BAJA';
+  schoolMotivation: 'ALTA' | 'MEDIA' | 'BAJA' | '';
   studentComments?: string;
 }
 
@@ -73,50 +60,51 @@ export interface SubjectGuidelines {
 
 export interface ReferralQuestionnaire {
   // 1. Datos Generales
-  stage: EducationalStage;
+  stage: EducationalStage | '';
   studentName: string;
-  studentAge: number;
+  studentAge?: number | null;
   grade: string;
   teacherName: string;
-  subjectOrTutor: string;
+  teacherEmail: string;
+  subjectOrTutor?: string;
   referralDate: string;
   mainReason: string;
   affectedSubjects: string[];
   attachedEvidenceName?: string;
 
-  // 2. Indicadores de Observación de Aula Específicos por Etapa (1 a 5)
-  // Campos Primaria:
-  attentionFocus?: number;
+  // 2. Indicadores de Observación de Aula (Inician en null / Sin valorar)
+  // Primaria:
+  attentionFocus?: number | null;
   attentionDescriptor?: string;
-  readingComprehension?: number;
+  readingComprehension?: number | null;
   readingDescriptor?: string;
-  mathReasoning?: number;
+  mathReasoning?: number | null;
   mathDescriptor?: string;
-  taskPaceAndCompletion?: number;
+  taskPaceAndCompletion?: number | null;
   taskPaceDescriptor?: string;
-  impulsivityAndAutonomy?: number;
+  impulsivityAndAutonomy?: number | null;
   impulsivityDescriptor?: string;
-  emotionalAndPeerRel?: number;
+  emotionalAndPeerRel?: number | null;
   emotionalDescriptor?: string;
 
-  // Campos Infantil:
-  infantilOralLanguage?: number;
+  // Infantil:
+  infantilOralLanguage?: number | null;
   infantilOralLanguageDesc?: string;
-  infantilAttentionAssembly?: number;
+  infantilAttentionAssembly?: number | null;
   infantilAttentionAssemblyDesc?: string;
-  infantilPsychomotorFine?: number;
+  infantilPsychomotorFine?: number | null;
   infantilPsychomotorFineDesc?: string;
-  infantilLogicConcepts?: number;
+  infantilLogicConcepts?: number | null;
   infantilLogicConceptsDesc?: string;
-  infantilPersonalAutonomy?: number;
+  infantilPersonalAutonomy?: number | null;
   infantilPersonalAutonomyDesc?: string;
-  infantilSocialPlay?: number;
+  infantilSocialPlay?: number | null;
   infantilSocialPlayDesc?: string;
 
   // 3. Ayudas Previas Probadas en Clase
-  measuresDuration: 'MENOS_1_MES' | '1_A_2_MESES' | 'MAS_2_MESES';
+  measuresDuration: 'MENOS_1_MES' | '1_A_2_MESES' | 'MAS_2_MESES' | '';
   appliedMeasuresList: string[];
-  measuresResult: 'INSUFICIENTE' | 'MEJORIA_LEVE_PERSISTE_DIFICULTAD' | 'BLOQUEO_PERSISTENTE';
+  measuresResult: 'INSUFICIENTE' | 'MEJORIA_LEVE_PERSISTE_DIFICULTAD' | 'BLOQUEO_PERSISTENTE' | '';
   measuresObservations: string;
 
   // 4. Voz y Autopercepción del Alumno/a
@@ -125,31 +113,32 @@ export interface ReferralQuestionnaire {
   // 5. Contexto Familiar
   familyContactDone: boolean;
   familyMeetingDone: boolean;
-  familyAgreement: 'TOTAL_ACUERDO' | 'CONFORMIDAD_PARCIAL' | 'RESISTENCIA_FAMILIAR' | 'PENDIENTE_REUNION';
+  familyAgreement: 'TOTAL_ACUERDO' | 'CONFORMIDAD_PARCIAL' | 'RESISTENCIA_FAMILIAR' | 'PENDIENTE_REUNION' | '';
   externalAssessmentDone: boolean;
   externalAssessmentDetails?: string;
-  familyAttitude: string;
-  additionalObservations: string;
+  familyAttitude?: string;
+  additionalObservations?: string;
+
+  // 6. Registro de Privacidad RGPD/LOPD-GDD
+  privacyConsent: PrivacyConsentRecord;
 }
 
 export interface PsychometricTestSuggestion {
   code: string;
   name: string;
   area: string;
-  description: string;
-  recommended: boolean;
+  description?: string;
+  recommended?: boolean;
 }
 
-export interface TriageResult {
-  evaluationRecommended: boolean;
-  confidenceScore: number;
-  primaryHypothesis: DiagnosticHypothesis;
-  riskProfileTitle: string;
-  secondaryHypotheses: DiagnosticHypothesis[];
-  recommendedTests: PsychometricTestSuggestion[];
-  suggestedPriority: CasePriority;
-  explanation: string;
-  immediateClassroomTips: string[];
+export interface CounselorManualAssessment {
+  status: CaseStatus;
+  priority: CasePriority;
+  clinicalNotes: string;
+  assignedTests: string[];
+  decisionDate: string;
+  counselorName: string;
+  actionPlan?: ActionPlanGuidelines;
 }
 
 export interface ActionPlanGuidelines {
@@ -164,16 +153,16 @@ export interface ActionPlanGuidelines {
 }
 
 export interface ReferralCase {
-  id: string;
+  id: string; // Unpredictable UUIDv4
   stage: EducationalStage;
   studentName: string;
   grade: string;
   teacherName: string;
+  createdByEmail: string;
   dateSubmitted: string;
   status: CaseStatus;
   priority: CasePriority;
   questionnaire: ReferralQuestionnaire;
-  triage: TriageResult;
   counselorNotes?: string;
   decisionDate?: string;
   assignedTests?: string[];
@@ -181,6 +170,17 @@ export interface ReferralCase {
   quarterlyReviews?: QuarterlyReview[];
   actionPlan?: ActionPlanGuidelines;
   categoryTag?: string;
+  privacyConsent?: PrivacyConsentRecord;
+
+  // Optional backwards compatibility field for legacy views if needed
+  triage?: {
+    riskProfileTitle: string;
+    explanation: string;
+    recommendedTests: PsychometricTestSuggestion[];
+    confidenceScore?: number;
+    primaryHypothesis?: string;
+    immediateClassroomTips?: string[];
+  };
 }
 
 export interface StudentNEAE {

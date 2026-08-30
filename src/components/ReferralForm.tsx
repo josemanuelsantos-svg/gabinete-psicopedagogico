@@ -1,95 +1,183 @@
-import React, { useState, useEffect } from 'react';
-import { EducationalStage, ReferralCase, ReferralQuestionnaire, StudentSelfPerception } from '../types';
-import { calculateTriage } from '../utils/triageEngine';
-import { FileText, Send, Paperclip, CheckCircle2, Clock, User, HeartHandshake, Baby, School } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { EducationalStage, ReferralCase, ReferralQuestionnaire } from '../types';
+import { validateAttachment } from '../utils/fileSecurity';
+import { generateSecureCaseId, CURRENT_PRIVACY_POLICY_VERSION } from '../utils/privacyAudit';
+import { CurrentUserSession } from '../services/firebaseService';
+import { 
+  FileText, Send, Paperclip, CheckCircle2, Clock, User, HeartHandshake, 
+  Baby, School, AlertTriangle, ShieldCheck, Check, Eye, ArrowLeft 
+} from 'lucide-react';
 
 interface ReferralFormProps {
-  onSubmitCase: (newCase: ReferralCase) => void;
+  currentUser: CurrentUserSession;
+  onSubmitCase: (newCase: ReferralCase) => Promise<void>;
   onCancel: () => void;
 }
 
-export const ReferralForm: React.FC<ReferralFormProps> = ({ onSubmitCase }) => {
-  // 1. Etapa y Datos Generales
-  const [stage, setStage] = useState<EducationalStage>('PRIMARIA');
-  const [studentName, setStudentName] = useState('');
-  const [grade, setGrade] = useState('3º Educación Primaria A');
-  const [teacherName, setTeacherName] = useState('');
-  const [mainReason, setMainReason] = useState('');
-  const [affectedSubjects, setAffectedSubjects] = useState<string[]>(['Matemáticas', 'Lengua y Literatura']);
+export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmitCase }) => {
+  // 1. Etapa y Datos Generales (Inician estrictamente vacíos o sin selección)
+  const [stage, setStage] = useState<EducationalStage | ''>('');
+  const [studentName, setStudentName] = useState<string>('');
+  const [grade, setGrade] = useState<string>('');
+  const [mainReason, setMainReason] = useState<string>('');
+  const [affectedSubjects, setAffectedSubjects] = useState<string[]>([]);
+  
+  // Archivo adjunto
   const [attachedEvidenceName, setAttachedEvidenceName] = useState<string>('');
+  const [fileError, setFileError] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // 2.A Indicadores de Observación en Aula: PRIMARIA (1 al 5)
-  const [attentionFocus, setAttentionFocus] = useState(3);
-  const [readingComprehension, setReadingComprehension] = useState(3);
-  const [mathReasoning, setMathReasoning] = useState(3);
-  const [taskPaceAndCompletion, setTaskPaceAndCompletion] = useState(3);
-  const [impulsivityAndAutonomy, setImpulsivityAndAutonomy] = useState(3);
-  const [emotionalAndPeerRel, setEmotionalAndPeerRel] = useState(3);
+  // 2.A Indicadores Primaria (Inician estrictamente en null = "Sin valorar")
+  const [attentionFocus, setAttentionFocus] = useState<number | null>(null);
+  const [readingComprehension, setReadingComprehension] = useState<number | null>(null);
+  const [mathReasoning, setMathReasoning] = useState<number | null>(null);
+  const [taskPaceAndCompletion, setTaskPaceAndCompletion] = useState<number | null>(null);
+  const [impulsivityAndAutonomy, setImpulsivityAndAutonomy] = useState<number | null>(null);
+  const [emotionalAndPeerRel, setEmotionalAndPeerRel] = useState<number | null>(null);
 
-  // 2.B Indicadores de Observación en Aula: INFANTIL (1 al 5)
-  const [infantilOralLanguage, setInfantilOralLanguage] = useState(3);
-  const [infantilAttentionAssembly, setInfantilAttentionAssembly] = useState(3);
-  const [infantilPsychomotorFine, setInfantilPsychomotorFine] = useState(3);
-  const [infantilLogicConcepts, setInfantilLogicConcepts] = useState(3);
-  const [infantilPersonalAutonomy, setInfantilPersonalAutonomy] = useState(3);
-  const [infantilSocialPlay, setInfantilSocialPlay] = useState(3);
+  // 2.B Indicadores Infantil (Inician estrictamente en null = "Sin valorar")
+  const [infantilOralLanguage, setInfantilOralLanguage] = useState<number | null>(null);
+  const [infantilAttentionAssembly, setInfantilAttentionAssembly] = useState<number | null>(null);
+  const [infantilPsychomotorFine, setInfantilPsychomotorFine] = useState<number | null>(null);
+  const [infantilLogicConcepts, setInfantilLogicConcepts] = useState<number | null>(null);
+  const [infantilPersonalAutonomy, setInfantilPersonalAutonomy] = useState<number | null>(null);
+  const [infantilSocialPlay, setInfantilSocialPlay] = useState<number | null>(null);
 
-  // 3. Ayudas Previas Probadas en Clase
-  const [measuresDuration, setMeasuresDuration] = useState<'MENOS_1_MES' | '1_A_2_MESES' | 'MAS_2_MESES'>('1_A_2_MESES');
-  const [appliedMeasuresList, setAppliedMeasuresList] = useState<string[]>([
-    'Ubicación en primera fila cerca del profesor',
-    'Darle más tiempo en exámenes (+25%)'
-  ]);
-  const [measuresResult, setMeasuresResult] = useState<'INSUFICIENTE' | 'MEJORIA_LEVE_PERSISTE_DIFICULTAD' | 'BLOQUEO_PERSISTENTE'>('MEJORIA_LEVE_PERSISTE_DIFICULTAD');
-  const [measuresObservations, setMeasuresObservations] = useState('');
+  // 3. Ayudas Previas Probadas en Clase (Inician vacíos / desmarcados)
+  const [measuresDuration, setMeasuresDuration] = useState<'MENOS_1_MES' | '1_A_2_MESES' | 'MAS_2_MESES' | ''>('');
+  const [appliedMeasuresList, setAppliedMeasuresList] = useState<string[]>([]);
+  const [measuresResult, setMeasuresResult] = useState<'INSUFICIENTE' | 'MEJORIA_LEVE_PERSISTE_DIFICULTAD' | 'BLOQUEO_PERSISTENTE' | ''>('');
+  const [measuresObservations, setMeasuresObservations] = useState<string>('');
 
   // 4. Voz y Autopercepción del Alumno/a
-  const [perceivedDifficulty, setPerceivedDifficulty] = useState<'NINGUNA' | 'LEVE' | 'MODERADA' | 'ALTA'>('MODERADA');
-  const [favoriteSubjects, setFavoriteSubjects] = useState('Educación Física, Plástica');
-  const [hardestSubjects, setHardestSubjects] = useState('Matemáticas, Lengua');
-  const [schoolMotivation, setSchoolMotivation] = useState<'ALTA' | 'MEDIA' | 'BAJA'>('MEDIA');
-  const [studentComments, setStudentComments] = useState('');
+  const [perceivedDifficulty, setPerceivedDifficulty] = useState<'NINGUNA' | 'LEVE' | 'MODERADA' | 'ALTA' | ''>('');
+  const [favoriteSubjects, setFavoriteSubjects] = useState<string>('');
+  const [hardestSubjects, setHardestSubjects] = useState<string>('');
+  const [schoolMotivation, setSchoolMotivation] = useState<'ALTA' | 'MEDIA' | 'BAJA' | ''>('');
 
   // 5. Contexto Familiar
-  const [familyMeetingDone, setFamilyMeetingDone] = useState(true);
-  const [familyAgreement, setFamilyAgreement] = useState<'TOTAL_ACUERDO' | 'CONFORMIDAD_PARCIAL' | 'RESISTENCIA_FAMILIAR' | 'PENDIENTE_REUNION'>('TOTAL_ACUERDO');
-  const [externalAssessmentDone, setExternalAssessmentDone] = useState(false);
-  const [externalAssessmentDetails, setExternalAssessmentDetails] = useState('');
-  const [familyAttitude, setFamilyAttitude] = useState('');
+  const [familyMeetingDone, setFamilyMeetingDone] = useState<boolean | null>(null);
+  const [familyAgreement, setFamilyAgreement] = useState<'TOTAL_ACUERDO' | 'CONFORMIDAD_PARCIAL' | 'RESISTENCIA_FAMILIAR' | 'PENDIENTE_REUNION' | ''>('');
+  const [externalAssessmentDone, setExternalAssessmentDone] = useState<boolean>(false);
+  const [externalAssessmentDetails, setExternalAssessmentDetails] = useState<string>('');
 
-  // Sincronizar etapa cuando cambia el curso seleccionado
-  const handleGradeChange = (newGrade: string) => {
-    setGrade(newGrade);
-    if (newGrade.includes('Infantil') || newGrade.includes('años')) {
-      setStage('INFANTIL');
-      setAffectedSubjects(['Lenguaje Oral / Comunicación', 'Atención en Asamblea']);
-      setAppliedMeasuresList(['Apoyo visual y pictogramas en la rutina diaria', 'Ubicación cerca de la tutora en asamblea']);
-      setFavoriteSubjects('Juego simbólico, Psicomotricidad, Música');
-      setHardestSubjects('Fichas de grafomotricidad, Asamblea larga');
-    } else {
-      setStage('PRIMARIA');
-      setAffectedSubjects(['Matemáticas', 'Lengua y Literatura']);
-      setAppliedMeasuresList(['Ubicación en primera fila cerca del profesor', 'Darle más tiempo en exámenes (+25%)']);
-      setFavoriteSubjects('Educación Física, Plástica');
-      setHardestSubjects('Matemáticas, Lengua');
+  // 6. Aceptación de Privacidad RGPD/LOPD-GDD (Inicia estrictamente desmarcado)
+  const [privacyAccepted, setPrivacyAccepted] = useState<boolean>(false);
+
+  // Estado de Pantalla de Revisión Previa y Validaciones
+  const [showReviewModal, setShowReviewModal] = useState<boolean>(false);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
+
+  // Descriptores Primaria
+  const primariaDescriptors: Record<string, Record<number, string>> = {
+    attention: {
+      1: '🔴 Dificultad Grave: Se distrae constantemente (>75% del tiempo), pierde el hilo y no copia del encerado.',
+      2: '🟠 Dificultad Frecuente: Inatención notable en tareas individuales (>50% del tiempo). Requiere avisos constantes.',
+      3: '🟡 Nivel Medio: Atención intermitente; rinde en explicaciones cortas pero se dispersa en tareas largas.',
+      4: '🟢 Buen Nivel: Buena atención sostenida en la gran mayoría de sesiones de clase.',
+      5: '🔵 Excelente: Concentración profunda, perseverante y autónoma durante toda la jornada.'
+    },
+    reading: {
+      1: '🔴 Dificultad Grave: Lectura silábica muy lenta, omisiones constantes de letras y nula comprensión del texto.',
+      2: '🟠 Dificultad Frecuente: Lectura vacilante con bloqueos en palabras compuestas; gran fatiga y errores.',
+      3: '🟡 Nivel Medio: Fluidez lectora aceptable, pero comete errores en palabras complejas o textos extensos.',
+      4: '🟢 Buen Nivel: Buena velocidad y comprensión de lecturas adecuadas a su curso escolar.',
+      5: '🔵 Excelente: Lectura rápida, expresiva y comprensión crítica muy superior a su edad.'
+    },
+    math: {
+      1: '🔴 Dificultad Grave: Bloqueo total ante operaciones básicas y problemas; no comprende los enunciados numéricos.',
+      2: '🟠 Dificultad Frecuente: Le cuesta mucho el cálculo mental y el planteamiento de problemas de más de un paso.',
+      3: '🟡 Nivel Medio: Realiza operaciones mecánicas bien, pero necesita guía para razonar problemas nuevos.',
+      4: '🟢 Buen Nivel: Resuelve problemas con soltura y comprende conceptos lógico-matemáticos.',
+      5: '🔵 Excelente: Gran rapidez de cálculo, abstracción y razonamiento lógico sobresaliente.'
+    },
+    taskPace: {
+      1: '🔴 Dificultad Grave: Ritmo extremadamente lento; deja más del 50% de las tareas/exámenes sin terminar.',
+      2: '🟠 Dificultad Frecuente: Se queda rezagado/a habitualmente al copiar de la pizarra o finalizar fichas.',
+      3: '🟡 Nivel Medio: Termina las tareas justo a tiempo si el docente le va recordando el tiempo.',
+      4: '🟢 Buen Nivel: Ritmo ágil y organizado; finaliza las actividades con normalidad.',
+      5: '🔵 Excelente: Termina con gran rapidez y pulcritud mucho antes que el resto de la clase.'
+    },
+    impulsivity: {
+      1: '🔴 Dificultad Grave: Muy impulsivo/a; interrumpe continuamente, se levanta sin permiso o responde sin pensar.',
+      2: '🟠 Dificultad Frecuente: Inquietud motora notable; le cuesta esperar su turno y mantener el orden.',
+      3: '🟡 Nivel Medio: Inquietud leve; responde bien cuando se le reconduce con amabilidad.',
+      4: '🟢 Buen Nivel: Buen autocontrol, respeta los turnos de palabra y las normas de convivencia.',
+      5: '🔵 Excelente: Autorregulación óptima, muy reflexivo/a, centrado/a y paciente.'
+    },
+    emotional: {
+      1: '🔴 Dificultad Grave: Baja tolerancia a la frustración; llora, se bloquea o tiene conflictos frecuentes con compañeros.',
+      2: '🟠 Dificultad Frecuente: Muestra inseguridad, ansiedad ante los exámenes o tendencia al aislamiento en el patio.',
+      3: '🟡 Nivel Medio: Adaptación social normal; en momentos de frustración le cuesta gestionar la emoción.',
+      4: '🟢 Buen Nivel: Buena relación con el grupo de clase, sociable y tolerante.',
+      5: '🔵 Excelente: Gran empatía, liderazgo positivo y excelentes habilidades sociales.'
     }
   };
 
-  const handleStageSwitch = (newStage: EducationalStage) => {
-    setStage(newStage);
-    if (newStage === 'INFANTIL') {
-      setGrade('2º Infantil (4 años A)');
-      setAffectedSubjects(['Lenguaje Oral / Comunicación', 'Atención en Asamblea']);
-      setAppliedMeasuresList(['Apoyo visual y pictogramas en la rutina diaria', 'Ubicación cerca de la tutora en asamblea']);
-    } else {
-      setGrade('3º Educación Primaria A');
-      setAffectedSubjects(['Matemáticas', 'Lengua y Literatura']);
-      setAppliedMeasuresList(['Ubicación en primera fila cerca del profesor', 'Darle más tiempo en exámenes (+25%)']);
+  // Descriptores Infantil
+  const infantilDescriptors: Record<string, Record<number, string>> = {
+    oralLang: {
+      1: '🔴 Dificultad Grave: Habla ininteligible, vocabulario muy escaso, frases de 1-2 palabras o no comprende órdenes sencillas.',
+      2: '🟠 Dificultad Frecuente: Dificultades de articulación (dislalias múltiples), oraciones incompletas y dificultad de relato.',
+      3: '🟡 Nivel Medio: Se comunica con normalidad; comete errores en palabras complejas o fonemas tardíos (r, tr).',
+      4: '🟢 Buen Nivel: Buena fluidez expresiva, estructura oraciones con corrección y comprende cuentos de aula.',
+      5: '🔵 Excelente: Riqueza léxica sobresaliente, gran capacidad narrativa y perfecta articulación.'
+    },
+    assembly: {
+      1: '🔴 Dificultad Grave: Incapaz de permanecer en la asamblea (>5 min); se levanta constantemente, interrumpe o corre por el aula.',
+      2: '🟠 Dificultad Frecuente: Inquietud motriz constante; necesita recordatorios continuos para mantenerse en su sitio.',
+      3: '🟡 Nivel Medio: Participa en la asamblea aunque en actividades largas de más de 15 minutos se desconecta.',
+      4: '🟢 Buen Nivel: Atiende a las canciones, rutinas y explicaciones de la tutora con buena actitud.',
+      5: '🔵 Excelente: Gran atención sostenida, escucha activa a sus compañeros y respeta el turno de palabra.'
+    },
+    fineMotor: {
+      1: '🔴 Dificultad Grave: No realiza la pinza digital (agarre palmar), no recorta con tijeras, torpeza motriz al correr/saltar.',
+      2: '🟠 Dificultad Frecuente: Trazos muy débiles o con excesiva presión; le cuestan los encajables, ensartables y modelado.',
+      3: '🟡 Nivel Medio: Motricidad adecuada a su edad; realiza trazos básicos y maneja útiles con guía habitual.',
+      4: '🟢 Buen Nivel: Buen control visomotor, colorea respetando límites y maneja tijeras con soltura.',
+      5: '🔵 Excelente: Precisión grafomotriz excepcional, dibujo muy detallado y excelente coordinación física.'
+    },
+    logic: {
+      1: '🔴 Dificultad Grave: No identifica colores básicos, tamaños (grande/pequeño) ni nociones espaciales (arriba/abajo/dentro).',
+      2: '🟠 Dificultad Frecuente: Le cuesta la seriación de 2 elementos, el conteo elemental (1 al 5) o la asociación número-cantidad.',
+      3: '🟡 Nivel Medio: Asimila conceptos básicos con el ritmo habitual del grupo; necesita apoyos manipulativos.',
+      4: '🟢 Buen Nivel: Identifica figuras geométricas, clasifica por varios criterios y cuenta con precisión.',
+      5: '🔵 Excelente: Deducción lógica precoz, conteo avanzado y gran curiosidad por patrones y números.'
+    },
+    autonomy: {
+      1: '🔴 Dificultad Grave: No controla esfínteres, dependiente total para el aseo, ponerse el abrigo o recoger materiales.',
+      2: '🟠 Dificultad Frecuente: Necesita ayuda constante para comer en el recreo, abrocharse o cuidar sus pertenencias.',
+      3: '🟡 Nivel Medio: Realiza hábitos básicos con supervisión y recordatorios rutinarios de la tutora.',
+      4: '🟢 Buen Nivel: Muy autónomo/a en el baño, desayuno escolar y colocación de su mochila/abrigo.',
+      5: '🔵 Excelente: Totalmente autónomo/a e incluso ayuda de forma espontánea a sus compañeros.'
+    },
+    socialPlay: {
+      1: '🔴 Dificultad Grave: Aislamiento severo, no responde al nombre, rabietas intensas o ausencia de juego simbólico.',
+      2: '🟠 Dificultad Frecuente: Juego en paralelo; le cuesta compartir juguetes o muestra baja tolerancia a la frustración.',
+      3: '🟡 Nivel Medio: Se relaciona bien con el grupo; en situaciones de conflicto precisa la mediación de la tutora.',
+      4: '🟢 Buen Nivel: Sociable, disfruta del juego cooperativo y muestra empatía hacia sus iguales.',
+      5: '🔵 Excelente: Habilidades sociales sobresalientes, muy empático/a, comparte y lidera juegos integradores.'
     }
   };
 
-  const subjectsListPrimaria = ['Matemáticas', 'Lengua y Literatura', 'Ciencias / STEM', 'Idiomas / Inglés', 'En todas las asignaturas'];
-  const subjectsListInfantil = ['Lenguaje Oral / Comunicación', 'Atención en Asamblea', 'Grafomotricidad / Trazos', 'Lógica-Matemática / Conceptos', 'Autonomía / Hábitos', 'Socialización en el Recreo'];
+  const subjectsListPrimaria = [
+    'Matemáticas',
+    'Lengua y Literatura',
+    'Ciencias / STEM',
+    'Idiomas / Inglés',
+    'En todas las asignaturas'
+  ];
+
+  const subjectsListInfantil = [
+    'Lenguaje Oral / Comunicación',
+    'Atención en Asamblea',
+    'Grafomotricidad / Trazos',
+    'Lógica-Matemática / Conceptos',
+    'Autonomía / Hábitos',
+    'Socialización en el Recreo'
+  ];
 
   const availableMeasuresPrimaria = [
     'Ubicación en primera fila cerca del profesor o pizarra',
@@ -101,844 +189,1479 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ onSubmitCase }) => {
   ];
 
   const availableMeasuresInfantil = [
-    'Ubicación cerca de la tutora en la asamblea con límite espacial marcado',
-    'Apoyo visual mediante tiras de pictogramas (rutina y secuencias)',
+    'Ubicación cerca de la tutora en la asamblea con delimitación visual',
+    'Apoyo visual con pictogramas de secuencias y rutinas de aula',
     'Anticipación individual de cambios de actividad 2 minutos antes',
-    'Adaptación de útiles: ceras gruesas triangulares y tijeras adaptadas',
-    'Rincón de calma para descompresión sensorial y autorregulación',
-    'Pareja de juego guiada por la tutora en el tiempo de rincones'
+    'Adaptación de útiles: ceras triangulares y tijeras adaptadas',
+    'Rincón de la calma para autorregulación emocional',
+    'Asignación de responsabilidades cooperativas con un igual guía'
   ];
 
-  const toggleSubject = (subject: string) => {
-    if (affectedSubjects.includes(subject)) {
-      setAffectedSubjects(affectedSubjects.filter(s => s !== subject));
-    } else {
-      setAffectedSubjects([...affectedSubjects, subject]);
-    }
+  const handleStageSelect = (newStage: EducationalStage) => {
+    setStage(newStage);
+    setGrade('');
+    setAffectedSubjects([]);
+    setAppliedMeasuresList([]);
   };
 
-  const toggleMeasure = (measure: string) => {
-    if (appliedMeasuresList.includes(measure)) {
-      setAppliedMeasuresList(appliedMeasuresList.filter(m => m !== measure));
-    } else {
-      setAppliedMeasuresList([...appliedMeasuresList, measure]);
-    }
+  const handleToggleSubject = (sub: string) => {
+    setAffectedSubjects(prev =>
+      prev.includes(sub) ? prev.filter(s => s !== sub) : [...prev, sub]
+    );
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setAttachedEvidenceName(e.target.files[0].name);
-    }
+  const handleToggleMeasure = (mea: string) => {
+    setAppliedMeasuresList(prev =>
+      prev.includes(mea) ? prev.filter(m => m !== mea) : [...prev, mea]
+    );
   };
 
-  // -------------------------------------------------------------
-  // DESCRIPTORES PRIMARIA (1 AL 5)
-  // -------------------------------------------------------------
-  const getAttentionDescriptor = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Se distrae constantemente (>75% del tiempo), pierde el hilo y no copia del encerado.';
-      case 2: return '🟠 Dificultad Frecuente: Inatención notable en tareas individuales (>50% del tiempo). Requiere avisos constantes.';
-      case 3: return '🟡 Nivel Medio / Moderado: Atención intermitente; rinde en explicaciones cortas pero se dispersa en tareas largas.';
-      case 4: return '🟢 Buen Nivel: Buena atención sostenida en la gran mayoría de sesiones de clase.';
-      case 5: return '🔵 Excelente: Concentración profunda, perseverante y autónoma durante toda la jornada.';
-      default: return '';
+  // Manejo seguro de archivos adjuntos con validación binaria
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFileError('');
+    const files = e.target.files;
+    if (!files || files.length === 0) {
+      setAttachedEvidenceName('');
+      return;
     }
+
+    const file = files[0];
+    const validation = await validateAttachment(file);
+
+    if (!validation.valid) {
+      setFileError(validation.error || 'Archivo no válido.');
+      setAttachedEvidenceName('');
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
+    setAttachedEvidenceName(validation.sanitizedName || file.name);
   };
 
-  const getReadingDescriptor = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Lectura silábica muy lenta, omisiones constantes de letras y nula comprensión del texto.';
-      case 2: return '🟠 Dificultad Frecuente: Lectura vacilante con bloqueos en palabras compuestas; gran fatiga y errores al leer en voz alta.';
-      case 3: return '🟡 Nivel Medio / Moderado: Fluidez lectora aceptable, pero comete errores en palabras complejas o textos extensos.';
-      case 4: return '🟢 Buen Nivel: Buena velocidad y comprensión de lecturas adecuadas a su curso escolar.';
-      case 5: return '🔵 Excelente: Lectura rápida, expresiva y comprensión crítica muy superior a su edad.';
-      default: return '';
+  // Validación completa del formulario
+  const validateForm = (): boolean => {
+    const errors: Record<string, string> = {};
+
+    if (!stage) {
+      errors.stage = 'Debes seleccionar la etapa educativa (Infantil o Primaria).';
     }
+
+    if (!studentName || studentName.trim().length < 2) {
+      errors.studentName = 'El nombre y apellidos del alumno/a son obligatorios (mínimo 2 caracteres).';
+    }
+
+    if (!grade) {
+      errors.grade = 'Debes seleccionar el curso y grupo/línea.';
+    }
+
+    if (affectedSubjects.length === 0) {
+      errors.affectedSubjects = 'Selecciona al menos un área o momento donde se manifiesta la dificultad.';
+    }
+
+    if (!mainReason || mainReason.trim().length < 10) {
+      errors.mainReason = 'El motivo principal de consulta en el aula es obligatorio (mínimo 10 caracteres explicativos).';
+    }
+
+    // Validación de indicadores de observación (deben estar todos valorados)
+    if (stage === 'PRIMARIA') {
+      if (attentionFocus === null) errors.attentionFocus = 'Debes valorar el nivel de Atención.';
+      if (readingComprehension === null) errors.readingComprehension = 'Debes valorar el nivel de Comprensión Lectora.';
+      if (mathReasoning === null) errors.mathReasoning = 'Debes valorar el nivel de Razonamiento Matemático.';
+      if (taskPaceAndCompletion === null) errors.taskPaceAndCompletion = 'Debes valorar el Ritmo de Trabajo.';
+      if (impulsivityAndAutonomy === null) errors.impulsivityAndAutonomy = 'Debes valorar el Control de Impulsividad.';
+      if (emotionalAndPeerRel === null) errors.emotionalAndPeerRel = 'Debes valorar la Gestión Emocional.';
+    } else if (stage === 'INFANTIL') {
+      if (infantilOralLanguage === null) errors.infantilOralLanguage = 'Debes valorar el Lenguaje Oral.';
+      if (infantilAttentionAssembly === null) errors.infantilAttentionAssembly = 'Debes valorar la Atención en Asamblea.';
+      if (infantilPsychomotorFine === null) errors.infantilPsychomotorFine = 'Debes valorar la Psicomotricidad Fina.';
+      if (infantilLogicConcepts === null) errors.infantilLogicConcepts = 'Debes valorar los Conceptos Básicos.';
+      if (infantilPersonalAutonomy === null) errors.infantilPersonalAutonomy = 'Debes valorar la Autonomía Personal.';
+      if (infantilSocialPlay === null) errors.infantilSocialPlay = 'Debes valorar la Socialización y Juego.';
+    }
+
+    if (!measuresDuration) {
+      errors.measuresDuration = 'Indica cuánto tiempo llevas aplicando ayudas en el aula.';
+    }
+
+    if (appliedMeasuresList.length === 0) {
+      errors.appliedMeasuresList = 'Selecciona al menos una medida o adaptación previa que hayas probado.';
+    }
+
+    if (!measuresResult) {
+      errors.measuresResult = 'Indica el resultado obtenido con las ayudas previas.';
+    }
+
+    if (familyMeetingDone === null) {
+      errors.familyMeetingDone = 'Indica si se ha realizado la entrevista previa con la familia.';
+    }
+
+    if (!familyAgreement) {
+      errors.familyAgreement = 'Indica el grado de acuerdo o conformidad de la familia.';
+    }
+
+    if (!privacyAccepted) {
+      errors.privacyAccepted = 'Es obligatorio aceptar la cláusula de tratamiento de datos sensibles RGPD / LOPD-GDD.';
+    }
+
+    setValidationErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
+      // Focus en el resumen de errores
+      setTimeout(() => {
+        if (errorSummaryRef.current) {
+          errorSummaryRef.current.focus();
+          errorSummaryRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 50);
+      return false;
+    }
+
+    return true;
   };
 
-  const getMathDescriptor = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Bloqueo total ante operaciones básicas y problemas; no comprende los enunciados numéricos.';
-      case 2: return '🟠 Dificultad Frecuente: Le cuesta mucho el cálculo mental y el planteamiento de problemas de más de un paso.';
-      case 3: return '🟡 Nivel Medio / Moderado: Realiza operaciones mecánicas bien, pero necesita guía para razonar problemas nuevos.';
-      case 4: return '🟢 Buen Nivel: Resuelve problemas con soltura y comprende conceptos lógico-matemáticos.';
-      case 5: return '🔵 Excelente: Gran rapidez de cálculo, abstracción y razonamiento lógico sobresaliente.';
-      default: return '';
-    }
-  };
-
-  const getTaskPaceDescriptor = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Ritmo extremadamente lento; deja más del 50% de las tareas/exámenes sin terminar.';
-      case 2: return '🟠 Dificultad Frecuente: Se queda rezagado/a habitualmente al copiar de la pizarra o finalizar fichas de clase.';
-      case 3: return '🟡 Nivel Medio / Moderado: Termina las tareas justo a tiempo si el docente le va recordando el tiempo.';
-      case 4: return '🟢 Buen Nivel: Ritmo ágil y organizado; finaliza las actividades con normalidad.';
-      case 5: return '🔵 Excelente: Termina con gran rapidez y pulcritud mucho antes que el resto de la clase.';
-      default: return '';
-    }
-  };
-
-  const getImpulsivityDescriptor = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Muy impulsivo/a; interrumpe continuamente, se levanta sin permiso o responde sin pensar.';
-      case 2: return '🟠 Dificultad Frecuente: Inquietud motora notable; le cuesta esperar su turno y mantener el orden del material.';
-      case 3: return '🟡 Nivel Medio / Moderado: Inquietud leve; responde bien cuando se le reconduce con amabilidad.';
-      case 4: return '🟢 Buen Nivel: Buen autocontrol, respeta los turnos de palabra y las normas de convivencia.';
-      case 5: return '🔵 Excelente: Autorregulación óptima, muy reflexivo/a, centrado/a y paciente.';
-      default: return '';
-    }
-  };
-
-  const getEmotionalDescriptor = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Baja tolerancia a la frustración; llora, se bloquea o tiene conflictos frecuentes con compañeros.';
-      case 2: return '🟠 Dificultad Frecuente: Muestra inseguridad, ansiedad ante los exámenes o tendencia al aislamiento en el patio.';
-      case 3: return '🟡 Nivel Medio / Moderado: Adaptación social normal; en momentos puntuales de estrés le cuesta gestionar la emoción.';
-      case 4: return '🟢 Buen Nivel: Buena relación con el grupo de clase, sociable y tolerante.';
-      case 5: return '🔵 Excelente: Gran empatía, liderazgo positivo y excelentes habilidades sociales.';
-      default: return '';
-    }
-  };
-
-  // -------------------------------------------------------------
-  // DESCRIPTORES INFANTIL (2º CICLO - 3 A 5 AÑOS)
-  // -------------------------------------------------------------
-  const getInfantilLanguageDesc = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Habla ininteligible, vocabulario muy escaso, frases de 1-2 palabras o no comprende órdenes sencillas.';
-      case 2: return '🟠 Dificultad Frecuente: Dificultades notables de articulación (dislalias múltiples), oraciones incompletas y dificultad de relato.';
-      case 3: return '🟡 Nivel Medio / Moderado: Se comunica con normalidad; comete errores en palabras complejas o fonemas tardíos (r, tr).';
-      case 4: return '🟢 Buen Nivel: Buena fluidez expresiva, estructura oraciones con corrección y comprende cuentos de aula.';
-      case 5: return '🔵 Excelente: Riqueza léxica sobresaliente, gran capacidad narrativa y perfecta articulación.';
-      default: return '';
-    }
-  };
-
-  const getInfantilAssemblyDesc = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Incapaz de permanecer en la asamblea (>5 min); se levanta constantemente, interrumpe o corre por el aula.';
-      case 2: return '🟠 Dificultad Frecuente: Inquietud motriz constante; necesita recordatorios continuos para mantenerse en su sitio.';
-      case 3: return '🟡 Nivel Medio / Moderado: Participa en la asamblea aunque en actividades largas de más de 15 minutos se desconecta.';
-      case 4: return '🟢 Buen Nivel: Atiende a las canciones, rutinas y explicaciones de la tutora con buena actitud.';
-      case 5: return '🔵 Excelente: Gran atención sostenida, escucha activa a sus compañeros y respeta el turno de palabra.';
-      default: return '';
-    }
-  };
-
-  const getInfantilMotorDesc = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: No realiza la pinza digital (agarre palmar), no recorta con tijeras, torpeza motriz al correr/saltar.';
-      case 2: return '🟠 Dificultad Frecuente: Trazos muy débiles o con excesiva presión; le cuestan los encajables, ensartables y modelado.';
-      case 3: return '🟡 Nivel Medio / Moderado: Motricidad adecuada a su edad; realiza trazos básicos y maneja útiles con guía habitual.';
-      case 4: return '🟢 Buen Nivel: Buen control visomotor, colorea respetando límites y maneja tijeras con soltura.';
-      case 5: return '🔵 Excelente: Precisión grafomotriz excepcional, dibujo muy detallado y excelente coordinación física.';
-      default: return '';
-    }
-  };
-
-  const getInfantilLogicDesc = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: No identifica colores básicos, tamaños (grande/pequeño) ni nociones espaciales (arriba/abajo/dentro).';
-      case 2: return '🟠 Dificultad Frecuente: Le cuesta la seriación de 2 elementos, el conteo elemental (1 al 5) o la asociación número-cantidad.';
-      case 3: return '🟡 Nivel Medio / Moderado: Asimila conceptos básicos con el ritmo habitual del grupo; necesita apoyos manipulativos.';
-      case 4: return '🟢 Buen Nivel: Identifica figuras geométricas, clasifica por varios criterios y cuenta con precisión.';
-      case 5: return '🔵 Excelente: Deducción lógica precoz, conteo avanzado y gran curiosidad por patrones y números.';
-      default: return '';
-    }
-  };
-
-  const getInfantilAutonomyDesc = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: No controla esfínteres, dependiente total para el aseo, ponerse el abrigo o recoger materiales.';
-      case 2: return '🟠 Dificultad Frecuente: Necesita ayuda constante para comer en el recreo, abrocharse o cuidar sus pertenencias.';
-      case 3: return '🟡 Nivel Medio / Moderado: Realiza hábitos básicos con supervisión y recordatorios rutinarios de la tutora.';
-      case 4: return '🟢 Buen Nivel: Muy autónomo/a en el baño, desayuno escolar y colocación de su mochila/abrigo.';
-      case 5: return '🔵 Excelente: Totalmente autónomo/a e incluso ayuda de forma espontánea a sus compañeros.';
-      default: return '';
-    }
-  };
-
-  const getInfantilSocialDesc = (val: number) => {
-    switch (val) {
-      case 1: return '🔴 Dificultad Grave: Aislamiento severo, no responde al nombre, rabietas intensas y desreguladas o ausencia de juego simbólico.';
-      case 2: return '🟠 Dificultad Frecuente: Juego en paralelo; le cuesta compartir juguetes o muestra baja tolerancia si no se hace lo que quiere.';
-      case 3: return '🟡 Nivel Medio / Moderado: Se relaciona bien con el grupo; en situaciones de conflicto precisa la mediación de la tutora.';
-      case 4: return '🟢 Buen Nivel: Sociable, disfruta del juego cooperativo y muestra empatía hacia sus iguales.';
-      case 5: return '🔵 Excelente: Habilidades sociales sobresalientes, muy empático/a, comparte y lidera juegos integradores.';
-      default: return '';
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  // Abrir pantalla de revisión previa
+  const handleOpenReview = (e: React.FormEvent) => {
     e.preventDefault();
+    if (validateForm()) {
+      setShowReviewModal(true);
+    }
+  };
 
-    const studentPerception: StudentSelfPerception = {
-      perceivedDifficulty,
-      favoriteSubjects,
-      hardestSubjects,
-      schoolMotivation,
-      studentComments
-    };
+  // Envío definitivo tras confirmación en pantalla de revisión
+  const handleConfirmSubmit = async () => {
+    setIsSubmitting(true);
+
+    const secureId = generateSecureCaseId();
 
     const questionnaire: ReferralQuestionnaire = {
-      stage,
-      studentName,
-      studentAge: stage === 'INFANTIL' ? (grade.includes('3 años') ? 3 : grade.includes('4 años') ? 4 : 5) : 8,
-      grade,
-      teacherName,
-      subjectOrTutor: teacherName,
+      stage: stage || 'PRIMARIA',
+      studentName: studentName.trim(),
+      grade: grade,
+      teacherName: currentUser.name,
+      teacherEmail: currentUser.email,
       referralDate: new Date().toISOString().split('T')[0],
-      mainReason,
-      affectedSubjects,
+      mainReason: mainReason.trim(),
+      affectedSubjects: affectedSubjects,
       attachedEvidenceName: attachedEvidenceName || undefined,
 
       // Primaria
-      attentionFocus: stage === 'PRIMARIA' ? attentionFocus : undefined,
-      attentionDescriptor: stage === 'PRIMARIA' ? getAttentionDescriptor(attentionFocus) : undefined,
-      readingComprehension: stage === 'PRIMARIA' ? readingComprehension : undefined,
-      readingDescriptor: stage === 'PRIMARIA' ? getReadingDescriptor(readingComprehension) : undefined,
-      mathReasoning: stage === 'PRIMARIA' ? mathReasoning : undefined,
-      mathDescriptor: stage === 'PRIMARIA' ? getMathDescriptor(mathReasoning) : undefined,
-      taskPaceAndCompletion: stage === 'PRIMARIA' ? taskPaceAndCompletion : undefined,
-      taskPaceDescriptor: stage === 'PRIMARIA' ? getTaskPaceDescriptor(taskPaceAndCompletion) : undefined,
-      impulsivityAndAutonomy: stage === 'PRIMARIA' ? impulsivityAndAutonomy : undefined,
-      impulsivityDescriptor: stage === 'PRIMARIA' ? getImpulsivityDescriptor(impulsivityAndAutonomy) : undefined,
-      emotionalAndPeerRel: stage === 'PRIMARIA' ? emotionalAndPeerRel : undefined,
-      emotionalDescriptor: stage === 'PRIMARIA' ? getEmotionalDescriptor(emotionalAndPeerRel) : undefined,
+      attentionFocus: attentionFocus,
+      attentionDescriptor: attentionFocus ? primariaDescriptors.attention[attentionFocus] : undefined,
+      readingComprehension: readingComprehension,
+      readingDescriptor: readingComprehension ? primariaDescriptors.reading[readingComprehension] : undefined,
+      mathReasoning: mathReasoning,
+      mathDescriptor: mathReasoning ? primariaDescriptors.math[mathReasoning] : undefined,
+      taskPaceAndCompletion: taskPaceAndCompletion,
+      taskPaceDescriptor: taskPaceAndCompletion ? primariaDescriptors.taskPace[taskPaceAndCompletion] : undefined,
+      impulsivityAndAutonomy: impulsivityAndAutonomy,
+      impulsivityDescriptor: impulsivityAndAutonomy ? primariaDescriptors.impulsivity[impulsivityAndAutonomy] : undefined,
+      emotionalAndPeerRel: emotionalAndPeerRel,
+      emotionalDescriptor: emotionalAndPeerRel ? primariaDescriptors.emotional[emotionalAndPeerRel] : undefined,
 
       // Infantil
-      infantilOralLanguage: stage === 'INFANTIL' ? infantilOralLanguage : undefined,
-      infantilOralLanguageDesc: stage === 'INFANTIL' ? getInfantilLanguageDesc(infantilOralLanguage) : undefined,
-      infantilAttentionAssembly: stage === 'INFANTIL' ? infantilAttentionAssembly : undefined,
-      infantilAttentionAssemblyDesc: stage === 'INFANTIL' ? getInfantilAssemblyDesc(infantilAttentionAssembly) : undefined,
-      infantilPsychomotorFine: stage === 'INFANTIL' ? infantilPsychomotorFine : undefined,
-      infantilPsychomotorFineDesc: stage === 'INFANTIL' ? getInfantilMotorDesc(infantilPsychomotorFine) : undefined,
-      infantilLogicConcepts: stage === 'INFANTIL' ? infantilLogicConcepts : undefined,
-      infantilLogicConceptsDesc: stage === 'INFANTIL' ? getInfantilLogicDesc(infantilLogicConcepts) : undefined,
-      infantilPersonalAutonomy: stage === 'INFANTIL' ? infantilPersonalAutonomy : undefined,
-      infantilPersonalAutonomyDesc: stage === 'INFANTIL' ? getInfantilAutonomyDesc(infantilPersonalAutonomy) : undefined,
-      infantilSocialPlay: stage === 'INFANTIL' ? infantilSocialPlay : undefined,
-      infantilSocialPlayDesc: stage === 'INFANTIL' ? getInfantilSocialDesc(infantilSocialPlay) : undefined,
+      infantilOralLanguage: infantilOralLanguage,
+      infantilOralLanguageDesc: infantilOralLanguage ? infantilDescriptors.oralLang[infantilOralLanguage] : undefined,
+      infantilAttentionAssembly: infantilAttentionAssembly,
+      infantilAttentionAssemblyDesc: infantilAttentionAssembly ? infantilDescriptors.assembly[infantilAttentionAssembly] : undefined,
+      infantilPsychomotorFine: infantilPsychomotorFine,
+      infantilPsychomotorFineDesc: infantilPsychomotorFine ? infantilDescriptors.fineMotor[infantilPsychomotorFine] : undefined,
+      infantilLogicConcepts: infantilLogicConcepts,
+      infantilLogicConceptsDesc: infantilLogicConcepts ? infantilDescriptors.logic[infantilLogicConcepts] : undefined,
+      infantilPersonalAutonomy: infantilPersonalAutonomy,
+      infantilPersonalAutonomyDesc: infantilPersonalAutonomy ? infantilDescriptors.autonomy[infantilPersonalAutonomy] : undefined,
+      infantilSocialPlay: infantilSocialPlay,
+      infantilSocialPlayDesc: infantilSocialPlay ? infantilDescriptors.socialPlay[infantilSocialPlay] : undefined,
 
-      measuresDuration,
-      appliedMeasuresList,
-      measuresResult,
-      measuresObservations,
-      studentPerception,
-      familyContactDone: true,
-      familyMeetingDone,
-      familyAgreement,
-      externalAssessmentDone,
-      externalAssessmentDetails,
-      familyAttitude,
-      additionalObservations: ''
+      // Medidas previas
+      measuresDuration: measuresDuration || '1_A_2_MESES',
+      appliedMeasuresList: appliedMeasuresList,
+      measuresResult: measuresResult || 'INSUFICIENTE',
+      measuresObservations: measuresObservations.trim(),
+
+      // Voz del alumno
+      studentPerception: {
+        perceivedDifficulty: perceivedDifficulty || 'MODERADA',
+        favoriteSubjects: favoriteSubjects.trim(),
+        hardestSubjects: hardestSubjects.trim(),
+        schoolMotivation: schoolMotivation || 'MEDIA'
+      },
+
+      // Contexto familiar
+      familyContactDone: Boolean(familyMeetingDone),
+      familyMeetingDone: Boolean(familyMeetingDone),
+      familyAgreement: familyAgreement || 'TOTAL_ACUERDO',
+      externalAssessmentDone: externalAssessmentDone,
+      externalAssessmentDetails: externalAssessmentDetails.trim(),
+
+      // Consentimiento de Privacidad Auditado
+      privacyConsent: {
+        policyVersion: CURRENT_PRIVACY_POLICY_VERSION,
+        acceptedAt: new Date().toISOString(),
+        userEmail: currentUser.email,
+        userName: currentUser.name,
+        userRole: currentUser.role
+      }
     };
 
-    const triage = calculateTriage(questionnaire);
-    const caseId = `DER-2026-00${Math.floor(10 + Math.random() * 90)}`;
-
+    // Objeto de expediente final (SIN predicción ni diagnóstico algorítmico)
     const newCase: ReferralCase = {
-      id: caseId,
-      stage,
-      studentName,
-      grade,
-      teacherName,
+      id: secureId,
+      stage: stage as EducationalStage,
+      studentName: studentName.trim(),
+      grade: grade,
+      teacherName: currentUser.name,
+      createdByEmail: currentUser.email,
       dateSubmitted: new Date().toISOString().split('T')[0],
       status: 'PENDIENTE_REVISION',
-      priority: triage.suggestedPriority,
-      categoryTag: triage.riskProfileTitle,
-      questionnaire,
-      triage
+      priority: 'MEDIA',
+      categoryTag: 'Pendiente de Valoración por Orientación',
+      questionnaire: questionnaire,
+      privacyConsent: questionnaire.privacyConsent
     };
 
-    onSubmitCase(newCase);
+    try {
+      await onSubmitCase(newCase);
+      setShowReviewModal(false);
+    } catch (err) {
+      console.error('Error al guardar caso:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const currentTriage = calculateTriage({
-    stage,
-    studentName,
-    studentAge: stage === 'INFANTIL' ? 4 : 8,
-    grade,
-    teacherName,
-    subjectOrTutor: teacherName,
-    referralDate: '',
-    mainReason,
-    affectedSubjects,
-    attentionFocus,
-    readingComprehension,
-    mathReasoning,
-    taskPaceAndCompletion,
-    impulsivityAndAutonomy,
-    emotionalAndPeerRel,
-    infantilOralLanguage,
-    infantilAttentionAssembly,
-    infantilPsychomotorFine,
-    infantilLogicConcepts,
-    infantilPersonalAutonomy,
-    infantilSocialPlay,
-    measuresDuration,
-    appliedMeasuresList,
-    measuresResult,
-    measuresObservations,
-    familyContactDone: true,
-    familyMeetingDone,
-    familyAgreement,
-    externalAssessmentDone,
-    familyAttitude: '',
-    additionalObservations: ''
-  });
+  // Comprobar si el formulario cumple los requisitos mínimos para habilitar el botón
+  const isFormComplete = Boolean(
+    stage &&
+    studentName.trim().length >= 2 &&
+    grade &&
+    affectedSubjects.length > 0 &&
+    mainReason.trim().length >= 10 &&
+    measuresDuration &&
+    appliedMeasuresList.length > 0 &&
+    measuresResult &&
+    familyMeetingDone !== null &&
+    familyAgreement &&
+    privacyAccepted &&
+    (stage === 'PRIMARIA'
+      ? attentionFocus !== null && readingComprehension !== null && mathReasoning !== null && taskPaceAndCompletion !== null && impulsivityAndAutonomy !== null && emotionalAndPeerRel !== null
+      : infantilOralLanguage !== null && infantilAttentionAssembly !== null && infantilPsychomotorFine !== null && infantilLogicConcepts !== null && infantilPersonalAutonomy !== null && infantilSocialPlay !== null
+    )
+  );
 
   return (
-    <div className="card" style={{ maxWidth: '880px', margin: '0 auto' }}>
-      <div style={{ borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
-        <span style={{ background: 'var(--primary-100)', color: 'var(--primary-800)', padding: '0.2rem 0.6rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
-          Colegio San Buenaventura • Equipo de Orientación
-        </span>
-        <h2 style={{ fontSize: '1.35rem', color: 'var(--primary-900)', marginTop: '0.2rem' }}>
+    <div className="card" style={{ maxWidth: '880px', margin: '0 auto', padding: '1.75rem' }}>
+      {/* Header Institucional */}
+      <div style={{ borderBottom: '1px solid var(--border-light)', paddingBottom: '0.85rem', marginBottom: '1.25rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <span style={{ background: 'var(--primary-100)', color: 'var(--primary-800)', padding: '0.2rem 0.65rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
+            Colegio San Buenaventura • Equipo de Orientación
+          </span>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+            Docente solicitante: <strong>{currentUser.name}</strong> ({currentUser.email})
+          </span>
+        </div>
+        <h2 style={{ color: 'var(--primary-900)', margin: '0.4rem 0 0.2rem 0', fontSize: '1.4rem' }}>
           Formulario de Solicitud de Valoración Psicopedagógica
         </h2>
         <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-          Cuestionario clínico adaptado por etapa evolutiva: <strong>2º Ciclo de Infantil (3-5 años)</strong> y <strong>Educación Primaria (6-12 años)</strong>.
+          Canal oficial y confidencial regulado por la normativa de Atención a la Diversidad y el RGPD. Todos los datos inician vacíos.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit}>
-        {/* SELECTOR DE ETAPA EDUCATIVA */}
-        <div style={{ background: '#f8fafc', padding: '0.85rem', borderRadius: 'var(--radius-md)', border: '1px solid #cbd5e1', marginBottom: '1.25rem' }}>
-          <label className="form-label" style={{ marginBottom: '0.5rem' }}>
-            🎓 Selecciona la Etapa Educativa del Alumno/a *
-          </label>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem' }}>
-            <button
-              type="button"
-              onClick={() => handleStageSwitch('INFANTIL')}
-              style={{
-                padding: '0.75rem',
-                borderRadius: '8px',
-                border: stage === 'INFANTIL' ? '2px solid var(--primary-600)' : '1px solid var(--border-light)',
-                background: stage === 'INFANTIL' ? '#f0fdfa' : '#ffffff',
-                color: stage === 'INFANTIL' ? 'var(--primary-900)' : 'var(--text-muted)',
-                fontWeight: 700,
-                fontSize: '0.88rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem',
-                cursor: 'pointer'
-              }}
-            >
-              <Baby size={20} color={stage === 'INFANTIL' ? 'var(--primary-700)' : '#94a3b8'} />
-              2º Ciclo Infantil (3 a 5 años)
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleStageSwitch('PRIMARIA')}
-              style={{
-                padding: '0.75rem',
-                borderRadius: '8px',
-                border: stage === 'PRIMARIA' ? '2px solid var(--primary-600)' : '1px solid var(--border-light)',
-                background: stage === 'PRIMARIA' ? '#f0fdfa' : '#ffffff',
-                color: stage === 'PRIMARIA' ? 'var(--primary-900)' : 'var(--text-muted)',
-                fontWeight: 700,
-                fontSize: '0.88rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem',
-                cursor: 'pointer'
-              }}
-            >
-              <School size={20} color={stage === 'PRIMARIA' ? 'var(--primary-700)' : '#94a3b8'} />
-              Educación Primaria (1º a 6º)
-            </button>
+      {/* Resumen Accesible de Errores (si existen) */}
+      {Object.keys(validationErrors).length > 0 && (
+        <div
+          ref={errorSummaryRef}
+          tabIndex={-1}
+          role="alert"
+          aria-labelledby="error-summary-heading"
+          style={{
+            background: '#fef2f2',
+            border: '2px solid #ef4444',
+            borderRadius: 'var(--radius-md)',
+            padding: '1rem 1.25rem',
+            marginBottom: '1.5rem',
+            outline: 'none'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+            <AlertTriangle size={20} color="#b91c1c" />
+            <h4 id="error-summary-heading" style={{ color: '#991b1b', fontSize: '0.95rem', fontWeight: 700 }}>
+              Por favor, corrige los siguientes {Object.keys(validationErrors).length} errores antes de continuar:
+            </h4>
           </div>
-        </div>
-
-        {/* BLOQUE 1: DATOS DEL ALUMNO Y CURSO */}
-        <div className="grid-2">
-          <div className="form-group">
-            <label className="form-label">Nombre Completo del Alumno/a *</label>
-            <input
-              type="text"
-              required
-              className="input-text"
-              placeholder="Ej: Mateo Fernández Ruiz"
-              value={studentName}
-              onChange={(e) => setStudentName(e.target.value)}
-            />
-          </div>
-
-          <div className="form-group">
-            <label className="form-label">Curso y Grupo / Línea *</label>
-            <select className="select-input" value={grade} onChange={(e) => handleGradeChange(e.target.value)}>
-              {stage === 'INFANTIL' ? (
-                <>
-                  <optgroup label="1º Infantil (3 años)">
-                    <option value="1º Infantil (3 años A)">1º Infantil (3 años A)</option>
-                    <option value="1º Infantil (3 años B)">1º Infantil (3 años B)</option>
-                    <option value="1º Infantil (3 años C)">1º Infantil (3 años C)</option>
-                  </optgroup>
-                  <optgroup label="2º Infantil (4 años)">
-                    <option value="2º Infantil (4 años A)">2º Infantil (4 años A)</option>
-                    <option value="2º Infantil (4 años B)">2º Infantil (4 años B)</option>
-                    <option value="2º Infantil (4 años C)">2º Infantil (4 años C)</option>
-                  </optgroup>
-                  <optgroup label="3º Infantil (5 años)">
-                    <option value="3º Infantil (5 años A)">3º Infantil (5 años A)</option>
-                    <option value="3º Infantil (5 años B)">3º Infantil (5 años B)</option>
-                    <option value="3º Infantil (5 años C)">3º Infantil (5 años C)</option>
-                  </optgroup>
-                </>
-              ) : (
-                <>
-                  <optgroup label="1º Primaria">
-                    <option value="1º Educación Primaria A">1º Educación Primaria A</option>
-                    <option value="1º Educación Primaria B">1º Educación Primaria B</option>
-                    <option value="1º Educación Primaria C">1º Educación Primaria C</option>
-                  </optgroup>
-                  <optgroup label="2º Primaria">
-                    <option value="2º Educación Primaria A">2º Educación Primaria A</option>
-                    <option value="2º Educación Primaria B">2º Educación Primaria B</option>
-                    <option value="2º Educación Primaria C">2º Educación Primaria C</option>
-                  </optgroup>
-                  <optgroup label="3º Primaria">
-                    <option value="3º Educación Primaria A">3º Educación Primaria A</option>
-                    <option value="3º Educación Primaria B">3º Educación Primaria B</option>
-                    <option value="3º Educación Primaria C">3º Educación Primaria C</option>
-                  </optgroup>
-                  <optgroup label="4º Primaria">
-                    <option value="4º Educación Primaria A">4º Educación Primaria A</option>
-                    <option value="4º Educación Primaria B">4º Educación Primaria B</option>
-                    <option value="4º Educación Primaria C">4º Educación Primaria C</option>
-                  </optgroup>
-                  <optgroup label="5º Primaria">
-                    <option value="5º Educación Primaria A">5º Educación Primaria A</option>
-                    <option value="5º Educación Primaria B">5º Educación Primaria B</option>
-                    <option value="5º Educación Primaria C">5º Educación Primaria C</option>
-                  </optgroup>
-                  <optgroup label="6º Primaria">
-                    <option value="6º Educación Primaria A">6º Educación Primaria A</option>
-                    <option value="6º Educación Primaria B">6º Educación Primaria B</option>
-                    <option value="6º Educación Primaria C">6º Educación Primaria C</option>
-                  </optgroup>
-                </>
-              )}
-            </select>
-          </div>
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Profesor / Tutor Solicitante *</label>
-          <input
-            type="text"
-            required
-            className="input-text"
-            placeholder="Introduce tu nombre completo..."
-            value={teacherName}
-            onChange={(e) => setTeacherName(e.target.value)}
-          />
-        </div>
-
-        {/* ASIGNATURAS / ÁREAS AFECTADAS ADAPTADAS POR ETAPA */}
-        <div className="form-group">
-          <label className="form-label">Áreas / Momentos de la jornada donde se manifiesta la dificultad *</label>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.3rem' }}>
-            {(stage === 'INFANTIL' ? subjectsListInfantil : subjectsListPrimaria).map(subj => {
-              const selected = affectedSubjects.includes(subj);
-              return (
-                <button
-                  type="button"
-                  key={subj}
-                  onClick={() => toggleSubject(subj)}
-                  style={{
-                    padding: '0.35rem 0.85rem',
-                    borderRadius: '20px',
-                    fontSize: '0.8rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    border: selected ? '1px solid var(--primary-600)' : '1px solid var(--border-light)',
-                    background: selected ? 'var(--primary-100)' : '#ffffff',
-                    color: selected ? 'var(--primary-900)' : 'var(--text-muted)'
+          <ul style={{ paddingLeft: '1.25rem', color: '#b91c1c', fontSize: '0.84rem' }}>
+            {Object.entries(validationErrors).map(([key, msg]) => (
+              <li key={key} style={{ marginBottom: '0.25rem' }}>
+                <a 
+                  href={`#field-${key}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById(`field-${key}`)?.focus();
+                    document.getElementById(`field-${key}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                   }}
+                  style={{ color: '#b91c1c', textDecoration: 'underline', fontWeight: 600 }}
                 >
-                  {selected ? '✓ ' : '+ '}{subj}
-                </button>
-              );
-            })}
+                  {msg}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <form onSubmit={handleOpenReview} noValidate>
+        {/* BLOQUE 1: ETAPA Y DATOS GENERALES */}
+        <fieldset style={{ border: 'none', padding: 0, margin: 0, marginBottom: '1.5rem' }}>
+          <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.6rem' }}>
+            1. Etapa Educativa y Datos del Alumno/a
+          </legend>
+
+          {/* Selector de Etapa */}
+          <div style={{ background: '#f8fafc', padding: '0.85rem', borderRadius: '12px', border: validationErrors.stage ? '2px solid #ef4444' : '1px solid var(--border-light)', marginBottom: '1rem' }}>
+            <label className="form-label" style={{ marginBottom: '0.45rem' }}>
+              🎓 Selecciona la Etapa Educativa *
+            </label>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
+              <button
+                type="button"
+                id="field-stage"
+                onClick={() => handleStageSelect('INFANTIL')}
+                aria-pressed={stage === 'INFANTIL'}
+                style={{
+                  padding: '0.75rem',
+                  borderRadius: '8px',
+                  border: stage === 'INFANTIL' ? '2px solid var(--primary-600)' : '1px solid var(--border-light)',
+                  background: stage === 'INFANTIL' ? 'var(--primary-50)' : '#ffffff',
+                  color: stage === 'INFANTIL' ? 'var(--primary-800)' : 'var(--text-muted)',
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                <Baby size={18} /> 2º Ciclo Infantil (3 a 5 años)
+              </button>
+              <button
+                type="button"
+                onClick={() => handleStageSelect('PRIMARIA')}
+                aria-pressed={stage === 'PRIMARIA'}
+                style={{
+                  padding: '0.75rem',
+                  borderRadius: '8px',
+                  border: stage === 'PRIMARIA' ? '2px solid var(--primary-600)' : '1px solid var(--border-light)',
+                  background: stage === 'PRIMARIA' ? 'var(--primary-50)' : '#ffffff',
+                  color: stage === 'PRIMARIA' ? 'var(--primary-800)' : 'var(--text-muted)',
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                <School size={18} /> Educación Primaria (1º a 6º)
+              </button>
+            </div>
+            {validationErrors.stage && (
+              <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.35rem', fontWeight: 600 }} role="alert">
+                {validationErrors.stage}
+              </p>
+            )}
           </div>
-        </div>
 
-        <div className="form-group">
-          <label className="form-label">Motivo Principal de Consulta en el Aula *</label>
-          <textarea
-            required
-            rows={3}
-            className="textarea-input"
-            placeholder={
-              stage === 'INFANTIL'
-                ? "Describe las conductas observadas en la asamblea, rincones o patio (ej: habla ininteligible, rabietas intensas, no sostiene la atención, dificultades con la pinza digital)..."
-                : "Describe las conductas observadas en el aula (ej: bloqueo al copiar de la pizarra, lentitud lectora, desatención persistente en tareas individuales)..."
-            }
-            value={mainReason}
-            onChange={(e) => setMainReason(e.target.value)}
-          />
-        </div>
+          <div className="grid-2">
+            <div className="form-group">
+              <label htmlFor="field-studentName" className="form-label">
+                Nombre y Apellidos del Alumno/a *
+              </label>
+              <input
+                type="text"
+                id="field-studentName"
+                value={studentName}
+                onChange={(e) => setStudentName(e.target.value)}
+                className="input-text"
+                placeholder="Ejemplo: Mateo Fernández Ruiz"
+                aria-required="true"
+                aria-invalid={Boolean(validationErrors.studentName)}
+                aria-describedby={validationErrors.studentName ? 'err-studentName' : 'hint-studentName'}
+              />
+              <span id="hint-studentName" style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                Escribe el nombre completo tal como figura en secretaría.
+              </span>
+              {validationErrors.studentName && (
+                <p id="err-studentName" style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.2rem', fontWeight: 600 }} role="alert">
+                  {validationErrors.studentName}
+                </p>
+              )}
+            </div>
 
-        {/* EVIDENCIA ADJUNTA */}
-        <div style={{ background: '#f8fafc', padding: '0.85rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-light)', marginBottom: '1.25rem' }}>
-          <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <Paperclip size={16} color="var(--primary-600)" />
-            {stage === 'INFANTIL' ? 'Ficha de grafomotricidad / dibujo del alumno/a (Evidencia Opcional)' : 'Muestra de Trabajo / Examen del Alumno (Evidencia Opcional)'}
-          </label>
-          <input type="file" accept="image/*,.pdf" onChange={handleFileChange} style={{ fontSize: '0.82rem' }} />
-          {attachedEvidenceName && (
-            <p style={{ fontSize: '0.78rem', color: 'var(--primary-700)', marginTop: '0.3rem', fontWeight: 600 }}>
-              📎 Archivo adjunto: {attachedEvidenceName}
+            <div className="form-group">
+              <label htmlFor="field-grade" className="form-label">
+                Curso y Grupo / Línea *
+              </label>
+              <select
+                id="field-grade"
+                value={grade}
+                onChange={(e) => setGrade(e.target.value)}
+                className="select-input"
+                aria-required="true"
+                aria-invalid={Boolean(validationErrors.grade)}
+                aria-describedby={validationErrors.grade ? 'err-grade' : undefined}
+                disabled={!stage}
+              >
+                <option value="">-- Selecciona curso y grupo --</option>
+                {stage === 'INFANTIL' ? (
+                  <>
+                    <optgroup label="1º Infantil (3 años)">
+                      <option value="1º Infantil (3 años A)">1º Infantil (3 años A)</option>
+                      <option value="1º Infantil (3 años B)">1º Infantil (3 años B)</option>
+                      <option value="1º Infantil (3 años C)">1º Infantil (3 años C)</option>
+                    </optgroup>
+                    <optgroup label="2º Infantil (4 años)">
+                      <option value="2º Infantil (4 años A)">2º Infantil (4 años A)</option>
+                      <option value="2º Infantil (4 años B)">2º Infantil (4 años B)</option>
+                      <option value="2º Infantil (4 años C)">2º Infantil (4 años C)</option>
+                    </optgroup>
+                    <optgroup label="3º Infantil (5 años)">
+                      <option value="3º Infantil (5 años A)">3º Infantil (5 años A)</option>
+                      <option value="3º Infantil (5 años B)">3º Infantil (5 años B)</option>
+                      <option value="3º Infantil (5 años C)">3º Infantil (5 años C)</option>
+                    </optgroup>
+                  </>
+                ) : (
+                  <>
+                    <optgroup label="1º Primaria">
+                      <option value="1º Educación Primaria A">1º Educación Primaria A</option>
+                      <option value="1º Educación Primaria B">1º Educación Primaria B</option>
+                      <option value="1º Educación Primaria C">1º Educación Primaria C</option>
+                    </optgroup>
+                    <optgroup label="2º Primaria">
+                      <option value="2º Educación Primaria A">2º Educación Primaria A</option>
+                      <option value="2º Educación Primaria B">2º Educación Primaria B</option>
+                      <option value="2º Educación Primaria C">2º Educación Primaria C</option>
+                    </optgroup>
+                    <optgroup label="3º Primaria">
+                      <option value="3º Educación Primaria A">3º Educación Primaria A</option>
+                      <option value="3º Educación Primaria B">3º Educación Primaria B</option>
+                      <option value="3º Educación Primaria C">3º Educación Primaria C</option>
+                    </optgroup>
+                    <optgroup label="4º Primaria">
+                      <option value="4º Educación Primaria A">4º Educación Primaria A</option>
+                      <option value="4º Educación Primaria B">4º Educación Primaria B</option>
+                      <option value="4º Educación Primaria C">4º Educación Primaria C</option>
+                    </optgroup>
+                    <optgroup label="5º Primaria">
+                      <option value="5º Educación Primaria A">5º Educación Primaria A</option>
+                      <option value="5º Educación Primaria B">5º Educación Primaria B</option>
+                      <option value="5º Educación Primaria C">5º Educación Primaria C</option>
+                    </optgroup>
+                    <optgroup label="6º Primaria">
+                      <option value="6º Educación Primaria A">6º Educación Primaria A</option>
+                      <option value="6º Educación Primaria B">6º Educación Primaria B</option>
+                      <option value="6º Educación Primaria C">6º Educación Primaria C</option>
+                    </optgroup>
+                  </>
+                )}
+              </select>
+              {validationErrors.grade && (
+                <p id="err-grade" style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.2rem', fontWeight: 600 }} role="alert">
+                  {validationErrors.grade}
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Áreas Afectadas (Checkboxes que inician desmarcados) */}
+          <div className="form-group">
+            <label id="label-affectedSubjects" className="form-label">
+              Áreas o momentos de la jornada donde se manifiesta la dificultad *
+            </label>
+            <div 
+              id="field-affectedSubjects" 
+              tabIndex={-1}
+              role="group" 
+              aria-labelledby="label-affectedSubjects"
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '0.35rem' }}
+            >
+              {stage ? (
+                (stage === 'INFANTIL' ? subjectsListInfantil : subjectsListPrimaria).map(sub => {
+                  const isChecked = affectedSubjects.includes(sub);
+                  return (
+                    <label
+                      key={sub}
+                      style={{
+                        background: isChecked ? 'var(--primary-100)' : 'var(--bg-subtle)',
+                        color: isChecked ? 'var(--primary-900)' : 'var(--text-main)',
+                        border: `1px solid ${isChecked ? 'var(--primary-600)' : 'var(--border-light)'}`,
+                        padding: '0.35rem 0.75rem',
+                        borderRadius: '16px',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem'
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => handleToggleSubject(sub)}
+                        style={{ width: '16px', height: '16px' }}
+                      />
+                      {sub}
+                    </label>
+                  );
+                })
+              ) : (
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+                  Selecciona primero la etapa educativa arriba para ver las asignaturas/momentos correspondientes.
+                </span>
+              )}
+            </div>
+            {validationErrors.affectedSubjects && (
+              <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.3rem', fontWeight: 600 }} role="alert">
+                {validationErrors.affectedSubjects}
+              </p>
+            )}
+          </div>
+
+          {/* Motivo Principal */}
+          <div className="form-group">
+            <label htmlFor="field-mainReason" className="form-label">
+              Motivo Principal de Consulta en el Aula *
+            </label>
+            <textarea
+              id="field-mainReason"
+              rows={3}
+              className="textarea-input"
+              value={mainReason}
+              onChange={(e) => setMainReason(e.target.value)}
+              placeholder="Describe detalladamente las conductas observadas, situaciones concretas de dificultad y momentos en los que se acentúa..."
+              aria-required="true"
+              aria-invalid={Boolean(validationErrors.mainReason)}
+              aria-describedby={validationErrors.mainReason ? 'err-mainReason' : 'hint-mainReason'}
+            />
+            <span id="hint-mainReason" style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+              Ejemplo orientativo: Desatención recurrente en tareas de copia, bloqueos al resolver problemas o dificultades en la articulación oral.
+            </span>
+            {validationErrors.mainReason && (
+              <p id="err-mainReason" style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.2rem', fontWeight: 600 }} role="alert">
+                {validationErrors.mainReason}
+              </p>
+            )}
+          </div>
+
+          {/* Adjunto Seguro */}
+          <div style={{ background: '#f8fafc', padding: '0.85rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+            <label htmlFor="field-fileInput" className="form-label" style={{ fontSize: '0.82rem', marginBottom: '0.2rem' }}>
+              📎 Adjuntar Muestra de Trabajo / Evidencia Anonimizada (Opcional)
+            </label>
+            <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginBottom: '0.45rem' }}>
+              Formatos admitidos: PDF, JPG, PNG (máx. 5 MB). Se valida firma binaria anti-spoofing. Asegúrate de que no aparezcan teléfonos ni direcciones familiares.
+            </p>
+            <input
+              ref={fileInputRef}
+              type="file"
+              id="field-fileInput"
+              accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+              onChange={handleFileChange}
+              style={{ fontSize: '0.8rem' }}
+            />
+            {attachedEvidenceName && (
+              <p style={{ fontSize: '0.78rem', color: 'var(--primary-700)', marginTop: '0.3rem', fontWeight: 600 }}>
+                ✓ Evidencia validada: {attachedEvidenceName}
+              </p>
+            )}
+            {fileError && (
+              <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.3rem', fontWeight: 600 }} role="alert">
+                ⚠ {fileError}
+              </p>
+            )}
+          </div>
+        </fieldset>
+
+        {/* BLOQUE 2: INDICADORES DE AULA (INICIAN ESTRICTAMENTE EN NULL / "SIN VALORAR") */}
+        <fieldset style={{ border: 'none', padding: 0, margin: 0, marginBottom: '1.5rem' }}>
+          <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.3rem' }}>
+            2. Indicadores Clínicos de Aula (Las 6 Áreas de Observación)
+          </legend>
+          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.85rem' }}>
+            Todos los deslizadores inician en <strong>"Sin valorar"</strong>. Pulsa sobre el valor correspondiente según tu observación en clase.
+          </p>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', background: '#ffffff', padding: '0.5rem 0.75rem', borderRadius: '8px', border: '1px solid var(--border-light)', fontSize: '0.72rem', fontWeight: 600, marginBottom: '1rem', flexWrap: 'wrap', gap: '0.3rem' }}>
+            <span style={{ color: '#991b1b' }}>1 = 🔴 Dificultad Grave</span>
+            <span style={{ color: '#9a3412' }}>2 = 🟠 Dificultad Frecuente</span>
+            <span style={{ color: '#854d0e' }}>3 = 🟡 Nivel Medio</span>
+            <span style={{ color: '#3730a3' }}>4 = 🟢 Buen Nivel</span>
+            <span style={{ color: '#166534' }}>5 = 🔵 Excelente</span>
+          </div>
+
+          {stage === 'PRIMARIA' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {/* Área 1: Atención */}
+              <div className="rating-group" id="field-attentionFocus">
+                <div className="rating-header">
+                  <span>1. Atención y Concentración en el Aula *</span>
+                  <span className={`rating-badge ${attentionFocus ? `val-${attentionFocus}` : ''}`}>
+                    {attentionFocus ? `${attentionFocus} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={attentionFocus || 1}
+                    onChange={(e) => setAttentionFocus(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!attentionFocus && (
+                    <button
+                      type="button"
+                      onClick={() => setAttentionFocus(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {attentionFocus ? (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {primariaDescriptors.attention[attentionFocus]}
+                  </div>
+                ) : (
+                  <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '0.2rem' }}>
+                    Mueve la barra para registrar tu valoración del nivel atencional.
+                  </p>
+                )}
+                {validationErrors.attentionFocus && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.attentionFocus}</p>
+                )}
+              </div>
+
+              {/* Área 2: Lectura */}
+              <div className="rating-group" id="field-readingComprehension">
+                <div className="rating-header">
+                  <span>2. Fluidez y Comprensión Lectora *</span>
+                  <span className={`rating-badge ${readingComprehension ? `val-${readingComprehension}` : ''}`}>
+                    {readingComprehension ? `${readingComprehension} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={readingComprehension || 1}
+                    onChange={(e) => setReadingComprehension(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!readingComprehension && (
+                    <button
+                      type="button"
+                      onClick={() => setReadingComprehension(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {readingComprehension && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {primariaDescriptors.reading[readingComprehension]}
+                  </div>
+                )}
+                {validationErrors.readingComprehension && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.readingComprehension}</p>
+                )}
+              </div>
+
+              {/* Área 3: Matemáticas */}
+              <div className="rating-group" id="field-mathReasoning">
+                <div className="rating-header">
+                  <span>3. Razonamiento Matemático y Problemas *</span>
+                  <span className={`rating-badge ${mathReasoning ? `val-${mathReasoning}` : ''}`}>
+                    {mathReasoning ? `${mathReasoning} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={mathReasoning || 1}
+                    onChange={(e) => setMathReasoning(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!mathReasoning && (
+                    <button
+                      type="button"
+                      onClick={() => setMathReasoning(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {mathReasoning && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {primariaDescriptors.math[mathReasoning]}
+                  </div>
+                )}
+                {validationErrors.mathReasoning && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.mathReasoning}</p>
+                )}
+              </div>
+
+              {/* Área 4: Ritmo */}
+              <div className="rating-group" id="field-taskPaceAndCompletion">
+                <div className="rating-header">
+                  <span>4. Ritmo de Trabajo y Finalización de Tareas *</span>
+                  <span className={`rating-badge ${taskPaceAndCompletion ? `val-${taskPaceAndCompletion}` : ''}`}>
+                    {taskPaceAndCompletion ? `${taskPaceAndCompletion} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={taskPaceAndCompletion || 1}
+                    onChange={(e) => setTaskPaceAndCompletion(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!taskPaceAndCompletion && (
+                    <button
+                      type="button"
+                      onClick={() => setTaskPaceAndCompletion(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {taskPaceAndCompletion && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {primariaDescriptors.taskPace[taskPaceAndCompletion]}
+                  </div>
+                )}
+                {validationErrors.taskPaceAndCompletion && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.taskPaceAndCompletion}</p>
+                )}
+              </div>
+
+              {/* Área 5: Impulsividad */}
+              <div className="rating-group" id="field-impulsivityAndAutonomy">
+                <div className="rating-header">
+                  <span>5. Control de Impulsividad y Autonomía *</span>
+                  <span className={`rating-badge ${impulsivityAndAutonomy ? `val-${impulsivityAndAutonomy}` : ''}`}>
+                    {impulsivityAndAutonomy ? `${impulsivityAndAutonomy} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={impulsivityAndAutonomy || 1}
+                    onChange={(e) => setImpulsivityAndAutonomy(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!impulsivityAndAutonomy && (
+                    <button
+                      type="button"
+                      onClick={() => setImpulsivityAndAutonomy(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {impulsivityAndAutonomy && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {primariaDescriptors.impulsivity[impulsivityAndAutonomy]}
+                  </div>
+                )}
+                {validationErrors.impulsivityAndAutonomy && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.impulsivityAndAutonomy}</p>
+                )}
+              </div>
+
+              {/* Área 6: Emocional */}
+              <div className="rating-group" id="field-emotionalAndPeerRel">
+                <div className="rating-header">
+                  <span>6. Gestión Emocional y Relación con Iguales *</span>
+                  <span className={`rating-badge ${emotionalAndPeerRel ? `val-${emotionalAndPeerRel}` : ''}`}>
+                    {emotionalAndPeerRel ? `${emotionalAndPeerRel} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={emotionalAndPeerRel || 1}
+                    onChange={(e) => setEmotionalAndPeerRel(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!emotionalAndPeerRel && (
+                    <button
+                      type="button"
+                      onClick={() => setEmotionalAndPeerRel(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {emotionalAndPeerRel && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {primariaDescriptors.emotional[emotionalAndPeerRel]}
+                  </div>
+                )}
+                {validationErrors.emotionalAndPeerRel && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.emotionalAndPeerRel}</p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {stage === 'INFANTIL' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {/* Infantil Área 1: Lenguaje Oral */}
+              <div className="rating-group" id="field-infantilOralLanguage">
+                <div className="rating-header">
+                  <span>1. Lenguaje y Comunicación Oral *</span>
+                  <span className={`rating-badge ${infantilOralLanguage ? `val-${infantilOralLanguage}` : ''}`}>
+                    {infantilOralLanguage ? `${infantilOralLanguage} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={infantilOralLanguage || 1}
+                    onChange={(e) => setInfantilOralLanguage(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!infantilOralLanguage && (
+                    <button
+                      type="button"
+                      onClick={() => setInfantilOralLanguage(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {infantilOralLanguage && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {infantilDescriptors.oralLang[infantilOralLanguage]}
+                  </div>
+                )}
+                {validationErrors.infantilOralLanguage && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.infantilOralLanguage}</p>
+                )}
+              </div>
+
+              {/* Infantil Área 2: Asamblea */}
+              <div className="rating-group" id="field-infantilAttentionAssembly">
+                <div className="rating-header">
+                  <span>2. Atención en Asamblea e Inquietud Motriz *</span>
+                  <span className={`rating-badge ${infantilAttentionAssembly ? `val-${infantilAttentionAssembly}` : ''}`}>
+                    {infantilAttentionAssembly ? `${infantilAttentionAssembly} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={infantilAttentionAssembly || 1}
+                    onChange={(e) => setInfantilAttentionAssembly(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!infantilAttentionAssembly && (
+                    <button
+                      type="button"
+                      onClick={() => setInfantilAttentionAssembly(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {infantilAttentionAssembly && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {infantilDescriptors.assembly[infantilAttentionAssembly]}
+                  </div>
+                )}
+                {validationErrors.infantilAttentionAssembly && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.infantilAttentionAssembly}</p>
+                )}
+              </div>
+
+              {/* Infantil Área 3: Motricidad Fina */}
+              <div className="rating-group" id="field-infantilPsychomotorFine">
+                <div className="rating-header">
+                  <span>3. Psicomotricidad Fina y Pinza Digital *</span>
+                  <span className={`rating-badge ${infantilPsychomotorFine ? `val-${infantilPsychomotorFine}` : ''}`}>
+                    {infantilPsychomotorFine ? `${infantilPsychomotorFine} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={infantilPsychomotorFine || 1}
+                    onChange={(e) => setInfantilPsychomotorFine(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!infantilPsychomotorFine && (
+                    <button
+                      type="button"
+                      onClick={() => setInfantilPsychomotorFine(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {infantilPsychomotorFine && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {infantilDescriptors.fineMotor[infantilPsychomotorFine]}
+                  </div>
+                )}
+                {validationErrors.infantilPsychomotorFine && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.infantilPsychomotorFine}</p>
+                )}
+              </div>
+
+              {/* Infantil Área 4: Lógica */}
+              <div className="rating-group" id="field-infantilLogicConcepts">
+                <div className="rating-header">
+                  <span>4. Pensamiento Lógico y Conceptos Básicos *</span>
+                  <span className={`rating-badge ${infantilLogicConcepts ? `val-${infantilLogicConcepts}` : ''}`}>
+                    {infantilLogicConcepts ? `${infantilLogicConcepts} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={infantilLogicConcepts || 1}
+                    onChange={(e) => setInfantilLogicConcepts(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!infantilLogicConcepts && (
+                    <button
+                      type="button"
+                      onClick={() => setInfantilLogicConcepts(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {infantilLogicConcepts && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {infantilDescriptors.logic[infantilLogicConcepts]}
+                  </div>
+                )}
+                {validationErrors.infantilLogicConcepts && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.infantilLogicConcepts}</p>
+                )}
+              </div>
+
+              {/* Infantil Área 5: Autonomía */}
+              <div className="rating-group" id="field-infantilPersonalAutonomy">
+                <div className="rating-header">
+                  <span>5. Autonomía Personal y Hábitos de Aula *</span>
+                  <span className={`rating-badge ${infantilPersonalAutonomy ? `val-${infantilPersonalAutonomy}` : ''}`}>
+                    {infantilPersonalAutonomy ? `${infantilPersonalAutonomy} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={infantilPersonalAutonomy || 1}
+                    onChange={(e) => setInfantilPersonalAutonomy(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!infantilPersonalAutonomy && (
+                    <button
+                      type="button"
+                      onClick={() => setInfantilPersonalAutonomy(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {infantilPersonalAutonomy && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {infantilDescriptors.autonomy[infantilPersonalAutonomy]}
+                  </div>
+                )}
+                {validationErrors.infantilPersonalAutonomy && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.infantilPersonalAutonomy}</p>
+                )}
+              </div>
+
+              {/* Infantil Área 6: Juego */}
+              <div className="rating-group" id="field-infantilSocialPlay">
+                <div className="rating-header">
+                  <span>6. Socialización y Juego Simbólico *</span>
+                  <span className={`rating-badge ${infantilSocialPlay ? `val-${infantilSocialPlay}` : ''}`}>
+                    {infantilSocialPlay ? `${infantilSocialPlay} / 5` : '⚠️ Sin valorar'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value={infantilSocialPlay || 1}
+                    onChange={(e) => setInfantilSocialPlay(Number(e.target.value))}
+                    style={{ flex: 1 }}
+                  />
+                  {!infantilSocialPlay && (
+                    <button
+                      type="button"
+                      onClick={() => setInfantilSocialPlay(3)}
+                      className="btn btn-secondary"
+                      style={{ padding: '0.2rem 0.5rem', fontSize: '0.72rem', minHeight: '28px' }}
+                    >
+                      Puntuar
+                    </button>
+                  )}
+                </div>
+                {infantilSocialPlay && (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--primary-800)', marginTop: '0.3rem', fontStyle: 'italic' }}>
+                    {infantilDescriptors.socialPlay[infantilSocialPlay]}
+                  </div>
+                )}
+                {validationErrors.infantilSocialPlay && (
+                  <p style={{ color: '#b91c1c', fontSize: '0.73rem', fontWeight: 600, marginTop: '0.2rem' }}>{validationErrors.infantilSocialPlay}</p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {!stage && (
+            <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+              Selecciona primero la etapa arriba para cargar las áreas clínicas correspondientes.
             </p>
           )}
-        </div>
+        </fieldset>
 
-        {/* BLOQUE 2: LAS 6 ÁREAS CON DESCRIPTORES ADAPTADOS SEGÚN LA ETAPA */}
-        <div style={{ background: '#f8fafc', padding: '1.1rem', borderRadius: 'var(--radius-md)', border: '1px solid #cbd5e1', marginBottom: '1.25rem' }}>
-          <h3 style={{ fontSize: '1rem', color: 'var(--primary-800)', marginBottom: '0.3rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            📊 2. Indicadores de Aula ({stage === 'INFANTIL' ? '2º Ciclo Infantil: 3 a 5 años' : 'Educación Primaria: 6 a 12 años'})
-          </h3>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.85rem' }}>
-            Mueve el deslizador en cada área evolutiva según lo observado en el aula. Debajo de cada barra verás la descripción clínica del nivel.
-          </p>
-
-          {/* GUÍA DE ESCALA VISUAL */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', background: '#ffffff', padding: '0.5rem 0.75rem', borderRadius: '8px', border: '1px solid #e2e8f0', fontSize: '0.73rem', fontWeight: 600, marginBottom: '1rem', flexWrap: 'wrap', gap: '0.4rem' }}>
-            <span style={{ color: '#991b1b' }}>1 = 🔴 Dificultad Grave / Muy Bajo</span>
-            <span style={{ color: '#9a3412' }}>2 = 🟠 Dificultad Frecuente</span>
-            <span style={{ color: '#854d0e' }}>3 = 🟡 Nivel Medio / Moderado</span>
-            <span style={{ color: '#3730a3' }}>4 = 🟢 Buen Nivel</span>
-            <span style={{ color: '#166534' }}>5 = 🔵 Excelente / Sobresaliente</span>
-          </div>
-
-          {/* SI LA ETAPA ES INFANTIL */}
-          {stage === 'INFANTIL' ? (
-            <>
-              {/* INFANTIL ÁREA 1: LENGUAJE ORAL */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>1. Lenguaje y Comunicación Oral (Expresión y Comprensión)</span>
-                  <span className={`rating-badge val-${infantilOralLanguage}`}>{infantilOralLanguage} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={infantilOralLanguage} style={{ width: '100%' }} onChange={(e) => setInfantilOralLanguage(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getInfantilLanguageDesc(infantilOralLanguage)}
-                </div>
-              </div>
-
-              {/* INFANTIL ÁREA 2: ASAMBLEA Y AUTORREGULACIÓN */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>2. Atención en Asamblea, Regulación e Inquietud Motriz</span>
-                  <span className={`rating-badge val-${infantilAttentionAssembly}`}>{infantilAttentionAssembly} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={infantilAttentionAssembly} style={{ width: '100%' }} onChange={(e) => setInfantilAttentionAssembly(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getInfantilAssemblyDesc(infantilAttentionAssembly)}
-                </div>
-              </div>
-
-              {/* INFANTIL ÁREA 3: PSICOMOTRICIDAD FINA */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>3. Psicomotricidad Fina, Pinza Digital y Grafomotricidad</span>
-                  <span className={`rating-badge val-${infantilPsychomotorFine}`}>{infantilPsychomotorFine} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={infantilPsychomotorFine} style={{ width: '100%' }} onChange={(e) => setInfantilPsychomotorFine(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getInfantilMotorDesc(infantilPsychomotorFine)}
-                </div>
-              </div>
-
-              {/* INFANTIL ÁREA 4: CONCEPTOS BÁSICOS Y LÓGICA */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>4. Pensamiento Lógico y Conceptos Básicos (Colores, Tamaños, Espacio)</span>
-                  <span className={`rating-badge val-${infantilLogicConcepts}`}>{infantilLogicConcepts} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={infantilLogicConcepts} style={{ width: '100%' }} onChange={(e) => setInfantilLogicConcepts(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getInfantilLogicDesc(infantilLogicConcepts)}
-                </div>
-              </div>
-
-              {/* INFANTIL ÁREA 5: AUTONOMÍA PERSONAL */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>5. Autonomía Personal y Hábitos de Aula (Higiene, Aseo, Desayuno)</span>
-                  <span className={`rating-badge val-${infantilPersonalAutonomy}`}>{infantilPersonalAutonomy} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={infantilPersonalAutonomy} style={{ width: '100%' }} onChange={(e) => setInfantilPersonalAutonomy(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getInfantilAutonomyDesc(infantilPersonalAutonomy)}
-                </div>
-              </div>
-
-              {/* INFANTIL ÁREA 6: SOCIALIZACIÓN Y JUEGO SIMBÓLICO */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>6. Socialización, Juego Simbólico y Adaptación Emocional</span>
-                  <span className={`rating-badge val-${infantilSocialPlay}`}>{infantilSocialPlay} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={infantilSocialPlay} style={{ width: '100%' }} onChange={(e) => setInfantilSocialPlay(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getInfantilSocialDesc(infantilSocialPlay)}
-                </div>
-              </div>
-            </>
-          ) : (
-            /* SI LA ETAPA ES PRIMARIA */
-            <>
-              {/* PRIMARIA ÁREA 1: ATENCIÓN */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>1. Atención y Concentración en el Aula</span>
-                  <span className={`rating-badge val-${attentionFocus}`}>{attentionFocus} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={attentionFocus} style={{ width: '100%' }} onChange={(e) => setAttentionFocus(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getAttentionDescriptor(attentionFocus)}
-                </div>
-              </div>
-
-              {/* PRIMARIA ÁREA 2: LECTURA */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>2. Fluidez y Comprensión Lectora</span>
-                  <span className={`rating-badge val-${readingComprehension}`}>{readingComprehension} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={readingComprehension} style={{ width: '100%' }} onChange={(e) => setReadingComprehension(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getReadingDescriptor(readingComprehension)}
-                </div>
-              </div>
-
-              {/* PRIMARIA ÁREA 3: MATEMÁTICAS */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>3. Razonamiento Lógico-Matemático y Problemas</span>
-                  <span className={`rating-badge val-${mathReasoning}`}>{mathReasoning} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={mathReasoning} style={{ width: '100%' }} onChange={(e) => setMathReasoning(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getMathDescriptor(mathReasoning)}
-                </div>
-              </div>
-
-              {/* PRIMARIA ÁREA 4: RITMO Y FINALIZACIÓN */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>4. Ritmo de Trabajo y Finalización de Tareas</span>
-                  <span className={`rating-badge val-${taskPaceAndCompletion}`}>{taskPaceAndCompletion} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={taskPaceAndCompletion} style={{ width: '100%' }} onChange={(e) => setTaskPaceAndCompletion(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getTaskPaceDescriptor(taskPaceAndCompletion)}
-                </div>
-              </div>
-
-              {/* PRIMARIA ÁREA 5: IMPULSIVIDAD Y CONDUCTA */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>5. Autonomía, Conducta y Control de Impulsividad</span>
-                  <span className={`rating-badge val-${impulsivityAndAutonomy}`}>{impulsivityAndAutonomy} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={impulsivityAndAutonomy} style={{ width: '100%' }} onChange={(e) => setImpulsivityAndAutonomy(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getImpulsivityDescriptor(impulsivityAndAutonomy)}
-                </div>
-              </div>
-
-              {/* PRIMARIA ÁREA 6: GESTIÓN EMOCIONAL */}
-              <div className="rating-group">
-                <div className="rating-header">
-                  <span>6. Gestión Emocional y Relación con Compañeros</span>
-                  <span className={`rating-badge val-${emotionalAndPeerRel}`}>{emotionalAndPeerRel} / 5</span>
-                </div>
-                <input type="range" min="1" max="5" value={emotionalAndPeerRel} style={{ width: '100%' }} onChange={(e) => setEmotionalAndPeerRel(Number(e.target.value))} />
-                <div style={{ fontSize: '0.78rem', color: 'var(--primary-900)', marginTop: '0.35rem', fontStyle: 'italic', background: '#ffffff', padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border-light)' }}>
-                  {getEmotionalDescriptor(emotionalAndPeerRel)}
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* BLOQUE 3: AYUDAS PREVIAS PROBADAS EN CLASE */}
-        <div style={{ background: '#f8fafc', padding: '1.1rem', borderRadius: 'var(--radius-md)', border: '1px solid #cbd5e1', marginBottom: '1.25rem' }}>
-          <h4 style={{ fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.3rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <Clock size={17} /> 3. Ayudas y Medidas Previas Probadas en Clase ({stage === 'INFANTIL' ? 'Infantil' : 'Primaria'})
-          </h4>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.85rem' }}>
-            Indica qué apoyos específicos has intentado ya en el aula antes de formalizar la solicitud de valoración.
-          </p>
+        {/* BLOQUE 3: MEDIDAS PREVIAS (INICIAN ESTRICTAMENTE EN BLANCO) */}
+        <fieldset style={{ border: 'none', padding: 0, margin: 0, marginBottom: '1.5rem' }}>
+          <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.6rem' }}>
+            3. Ayudas y Adaptaciones Previas Probadas en Clase
+          </legend>
 
           <div className="form-group">
-            <label className="form-label">1. ¿Cuánto tiempo llevas aplicando apoyos en el aula? *</label>
-            <select className="select-input" value={measuresDuration} onChange={(e) => setMeasuresDuration(e.target.value as any)}>
-              <option value="MENOS_1_MES">Menos de 1 mes (Periodo inicial de observación)</option>
+            <label htmlFor="field-measuresDuration" className="form-label">
+              1. ¿Cuánto tiempo llevas aplicando ayudas en el aula? *
+            </label>
+            <select
+              id="field-measuresDuration"
+              value={measuresDuration}
+              onChange={(e) => setMeasuresDuration(e.target.value as any)}
+              className="select-input"
+              aria-required="true"
+              aria-invalid={Boolean(validationErrors.measuresDuration)}
+            >
+              <option value="">-- Selecciona el periodo de tiempo --</option>
+              <option value="MENOS_1_MES">Menos de 1 mes (Observación preliminar)</option>
               <option value="1_A_2_MESES">Entre 1 y 2 meses (Tiempo recomendado)</option>
               <option value="MAS_2_MESES">Más de 2 meses (Dificultades persistentes)</option>
             </select>
+            {validationErrors.measuresDuration && (
+              <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.2rem', fontWeight: 600 }} role="alert">
+                {validationErrors.measuresDuration}
+              </p>
+            )}
           </div>
 
           <div className="form-group">
-            <label className="form-label">2. ¿Qué ayudas concretas has probado en clase? (Marca las aplicadas) *</label>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.35rem' }}>
-              {(stage === 'INFANTIL' ? availableMeasuresInfantil : availableMeasuresPrimaria).map(measure => {
-                const checked = appliedMeasuresList.includes(measure);
+            <label id="label-appliedMeasures" className="form-label">
+              2. ¿Qué adaptaciones o medidas concretas has probado? (Marca las aplicadas) *
+            </label>
+            <div
+              id="field-appliedMeasuresList"
+              tabIndex={-1}
+              role="group"
+              aria-labelledby="label-appliedMeasures"
+              style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.35rem' }}
+            >
+              {(stage === 'INFANTIL' ? availableMeasuresInfantil : availableMeasuresPrimaria).map(mea => {
+                const isChecked = appliedMeasuresList.includes(mea);
                 return (
-                  <label key={measure} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#ffffff', padding: '0.45rem 0.65rem', borderRadius: '6px', border: '1px solid #e2e8f0', fontSize: '0.82rem', cursor: 'pointer' }}>
+                  <label
+                    key={mea}
+                    style={{
+                      background: isChecked ? 'var(--primary-50)' : '#ffffff',
+                      border: `1px solid ${isChecked ? 'var(--primary-600)' : 'var(--border-light)'}`,
+                      padding: '0.45rem 0.75rem',
+                      borderRadius: '6px',
+                      fontSize: '0.82rem',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}
+                  >
                     <input
                       type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleMeasure(measure)}
+                      checked={isChecked}
+                      onChange={() => handleToggleMeasure(mea)}
                       style={{ width: '16px', height: '16px' }}
                     />
-                    {measure}
+                    {mea}
                   </label>
                 );
               })}
             </div>
+            {validationErrors.appliedMeasuresList && (
+              <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.3rem', fontWeight: 600 }} role="alert">
+                {validationErrors.appliedMeasuresList}
+              </p>
+            )}
           </div>
 
           <div className="form-group">
-            <label className="form-label">3. ¿Qué resultado han dado esas ayudas en el aula? *</label>
-            <select className="select-input" value={measuresResult} onChange={(e) => setMeasuresResult(e.target.value as any)}>
+            <label htmlFor="field-measuresResult" className="form-label">
+              3. ¿Qué resultado han dado esas ayudas en el aula? *
+            </label>
+            <select
+              id="field-measuresResult"
+              value={measuresResult}
+              onChange={(e) => setMeasuresResult(e.target.value as any)}
+              className="select-input"
+              aria-required="true"
+              aria-invalid={Boolean(validationErrors.measuresResult)}
+            >
+              <option value="">-- Selecciona el resultado observado --</option>
               <option value="MEJORIA_LEVE_PERSISTE_DIFICULTAD">Ha mejorado algo pero persiste una dificultad importante</option>
               <option value="INSUFICIENTE">No han sido suficientes; sigue sin avanzar al ritmo de clase</option>
-              <option value="BLOQUEO_PERSISTENTE">Persiste el bloqueo y la desregulación conductual</option>
+              <option value="BLOQUEO_PERSISTENTE">Persiste el bloqueo y la desregulación emocional</option>
             </select>
+            {validationErrors.measuresResult && (
+              <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.2rem', fontWeight: 600 }} role="alert">
+                {validationErrors.measuresResult}
+              </p>
+            )}
           </div>
 
-          <div className="form-group" style={{ marginBottom: 0 }}>
-            <label className="form-label">Observaciones adicionales sobre la evolución del alumno/a</label>
+          <div className="form-group">
+            <label htmlFor="field-measuresObservations" className="form-label">
+              Observaciones adicionales sobre cómo ha respondido el alumno/a
+            </label>
             <input
               type="text"
-              className="input-text"
-              placeholder={stage === 'INFANTIL' ? "Ej: El uso de pictogramas le ayuda en transiciones pero en asamblea sigue necesitando contención..." : "Ej: Sentarle delante reduce distracciones pero al escribir controles sigue necesitando mucho más tiempo..."}
+              id="field-measuresObservations"
               value={measuresObservations}
               onChange={(e) => setMeasuresObservations(e.target.value)}
+              className="input-text"
+              placeholder="Ejemplo: Responde favorablemente en grupos reducidos, pero decae en tareas autónomas largas."
             />
           </div>
-        </div>
+        </fieldset>
 
-        {/* BLOQUE 4: AUTOPERCEPCIÓN Y VOZ DEL ALUMNO/A */}
-        <div style={{ background: '#f0fdf4', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid #86efac', marginBottom: '1.25rem' }}>
-          <h4 style={{ fontSize: '0.9rem', color: '#166534', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <User size={16} /> 4. Percepción del Alumno/a e Interacción en Tutoría
-          </h4>
-
+        {/* BLOQUE 4: VOZ DEL ALUMNO (INICIA VACÍO) */}
+        <fieldset style={{ border: 'none', padding: 0, margin: 0, marginBottom: '1.5rem' }}>
+          <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.6rem' }}>
+            4. Voz y Percepción del Alumno/a (Recogido en Tutoría)
+          </legend>
           <div className="grid-2">
             <div className="form-group">
-              <label className="form-label">Nivel de dificultad que manifiesta el alumno/a *</label>
-              <select className="select-input" value={perceivedDifficulty} onChange={(e) => setPerceivedDifficulty(e.target.value as any)}>
-                <option value="NINGUNA">No percibe ninguna dificultad ("A mí todo me resulta fácil")</option>
+              <label htmlFor="field-perceivedDifficulty" className="form-label">
+                Dificultad manifestada por el alumno/a
+              </label>
+              <select
+                id="field-perceivedDifficulty"
+                value={perceivedDifficulty}
+                onChange={(e) => setPerceivedDifficulty(e.target.value as any)}
+                className="select-input"
+              >
+                <option value="">-- Selecciona percepción --</option>
+                <option value="NINGUNA">No percibe dificultad ("A mí todo me resulta fácil")</option>
                 <option value="LEVE">Percibe dificultad leve ("A veces me cuesta un poco")</option>
-                <option value="MODERADA">Percibe dificultad moderada ("Me cuesta bastante seguir el ritmo")</option>
-                <option value="ALTA">Percibe gran frustración ("Me siento muy agobiado/a en clase")</option>
+                <option value="MODERADA">Percibe dificultad moderada ("Me cuesta bastante seguir la clase")</option>
+                <option value="ALTA">Percibe gran frustración ("Me siento muy agobiado/a")</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label className="form-label">Motivación y actitud hacia el colegio *</label>
-              <select className="select-input" value={schoolMotivation} onChange={(e) => setSchoolMotivation(e.target.value as any)}>
-                <option value="ALTA">Alta (Viene contento/a y participa activamente)</option>
+              <label htmlFor="field-schoolMotivation" className="form-label">
+                Motivación hacia la escuela
+              </label>
+              <select
+                id="field-schoolMotivation"
+                value={schoolMotivation}
+                onChange={(e) => setSchoolMotivation(e.target.value as any)}
+                className="select-input"
+              >
+                <option value="">-- Selecciona motivación --</option>
+                <option value="ALTA">Alta (Acude contento/a y participativo/a)</option>
                 <option value="MEDIA">Media (Acude con normalidad)</option>
-                <option value="BAJA">Baja (Muestra desgana, llanto al entrar o rechazo)</option>
+                <option value="BAJA">Baja (Muestra rechazo, desgana o somatizaciones)</option>
               </select>
             </div>
           </div>
-
-          <div className="grid-2">
-            <div className="form-group">
-              <label className="form-label">Actividades donde se siente más cómodo/a</label>
-              <input type="text" className="input-text" value={favoriteSubjects} onChange={(e) => setFavoriteSubjects(e.target.value)} />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Actividades que le resultan más difíciles o frustrantes</label>
-              <input type="text" className="input-text" value={hardestSubjects} onChange={(e) => setHardestSubjects(e.target.value)} />
-            </div>
-          </div>
-        </div>
+        </fieldset>
 
         {/* BLOQUE 5: CONTEXTO FAMILIAR */}
-        <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)', marginBottom: '1.25rem' }}>
-          <h4 style={{ fontSize: '0.9rem', color: 'var(--primary-800)', marginBottom: '0.75rem' }}>
-            👪 5. Contexto Familiar e Informes Previos
-          </h4>
+        <fieldset style={{ border: 'none', padding: 0, margin: 0, marginBottom: '1.5rem' }}>
+          <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.6rem' }}>
+            5. Contexto Familiar e Informes Externos
+          </legend>
 
-          <div className="grid-2" style={{ marginBottom: '0.85rem' }}>
-            <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label">¿Entrevista realizada con la familia? *</label>
-              <select className="select-input" value={familyMeetingDone ? 'SI' : 'NO'} onChange={(e) => setFamilyMeetingDone(e.target.value === 'SI')}>
-                <option value="SI">Sí, entrevista informativa realizada con la familia</option>
+          <div className="grid-2">
+            <div className="form-group">
+              <label htmlFor="field-familyMeetingDone" className="form-label">
+                ¿Entrevista realizada con la familia? *
+              </label>
+              <select
+                id="field-familyMeetingDone"
+                value={familyMeetingDone === null ? '' : (familyMeetingDone ? 'SI' : 'NO')}
+                onChange={(e) => setFamilyMeetingDone(e.target.value === '' ? null : e.target.value === 'SI')}
+                className="select-input"
+                aria-required="true"
+                aria-invalid={familyMeetingDone === null && Boolean(validationErrors.familyMeetingDone)}
+              >
+                <option value="">-- Selecciona estado de la reunión --</option>
+                <option value="SI">Sí, entrevista realizada</option>
                 <option value="NO">No, pendiente de tutoría</option>
               </select>
+              {validationErrors.familyMeetingDone && (
+                <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.2rem', fontWeight: 600 }} role="alert">
+                  {validationErrors.familyMeetingDone}
+                </p>
+              )}
             </div>
 
-            <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label">Conformidad / Acuerdo de la familia *</label>
-              <select className="select-input" value={familyAgreement} onChange={(e) => setFamilyAgreement(e.target.value as any)}>
-                <option value="TOTAL_ACUERDO">De acuerdo (Disposición total y consentimiento firmado)</option>
-                <option value="CONFORMIDAD_PARCIAL">Conformidad con dudas o inquietud</option>
-                <option value="RESISTENCIA_FAMILIAR">Resistencia / Reticencia familiar inicial</option>
-                <option value="PENDIENTE_REUNION">Pendiente de presentar propuesta en tutoría</option>
+            <div className="form-group">
+              <label htmlFor="field-familyAgreement" className="form-label">
+                Conformidad de la familia *
+              </label>
+              <select
+                id="field-familyAgreement"
+                value={familyAgreement}
+                onChange={(e) => setFamilyAgreement(e.target.value as any)}
+                className="select-input"
+                aria-required="true"
+                aria-invalid={Boolean(validationErrors.familyAgreement)}
+              >
+                <option value="">-- Selecciona conformidad --</option>
+                <option value="TOTAL_ACUERDO">De acuerdo (Consentimiento familiar firmado)</option>
+                <option value="CONFORMIDAD_PARCIAL">Conformidad con dudas</option>
+                <option value="RESISTENCIA_FAMILIAR">Resistencia inicial</option>
+                <option value="PENDIENTE_REUNION">Pendiente de tutoría</option>
               </select>
+              {validationErrors.familyAgreement && (
+                <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.2rem', fontWeight: 600 }} role="alert">
+                  {validationErrors.familyAgreement}
+                </p>
+              )}
             </div>
           </div>
 
-          <div style={{ background: '#ffffff', padding: '0.85rem', borderRadius: '8px', border: '1px solid #e2e8f0', marginBottom: '0.75rem' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>
+          <div style={{ background: '#ffffff', padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer' }}>
               <input
                 type="checkbox"
                 checked={externalAssessmentDone}
                 onChange={(e) => setExternalAssessmentDone(e.target.checked)}
-                style={{ width: '18px', height: '18px' }}
+                style={{ width: '16px', height: '16px' }}
               />
-              ¿La familia dispone de informes externos? ({stage === 'INFANTIL' ? 'Atención Temprana / CDIAT, Neuropediatra, Logopeda' : 'Neuropediatra, Psicólogo privado, Logopeda'})
+              ¿Dispone de informes externos previos? (Atención Temprana CDIAT, Neuropediatra, Psicólogo, Logopeda)
             </label>
-
             {externalAssessmentDone && (
               <div style={{ marginTop: '0.5rem' }}>
                 <input
                   type="text"
-                  className="input-text"
-                  placeholder={stage === 'INFANTIL' ? "Detalle de informes (ej: Informe de Atención Temprana CDIAT / Valoración Logopédica)" : "Detalle de informes (ej: Informe Neuropediátrico del Hospital)"}
                   value={externalAssessmentDetails}
                   onChange={(e) => setExternalAssessmentDetails(e.target.value)}
+                  className="input-text"
+                  placeholder="Detalla qué centro o especialista emite el informe (sin datos médicos innecesarios)..."
                 />
               </div>
             )}
           </div>
+        </fieldset>
+
+        {/* BLOQUE 6: ACEPTACIÓN DE PRIVACIDAD RGPD / LOPD-GDD OBLIGATORIA */}
+        <div 
+          id="field-privacyAccepted"
+          tabIndex={-1}
+          style={{
+            background: '#f0fdf4',
+            border: validationErrors.privacyAccepted ? '2px solid #ef4444' : '1px solid #86efac',
+            borderRadius: '12px',
+            padding: '1rem',
+            marginBottom: '1.5rem'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+            <ShieldCheck size={24} color="#166534" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div>
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', cursor: 'pointer', fontSize: '0.85rem', color: '#14532d', fontWeight: 600 }}>
+                <input
+                  type="checkbox"
+                  checked={privacyAccepted}
+                  onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                  aria-required="true"
+                  style={{ width: '18px', height: '18px', marginTop: '2px' }}
+                />
+                <span>
+                  He informado a la familia y confirmo que los datos recogidos responden estrictamente a la necesidad psicopedagógica y educativa del menor, conforme a la normativa RGPD UE 2016/679 y la LOPD-GDD 3/2018 (Cláusula de Privacidad {CURRENT_PRIVACY_POLICY_VERSION}).
+                </span>
+              </label>
+              <p style={{ fontSize: '0.73rem', color: '#166534', marginTop: '0.35rem', marginLeft: '1.65rem' }}>
+                🔒 La aceptación quedará registrada de forma inmutable con fecha, hora y usuario institucional (<strong>{currentUser.email}</strong>).
+              </p>
+              {validationErrors.privacyAccepted && (
+                <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.35rem', fontWeight: 700, marginLeft: '1.65rem' }} role="alert">
+                  {validationErrors.privacyAccepted}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* PREDICCIÓN DE TRIAJE EN TIEMPO REAL */}
-        <div style={{ background: '#f0fdfa', border: '1px solid #14b8a6', borderRadius: 'var(--radius-md)', padding: '0.9rem', marginBottom: '1.25rem' }}>
-          <div style={{ fontWeight: 700, color: 'var(--primary-800)', fontSize: '0.85rem' }}>
-            ✨ Predicción Clínica del Gabinete: {currentTriage.riskProfileTitle}
-          </div>
-          <p style={{ fontSize: '0.82rem', color: 'var(--text-main)', marginTop: '0.25rem' }}>
-            {currentTriage.explanation}
-          </p>
-          <div style={{ fontSize: '0.78rem', color: 'var(--primary-700)', fontWeight: 600, marginTop: '0.35rem' }}>
-            🧪 Batería Psicométrica de Etapa Sugerida: {currentTriage.recommendedTests.filter(t => t.recommended).map(t => t.code).join(', ')}
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
-          <button type="submit" className="btn btn-accent" style={{ padding: '0.75rem 1.5rem', width: '100%' }}>
-            <Send size={18} /> Enviar Solicitud de Valoración ({stage === 'INFANTIL' ? '2º Ciclo Infantil' : 'Primaria'})
+        {/* BOTÓN DE ENVÍO / REVISIÓN: DESHABILITADO HASTA COMPLETAR REQUISITOS */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem' }}>
+          <button
+            type="submit"
+            disabled={!isFormComplete}
+            className="btn btn-primary"
+            style={{
+              padding: '0.75rem 1.5rem',
+              fontSize: '0.9rem',
+              opacity: isFormComplete ? 1 : 0.5,
+              cursor: isFormComplete ? 'pointer' : 'not-allowed'
+            }}
+          >
+            <Eye size={18} /> Revisar Expediente antes de Enviar
           </button>
         </div>
+        {!isFormComplete && (
+          <p style={{ textAlign: 'right', fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.4rem' }}>
+            ℹ️ El botón se habilitará cuando todos los campos obligatorios y la cláusula de privacidad estén cumplimentados.
+          </p>
+        )}
       </form>
+
+      {/* PANTALLA DE REVISIÓN PREVIA CON CONFIRMACIÓN FINAL */}
+      {showReviewModal && (
+        <div className="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="review-heading">
+          <div className="modal-content" style={{ maxWidth: '750px', padding: '1.75rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
+              <div>
+                <span style={{ background: 'var(--primary-100)', color: 'var(--primary-800)', padding: '0.15rem 0.6rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
+                  Paso Final: Verificación de Datos
+                </span>
+                <h3 id="review-heading" style={{ fontSize: '1.3rem', color: 'var(--text-main)', marginTop: '0.2rem' }}>
+                  Revisión Previa del Expediente de Derivación
+                </h3>
+              </div>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setShowReviewModal(false)}
+                style={{ padding: '0.35rem', minHeight: '32px' }}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div style={{ background: '#f8fafc', padding: '1.1rem', borderRadius: '12px', border: '1px solid var(--border-light)', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                <div><strong>Alumno/a:</strong> {studentName}</div>
+                <div><strong>Curso y Grupo:</strong> {grade} ({stage === 'INFANTIL' ? '2º Ciclo Infantil' : 'Primaria'})</div>
+                <div><strong>Docente Solicitante:</strong> {currentUser.name}</div>
+                <div><strong>Email institucional:</strong> {currentUser.email}</div>
+              </div>
+
+              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem', marginBottom: '0.75rem' }}>
+                <strong>Áreas afectadas:</strong> {affectedSubjects.join(', ')}
+              </div>
+
+              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem', marginBottom: '0.75rem' }}>
+                <strong>Motivo de consulta:</strong>
+                <p style={{ fontStyle: 'italic', color: '#334155', marginTop: '0.2rem' }}>"{mainReason}"</p>
+              </div>
+
+              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem', marginBottom: '0.75rem' }}>
+                <strong>Medidas previas probadas ({measuresDuration}):</strong>
+                <ul style={{ paddingLeft: '1.2rem', marginTop: '0.2rem' }}>
+                  {appliedMeasuresList.map((m, idx) => (
+                    <li key={idx}>{m}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {attachedEvidenceName && (
+                <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem', marginBottom: '0.75rem' }}>
+                  <strong>Evidencia adjunta:</strong> {attachedEvidenceName}
+                </div>
+              )}
+
+              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem' }}>
+                <strong>Registro de Privacidad:</strong> Cláusula {CURRENT_PRIVACY_POLICY_VERSION} aceptada por {currentUser.email}.
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setShowReviewModal(false)}
+                disabled={isSubmitting}
+                style={{ padding: '0.65rem 1.25rem' }}
+              >
+                <ArrowLeft size={16} /> Modificar Datos
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleConfirmSubmit}
+                disabled={isSubmitting}
+                style={{ padding: '0.65rem 1.5rem' }}
+              >
+                <CheckCircle2 size={18} /> {isSubmitting ? 'Guardando expediente...' : 'Confirmar y Enviar a Orientación'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

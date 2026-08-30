@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "edubuenaventura": {
+      ".read": false,
+      ".write": false,
+      "cases": {
+        "$caseId": {
+          ".read": "auth != null && (auth.token.role == 'ORIENTADOR' || (auth.token.role == 'DOCENTE' && data.child('createdByEmail').val() == auth.token.email))",
+          ".write": "auth != null && (auth.token.role == 'ORIENTADOR' || (auth.token.role == 'DOCENTE' && (!data.exists() || data.child('createdByEmail').val() == auth.token.email)))",
+          ".validate": "newData.hasChildren(['id', 'stage', 'studentName', 'grade', 'teacherName', 'createdByEmail', 'dateSubmitted', 'status', 'privacyConsent']) && newData.child('id').isString() && newData.child('id').val().length == 36 && newData.child('studentName').isString() && newData.child('studentName').val().length > 2 && newData.child('studentName').val().length <= 80 && newData.child('createdByEmail').isString() && newData.child('privacyConsent').hasChildren(['policyVersion', 'acceptedAt', 'userEmail']) && newData.child('privacyConsent/userEmail').val() == newData.child('createdByEmail').val()"
+        }
+      },
+      "neae": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.token.role == 'ORIENTADOR'",
+        "$studentId": {
+          ".validate": "newData.hasChildren(['id', 'name', 'grade', 'category', 'status'])"
+        }
+      },
+      "audit_logs": {
+        ".read": "auth != null && auth.token.role == 'ORIENTADOR'",
+        ".write": "auth != null",
+        "$logId": {
+          ".validate": "newData.hasChildren(['id', 'timestamp', 'action', 'actorEmail', 'actorRole', 'success'])"
+        }
+      }
+    }
+  }
+}

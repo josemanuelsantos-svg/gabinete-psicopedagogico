@@ -1,0 +1,28 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Prohibición global de lecturas y escrituras públicas anónimas
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // Carpeta de evidencias y muestras de trabajo de alumnos
+    match /edubuenaventura/evidence/{caseId}/{fileName} {
+      // Lectura: solo Orientación o el Docente propietario de la derivación
+      allow read: if request.auth != null && (
+        request.auth.token.role == 'ORIENTADOR' ||
+        (request.auth.token.role == 'DOCENTE' && request.auth.token.email == resource.metadata.createdByEmail)
+      );
+
+      // Subida de evidencias: solo usuarios institucionales autenticados
+      // Validaciones estrictas de tamaño, tipo MIME y metadatos
+      allow write: if request.auth != null
+                   // Máximo 5 MB por archivo
+                   && request.resource.size <= 5 * 1024 * 1024
+                   // Únicamente PDF, JPEG o PNG (prohibidos ejecutables, HTML, SVG, scripts)
+                   && request.resource.contentType.matches('application/pdf|image/jpeg|image/png')
+                   // Metadatos obligatorios de autoría
+                   && request.resource.metadata.createdByEmail == request.auth.token.email;
+    }
+  }
+}

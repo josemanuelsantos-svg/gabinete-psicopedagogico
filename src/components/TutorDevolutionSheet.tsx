@@ -53,16 +53,16 @@ export const TutorDevolutionSheet: React.FC<TutorDevolutionSheetProps> = ({
             <div><strong>Curso:</strong> {referralCase.grade}</div>
             <div><strong>Tutor/a Receptora:</strong> {referralCase.teacherName}</div>
             <div><strong>Fecha Dictamen:</strong> {referralCase.decisionDate || referralCase.dateSubmitted}</div>
-            <div><strong>Hipótesis Diagnóstica:</strong> <span style={{ color: 'var(--primary-800)', fontWeight: 700 }}>{referralCase.triage.primaryHypothesis.replace(/_/g, ' ')}</span></div>
+            <div><strong>Dictamen Técnico:</strong> <span style={{ color: 'var(--primary-800)', fontWeight: 700 }}>{referralCase.categoryTag || 'Evaluación Psicopedagógica'}</span></div>
             <div><strong>Prioridad de Atención:</strong> {referralCase.priority}</div>
           </div>
 
           <div style={{ marginBottom: '1.25rem' }}>
             <h4 style={{ fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.4rem', borderBottom: '2px solid var(--primary-500)', paddingBottom: '0.2rem' }}>
-              1. Conclusión Sintética del Gabinete
+              1. Conclusión y Valoración Técnica de Orientación
             </h4>
             <p style={{ fontSize: '0.88rem', lineHeight: '1.5', textAlign: 'justify' }}>
-              {referralCase.triage.explanation}
+              {referralCase.counselorNotes || 'Expediente valorado con pautas metodológicas específicas para aplicar en el aula ordinaria.'}
             </p>
           </div>
 

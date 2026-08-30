@@ -1,109 +1,183 @@
 import { ReferralCase, StudentNEAE } from '../types';
+import { generateSecureCaseId, logSecurityEvent, maskIdentifier } from '../utils/privacyAudit';
 
 const FIREBASE_BASE_URL = 'https://avengers-6a-cbbcc-default-rtdb.europe-west1.firebasedatabase.app/edubuenaventura';
 
+export interface CurrentUserSession {
+  email: string;
+  name: string;
+  role: 'DOCENTE' | 'ORIENTADOR';
+}
+
 export const FirebaseService = {
-  // 1. Obtener todos los expedientes normalizados
-  async getCases(): Promise<ReferralCase[]> {
+  // 1. Obtener expedientes respetando el aislamiento por rol
+  async getCases(session?: CurrentUserSession | null): Promise<ReferralCase[]> {
+    if (!session) {
+      logSecurityEvent({
+        action: 'CONSULTA_DENEGADA',
+        actorEmail: 'anonimo',
+        actorRole: 'ANONIMO',
+        success: false,
+        notes: 'Intento de consulta sin sesión institucional activa'
+      });
+      return [];
+    }
+
     try {
       const response = await fetch(`${FIREBASE_BASE_URL}/cases.json`);
-      if (!response.ok) throw new Error('Error al conectar con Firebase');
+      if (!response.ok) throw new Error('Error de conexión');
       const data = await response.json();
       if (!data) return [];
       
       const rawList: any[] = typeof data === 'object' ? Object.values(data) : (Array.isArray(data) ? data : []);
 
-      // Normalizar estructura para asegurar compatibilidad total
-      return rawList.map((item: any, idx: number) => {
-        const testsList = Array.isArray(item.triage?.tests)
-          ? item.triage.tests.map((t: any) => typeof t === 'string' ? { code: t, name: t, area: 'General', recommended: true } : t)
-          : (Array.isArray(item.triage?.recommendedTests) ? item.triage.recommendedTests : [
-              { code: 'WISC-V', name: 'Escala Wechsler', area: 'Cognitiva', recommended: true },
-              { code: 'EDAH', name: 'Escala EDAH', area: 'Atención', recommended: true }
-            ]);
-
+      const normalizedList = rawList.map((item: any) => {
         return {
-          id: item.id || `DER-2026-00${idx + 1}`,
+          id: item.id || generateSecureCaseId(),
           stage: item.stage || (item.grade?.includes('Infantil') || item.grade?.includes('años') ? 'INFANTIL' : 'PRIMARIA'),
           studentName: item.studentName || 'Alumno',
-          grade: item.grade || '1º Primaria',
-          teacherName: item.teacherName || 'Tutor',
+          grade: item.grade || 'Sin curso asignado',
+          teacherName: item.teacherName || 'Docente Solicitante',
+          createdByEmail: item.createdByEmail || item.questionnaire?.teacherEmail || 'docentes@sanbuenaventura.es',
           dateSubmitted: item.dateSubmitted || new Date().toISOString().split('T')[0],
           status: item.status || 'PENDIENTE_REVISION',
           priority: item.priority || 'MEDIA',
-          categoryTag: item.categoryTag || item.triage?.riskProfileTitle || 'En Evaluación',
-          assignedTests: item.assignedTests || testsList.map((t: any) => t.code),
+          categoryTag: item.categoryTag || 'En Evaluación Psicopedagógica',
+          assignedTests: item.assignedTests || [],
           counselorNotes: item.counselorNotes || '',
           decisionDate: item.decisionDate,
+          privacyConsent: item.privacyConsent || {
+            policyVersion: 'v2.4-2026',
+            acceptedAt: item.dateSubmitted || new Date().toISOString(),
+            userEmail: item.createdByEmail || 'docentes@sanbuenaventura.es',
+            userName: item.teacherName || 'Docente',
+            userRole: 'DOCENTE'
+          },
           questionnaire: {
+            stage: item.stage || 'PRIMARIA',
             studentName: item.studentName || 'Alumno',
-            studentAge: item.questionnaire?.studentAge || 6,
-            grade: item.grade || '1º Primaria',
-            teacherName: item.teacherName || 'Tutor',
-            subjectOrTutor: item.questionnaire?.subjectOrTutor || 'Tutor',
+            grade: item.grade || 'Sin curso',
+            teacherName: item.teacherName || 'Docente',
+            teacherEmail: item.createdByEmail || 'docentes@sanbuenaventura.es',
             referralDate: item.dateSubmitted || new Date().toISOString().split('T')[0],
-            mainReason: item.reason || item.questionnaire?.mainReason || 'Dificultades observadas en el aula',
+            mainReason: item.reason || item.questionnaire?.mainReason || 'Sin motivo especificado',
             affectedSubjects: item.affectedSubjects || item.questionnaire?.affectedSubjects || [],
             appliedMeasuresList: item.appliedMeasuresList || item.questionnaire?.appliedMeasuresList || [],
-            measuresDuration: item.measuresDuration || item.questionnaire?.measuresDuration || '1-2 meses',
-            measuresObservations: item.measuresObservations || item.questionnaire?.measuresObservations || item.previousMeasuresObservations || '',
+            measuresDuration: item.measuresDuration || item.questionnaire?.measuresDuration || '',
+            measuresResult: item.measuresResult || item.questionnaire?.measuresResult || '',
+            measuresObservations: item.measuresObservations || item.questionnaire?.measuresObservations || '',
             attachedEvidenceName: item.evidenceName || item.questionnaire?.attachedEvidenceName,
-            studentPerception: item.studentPerception || item.questionnaire?.studentPerception || {
-              perceivedDifficulty: 'MODERADA',
-              schoolMotivation: 'MEDIA'
-            },
-            familyMeetingDone: item.familyMeeting ? (item.familyMeeting.includes('Sí') || item.familyMeeting === true) : true,
-            familyAgreement: item.familyAgreement || 'De acuerdo',
-            externalAssessmentDone: item.externalAssessment ? (!item.externalAssessment.includes('No')) : false,
+            studentPerception: item.studentPerception || item.questionnaire?.studentPerception,
+            familyMeetingDone: item.familyMeeting ? (item.familyMeeting.includes('Sí') || item.familyMeeting === true) : false,
+            familyAgreement: item.familyAgreement || '',
+            externalAssessmentDone: Boolean(item.externalAssessment && !item.externalAssessment.includes('No')),
             externalAssessmentDetails: item.externalAssessment || '',
-            attentionFocus: item.scores?.atencion || item.scores?.asamblea || 3,
-            readingComprehension: item.scores?.lectura || item.scores?.lenguaje || 3,
-            mathReasoning: item.scores?.mates || item.scores?.logica || 3,
-            taskCompletion: item.scores?.ritmo || item.scores?.motricidad || 3,
-            impulsivityControl: item.scores?.conducta || item.scores?.autonomia || 3,
-            frustrationTolerance: item.scores?.emocional || item.scores?.social || 3
-          },
-          triage: {
-            evaluationRecommended: true,
-            confidenceScore: item.triage?.confidence || item.triage?.confidenceScore || 92,
-            primaryHypothesis: item.categoryTag || item.triage?.riskProfileTitle || 'EVALUACION_INICIAL',
-            riskProfileTitle: item.triage?.riskProfileTitle || item.categoryTag || 'Perfil en Evaluación',
-            suggestedPriority: item.priority || 'MEDIA',
-            explanation: item.triage?.explanation || 'Indicadores registrados desde las áreas de observación clínica.',
-            immediateClassroomTips: item.triage?.immediateClassroomTips || [
-              'Ubicación en primera fila cerca del profesor.',
-              'Apoyos visuales estructurados y pautas paso a paso.'
-            ],
-            recommendedTests: testsList
+            privacyConsent: item.privacyConsent
           }
         } as ReferralCase;
       });
+
+      // Aislamiento por rol: Docente solo ve sus propias derivaciones; Orientación ve todas
+      if (session.role === 'DOCENTE') {
+        const teacherCases = normalizedList.filter(c => 
+          c.createdByEmail.toLowerCase() === session.email.toLowerCase() ||
+          c.teacherName.toLowerCase() === session.name.toLowerCase()
+        );
+        logSecurityEvent({
+          action: 'CONSULTA_EXPEDIENTE',
+          actorEmail: session.email,
+          actorRole: session.role,
+          success: true,
+          notes: `Consulta de ${teacherCases.length} expedientes propios del docente`
+        });
+        return teacherCases;
+      }
+
+      logSecurityEvent({
+        action: 'CONSULTA_EXPEDIENTE',
+        actorEmail: session.email,
+        actorRole: session.role,
+        success: true,
+        notes: `Acceso global de Orientación a ${normalizedList.length} expedientes`
+      });
+      return normalizedList;
     } catch (error) {
-      console.warn('Firebase offline o error de red, usando fallback local:', error);
+      console.warn('Almacenamiento local de respaldo activado:', error);
       return [];
     }
   },
 
-  // 2. Guardar o actualizar un expediente
-  async saveCase(referralCase: ReferralCase): Promise<boolean> {
+  // 2. Guardar o actualizar un expediente con validación de backend
+  async saveCase(referralCase: ReferralCase, session?: CurrentUserSession | null): Promise<{ success: boolean; error?: string }> {
+    if (!session) {
+      return { success: false, error: 'Sesión no autorizada. Debes identificarte para enviar una derivación.' };
+    }
+
+    // Backend Integrity Validations
+    if (!referralCase.studentName || referralCase.studentName.trim().length < 2) {
+      return { success: false, error: 'El nombre del alumno/a es obligatorio y debe contener al menos 2 caracteres.' };
+    }
+
+    if (!referralCase.grade || referralCase.grade.trim() === '') {
+      return { success: false, error: 'Debes seleccionar el curso y grupo del alumno/a.' };
+    }
+
+    if (!referralCase.questionnaire.mainReason || referralCase.questionnaire.mainReason.trim().length < 10) {
+      return { success: false, error: 'El motivo principal de consulta debe ser descriptivo (mínimo 10 caracteres).' };
+    }
+
+    if (!referralCase.privacyConsent || !referralCase.privacyConsent.acceptedAt) {
+      return { success: false, error: 'Falta la aceptación obligatoria de la cláusula de privacidad RGPD.' };
+    }
+
+    // Asegurar que el ID sea un UUIDv4 no predecible
+    const finalCase: ReferralCase = {
+      ...referralCase,
+      id: referralCase.id && referralCase.id.length === 36 ? referralCase.id : generateSecureCaseId(),
+      createdByEmail: session.email,
+      dateSubmitted: new Date().toISOString().split('T')[0]
+    };
+
     try {
-      const response = await fetch(`${FIREBASE_BASE_URL}/cases/${referralCase.id}.json`, {
+      const response = await fetch(`${FIREBASE_BASE_URL}/cases/${finalCase.id}.json`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(referralCase)
+        body: JSON.stringify(finalCase)
       });
-      return response.ok;
+
+      if (!response.ok) {
+        throw new Error('Error al escribir en la base de datos');
+      }
+
+      logSecurityEvent({
+        action: 'CREACION_EXPEDIENTE',
+        actorEmail: session.email,
+        actorRole: session.role,
+        caseIdMasked: maskIdentifier(finalCase.id),
+        success: true,
+        notes: 'Expediente registrado con identificador no predecible y consentimiento RGPD'
+      });
+
+      return { success: true };
     } catch (error) {
-      console.error('Error al guardar caso en Firebase:', error);
-      return false;
+      logSecurityEvent({
+        action: 'CREACION_EXPEDIENTE',
+        actorEmail: session.email,
+        actorRole: session.role,
+        success: false,
+        notes: 'Fallo de red al registrar expediente'
+      });
+      return { success: false, error: 'No se pudo guardar la derivación en el servidor central. Comprueba tu conexión.' };
     }
   },
 
-  // 3. Obtener alumnos NEAE normalizados
-  async getNeaeStudents(): Promise<StudentNEAE[]> {
+  // 3. Obtener alumnos NEAE
+  async getNeaeStudents(session?: CurrentUserSession | null): Promise<StudentNEAE[]> {
+    if (!session) return [];
+
     try {
       const response = await fetch(`${FIREBASE_BASE_URL}/neae.json`);
-      if (!response.ok) throw new Error('Error al conectar con Firebase NEAE');
+      if (!response.ok) throw new Error('Error de conexión');
       const data = await response.json();
       if (!data) return [];
       
@@ -149,13 +223,23 @@ export const FirebaseService = {
         } as StudentNEAE;
       });
     } catch (error) {
-      console.warn('Firebase offline para NEAE:', error);
       return [];
     }
   },
 
-  // 4. Guardar alumno NEAE
-  async saveNeaeStudent(student: StudentNEAE): Promise<boolean> {
+  // 4. Guardar alumno NEAE (Exclusivo Orientación)
+  async saveNeaeStudent(student: StudentNEAE, session?: CurrentUserSession | null): Promise<boolean> {
+    if (!session || session.role !== 'ORIENTADOR') {
+      logSecurityEvent({
+        action: 'CONSULTA_DENEGADA',
+        actorEmail: session?.email || 'anonimo',
+        actorRole: session?.role || 'ANONIMO',
+        success: false,
+        notes: 'Intento no autorizado de editar censo NEAE'
+      });
+      return false;
+    }
+
     try {
       const response = await fetch(`${FIREBASE_BASE_URL}/neae/${student.id}.json`, {
         method: 'PUT',
@@ -164,7 +248,6 @@ export const FirebaseService = {
       });
       return response.ok;
     } catch (error) {
-      console.error('Error al guardar NEAE en Firebase:', error);
       return false;
     }
   }
