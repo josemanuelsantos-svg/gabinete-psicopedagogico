@@ -246,6 +246,51 @@ export const FirebaseService = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(student)
       });
+
+      if (response.ok) {
+        logSecurityEvent({
+          action: 'EDICION_CENSO_NEAE',
+          actorEmail: session.email,
+          actorRole: session.role,
+          success: true,
+          notes: `Guardado/actualizado alumno NEAE ${student.name} (${student.id})`
+        });
+      }
+
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  },
+
+  // 5. Eliminar alumno NEAE del censo (Exclusivo Orientación)
+  async deleteNeaeStudent(studentId: string, session?: CurrentUserSession | null): Promise<boolean> {
+    if (!session || session.role !== 'ORIENTADOR') {
+      logSecurityEvent({
+        action: 'CONSULTA_DENEGADA',
+        actorEmail: session?.email || 'anonimo',
+        actorRole: session?.role || 'ANONIMO',
+        success: false,
+        notes: `Intento no autorizado de eliminar alumno NEAE ${studentId}`
+      });
+      return false;
+    }
+
+    try {
+      const response = await fetch(`${FIREBASE_BASE_URL}/neae/${studentId}.json`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        logSecurityEvent({
+          action: 'BAJA_CENSO_NEAE',
+          actorEmail: session.email,
+          actorRole: session.role,
+          success: true,
+          notes: `Eliminado alumno NEAE ${studentId} por Orientación`
+        });
+      }
+
       return response.ok;
     } catch (error) {
       return false;

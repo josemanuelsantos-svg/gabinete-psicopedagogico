@@ -14,7 +14,7 @@
         ".read": "auth != null",
         ".write": "auth != null && auth.token.role == 'ORIENTADOR'",
         "$studentId": {
-          ".validate": "newData.hasChildren(['id', 'name', 'grade', 'category', 'status'])"
+          ".validate": "!newData.exists() || newData.hasChildren(['id', 'name', 'grade', 'category', 'status'])"
         }
       },
       "audit_logs": {

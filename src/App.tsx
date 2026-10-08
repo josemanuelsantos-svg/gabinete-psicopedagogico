@@ -64,11 +64,23 @@ export function App() {
           setCases([]);
         }
 
+        const localSavedCensus = localStorage.getItem('edubuenaventura_neae_census');
+        let fallbackCensus = INITIAL_STUDENTS_NEAE;
+        if (localSavedCensus) {
+          try {
+            const parsed = JSON.parse(localSavedCensus);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              fallbackCensus = parsed;
+            }
+          } catch (e) {}
+        }
+
         const remoteNeae = await FirebaseService.getNeaeStudents(currentUser);
         if (remoteNeae && remoteNeae.length > 0) {
           setNeaeStudents(remoteNeae);
+          localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(remoteNeae));
         } else {
-          setNeaeStudents(INITIAL_STUDENTS_NEAE);
+          setNeaeStudents(fallbackCensus);
         }
       } catch (err) {
         console.warn('Cargando respaldo local:', err);
@@ -76,6 +88,38 @@ export function App() {
     }
     loadData();
   }, [authLevel, currentUser]);
+
+  // Gestión de Alumnos NEAE (Exclusivo Orientación)
+  const handleSaveNeaeStudent = async (student: StudentNEAE) => {
+    setNeaeStudents(prev => {
+      const idx = prev.findIndex(s => s.id === student.id);
+      let updated: StudentNEAE[];
+      if (idx >= 0) {
+        updated = [...prev];
+        updated[idx] = student;
+      } else {
+        updated = [student, ...prev];
+      }
+      localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(updated));
+      return updated;
+    });
+
+    if (currentUser?.role === 'ORIENTADOR') {
+      await FirebaseService.saveNeaeStudent(student, currentUser);
+    }
+  };
+
+  const handleDeleteNeaeStudent = async (studentId: string) => {
+    setNeaeStudents(prev => {
+      const updated = prev.filter(s => s.id !== studentId);
+      localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(updated));
+      return updated;
+    });
+
+    if (currentUser?.role === 'ORIENTADOR') {
+      await FirebaseService.deleteNeaeStudent(studentId, currentUser);
+    }
+  };
 
   const handleAddNewCase = async (newCase: ReferralCase) => {
     if (!currentUser) return;
@@ -466,7 +510,12 @@ export function App() {
 
         {/* VISTA 3: PORTAL NEAE (DOCENTES Y ORIENTACIÓN) */}
         {authLevel !== 'PUBLIC' && activeTab === 'NEAE_PORTAL' && (
-          <NeaePortal students={neaeStudents} />
+          <NeaePortal
+            students={neaeStudents}
+            isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
+            onSaveStudent={handleSaveNeaeStudent}
+            onDeleteStudent={handleDeleteNeaeStudent}
+          />
         )}
 
         {/* VISTA 4: BANDEJA GLOBAL DE ORIENTACIÓN (SOLO ORIENTACIÓN) */}
