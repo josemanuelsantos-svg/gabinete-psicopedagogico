@@ -98,8 +98,9 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       if (filterNeed === 'TDAH' && !fullTxt.includes('tda') && !fullTxt.includes('atenc')) return false;
       if (filterNeed === 'DISLEXIA' && !fullTxt.includes('dislex') && !fullTxt.includes('lecto') && !fullTxt.includes('dea')) return false;
       if (filterNeed === 'AACC' && !fullTxt.includes('altas capacidades') && !fullTxt.includes('aacc')) return false;
-      if (filterNeed === 'LENGUAJE' && !fullTxt.includes('lenguaje') && !fullTxt.includes('tel') && !fullTxt.includes('tdl')) return false;
-      if (filterNeed === 'ESPECIFICO' && !fullTxt.includes('específico') && !fullTxt.includes('pt/al')) return false;
+      if (filterNeed === 'TEA' && !fullTxt.includes('tea') && !fullTxt.includes('autis')) return false;
+      if (filterNeed === 'LENGUAJE' && !fullTxt.includes('lenguaje') && !fullTxt.includes('tel') && !fullTxt.includes('tdl') && !fullTxt.includes('dislalia')) return false;
+      if (filterNeed === 'ESPECIFICO' && !fullTxt.includes('específico') && !fullTxt.includes('pt') && !s.ptTeacher) return false;
       if (filterNeed === 'ORDINARIO' && !fullTxt.includes('ordinario') && !fullTxt.includes('refuerzo')) return false;
     }
     return true;
@@ -247,7 +248,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
           <p style={{ opacity: 0.9, fontSize: '0.88rem' }}>
             {isCounselor 
               ? 'Panel de Orientación con capacidad plena de gestión: puedes añadir, editar o dar de baja alumnos, sus necesidades/diagnósticos (TDAH, Dislexia, AACC, etc.) y las pautas en el censo oficial.'
-              : `Consulta oficial para el claustro de profesores: ${students.length} alumnos censados con necesidades específicas identificadas (TDAH, Dislexia, AACC, apoyos PT/AL) y pautas de aula.`
+              : `Consulta oficial para el claustro de profesores: ${students.length} alumnos censados con necesidades específicas identificadas (TDAH, Dislexia, AACC, apoyos de especialistas PT) y pautas de aula.`
             }
           </p>
         </div>
@@ -313,6 +314,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 <option value="4º">4º Primaria</option>
                 <option value="5º">5º Primaria</option>
                 <option value="6º">6º Primaria</option>
+                <option value="1º ESO">1º ESO (Secundaria)</option>
               </select>
             </div>
 
@@ -328,6 +330,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 <option value="TDAH">TDAH / Atención</option>
                 <option value="DISLEXIA">Dislexia / Lectoescritura</option>
                 <option value="AACC">Altas Capacidades (AACC)</option>
+                <option value="TEA">TEA (Autismo)</option>
                 <option value="LENGUAJE">Lenguaje / TEL-TDL</option>
                 <option value="ESPECIFICO">Apoyo Específico de PT</option>
                 <option value="ORDINARIO">Apoyo Ordinario</option>
@@ -347,8 +350,9 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 const needText = s.specificNeed || s.category;
                 const isAACC = needText.toLowerCase().includes('altas capacidades') || needText.toLowerCase().includes('aacc');
                 const isTDAH = needText.toLowerCase().includes('tda');
+                const isTEA = needText.toLowerCase().includes('tea') || needText.toLowerCase().includes('autis');
                 const isDislexia = needText.toLowerCase().includes('dislex') || needText.toLowerCase().includes('lecto') || needText.toLowerCase().includes('dea');
-                const isEsp = needText.toLowerCase().includes('específico') || needText.toLowerCase().includes('pt/al');
+                const isEsp = needText.toLowerCase().includes('específico') || !!s.ptTeacher;
 
                 let badgeBg = '#f1f5f9';
                 let badgeColor = '#475569';
@@ -358,6 +362,10 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                   badgeBg = '#fef3c7';
                   badgeColor = '#92400e';
                   badgeIcon = '⭐';
+                } else if (isTEA) {
+                  badgeBg = '#ede9fe';
+                  badgeColor = '#5b21b6';
+                  badgeIcon = '🧩';
                 } else if (isTDAH) {
                   badgeBg = '#fee2e2';
                   badgeColor = '#991b1b';
@@ -743,7 +751,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                       'Altas Capacidades Intelectuales (AACC)',
                       'Trastorno del Espectro Autista (TEA)',
                       'Retraso Madurativo',
-                      'Apoyo Específico Instrumental (PT/AL)',
+                      'Apoyo Específico Instrumental (PT)',
                       'Refuerzo Pedagógico Ordinario'
                     ].map(sug => (
                       <button

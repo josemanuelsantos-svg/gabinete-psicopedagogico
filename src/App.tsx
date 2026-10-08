@@ -378,7 +378,7 @@ export function App() {
                 className={`tab-btn ${activeTab === 'SPECIALIST_SCHEDULE' ? 'active' : ''}`}
                 onClick={() => setActiveTab('SPECIALIST_SCHEDULE')}
               >
-                <Calendar size={16} /> Apoyos PT / AL
+                <Calendar size={16} /> Apoyos PT (Especialistas)
               </button>
 
               <button
@@ -527,7 +527,7 @@ export function App() {
           />
         )}
 
-        {/* VISTA 5: CUADRANTE PT/AL (SOLO ORIENTACIÓN) */}
+        {/* VISTA 5: CUADRANTE PT (SOLO ORIENTACIÓN) */}
         {authLevel === 'ORIENTADOR_ADMIN' && activeTab === 'SPECIALIST_SCHEDULE' && (
           <SpecialistSchedulePortal students={neaeStudents} />
         )}
