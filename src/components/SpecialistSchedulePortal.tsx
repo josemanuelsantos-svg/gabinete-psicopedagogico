@@ -9,24 +9,45 @@ interface SpecialistSchedulePortalProps {
 export const SpecialistSchedulePortal: React.FC<SpecialistSchedulePortalProps> = ({ students }) => {
   const days: SpecialistSupportSlot['dayOfWeek'][] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
 
-  // Flatten slots with student information
-  const allSlots = students.flatMap(s =>
-    (s.supportSlots || [
-      { id: `${s.id}-slot1`, dayOfWeek: 'Lunes', timeSlot: '10:00 - 11:00', specialistType: s.ptTeacher ? 'PT' : 'AL', specialistName: s.ptTeacher || s.alTeacher || 'Especialista', mode: 'Aula de Apoyo PT/AL' },
-      { id: `${s.id}-slot2`, dayOfWeek: 'Miércoles', timeSlot: '11:30 - 12:30', specialistType: s.alTeacher ? 'AL' : 'PT', specialistName: s.alTeacher || s.ptTeacher || 'Especialista', mode: 'Dentro del Aula' }
-    ]).map(slot => ({ ...slot, studentName: s.name, grade: s.grade, category: s.category }))
-  );
+  // Filtrar exclusivamente los alumnos con apoyo de PT asignado
+  const ptStudents = students.filter(s => s.ptTeacher || (s.guidelines?.ptHoursPerWeek && s.guidelines.ptHoursPerWeek > 0));
+
+  // Generar cuadrante de sesiones de PT
+  const allSlots = ptStudents.flatMap((s, idx) => {
+    const ptName = s.ptTeacher || (idx % 2 === 0 ? 'Daniel Asenjo (PT)' : 'Diego López (PT)');
+    return (s.supportSlots || [
+      { 
+        id: `${s.id}-slot1`, 
+        dayOfWeek: (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'][idx % 5]) as any, 
+        timeSlot: idx % 2 === 0 ? '09:30 - 10:30' : '11:30 - 12:30', 
+        specialistType: 'PT', 
+        specialistName: ptName, 
+        mode: 'Aula de Apoyo PT' 
+      },
+      { 
+        id: `${s.id}-slot2`, 
+        dayOfWeek: (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'][(idx + 2) % 5]) as any, 
+        timeSlot: idx % 2 === 0 ? '12:30 - 13:30' : '10:30 - 11:30', 
+        specialistType: 'PT', 
+        specialistName: ptName, 
+        mode: 'Dentro del Aula' 
+      }
+    ]).map(slot => ({ ...slot, studentName: s.name, grade: s.grade, specificNeed: s.specificNeed || s.category }));
+  });
 
   return (
     <div className="card">
       <div style={{ borderBottom: '1px solid var(--border-light)', paddingBottom: '1rem', marginBottom: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <span style={{ background: 'var(--primary-100)', color: 'var(--primary-800)', padding: '0.2rem 0.6rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
-            Planificación de Apoyos Escolar
+          <span style={{ background: '#e0e7ff', color: '#3730a3', padding: '0.2rem 0.6rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
+            Planificación Oficial de Apoyos • Colegio San Buenaventura
           </span>
           <h2 style={{ fontSize: '1.4rem', color: 'var(--text-main)', marginTop: '0.2rem' }}>
-            Cuadrante Semanal de Pedagogía Terapéutica (PT) y Audición y Lenguaje (AL)
+            Cuadrante Semanal de Pedagogía Terapéutica (PT)
           </h2>
+          <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+            Especialistas de PT en activo: <strong>Daniel Asenjo</strong> y <strong>Diego López</strong> ({ptStudents.length} alumnos atendidos).
+          </p>
         </div>
       </div>
 
@@ -41,19 +62,22 @@ export const SpecialistSchedulePortal: React.FC<SpecialistSchedulePortalProps> =
               </h3>
 
               {daySlots.length === 0 ? (
-                <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>Sin sesiones asignadas</p>
+                <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>Sin sesiones programadas</p>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                   {daySlots.map(slot => (
                     <div key={slot.id} style={{ background: '#ffffff', padding: '0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid #cbd5e1', boxShadow: 'var(--shadow-sm)' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem' }}>
-                        <span style={{ fontSize: '0.72rem', background: slot.specialistType === 'PT' ? '#e0e7ff' : '#f3e8ff', color: slot.specialistType === 'PT' ? '#3730a3' : '#6b21a8', padding: '0.15rem 0.5rem', borderRadius: '10px', fontWeight: 700 }}>
-                          {slot.specialistType} • {slot.timeSlot}
+                        <span style={{ fontSize: '0.72rem', background: '#e0e7ff', color: '#3730a3', padding: '0.15rem 0.5rem', borderRadius: '10px', fontWeight: 700 }}>
+                          PT • {slot.timeSlot}
                         </span>
                       </div>
                       <strong style={{ fontSize: '0.85rem', color: 'var(--text-main)' }}>{slot.studentName}</strong>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{slot.grade}</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--primary-700)', marginTop: '0.3rem', fontWeight: 600 }}>
+                      <div style={{ fontSize: '0.72rem', color: '#0d9488', marginTop: '0.2rem', fontWeight: 600 }}>
+                        🩺 {slot.specificNeed}
+                      </div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--primary-700)', marginTop: '0.25rem', fontWeight: 600 }}>
                         📍 {slot.mode} ({slot.specialistName})
                       </div>
                     </div>

@@ -50,7 +50,7 @@ export const CabinetAnnualReport: React.FC<CabinetAnnualReportProps> = ({ cases,
         <div className="card" style={{ borderLeft: '4px solid var(--accent-indigo)' }}>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600 }}>ALUMNOS NEAE ACTIVOS</span>
           <h3 style={{ fontSize: '2rem', color: 'var(--text-main)', marginTop: '0.2rem' }}>{studentsNEAE.length}</h3>
-          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Con apoyos PT/AL y adaptaciones</p>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Con apoyos de PT y adaptaciones</p>
         </div>
       </div>
 

@@ -48,9 +48,9 @@ export interface SpecialistSupportSlot {
   id: string;
   dayOfWeek: 'Lunes' | 'Martes' | 'Miércoles' | 'Jueves' | 'Viernes';
   timeSlot: string;
-  specialistType: 'PT' | 'AL';
+  specialistType: 'PT';
   specialistName: string;
-  mode: 'Dentro del Aula' | 'Aula de Apoyo PT/AL';
+  mode: 'Dentro del Aula' | 'Aula de Apoyo PT';
 }
 
 export interface SubjectGuidelines {
@@ -149,7 +149,6 @@ export interface ActionPlanGuidelines {
   emotionalTips: string[];
   subjectSpecificGuidelines?: SubjectGuidelines[];
   ptHoursPerWeek?: number;
-  alHoursPerWeek?: number;
 }
 
 export interface ReferralCase {
@@ -192,8 +191,7 @@ export interface StudentNEAE {
   category: string;
   specificNeed?: string; // Necesidad específica / Diagnóstico: TDAH, Dislexia (DEA), Altas Capacidades (AACC), etc.
   tutor: string;
-  ptTeacher?: string;
-  alTeacher?: string;
+  ptTeacher?: string; // Maestro/a especialista PT (Daniel Asenjo / Diego López)
   curricularAdaptation: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
   guidelines: ActionPlanGuidelines;
   supportSlots?: SpecialistSupportSlot[];

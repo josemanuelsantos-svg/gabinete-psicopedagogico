@@ -199,9 +199,8 @@ export const FirebaseService = {
           tutor: item.tutor || 'Tutor de Aula',
           curricularAdaptation: item.adaptation || item.curricularAdaptation || 'No Significativa (ACNS)',
           status: item.status || 'Activo',
-          lastReviewDate: item.lastReviewDate || '2026-08-18',
-          ptTeacher: item.ptTeacher || 'Mª Ángeles Gómez (PT)',
-          alTeacher: item.alTeacher || 'Sara Domínguez (AL)',
+          lastReviewDate: item.lastReviewDate || '2026-10-08',
+          ptTeacher: item.ptTeacher || (item.category?.includes('Específico') ? 'Daniel Asenjo (PT)' : undefined),
           guidelines: {
             generalGoal: item.goal || item.guidelines?.generalGoal || 'Intervención educativa y metodológica adaptada en aula.',
             methodologicalAdaptations: methodological,
@@ -217,8 +216,7 @@ export const FirebaseService = {
               'Reforzamiento positivo constante ante el esfuerzo.',
               'Validación de la frustración y clima seguro.'
             ],
-            ptHoursPerWeek: item.guidelines?.ptHoursPerWeek || 2,
-            alHoursPerWeek: item.guidelines?.alHoursPerWeek || 2
+            ptHoursPerWeek: item.guidelines?.ptHoursPerWeek || (item.category?.includes('Específico') ? 3 : 0)
           }
         } as StudentNEAE;
       });

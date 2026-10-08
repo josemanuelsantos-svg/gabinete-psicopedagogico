@@ -74,8 +74,6 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     status: 'Activo',
     ptTeacher: '',
     ptHours: 0,
-    alTeacher: '',
-    alHours: 0,
     generalGoal: 'Atención educativa personalizada y adaptada en el aula ordinaria.',
     methodological: 'Fraccionamiento de tareas en pasos sencillos.\nSupervisión y confirmación del trabajo realizado.\nUso de apoyos manipulativos y visuales.',
     environmental: 'Ubicación en primera fila cerca de la pizarra.\nMesa de trabajo libre de distracciones visuales.',
@@ -127,10 +125,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       specificNeed: 'TDAH (Déficit de Atención con Hiperactividad)',
       curricularAdaptation: 'No Significativa (ACNS)',
       status: 'Activo',
-      ptTeacher: 'Mª Ángeles Gómez (PT)',
-      ptHours: 2,
-      alTeacher: 'Sara Domínguez (AL)',
-      alHours: 0,
+      ptTeacher: 'Daniel Asenjo (PT)',
+      ptHours: 3,
       generalGoal: 'Intervención y seguimiento pedagógico adaptado en el aula ordinaria.',
       methodological: 'Fraccionamiento de tareas en pasos breves.\nInstrucciones directas y apoyo visual.\nSupervisión periódica.',
       environmental: 'Ubicación en primera fila cerca del profesor y lejos de distracciones.',
@@ -156,8 +152,6 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       status: student.status || 'Activo',
       ptTeacher: student.ptTeacher || '',
       ptHours: student.guidelines?.ptHoursPerWeek || 0,
-      alTeacher: student.alTeacher || '',
-      alHours: student.guidelines?.alHoursPerWeek || 0,
       generalGoal: student.guidelines?.generalGoal || '',
       methodological: (student.guidelines?.methodologicalAdaptations || []).join('\n'),
       environmental: (student.guidelines?.environmentalAdaptations || []).join('\n'),
@@ -189,15 +183,13 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       status: formData.status,
       lastReviewDate: new Date().toISOString().split('T')[0],
       ptTeacher: formData.ptTeacher.trim() || undefined,
-      alTeacher: formData.alTeacher.trim() || undefined,
       guidelines: {
         generalGoal: formData.generalGoal.trim() || 'Intervención educativa adaptada en aula.',
         methodologicalAdaptations: splitLines(formData.methodological),
         environmentalAdaptations: splitLines(formData.environmental),
         evaluationAdaptations: splitLines(formData.evaluation),
         emotionalTips: splitLines(formData.emotional),
-        ptHoursPerWeek: Number(formData.ptHours) || 0,
-        alHoursPerWeek: Number(formData.alHours) || 0
+        ptHoursPerWeek: Number(formData.ptHours) || 0
       }
     };
 
@@ -337,7 +329,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 <option value="DISLEXIA">Dislexia / Lectoescritura</option>
                 <option value="AACC">Altas Capacidades (AACC)</option>
                 <option value="LENGUAJE">Lenguaje / TEL-TDL</option>
-                <option value="ESPECIFICO">Apoyo Específico PT/AL</option>
+                <option value="ESPECIFICO">Apoyo Específico de PT</option>
                 <option value="ORDINARIO">Apoyo Ordinario</option>
               </select>
             </div>
@@ -548,15 +540,10 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 </div>
               </div>
 
-              {/* Especialistas Asignados */}
-              {(selectedStudent.ptTeacher || selectedStudent.alTeacher) && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '0.85rem', background: 'var(--bg-subtle)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem' }}>
-                  {selectedStudent.ptTeacher && (
-                    <div><strong>Especialista PT:</strong> {selectedStudent.ptTeacher} ({guidelines.ptHoursPerWeek || 0} h/sem)</div>
-                  )}
-                  {selectedStudent.alTeacher && (
-                    <div><strong>Especialista AL:</strong> {selectedStudent.alTeacher} ({guidelines.alHoursPerWeek || 0} h/sem)</div>
-                  )}
+              {/* Especialista PT Asignado */}
+              {selectedStudent.ptTeacher && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '0.85rem', background: '#e0e7ff', color: '#3730a3', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', fontSize: '0.85rem', border: '1px solid #c7d2fe' }}>
+                  <div><strong>Maestro Especialista PT:</strong> {selectedStudent.ptTeacher} ({guidelines.ptHoursPerWeek || 0} h/semana de atención directa)</div>
                 </div>
               )}
             </div>
@@ -834,24 +821,26 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 </div>
               </div>
 
-              {/* Sección 2: Especialistas de Apoyo */}
+              {/* Sección 2: Especialista de Apoyo PT */}
               <div style={{ marginBottom: '1.25rem' }}>
                 <h4 style={{ fontSize: '0.95rem', color: 'var(--primary-800)', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.3rem', marginBottom: '0.75rem' }}>
-                  2. Especialistas de Apoyo y Dedicación Horaria
+                  2. Especialista de Pedagogía Terapéutica (PT) y Dedicación Horaria
                 </h4>
-                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 2fr 1fr', gap: '0.75rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.75rem' }}>
                   <div>
-                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Maestro/a PT</label>
-                    <input
-                      type="text"
-                      className="input-text"
-                      placeholder="Ej: Mª Ángeles Gómez (PT)"
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Maestro/a Especialista PT</label>
+                    <select
+                      className="select-input"
                       value={formData.ptTeacher}
                       onChange={(e) => setFormData({ ...formData, ptTeacher: e.target.value })}
-                    />
+                    >
+                      <option value="">Sin especialista PT (Apoyo ordinario en aula)</option>
+                      <option value="Daniel Asenjo (PT)">Daniel Asenjo (PT)</option>
+                      <option value="Diego López (PT)">Diego López (PT)</option>
+                    </select>
                   </div>
                   <div>
-                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Horas PT/sem</label>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Horas PT a la semana</label>
                     <input
                       type="number"
                       min="0"
@@ -859,27 +848,6 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                       className="input-text"
                       value={formData.ptHours}
                       onChange={(e) => setFormData({ ...formData, ptHours: Number(e.target.value) })}
-                    />
-                  </div>
-                  <div>
-                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Maestro/a AL</label>
-                    <input
-                      type="text"
-                      className="input-text"
-                      placeholder="Ej: Sara Domínguez (AL)"
-                      value={formData.alTeacher}
-                      onChange={(e) => setFormData({ ...formData, alTeacher: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Horas AL/sem</label>
-                    <input
-                      type="number"
-                      min="0"
-                      max="15"
-                      className="input-text"
-                      value={formData.alHours}
-                      onChange={(e) => setFormData({ ...formData, alHours: Number(e.target.value) })}
                     />
                   </div>
                 </div>

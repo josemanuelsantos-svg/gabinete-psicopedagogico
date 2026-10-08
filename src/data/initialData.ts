@@ -2,15 +2,15 @@ import { ReferralCase, StudentNEAE } from '../types';
 
 export const INITIAL_CASES: ReferralCase[] = [];
 
-// Censo Oficial Completo de Alumnos de Apoyo (1º a 6º de Educación Primaria)
-// Importado del documento oficial de Atención a la Diversidad del Colegio San Buenaventura
+// Censo Oficial Completo de Alumnos de Apoyo y Diversidad (1º a 6º Primaria)
+// Especialistas de PT oficiales del centro: Daniel Asenjo y Diego López (sin AL)
 export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
   {
     "id": "NEAE-01",
     "stage": "PRIMARIA",
     "name": "Daryel Augusto",
     "grade": "1º Educación Primaria A",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 1ºA",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -35,12 +35,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "TDAH (Déficit de Atención con Hiperactividad)"
   },
   {
     "id": "NEAE-02",
@@ -72,8 +70,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -106,10 +103,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-04",
@@ -140,10 +136,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-05",
@@ -175,8 +170,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -210,8 +204,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -245,10 +238,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-08",
@@ -280,10 +272,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-09",
@@ -315,8 +306,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -350,8 +340,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -385,8 +374,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -395,7 +383,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Antoine Molinares Collantes",
     "grade": "2º Educación Primaria A",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 2ºA",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -420,12 +408,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "Dislexia / DEA (Lectoescritura)"
   },
   {
     "id": "NEAE-13",
@@ -457,8 +443,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -492,10 +477,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-15",
@@ -527,10 +511,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-16",
@@ -562,8 +545,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -597,8 +579,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -632,8 +613,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -642,7 +622,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Diego Andrade",
     "grade": "2º Educación Primaria B",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 2ºB",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -667,12 +647,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "TDAH (Déficit de Atención con Hiperactividad)"
   },
   {
     "id": "NEAE-20",
@@ -704,8 +682,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -738,8 +715,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -772,8 +748,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -782,7 +757,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Juliette Cardoza",
     "grade": "2º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 2ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -807,19 +782,17 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "Retraso Madurativo / Apoyo Instrumental"
   },
   {
     "id": "NEAE-24",
     "stage": "PRIMARIA",
     "name": "Oliver Luna",
     "grade": "2º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 2ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -844,12 +817,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje (DEA)"
   },
   {
     "id": "NEAE-25",
@@ -881,10 +852,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-26",
@@ -916,8 +886,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -951,10 +920,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-28",
@@ -986,10 +954,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-29",
@@ -1021,8 +988,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -1056,8 +1022,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -1090,10 +1055,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-32",
@@ -1124,8 +1088,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -1158,8 +1121,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -1193,8 +1155,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -1203,7 +1164,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Alexander Hristov",
     "grade": "3º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 3ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -1228,19 +1189,17 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "Dislexia / DEA (Lectoescritura)"
   },
   {
     "id": "NEAE-36",
     "stage": "PRIMARIA",
     "name": "Rodrigo Quiroz",
     "grade": "3º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 3ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -1265,12 +1224,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "TDAH (Déficit de Atención Inatento)"
   },
   {
     "id": "NEAE-37",
@@ -1302,8 +1259,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -1337,8 +1293,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -1372,17 +1327,16 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-40",
     "stage": "PRIMARIA",
     "name": "Adrian Chuquimango",
     "grade": "4º Educación Primaria A",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 4ºA",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -1407,12 +1361,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Daniel Asenjo (PT)",
+    "specificNeed": "TDAH (Déficit de Atención con Hiperactividad)"
   },
   {
     "id": "NEAE-41",
@@ -1444,10 +1396,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-42",
@@ -1479,10 +1430,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-43",
@@ -1513,8 +1463,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -1547,8 +1496,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -1581,8 +1529,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -1615,8 +1562,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -1650,8 +1596,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -1685,8 +1630,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -1719,10 +1663,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-50",
@@ -1754,10 +1697,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-51",
@@ -1789,10 +1731,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-52",
@@ -1824,8 +1765,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -1859,8 +1799,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -1894,8 +1833,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -1929,8 +1867,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -1939,7 +1876,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Jhonathan Aaron Chino",
     "grade": "5º Educación Primaria A",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 5ºA",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -1964,12 +1901,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "Dislexia / DEA (Lectoescritura)"
   },
   {
     "id": "NEAE-57",
@@ -2000,10 +1935,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-58",
@@ -2035,8 +1969,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -2069,8 +2002,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -2103,8 +2035,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -2138,8 +2069,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -2148,7 +2078,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Manuel Aranda",
     "grade": "5º Educación Primaria B",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 5ºB",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -2173,12 +2103,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "Dificultades en Razonamiento Matemático (Discalculia)"
   },
   {
     "id": "NEAE-63",
@@ -2210,8 +2138,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -2244,10 +2171,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-65",
@@ -2279,10 +2205,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-66",
@@ -2313,8 +2238,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
@@ -2348,8 +2272,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -2383,10 +2306,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-69",
@@ -2418,10 +2340,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-70",
@@ -2453,8 +2374,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -2488,8 +2408,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -2523,8 +2442,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -2533,7 +2451,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Darío Gómez Verdasco",
     "grade": "6º Educación Primaria A",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 6ºA",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -2558,19 +2476,17 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "TDAH (Déficit de Atención Inatento)"
   },
   {
     "id": "NEAE-74",
     "stage": "PRIMARIA",
     "name": "Ysabella Cardoza",
     "grade": "6º Educación Primaria A",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 6ºA",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -2595,12 +2511,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "Dificultades de Aprendizaje en Áreas Instrumentales"
   },
   {
     "id": "NEAE-75",
@@ -2632,8 +2546,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -2667,8 +2580,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -2702,8 +2614,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -2737,10 +2648,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-79",
@@ -2772,8 +2682,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -2807,8 +2716,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -2842,10 +2750,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-82",
@@ -2877,10 +2784,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-83",
@@ -2912,10 +2818,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-84",
@@ -2947,8 +2852,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -2982,8 +2886,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -3017,8 +2920,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -3052,8 +2954,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -3087,8 +2988,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 0,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
@@ -3122,8 +3022,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -3132,7 +3031,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "stage": "PRIMARIA",
     "name": "Alvaro Lionel Astupuña",
     "grade": "6º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 6ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -3157,19 +3056,17 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "Trastorno del Desarrollo del Lenguaje (TDL)"
   },
   {
     "id": "NEAE-91",
     "stage": "PRIMARIA",
     "name": "Mª Laura Gonzales",
     "grade": "6º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 6ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -3194,19 +3091,17 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "Trastorno del Espectro Autista (TEA)"
   },
   {
     "id": "NEAE-92",
     "stage": "PRIMARIA",
     "name": "María Cantero",
     "grade": "6º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 6ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -3231,19 +3126,17 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje (DEA)"
   },
   {
     "id": "NEAE-93",
     "stage": "PRIMARIA",
     "name": "Cristhian Hristov",
     "grade": "6º Educación Primaria C",
-    "category": "ACNEAE - Apoyo Específico (PT/AL)",
+    "category": "ACNEAE - Apoyo Específico PT",
     "tutor": "Tutor/a de 6ºC",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
@@ -3268,12 +3161,10 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 2,
-      "alHoursPerWeek": 1
+      "ptHoursPerWeek": 3
     },
-    "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)",
-    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
+    "ptTeacher": "Diego López (PT)",
+    "specificNeed": "Retraso Madurativo / Apoyo Instrumental"
   },
   {
     "id": "NEAE-94",
@@ -3305,10 +3196,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-95",
@@ -3340,10 +3230,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "Dislexia / Dificultades en Lectoescritura (DEA)"
   },
   {
     "id": "NEAE-96",
@@ -3375,8 +3264,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -3410,8 +3298,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -3445,10 +3332,9 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
-    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
+    "specificNeed": "TDAH (Déficit de Atención e Impulsividad)"
   },
   {
     "id": "NEAE-99",
@@ -3480,8 +3366,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -3515,8 +3400,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -3550,8 +3434,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
@@ -3585,8 +3468,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
@@ -3620,8 +3502,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Reforzamiento positivo constante ante el esfuerzo personal y la perseverancia.",
         "Validación emocional y fomento de un clima seguro de participación."
       ],
-      "ptHoursPerWeek": 1,
-      "alHoursPerWeek": 0
+      "ptHoursPerWeek": 0
     },
     "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   }
