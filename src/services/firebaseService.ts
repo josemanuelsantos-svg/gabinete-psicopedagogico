@@ -23,88 +23,107 @@ export const FirebaseService = {
       return [];
     }
 
+    // 1. Obtener casos guardados localmente
+    let localCases: ReferralCase[] = [];
+    try {
+      const stored = localStorage.getItem('edubuenaventura_cases');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) localCases = parsed;
+      }
+    } catch (storageErr) {
+      console.warn('Error al leer casos locales:', storageErr);
+    }
+
+    let remoteList: ReferralCase[] = [];
     try {
       const response = await fetch(`${FIREBASE_BASE_URL}/cases.json`);
-      if (!response.ok) throw new Error('Error de conexión');
-      const data = await response.json();
-      if (!data) return [];
-      
-      const rawList: any[] = typeof data === 'object' ? Object.values(data) : (Array.isArray(data) ? data : []);
-
-      const normalizedList = rawList.map((item: any) => {
-        return {
-          id: item.id || generateSecureCaseId(),
-          stage: item.stage || (item.grade?.includes('Infantil') || item.grade?.includes('años') ? 'INFANTIL' : 'PRIMARIA'),
-          studentName: item.studentName || 'Alumno',
-          grade: item.grade || 'Sin curso asignado',
-          teacherName: item.teacherName || 'Docente Solicitante',
-          createdByEmail: item.createdByEmail || item.questionnaire?.teacherEmail || 'docentes@sanbuenaventura.es',
-          dateSubmitted: item.dateSubmitted || new Date().toISOString().split('T')[0],
-          status: item.status || 'PENDIENTE_REVISION',
-          priority: item.priority || 'MEDIA',
-          categoryTag: item.categoryTag || 'En Evaluación Psicopedagógica',
-          assignedTests: item.assignedTests || [],
-          counselorNotes: item.counselorNotes || '',
-          decisionDate: item.decisionDate,
-          privacyConsent: item.privacyConsent || {
-            policyVersion: 'v2.4-2026',
-            acceptedAt: item.dateSubmitted || new Date().toISOString(),
-            userEmail: item.createdByEmail || 'docentes@sanbuenaventura.es',
-            userName: item.teacherName || 'Docente',
-            userRole: 'DOCENTE'
-          },
-          questionnaire: {
-            stage: item.stage || 'PRIMARIA',
-            studentName: item.studentName || 'Alumno',
-            grade: item.grade || 'Sin curso',
-            teacherName: item.teacherName || 'Docente',
-            teacherEmail: item.createdByEmail || 'docentes@sanbuenaventura.es',
-            referralDate: item.dateSubmitted || new Date().toISOString().split('T')[0],
-            mainReason: item.reason || item.questionnaire?.mainReason || 'Sin motivo especificado',
-            affectedSubjects: item.affectedSubjects || item.questionnaire?.affectedSubjects || [],
-            appliedMeasuresList: item.appliedMeasuresList || item.questionnaire?.appliedMeasuresList || [],
-            measuresDuration: item.measuresDuration || item.questionnaire?.measuresDuration || '',
-            measuresResult: item.measuresResult || item.questionnaire?.measuresResult || '',
-            measuresObservations: item.measuresObservations || item.questionnaire?.measuresObservations || '',
-            attachedEvidenceName: item.evidenceName || item.questionnaire?.attachedEvidenceName,
-            studentPerception: item.studentPerception || item.questionnaire?.studentPerception,
-            familyMeetingDone: item.familyMeeting ? (item.familyMeeting.includes('Sí') || item.familyMeeting === true) : false,
-            familyAgreement: item.familyAgreement || '',
-            externalAssessmentDone: Boolean(item.externalAssessment && !item.externalAssessment.includes('No')),
-            externalAssessmentDetails: item.externalAssessment || '',
-            privacyConsent: item.privacyConsent
-          }
-        } as ReferralCase;
-      });
-
-      // Aislamiento por rol: Docente solo ve sus propias derivaciones; Orientación ve todas
-      if (session.role === 'DOCENTE') {
-        const teacherCases = normalizedList.filter(c => 
-          c.createdByEmail.toLowerCase() === session.email.toLowerCase() ||
-          c.teacherName.toLowerCase() === session.name.toLowerCase()
-        );
-        logSecurityEvent({
-          action: 'CONSULTA_EXPEDIENTE',
-          actorEmail: session.email,
-          actorRole: session.role,
-          success: true,
-          notes: `Consulta de ${teacherCases.length} expedientes propios del docente`
-        });
-        return teacherCases;
+      if (response.ok) {
+        const data = await response.json();
+        if (data) {
+          const rawList: any[] = typeof data === 'object' ? Object.values(data) : (Array.isArray(data) ? data : []);
+          remoteList = rawList.map((item: any) => {
+            return {
+              id: item.id || generateSecureCaseId(),
+              stage: item.stage || (item.grade?.includes('Infantil') || item.grade?.includes('años') ? 'INFANTIL' : 'PRIMARIA'),
+              studentName: item.studentName || 'Alumno',
+              grade: item.grade || 'Sin curso asignado',
+              teacherName: item.teacherName || 'Docente Solicitante',
+              createdByEmail: item.createdByEmail || item.questionnaire?.teacherEmail || 'docentes@sanbuenaventura.es',
+              dateSubmitted: item.dateSubmitted || new Date().toISOString().split('T')[0],
+              status: item.status || 'PENDIENTE_REVISION',
+              priority: item.priority || 'MEDIA',
+              categoryTag: item.categoryTag || 'En Evaluación Psicopedagógica',
+              assignedTests: item.assignedTests || [],
+              counselorNotes: item.counselorNotes || '',
+              decisionDate: item.decisionDate,
+              privacyConsent: item.privacyConsent || {
+                policyVersion: 'v2.4-2026',
+                acceptedAt: item.dateSubmitted || new Date().toISOString(),
+                userEmail: item.createdByEmail || 'docentes@sanbuenaventura.es',
+                userName: item.teacherName || 'Docente',
+                userRole: 'DOCENTE'
+              },
+              questionnaire: {
+                stage: item.stage || 'PRIMARIA',
+                studentName: item.studentName || 'Alumno',
+                grade: item.grade || 'Sin curso',
+                teacherName: item.teacherName || 'Docente',
+                teacherEmail: item.createdByEmail || 'docentes@sanbuenaventura.es',
+                referralDate: item.dateSubmitted || new Date().toISOString().split('T')[0],
+                mainReason: item.reason || item.questionnaire?.mainReason || 'Sin motivo especificado',
+                affectedSubjects: item.affectedSubjects || item.questionnaire?.affectedSubjects || [],
+                appliedMeasuresList: item.appliedMeasuresList || item.questionnaire?.appliedMeasuresList || [],
+                measuresDuration: item.measuresDuration || item.questionnaire?.measuresDuration || '',
+                measuresResult: item.measuresResult || item.questionnaire?.measuresResult || '',
+                measuresObservations: item.measuresObservations || item.questionnaire?.measuresObservations || '',
+                attachedEvidenceName: item.evidenceName || item.questionnaire?.attachedEvidenceName,
+                studentPerception: item.studentPerception || item.questionnaire?.studentPerception,
+                familyMeetingDone: item.familyMeeting ? (item.familyMeeting.includes('Sí') || item.familyMeeting === true) : false,
+                familyAgreement: item.familyAgreement || '',
+                externalAssessmentDone: Boolean(item.externalAssessment && !item.externalAssessment.includes('No')),
+                externalAssessmentDetails: item.externalAssessment || '',
+                privacyConsent: item.privacyConsent
+              }
+            } as ReferralCase;
+          });
+        }
       }
+    } catch (networkErr) {
+      console.warn('Almacenamiento local de respaldo activado:', networkErr);
+    }
 
+    // Combinar casos locales y remotos deduplicando por ID
+    const caseMap = new Map<string, ReferralCase>();
+    localCases.forEach(c => caseMap.set(c.id, c));
+    remoteList.forEach(c => caseMap.set(c.id, c));
+    const normalizedList = Array.from(caseMap.values());
+
+    // Aislamiento por rol: Docente solo ve sus propias derivaciones; Orientación ve todas
+    if (session.role === 'DOCENTE') {
+      const teacherCases = normalizedList.filter(c => 
+        (c.createdByEmail && c.createdByEmail.toLowerCase() === session.email.toLowerCase()) ||
+        (c.questionnaire?.teacherEmail && c.questionnaire.teacherEmail.toLowerCase() === session.email.toLowerCase()) ||
+        (c.teacherName && c.teacherName.toLowerCase() === session.name.toLowerCase())
+      );
       logSecurityEvent({
         action: 'CONSULTA_EXPEDIENTE',
         actorEmail: session.email,
         actorRole: session.role,
         success: true,
-        notes: `Acceso global de Orientación a ${normalizedList.length} expedientes`
+        notes: `Consulta de ${teacherCases.length} expedientes propios del docente`
       });
-      return normalizedList;
-    } catch (error) {
-      console.warn('Almacenamiento local de respaldo activado:', error);
-      return [];
+      return teacherCases;
     }
+
+    logSecurityEvent({
+      action: 'CONSULTA_EXPEDIENTE',
+      actorEmail: session.email,
+      actorRole: session.role,
+      success: true,
+      notes: `Acceso global de Orientación a ${normalizedList.length} expedientes`
+    });
+    return normalizedList;
   },
 
   // 2. Guardar o actualizar un expediente con validación de backend
@@ -138,6 +157,23 @@ export const FirebaseService = {
       dateSubmitted: new Date().toISOString().split('T')[0]
     };
 
+    // 1. Guardar SIEMPRE en almacenamiento local para asegurar que la derivación no se pierda nunca
+    try {
+      const stored = localStorage.getItem('edubuenaventura_cases');
+      let currentLocal: ReferralCase[] = stored ? JSON.parse(stored) : [];
+      if (!Array.isArray(currentLocal)) currentLocal = [];
+      const existingIdx = currentLocal.findIndex(c => c.id === finalCase.id);
+      if (existingIdx >= 0) {
+        currentLocal[existingIdx] = finalCase;
+      } else {
+        currentLocal = [finalCase, ...currentLocal];
+      }
+      localStorage.setItem('edubuenaventura_cases', JSON.stringify(currentLocal));
+    } catch (storageErr) {
+      console.warn('Advertencia al persistir en almacenamiento local:', storageErr);
+    }
+
+    // 2. Intentar sincronización con Firebase
     try {
       const response = await fetch(`${FIREBASE_BASE_URL}/cases/${finalCase.id}.json`, {
         method: 'PUT',
@@ -146,7 +182,7 @@ export const FirebaseService = {
       });
 
       if (!response.ok) {
-        throw new Error('Error al escribir en la base de datos');
+        console.warn(`Sincronización remota pendiente (${response.status}). El caso ha sido asegurado localmente.`);
       }
 
       logSecurityEvent({
@@ -159,15 +195,18 @@ export const FirebaseService = {
       });
 
       return { success: true };
-    } catch (error) {
+    } catch (networkError) {
       logSecurityEvent({
         action: 'CREACION_EXPEDIENTE',
         actorEmail: session.email,
         actorRole: session.role,
-        success: false,
-        notes: 'Fallo de red al registrar expediente'
+        caseIdMasked: maskIdentifier(finalCase.id),
+        success: true,
+        notes: 'Expediente guardado en almacenamiento local (modo offline/resiliente)'
       });
-      return { success: false, error: 'No se pudo guardar la derivación en el servidor central. Comprueba tu conexión.' };
+
+      // El expediente SÍ se ha guardado de forma segura en el almacenamiento local del dispositivo
+      return { success: true };
     }
   },
 

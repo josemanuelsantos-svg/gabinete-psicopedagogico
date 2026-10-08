@@ -17,11 +17,20 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isValidating, setIsValidating] = useState(false);
+
+  const [teacherEmail, setTeacherEmail] = useState(() => {
+    return localStorage.getItem('edubuenaventura_last_teacher_email') || '';
+  });
+  const [teacherName, setTeacherName] = useState(() => {
+    return localStorage.getItem('edubuenaventura_last_teacher_name') || '';
+  });
 
   const handleClose = () => {
     setShowPassword(false);
     setError(false);
+    setErrorMessage('');
     setPassword('');
     onClose();
   };
@@ -32,6 +41,22 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
     e.preventDefault();
     setIsValidating(true);
     setError(false);
+    setErrorMessage('');
+
+    if (selectedRole === 'DOCENTE') {
+      if (!teacherEmail.trim() || !teacherEmail.includes('@')) {
+        setError(true);
+        setErrorMessage('Por favor, introduce tu correo institucional de profesor/a.');
+        setIsValidating(false);
+        return;
+      }
+      if (!teacherName.trim() || teacherName.trim().length < 2) {
+        setError(true);
+        setErrorMessage('Por favor, indica tu nombre y apellidos como docente solicitante.');
+        setIsValidating(false);
+        return;
+      }
+    }
 
     try {
       const isValid = await verifyRolePassword(selectedRole, password);
@@ -40,16 +65,21 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
         if (selectedRole === 'ORIENTADOR') {
           onLoginSuccess('ORIENTADOR_ADMIN', { name: 'Equipo de Orientación', email: 'orientacion@sanbuenaventura.es' });
         } else {
-          onLoginSuccess('DOCENTE_NEAE', { name: 'Claustro Docente', email: 'docentes@sanbuenaventura.es' });
+          localStorage.setItem('edubuenaventura_last_teacher_email', teacherEmail.trim());
+          localStorage.setItem('edubuenaventura_last_teacher_name', teacherName.trim());
+          onLoginSuccess('DOCENTE_NEAE', { name: teacherName.trim(), email: teacherEmail.trim() });
         }
         setPassword('');
         setError(false);
+        setErrorMessage('');
       } else {
         setError(true);
+        setErrorMessage('Contraseña incorrecta. Por favor, verifica la clave de acceso.');
       }
     } catch (err) {
       console.error('Error al validar credenciales:', err);
       setError(true);
+      setErrorMessage('Error al verificar credenciales.');
     } finally {
       setIsValidating(false);
     }
@@ -122,6 +152,43 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
 
         {/* PASSWORD FORM */}
         <form onSubmit={handleSubmit}>
+          {selectedRole === 'DOCENTE' && (
+            <>
+              <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                <label className="form-label" style={{ fontSize: '0.8rem' }}>
+                  Tu Correo Institucional de Profesor/a *
+                </label>
+                <input
+                  type="email"
+                  required
+                  className="input-text"
+                  placeholder="ej: marta.lopez@sanbuenaventura.es"
+                  value={teacherEmail}
+                  onChange={(e) => { setTeacherEmail(e.target.value); setError(false); }}
+                  style={{ fontSize: '0.85rem', minHeight: '38px', width: '100%' }}
+                />
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                  Las derivaciones que envíes quedarán asociadas a tu cuenta.
+                </span>
+              </div>
+
+              <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                <label className="form-label" style={{ fontSize: '0.8rem' }}>
+                  Tu Nombre y Apellidos (Profesor/a) *
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="input-text"
+                  placeholder="Ej: Marta López Gil"
+                  value={teacherName}
+                  onChange={(e) => { setTeacherName(e.target.value); setError(false); }}
+                  style={{ fontSize: '0.85rem', minHeight: '38px', width: '100%' }}
+                />
+              </div>
+            </>
+          )}
+
           <div className="form-group" style={{ marginBottom: '0.85rem' }}>
             <label className="form-label" style={{ fontSize: '0.8rem' }}>
               {selectedRole === 'DOCENTE' ? 'Contraseña de Docentes *' : 'Contraseña de Orientación *'}
@@ -135,7 +202,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
                 value={password}
                 onChange={(e) => { setPassword(e.target.value); setError(false); }}
                 style={{ fontSize: '0.88rem', minHeight: '42px', paddingRight: '2.5rem', width: '100%' }}
-                autoFocus
+                autoFocus={selectedRole === 'ORIENTADOR'}
               />
               <button
                 type="button"
@@ -163,7 +230,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
 
           {error && (
             <div style={{ background: '#fee2e2', color: '#991b1b', padding: '0.5rem 0.75rem', borderRadius: '6px', fontSize: '0.78rem', marginBottom: '0.85rem' }}>
-              ⚠ Contraseña incorrecta. Por favor, verifica la clave de acceso.
+              ⚠ {errorMessage || 'Contraseña incorrecta. Por favor, verifica la clave de acceso.'}
             </div>
           )}
 

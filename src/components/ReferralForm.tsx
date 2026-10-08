@@ -12,9 +12,16 @@ interface ReferralFormProps {
   currentUser: CurrentUserSession;
   onSubmitCase: (newCase: ReferralCase) => Promise<void>;
   onCancel: () => void;
+  onUpdateCurrentUser?: (session: CurrentUserSession) => void;
 }
 
-export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmitCase }) => {
+export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmitCase, onUpdateCurrentUser }) => {
+  // Datos del profesor/a
+  const [isEditingTeacher, setIsEditingTeacher] = useState<boolean>(currentUser.email === 'docentes@sanbuenaventura.es');
+  const [customTeacherEmail, setCustomTeacherEmail] = useState<string>(currentUser.email === 'docentes@sanbuenaventura.es' ? '' : currentUser.email);
+  const [customTeacherName, setCustomTeacherName] = useState<string>(currentUser.name === 'Claustro Docente' ? '' : currentUser.name);
+  const [teacherError, setTeacherError] = useState<string>('');
+
   // 1. Etapa y Datos Generales (Inician estrictamente vacíos o sin selección)
   const [stage, setStage] = useState<EducationalStage | ''>('');
   const [studentName, setStudentName] = useState<string>('');
@@ -245,6 +252,11 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
   const validateForm = (): boolean => {
     const errors: Record<string, string> = {};
 
+    if (!currentUser.email || currentUser.email === 'docentes@sanbuenaventura.es') {
+      errors.teacherEmail = 'Debes indicar tu correo institucional de profesor/a.';
+      setIsEditingTeacher(true);
+    }
+
     if (!stage) {
       errors.stage = 'Debes seleccionar la etapa educativa (Infantil o Primaria).';
     }
@@ -437,9 +449,12 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
     }
   };
 
+  const isTeacherValid = Boolean(currentUser.email && currentUser.email !== 'docentes@sanbuenaventura.es');
+
   // Comprobar si el formulario cumple los requisitos mínimos para habilitar el botón
   const isFormComplete = isHighCapacityEvaluation
     ? Boolean(
+        isTeacherValid &&
         stage &&
         studentName.trim().length >= 2 &&
         grade &&
@@ -449,6 +464,7 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
         privacyAccepted
       )
     : Boolean(
+        isTeacherValid &&
         stage &&
         studentName.trim().length >= 2 &&
         grade &&
@@ -474,8 +490,28 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
           <span style={{ background: 'var(--primary-100)', color: 'var(--primary-800)', padding: '0.2rem 0.65rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
             Colegio San Buenaventura • Equipo de Orientación
           </span>
-          <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
             Docente solicitante: <strong>{currentUser.name}</strong> ({currentUser.email})
+            <button
+              type="button"
+              onClick={() => {
+                setCustomTeacherName(currentUser.name === 'Claustro Docente' ? '' : currentUser.name);
+                setCustomTeacherEmail(currentUser.email === 'docentes@sanbuenaventura.es' ? '' : currentUser.email);
+                setIsEditingTeacher(!isEditingTeacher);
+              }}
+              style={{
+                background: '#e0f2fe',
+                border: '1px solid #38bdf8',
+                color: '#0369a1',
+                borderRadius: '6px',
+                padding: '0.15rem 0.45rem',
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                cursor: 'pointer'
+              }}
+            >
+              {isEditingTeacher ? 'Cerrar edición' : '✏️ Cambiar mi correo/nombre'}
+            </button>
           </span>
         </div>
         <h2 style={{ color: 'var(--primary-900)', margin: '0.4rem 0 0.2rem 0', fontSize: '1.4rem' }}>
@@ -485,6 +521,87 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
           Canal oficial y confidencial regulado por la normativa de Atención a la Diversidad y el RGPD. Todos los datos inician vacíos.
         </p>
       </div>
+
+      {/* Banner de Edición de Datos del Profesor/a */}
+      {(isEditingTeacher || currentUser.email === 'docentes@sanbuenaventura.es') && (
+        <div style={{
+          background: currentUser.email === 'docentes@sanbuenaventura.es' ? '#fef3c7' : '#eff6ff',
+          border: currentUser.email === 'docentes@sanbuenaventura.es' ? '1.5px solid #f59e0b' : '1.5px solid #3b82f6',
+          borderRadius: '12px',
+          padding: '1rem 1.25rem',
+          marginBottom: '1.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
+            <span style={{ fontSize: '1.2rem' }}>📧</span>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: currentUser.email === 'docentes@sanbuenaventura.es' ? '#92400e' : '#1e40af', margin: 0 }}>
+              {currentUser.email === 'docentes@sanbuenaventura.es' ? 'Identificación Obligatoria del Docente Solicitante' : 'Actualizar Datos del Profesor/a Solicitante'}
+            </h4>
+          </div>
+          <p style={{ fontSize: '0.78rem', color: currentUser.email === 'docentes@sanbuenaventura.es' ? '#78350f' : '#1e3a8a', margin: '0 0 0.75rem 0' }}>
+            {currentUser.email === 'docentes@sanbuenaventura.es'
+              ? 'Por favor, introduce tu correo institucional y tu nombre para que el informe quede tramitado formalmente a tu nombre y puedas consultarlo en "Mis Derivaciones".'
+              : 'Modifica tu dirección de correo electrónico institucional si lo necesitas:'}
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr)) auto', gap: '0.65rem', alignItems: 'flex-end' }}>
+            <div>
+              <label style={{ fontSize: '0.74rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.2rem' }}>
+                Tu Nombre y Apellidos (Profesor/a) *
+              </label>
+              <input
+                type="text"
+                className="input-text"
+                placeholder="Ej: Marta López Gil"
+                value={customTeacherName}
+                onChange={(e) => { setCustomTeacherName(e.target.value); setTeacherError(''); }}
+                style={{ fontSize: '0.85rem', minHeight: '38px', width: '100%' }}
+              />
+            </div>
+            <div>
+              <label style={{ fontSize: '0.74rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.2rem' }}>
+                Tu Correo Institucional *
+              </label>
+              <input
+                type="email"
+                className="input-text"
+                placeholder="ej: marta.lopez@sanbuenaventura.es"
+                value={customTeacherEmail}
+                onChange={(e) => { setCustomTeacherEmail(e.target.value); setTeacherError(''); }}
+                style={{ fontSize: '0.85rem', minHeight: '38px', width: '100%' }}
+              />
+            </div>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                if (!customTeacherEmail.trim() || !customTeacherEmail.includes('@')) {
+                  setTeacherError('Introduce un correo institucional válido.');
+                  return;
+                }
+                if (!customTeacherName.trim() || customTeacherName.trim().length < 2) {
+                  setTeacherError('Introduce tu nombre y apellidos.');
+                  return;
+                }
+                if (onUpdateCurrentUser) {
+                  onUpdateCurrentUser({
+                    ...currentUser,
+                    name: customTeacherName.trim(),
+                    email: customTeacherEmail.trim()
+                  });
+                }
+                setIsEditingTeacher(false);
+              }}
+              style={{ minHeight: '38px', padding: '0.5rem 1rem', fontSize: '0.84rem' }}
+            >
+              Guardar mis datos
+            </button>
+          </div>
+          {teacherError && (
+            <p style={{ color: '#b91c1c', fontSize: '0.75rem', marginTop: '0.4rem', fontWeight: 600 }} role="alert">
+              ⚠ {teacherError}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Resumen Accesible de Errores (si existen) */}
       {Object.keys(validationErrors).length > 0 && (

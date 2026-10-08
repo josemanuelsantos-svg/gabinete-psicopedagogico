@@ -439,6 +439,11 @@ export function App() {
             currentUser={currentUser}
             onSubmitCase={handleAddNewCase}
             onCancel={() => setActiveTab('MY_CASES')}
+            onUpdateCurrentUser={(updated) => {
+              setCurrentUser(updated);
+              localStorage.setItem('edubuenaventura_last_teacher_email', updated.email);
+              localStorage.setItem('edubuenaventura_last_teacher_name', updated.name);
+            }}
           />
         )}
 
