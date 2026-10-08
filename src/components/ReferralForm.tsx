@@ -22,6 +22,9 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
   const [mainReason, setMainReason] = useState<string>('');
   const [affectedSubjects, setAffectedSubjects] = useState<string[]>([]);
   
+  // Modalidad especial: Detección y Evaluación de Altas Capacidades (AACC)
+  const [isHighCapacityEvaluation, setIsHighCapacityEvaluation] = useState<boolean>(false);
+  
   // Archivo adjunto
   const [attachedEvidenceName, setAttachedEvidenceName] = useState<string>('');
   const [fileError, setFileError] = useState<string>('');
@@ -254,41 +257,45 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
       errors.grade = 'Debes seleccionar el curso y grupo/línea.';
     }
 
-    if (affectedSubjects.length === 0) {
+    if (!isHighCapacityEvaluation && affectedSubjects.length === 0) {
       errors.affectedSubjects = 'Selecciona al menos un área o momento donde se manifiesta la dificultad.';
     }
 
     if (!mainReason || mainReason.trim().length < 10) {
-      errors.mainReason = 'El motivo principal de consulta en el aula es obligatorio (mínimo 10 caracteres explicativos).';
+      errors.mainReason = isHighCapacityEvaluation
+        ? 'Indica las observaciones de potencial, precocidad o curiosidad del alumno/a (mínimo 10 caracteres).'
+        : 'El motivo principal de consulta en el aula es obligatorio (mínimo 10 caracteres explicativos).';
     }
 
-    // Validación de indicadores de observación (deben estar todos valorados)
-    if (stage === 'PRIMARIA') {
-      if (attentionFocus === null) errors.attentionFocus = 'Debes valorar el nivel de Atención.';
-      if (readingComprehension === null) errors.readingComprehension = 'Debes valorar el nivel de Comprensión Lectora.';
-      if (mathReasoning === null) errors.mathReasoning = 'Debes valorar el nivel de Razonamiento Matemático.';
-      if (taskPaceAndCompletion === null) errors.taskPaceAndCompletion = 'Debes valorar el Ritmo de Trabajo.';
-      if (impulsivityAndAutonomy === null) errors.impulsivityAndAutonomy = 'Debes valorar el Control de Impulsividad.';
-      if (emotionalAndPeerRel === null) errors.emotionalAndPeerRel = 'Debes valorar la Gestión Emocional.';
-    } else if (stage === 'INFANTIL') {
-      if (infantilOralLanguage === null) errors.infantilOralLanguage = 'Debes valorar el Lenguaje Oral.';
-      if (infantilAttentionAssembly === null) errors.infantilAttentionAssembly = 'Debes valorar la Atención en Asamblea.';
-      if (infantilPsychomotorFine === null) errors.infantilPsychomotorFine = 'Debes valorar la Psicomotricidad Fina.';
-      if (infantilLogicConcepts === null) errors.infantilLogicConcepts = 'Debes valorar los Conceptos Básicos.';
-      if (infantilPersonalAutonomy === null) errors.infantilPersonalAutonomy = 'Debes valorar la Autonomía Personal.';
-      if (infantilSocialPlay === null) errors.infantilSocialPlay = 'Debes valorar la Socialización y Juego.';
-    }
+    // Validación de indicadores de observación (exentos si se evalúa por Altas Capacidades)
+    if (!isHighCapacityEvaluation) {
+      if (stage === 'PRIMARIA') {
+        if (attentionFocus === null) errors.attentionFocus = 'Debes valorar el nivel de Atención.';
+        if (readingComprehension === null) errors.readingComprehension = 'Debes valorar el nivel de Comprensión Lectora.';
+        if (mathReasoning === null) errors.mathReasoning = 'Debes valorar el nivel de Razonamiento Matemático.';
+        if (taskPaceAndCompletion === null) errors.taskPaceAndCompletion = 'Debes valorar el Ritmo de Trabajo.';
+        if (impulsivityAndAutonomy === null) errors.impulsivityAndAutonomy = 'Debes valorar el Control de Impulsividad.';
+        if (emotionalAndPeerRel === null) errors.emotionalAndPeerRel = 'Debes valorar la Gestión Emocional.';
+      } else if (stage === 'INFANTIL') {
+        if (infantilOralLanguage === null) errors.infantilOralLanguage = 'Debes valorar el Lenguaje Oral.';
+        if (infantilAttentionAssembly === null) errors.infantilAttentionAssembly = 'Debes valorar la Atención en Asamblea.';
+        if (infantilPsychomotorFine === null) errors.infantilPsychomotorFine = 'Debes valorar la Psicomotricidad Fina.';
+        if (infantilLogicConcepts === null) errors.infantilLogicConcepts = 'Debes valorar los Conceptos Básicos.';
+        if (infantilPersonalAutonomy === null) errors.infantilPersonalAutonomy = 'Debes valorar la Autonomía Personal.';
+        if (infantilSocialPlay === null) errors.infantilSocialPlay = 'Debes valorar la Socialización y Juego.';
+      }
 
-    if (!measuresDuration) {
-      errors.measuresDuration = 'Indica cuánto tiempo llevas aplicando ayudas en el aula.';
-    }
+      if (!measuresDuration) {
+        errors.measuresDuration = 'Indica cuánto tiempo llevas aplicando ayudas en el aula.';
+      }
 
-    if (appliedMeasuresList.length === 0) {
-      errors.appliedMeasuresList = 'Selecciona al menos una medida o adaptación previa que hayas probado.';
-    }
+      if (appliedMeasuresList.length === 0) {
+        errors.appliedMeasuresList = 'Selecciona al menos una medida o adaptación previa que hayas probado.';
+      }
 
-    if (!measuresResult) {
-      errors.measuresResult = 'Indica el resultado obtenido con las ayudas previas.';
+      if (!measuresResult) {
+        errors.measuresResult = 'Indica el resultado obtenido con las ayudas previas.';
+      }
     }
 
     if (familyMeetingDone === null) {
@@ -341,8 +348,9 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
       teacherEmail: currentUser.email,
       referralDate: new Date().toISOString().split('T')[0],
       mainReason: mainReason.trim(),
-      affectedSubjects: affectedSubjects,
+      affectedSubjects: isHighCapacityEvaluation && affectedSubjects.length === 0 ? ['Enriquecimiento Curricular General'] : affectedSubjects,
       attachedEvidenceName: attachedEvidenceName || undefined,
+      isHighCapacityEvaluation: isHighCapacityEvaluation,
 
       // Primaria
       attentionFocus: attentionFocus,
@@ -373,9 +381,9 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
       infantilSocialPlayDesc: infantilSocialPlay ? infantilDescriptors.socialPlay[infantilSocialPlay] : undefined,
 
       // Medidas previas
-      measuresDuration: measuresDuration || '1_A_2_MESES',
-      appliedMeasuresList: appliedMeasuresList,
-      measuresResult: measuresResult || 'INSUFICIENTE',
+      measuresDuration: isHighCapacityEvaluation && !measuresDuration ? 'MAS_2_MESES' : (measuresDuration || '1_A_2_MESES'),
+      appliedMeasuresList: isHighCapacityEvaluation && appliedMeasuresList.length === 0 ? ['Enriquecimiento curricular / Detección AACC'] : appliedMeasuresList,
+      measuresResult: isHighCapacityEvaluation && !measuresResult ? 'MEJORIA_LEVE_PERSISTE_DIFICULTAD' : (measuresResult || 'INSUFICIENTE'),
       measuresObservations: measuresObservations.trim(),
 
       // Voz del alumno
@@ -414,7 +422,7 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
       dateSubmitted: new Date().toISOString().split('T')[0],
       status: 'PENDIENTE_REVISION',
       priority: 'MEDIA',
-      categoryTag: 'Pendiente de Valoración por Orientación',
+      categoryTag: isHighCapacityEvaluation ? 'Posibles Altas Capacidades (AACC)' : 'Pendiente de Valoración por Orientación',
       questionnaire: questionnaire,
       privacyConsent: questionnaire.privacyConsent
     };
@@ -430,23 +438,33 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
   };
 
   // Comprobar si el formulario cumple los requisitos mínimos para habilitar el botón
-  const isFormComplete = Boolean(
-    stage &&
-    studentName.trim().length >= 2 &&
-    grade &&
-    affectedSubjects.length > 0 &&
-    mainReason.trim().length >= 10 &&
-    measuresDuration &&
-    appliedMeasuresList.length > 0 &&
-    measuresResult &&
-    familyMeetingDone !== null &&
-    familyAgreement &&
-    privacyAccepted &&
-    (stage === 'PRIMARIA'
-      ? attentionFocus !== null && readingComprehension !== null && mathReasoning !== null && taskPaceAndCompletion !== null && impulsivityAndAutonomy !== null && emotionalAndPeerRel !== null
-      : infantilOralLanguage !== null && infantilAttentionAssembly !== null && infantilPsychomotorFine !== null && infantilLogicConcepts !== null && infantilPersonalAutonomy !== null && infantilSocialPlay !== null
-    )
-  );
+  const isFormComplete = isHighCapacityEvaluation
+    ? Boolean(
+        stage &&
+        studentName.trim().length >= 2 &&
+        grade &&
+        mainReason.trim().length >= 10 &&
+        familyMeetingDone !== null &&
+        familyAgreement &&
+        privacyAccepted
+      )
+    : Boolean(
+        stage &&
+        studentName.trim().length >= 2 &&
+        grade &&
+        affectedSubjects.length > 0 &&
+        mainReason.trim().length >= 10 &&
+        measuresDuration &&
+        appliedMeasuresList.length > 0 &&
+        measuresResult &&
+        familyMeetingDone !== null &&
+        familyAgreement &&
+        privacyAccepted &&
+        (stage === 'PRIMARIA'
+          ? attentionFocus !== null && readingComprehension !== null && mathReasoning !== null && taskPaceAndCompletion !== null && impulsivityAndAutonomy !== null && emotionalAndPeerRel !== null
+          : infantilOralLanguage !== null && infantilAttentionAssembly !== null && infantilPsychomotorFine !== null && infantilLogicConcepts !== null && infantilPersonalAutonomy !== null && infantilSocialPlay !== null
+        )
+      );
 
   return (
     <div className="card" style={{ maxWidth: '880px', margin: '0 auto', padding: '1.75rem' }}>
@@ -511,6 +529,80 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
       )}
 
       <form onSubmit={handleOpenReview} noValidate>
+        {/* BOTÓN / SELECTOR DE MODALIDAD: ALTAS CAPACIDADES (AACC) */}
+        <div style={{
+          background: isHighCapacityEvaluation ? 'linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%)' : '#f8fafc',
+          border: isHighCapacityEvaluation ? '2px solid #f59e0b' : '1px solid #cbd5e1',
+          borderRadius: '12px',
+          padding: '1rem 1.25rem',
+          marginBottom: '1.5rem',
+          transition: 'all 0.2s ease',
+          boxShadow: isHighCapacityEvaluation ? '0 4px 12px rgba(245, 158, 11, 0.15)' : 'none'
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', maxWidth: '580px' }}>
+              <div style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                background: isHighCapacityEvaluation ? '#fde68a' : '#ffffff',
+                border: isHighCapacityEvaluation ? '1.5px solid #f59e0b' : '1px solid #cbd5e1',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.4rem'
+              }}>
+                ⭐
+              </div>
+              <div>
+                <h4 style={{ fontSize: '0.96rem', fontWeight: 700, color: isHighCapacityEvaluation ? '#92400e' : '#1e293b', margin: 0 }}>
+                  {isHighCapacityEvaluation ? 'Modalidad Activa: Solicitud de Evaluación de Altas Capacidades (AACC)' : '¿Deseas evaluar una posible Alta Capacidad Intelectual (AACC)?'}
+                </h4>
+                <p style={{ fontSize: '0.78rem', color: isHighCapacityEvaluation ? '#78350f' : '#64748b', margin: '0.2rem 0 0 0' }}>
+                  {isHighCapacityEvaluation
+                    ? '✨ Modo Altas Capacidades activo: Se desactiva la obligación de indicar dificultades de aprendizaje ni medidas de refuerzo. Solo necesitas indicar los datos del alumno/a, tus observaciones de potencial en el aula y la conformidad de la familia.'
+                    : 'Si observas precocidad, alto potencial o talento sobresaliente, pulsa este botón para enviar la solicitud directamente sin tener que rellenar dificultades.'}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              id="btn-toggle-aacc"
+              onClick={() => {
+                const nextVal = !isHighCapacityEvaluation;
+                setIsHighCapacityEvaluation(nextVal);
+                if (nextVal) {
+                  if (!mainReason) {
+                    setMainReason('Solicitud de valoración psicopedagógica por indicios de Altas Capacidades Intelectuales (AACC): precocidad destacada, alta curiosidad y rapidez de aprendizaje en el aula.');
+                  }
+                  if (affectedSubjects.length === 0) {
+                    setAffectedSubjects(['Enriquecimiento Curricular General']);
+                  }
+                }
+              }}
+              style={{
+                background: isHighCapacityEvaluation ? '#f59e0b' : '#ffffff',
+                color: isHighCapacityEvaluation ? '#ffffff' : '#b45309',
+                border: '2px solid #f59e0b',
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                padding: '0.65rem 1.15rem',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                boxShadow: isHighCapacityEvaluation ? '0 2px 6px rgba(245, 158, 11, 0.35)' : 'none',
+                transition: 'all 0.15s ease'
+              }}
+            >
+              <span>⭐</span>
+              {isHighCapacityEvaluation ? '✓ Evaluando Posible Alta Capacidad' : 'Evaluar posible Alta Capacidad'}
+            </button>
+          </div>
+        </div>
+
         {/* BLOQUE 1: ETAPA Y DATOS GENERALES */}
         <fieldset style={{ border: 'none', padding: 0, margin: 0, marginBottom: '1.5rem' }}>
           <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.6rem' }}>
@@ -791,6 +883,12 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
           <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.3rem' }}>
             2. Indicadores Clínicos de Aula (Las 6 Áreas de Observación)
           </legend>
+          {isHighCapacityEvaluation && (
+            <div style={{ background: '#fef3c7', border: '1px solid #f59e0b', borderRadius: '8px', padding: '0.65rem 0.85rem', marginBottom: '0.85rem', color: '#92400e', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span>⭐</span>
+              <span><strong>Modo Altas Capacidades:</strong> La valoración de dificultades en los indicadores es opcional. Puedes omitirlos o evaluar únicamente áreas donde destaques destrezas superiores.</span>
+            </div>
+          )}
           <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.85rem' }}>
             Todos los deslizadores inician en <strong>"Sin valorar"</strong>. Pulsa sobre el valor correspondiente según tu observación en clase.
           </p>
@@ -1281,8 +1379,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
         {/* BLOQUE 3: MEDIDAS PREVIAS (INICIAN ESTRICTAMENTE EN BLANCO) */}
         <fieldset style={{ border: 'none', padding: 0, margin: 0, marginBottom: '1.5rem' }}>
           <legend style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--primary-800)', marginBottom: '0.6rem' }}>
-            3. Ayudas y Adaptaciones Previas Probadas en Clase
+            3. Ayudas y Adaptaciones Previas Probadas en Clase {isHighCapacityEvaluation && <span style={{ color: '#d97706', fontSize: '0.8rem', fontWeight: 500 }}>(Opcional en AACC)</span>}
           </legend>
+          {isHighCapacityEvaluation && (
+            <div style={{ background: '#fef3c7', border: '1px solid #f59e0b', borderRadius: '8px', padding: '0.65rem 0.85rem', marginBottom: '0.85rem', color: '#92400e', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span>⭐</span>
+              <span><strong>Modo Altas Capacidades:</strong> No es obligatorio haber aplicado medidas previas por dificultades de aprendizaje. Si dejas estos campos sin rellenar, se registrará de forma automática la propuesta de enriquecimiento curricular.</span>
+            </div>
+          )}
 
           <div className="form-group">
             <label htmlFor="field-measuresDuration" className="form-label">
@@ -1584,9 +1688,16 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
           <div className="modal-content" style={{ maxWidth: '750px', padding: '1.75rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
               <div>
-                <span style={{ background: 'var(--primary-100)', color: 'var(--primary-800)', padding: '0.15rem 0.6rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
-                  Paso Final: Verificación de Datos
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span style={{ background: 'var(--primary-100)', color: 'var(--primary-800)', padding: '0.15rem 0.6rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
+                    Paso Final: Verificación de Datos
+                  </span>
+                  {isHighCapacityEvaluation && (
+                    <span style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #f59e0b', padding: '0.15rem 0.6rem', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
+                      ⭐ Modalidad: Altas Capacidades (AACC)
+                    </span>
+                  )}
+                </div>
                 <h3 id="review-heading" style={{ fontSize: '1.3rem', color: 'var(--text-main)', marginTop: '0.2rem' }}>
                   Revisión Previa del Expediente de Derivación
                 </h3>
@@ -1610,7 +1721,7 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem', marginBottom: '0.75rem' }}>
-                <strong>Áreas afectadas:</strong> {affectedSubjects.join(', ')}
+                <strong>{isHighCapacityEvaluation ? 'Áreas / Ámbitos destacados:' : 'Áreas afectadas:'}</strong> {affectedSubjects.length > 0 ? affectedSubjects.join(', ') : (isHighCapacityEvaluation ? 'Enriquecimiento Curricular General' : 'Sin especificar')}
               </div>
 
               <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem', marginBottom: '0.75rem' }}>
@@ -1619,9 +1730,9 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.6rem', marginBottom: '0.75rem' }}>
-                <strong>Medidas previas probadas ({measuresDuration}):</strong>
+                <strong>{isHighCapacityEvaluation ? 'Medidas de enriquecimiento / Adaptaciones:' : `Medidas previas probadas (${measuresDuration}):`}</strong>
                 <ul style={{ paddingLeft: '1.2rem', marginTop: '0.2rem' }}>
-                  {appliedMeasuresList.map((m, idx) => (
+                  {(appliedMeasuresList.length > 0 ? appliedMeasuresList : (isHighCapacityEvaluation ? ['Enriquecimiento curricular / Detección AACC'] : ['Sin medidas previas registradas'])).map((m, idx) => (
                     <li key={idx}>{m}</li>
                   ))}
                 </ul>

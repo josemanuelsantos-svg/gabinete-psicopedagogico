@@ -71,6 +71,7 @@ export interface ReferralQuestionnaire {
   mainReason: string;
   affectedSubjects: string[];
   attachedEvidenceName?: string;
+  isHighCapacityEvaluation?: boolean;
 
   // 2. Indicadores de Observación de Aula (Inician en null / Sin valorar)
   // Primaria:
