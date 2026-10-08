@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lock, X, GraduationCap, ShieldCheck } from 'lucide-react';
+import { Lock, X, GraduationCap, ShieldCheck, Eye, EyeOff } from 'lucide-react';
 import { verifyRolePassword } from '../utils/security';
 
 interface AdminLoginModalProps {
@@ -15,8 +15,16 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
 }) => {
   const [selectedRole, setSelectedRole] = useState<'DOCENTE' | 'ORIENTADOR'>('DOCENTE');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
+
+  const handleClose = () => {
+    setShowPassword(false);
+    setError(false);
+    setPassword('');
+    onClose();
+  };
 
   if (!isOpen) return null;
 
@@ -60,7 +68,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
               <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Colegio San Buenaventura</p>
             </div>
           </div>
-          <button className="btn btn-secondary" onClick={onClose} style={{ padding: '0.35rem', minHeight: '32px' }}>
+          <button className="btn btn-secondary" onClick={handleClose} style={{ padding: '0.35rem', minHeight: '32px' }}>
             <X size={18} />
           </button>
         </div>
@@ -69,7 +77,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1.1rem' }}>
           <button
             type="button"
-            onClick={() => { setSelectedRole('DOCENTE'); setError(false); }}
+            onClick={() => { setSelectedRole('DOCENTE'); setError(false); setShowPassword(false); }}
             style={{
               padding: '0.65rem 0.5rem',
               borderRadius: '8px',
@@ -91,7 +99,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
 
           <button
             type="button"
-            onClick={() => { setSelectedRole('ORIENTADOR'); setError(false); }}
+            onClick={() => { setSelectedRole('ORIENTADOR'); setError(false); setShowPassword(false); }}
             style={{
               padding: '0.65rem 0.5rem',
               borderRadius: '8px',
@@ -118,16 +126,39 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
             <label className="form-label" style={{ fontSize: '0.8rem' }}>
               {selectedRole === 'DOCENTE' ? 'Contraseña de Docentes *' : 'Contraseña de Orientación *'}
             </label>
-            <input
-              type="password"
-              required
-              className="input-text"
-              placeholder="Introduce contraseña..."
-              value={password}
-              onChange={(e) => { setPassword(e.target.value); setError(false); }}
-              style={{ fontSize: '0.88rem', minHeight: '42px' }}
-              autoFocus
-            />
+            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                required
+                className="input-text"
+                placeholder="Introduce contraseña..."
+                value={password}
+                onChange={(e) => { setPassword(e.target.value); setError(false); }}
+                style={{ fontSize: '0.88rem', minHeight: '42px', paddingRight: '2.5rem', width: '100%' }}
+                autoFocus
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                title={showPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
+                aria-label={showPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
+                style={{
+                  position: 'absolute',
+                  right: '0.5rem',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: showPassword ? 'var(--primary-700)' : '#64748b',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0.35rem',
+                  borderRadius: '6px'
+                }}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
           </div>
 
           {error && (
@@ -137,7 +168,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
           )}
 
           <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <button type="button" className="btn btn-secondary" onClick={onClose} style={{ flex: 1, minHeight: '40px', fontSize: '0.82rem' }}>
+            <button type="button" className="btn btn-secondary" onClick={handleClose} style={{ flex: 1, minHeight: '40px', fontSize: '0.82rem' }}>
               Cancelar
             </button>
             <button
