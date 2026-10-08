@@ -13,7 +13,9 @@ import {
   UserCheck, 
   ShieldCheck, 
   AlertTriangle,
-  Clock
+  Stethoscope,
+  Activity,
+  Bookmark
 } from 'lucide-react';
 
 interface NeaePortalProps {
@@ -30,7 +32,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
   onDeleteStudent
 }) => {
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(students[0]?.id || null);
-  const [filterCategory, setFilterCategory] = useState<string>('ALL');
+  const [filterNeed, setFilterNeed] = useState<string>('ALL');
   const [filterGrade, setFilterGrade] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState<string>('');
 
@@ -48,6 +50,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     grade: string;
     tutor: string;
     category: string;
+    specificNeed: string;
     curricularAdaptation: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
     status: 'Activo' | 'En Seguimiento' | 'Alta';
     ptTeacher: string;
@@ -66,6 +69,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     grade: '1º Educación Primaria A',
     tutor: 'Tutor/a de Aula',
     category: 'ACNEAE - Apoyo Ordinario',
+    specificNeed: 'Refuerzo Pedagógico en Competencias Básicas',
     curricularAdaptation: 'Pautas Ordinarias',
     status: 'Activo',
     ptTeacher: '',
@@ -75,24 +79,30 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     generalGoal: 'Atención educativa personalizada y adaptada en el aula ordinaria.',
     methodological: 'Fraccionamiento de tareas en pasos sencillos.\nSupervisión y confirmación del trabajo realizado.\nUso de apoyos manipulativos y visuales.',
     environmental: 'Ubicación en primera fila cerca de la pizarra.\nMesa de trabajo libre de distracciones visuales.',
-    evaluationAdaptations: 'Ampliación del tiempo en actividades escritas y controles (+25%).\nLectura oral previa de enunciados complejos.',
+    evaluation: 'Ampliación del tiempo en actividades escritas y controles (+25%).\nLectura oral previa de enunciados complejos.',
     emotional: 'Refuerzo positivo constante ante el esfuerzo.\nValidación emocional y fomento de un clima seguro.'
-  } as any);
+  });
 
   const filteredStudents = (students || []).filter(s => {
     if (!s) return false;
     if (searchTerm.trim() !== '') {
       const term = searchTerm.toLowerCase();
-      if (!s.name.toLowerCase().includes(term)) return false;
+      const matchName = s.name.toLowerCase().includes(term);
+      const matchNeed = (s.specificNeed || '').toLowerCase().includes(term);
+      const matchCat = (s.category || '').toLowerCase().includes(term);
+      if (!matchName && !matchNeed && !matchCat) return false;
     }
     if (filterGrade !== 'ALL') {
       if (!s.grade.toLowerCase().includes(filterGrade.toLowerCase())) return false;
     }
-    if (filterCategory !== 'ALL') {
-      const cat = (s.category || '').toLowerCase();
-      if (filterCategory === 'AACC' && !cat.includes('altas capacidades')) return false;
-      if (filterCategory === 'ESPECIFICO' && !cat.includes('específico')) return false;
-      if (filterCategory === 'ORDINARIO' && !cat.includes('ordinario')) return false;
+    if (filterNeed !== 'ALL') {
+      const fullTxt = `${s.specificNeed || ''} ${s.category || ''}`.toLowerCase();
+      if (filterNeed === 'TDAH' && !fullTxt.includes('tda') && !fullTxt.includes('atenc')) return false;
+      if (filterNeed === 'DISLEXIA' && !fullTxt.includes('dislex') && !fullTxt.includes('lecto') && !fullTxt.includes('dea')) return false;
+      if (filterNeed === 'AACC' && !fullTxt.includes('altas capacidades') && !fullTxt.includes('aacc')) return false;
+      if (filterNeed === 'LENGUAJE' && !fullTxt.includes('lenguaje') && !fullTxt.includes('tel') && !fullTxt.includes('tdl')) return false;
+      if (filterNeed === 'ESPECIFICO' && !fullTxt.includes('específico') && !fullTxt.includes('pt/al')) return false;
+      if (filterNeed === 'ORDINARIO' && !fullTxt.includes('ordinario') && !fullTxt.includes('refuerzo')) return false;
     }
     return true;
   });
@@ -113,16 +123,17 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       stage: 'PRIMARIA',
       grade: '1º Educación Primaria A',
       tutor: 'Tutor/a de 1ºA',
-      category: 'ACNEAE - Apoyo Ordinario',
-      curricularAdaptation: 'Pautas Ordinarias',
+      category: 'ACNEAE - Dificultades Específicas de Aprendizaje',
+      specificNeed: 'TDAH (Déficit de Atención con Hiperactividad)',
+      curricularAdaptation: 'No Significativa (ACNS)',
       status: 'Activo',
       ptTeacher: 'Mª Ángeles Gómez (PT)',
-      ptHours: 0,
+      ptHours: 2,
       alTeacher: 'Sara Domínguez (AL)',
       alHours: 0,
-      generalGoal: 'Intervención y seguimiento pedagógico adaptado en el aula.',
+      generalGoal: 'Intervención y seguimiento pedagógico adaptado en el aula ordinaria.',
       methodological: 'Fraccionamiento de tareas en pasos breves.\nInstrucciones directas y apoyo visual.\nSupervisión periódica.',
-      environmental: 'Ubicación en primera fila cerca del profesor.',
+      environmental: 'Ubicación en primera fila cerca del profesor y lejos de distracciones.',
       evaluation: 'Tiempo adicional (+25%) en exámenes y controles.\nLectura oral previa de enunciados.',
       emotional: 'Reforzamiento positivo constante ante el esfuerzo y perseverancia.'
     });
@@ -139,7 +150,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       stage: student.stage || 'PRIMARIA',
       grade: student.grade,
       tutor: student.tutor || 'Tutor de Aula',
-      category: student.category,
+      category: student.category || 'ACNEAE',
+      specificNeed: student.specificNeed || student.category || 'Refuerzo Pedagógico en Competencias Básicas',
       curricularAdaptation: student.curricularAdaptation || 'Pautas Ordinarias',
       status: student.status || 'Activo',
       ptTeacher: student.ptTeacher || '',
@@ -172,6 +184,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       grade: formData.grade,
       tutor: formData.tutor.trim() || 'Tutor de Aula',
       category: formData.category.trim(),
+      specificNeed: formData.specificNeed.trim() || 'Refuerzo Educativo',
       curricularAdaptation: formData.curricularAdaptation,
       status: formData.status,
       lastReviewDate: new Date().toISOString().split('T')[0],
@@ -234,21 +247,20 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       }}>
         <div>
           <span style={{ background: 'rgba(255,255,255,0.2)', color: 'white', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>
-            Censo Oficial de Apoyo y Diversidad • Colegio San Buenaventura
+            Censo Oficial de Diagnósticos y Necesidades • Colegio San Buenaventura
           </span>
           <h2 style={{ fontSize: '1.6rem', color: 'white', marginTop: '0.3rem' }}>
-            Portal de Pautas de Aula e Intervención Educativa
+            Portal de Pautas y Necesidades Educativas del Alumnado
           </h2>
           <p style={{ opacity: 0.9, fontSize: '0.88rem' }}>
             {isCounselor 
-              ? 'Panel de Orientación con capacidad plena de gestión: puedes añadir, editar o dar de baja alumnos y pautas en el censo oficial.'
-              : `Consulta oficial para el claustro de profesores: ${students.length} alumnos censados con adaptaciones metodológicas, apoyos ordinarios y específicos (PT/AL) y altas capacidades.`
+              ? 'Panel de Orientación con capacidad plena de gestión: puedes añadir, editar o dar de baja alumnos, sus necesidades/diagnósticos (TDAH, Dislexia, AACC, etc.) y las pautas en el censo oficial.'
+              : `Consulta oficial para el claustro de profesores: ${students.length} alumnos censados con necesidades específicas identificadas (TDAH, Dislexia, AACC, apoyos PT/AL) y pautas de aula.`
             }
           </p>
         </div>
 
         <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-          {/* Botón Exclusivo para Orientador: Añadir Alumno */}
           {isCounselor && (
             <button 
               className="btn btn-primary no-print" 
@@ -273,17 +285,17 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
             <h3 style={{ fontSize: '1.05rem' }}>Alumnos Censados ({filteredStudents.length} / {students.length})</h3>
             {isCounselor && (
               <span style={{ fontSize: '0.72rem', background: '#dcfce7', color: '#166534', padding: '0.2rem 0.5rem', borderRadius: '12px', fontWeight: 700 }}>
-                Modo Edición Activo
+                Modo Orientación
               </span>
             )}
           </div>
 
-          {/* Buscador de Alumno */}
+          {/* Buscador de Alumno o Diagnóstico */}
           <div style={{ position: 'relative', marginBottom: '0.75rem' }}>
             <input
               type="text"
               className="input-text"
-              placeholder="Buscar por nombre..."
+              placeholder="Buscar por nombre o diagnóstico (ej: TDAH, Dislexia)..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{ fontSize: '0.82rem', paddingLeft: '2.1rem', minHeight: '38px' }}
@@ -291,7 +303,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
             <Search size={15} color="#94a3b8" style={{ position: 'absolute', left: '0.65rem', top: '50%', transform: 'translateY(-50%)' }} />
           </div>
 
-          {/* Filtros por Curso y Modalidad */}
+          {/* Filtros por Curso y Necesidad / Diagnóstico */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.85rem' }}>
             <div>
               <label style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 600, display: 'block', marginBottom: '0.2rem' }}>Curso:</label>
@@ -313,23 +325,26 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
             </div>
 
             <div>
-              <label style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 600, display: 'block', marginBottom: '0.2rem' }}>Modalidad:</label>
+              <label style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 600, display: 'block', marginBottom: '0.2rem' }}>Diagnóstico / Necesidad:</label>
               <select
                 className="select-input"
                 style={{ fontSize: '0.78rem', padding: '0.3rem 0.5rem', minHeight: '36px' }}
-                value={filterCategory}
-                onChange={(e) => setFilterCategory(e.target.value)}
+                value={filterNeed}
+                onChange={(e) => setFilterNeed(e.target.value)}
               >
-                <option value="ALL">Todas las modalidades</option>
-                <option value="ESPECIFICO">Apoyo Específico (PT/AL)</option>
-                <option value="ORDINARIO">Apoyo Ordinario</option>
+                <option value="ALL">Todas las necesidades</option>
+                <option value="TDAH">TDAH / Atención</option>
+                <option value="DISLEXIA">Dislexia / Lectoescritura</option>
                 <option value="AACC">Altas Capacidades (AACC)</option>
+                <option value="LENGUAJE">Lenguaje / TEL-TDL</option>
+                <option value="ESPECIFICO">Apoyo Específico PT/AL</option>
+                <option value="ORDINARIO">Apoyo Ordinario</option>
               </select>
             </div>
           </div>
 
           {/* Lista Scrollable */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', maxHeight: '620px', overflowY: 'auto', paddingRight: '0.2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxHeight: '620px', overflowY: 'auto', paddingRight: '0.2rem' }}>
             {filteredStudents.length === 0 ? (
               <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', textAlign: 'center', padding: '1.5rem 0' }}>
                 No se han encontrado alumnos con los filtros seleccionados.
@@ -337,15 +352,40 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
             ) : (
               filteredStudents.map(s => {
                 const isSelected = s.id === selectedStudent?.id;
-                const isAACC = s.category.includes('Altas Capacidades');
-                const isEsp = s.category.includes('Específico');
+                const needText = s.specificNeed || s.category;
+                const isAACC = needText.toLowerCase().includes('altas capacidades') || needText.toLowerCase().includes('aacc');
+                const isTDAH = needText.toLowerCase().includes('tda');
+                const isDislexia = needText.toLowerCase().includes('dislex') || needText.toLowerCase().includes('lecto') || needText.toLowerCase().includes('dea');
+                const isEsp = needText.toLowerCase().includes('específico') || needText.toLowerCase().includes('pt/al');
+
+                let badgeBg = '#f1f5f9';
+                let badgeColor = '#475569';
+                let badgeIcon = '📘';
+
+                if (isAACC) {
+                  badgeBg = '#fef3c7';
+                  badgeColor = '#92400e';
+                  badgeIcon = '⭐';
+                } else if (isTDAH) {
+                  badgeBg = '#fee2e2';
+                  badgeColor = '#991b1b';
+                  badgeIcon = '⚡';
+                } else if (isDislexia) {
+                  badgeBg = '#fdf4ff';
+                  badgeColor = '#86198f';
+                  badgeIcon = '📖';
+                } else if (isEsp) {
+                  badgeBg = '#e0f2fe';
+                  badgeColor = '#0369a1';
+                  badgeIcon = '🎯';
+                }
 
                 return (
                   <div
                     key={s.id}
                     onClick={() => setSelectedStudentId(s.id)}
                     style={{
-                      padding: '0.7rem 0.85rem',
+                      padding: '0.75rem 0.9rem',
                       borderRadius: 'var(--radius-md)',
                       border: `1px solid ${isSelected ? 'var(--primary-600)' : 'var(--border-light)'}`,
                       background: isSelected ? 'var(--primary-50)' : 'var(--bg-card)',
@@ -354,24 +394,32 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <h4 style={{ fontSize: '0.88rem', color: 'var(--text-main)', fontWeight: 700 }}>{s.name}</h4>
+                      <h4 style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 700 }}>{s.name}</h4>
                       <span style={{ fontSize: '0.7rem', background: '#e2e8f0', color: '#334155', padding: '0.1rem 0.45rem', borderRadius: '10px', fontWeight: 600 }}>
                         {s.grade.replace('Educación Primaria ', 'EP ')}
                       </span>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.25rem' }}>
+
+                    {/* Necesidad Específica destacada en la tarjeta */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.35rem' }}>
                       <span style={{
-                        fontSize: '0.68rem',
+                        fontSize: '0.72rem',
                         fontWeight: 700,
-                        padding: '0.1rem 0.4rem',
+                        padding: '0.15rem 0.5rem',
                         borderRadius: '6px',
-                        background: isAACC ? '#fef3c7' : (isEsp ? '#e0f2fe' : '#f1f5f9'),
-                        color: isAACC ? '#92400e' : (isEsp ? '#0369a1' : '#475569')
-                      }}>
-                        {isAACC ? '⭐ Altas Capacidades' : (isEsp ? '🎯 Apoyo Específico PT/AL' : '📘 Apoyo Ordinario')}
+                        background: badgeBg,
+                        color: badgeColor,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        maxWidth: '85%',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }} title={needText}>
+                        <span>{badgeIcon}</span> {needText}
                       </span>
 
-                      {/* Icono de edición rápida si es Orientador */}
                       {isCounselor && (
                         <button
                           type="button"
@@ -379,7 +427,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                             e.stopPropagation();
                             handleOpenEditModal(s);
                           }}
-                          title="Editar este alumno"
+                          title="Editar alumno y diagnóstico"
                           style={{
                             background: 'none',
                             border: 'none',
@@ -402,23 +450,13 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
         {/* Columna Derecha: Ficha Detallada */}
         {selectedStudent ? (
           <div className="card" id="printable-neae-card" style={{ padding: '1.75rem' }}>
-            <div style={{ borderBottom: '1px solid var(--border-light)', paddingBottom: '1.25rem', marginBottom: '1.5rem' }}>
+            <div style={{ borderBottom: '1px solid var(--border-light)', paddingBottom: '1.25rem', marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.75rem' }}>
                 <div>
-                  <span style={{
-                    background: selectedStudent.category.includes('Altas Capacidades') ? '#fef3c7' : (selectedStudent.category.includes('Específico') ? '#e0f2fe' : '#ccfbf1'),
-                    color: selectedStudent.category.includes('Altas Capacidades') ? '#92400e' : (selectedStudent.category.includes('Específico') ? '#0369a1' : '#0f766e'),
-                    padding: '0.2rem 0.6rem',
-                    borderRadius: '12px',
-                    fontSize: '0.75rem',
-                    fontWeight: 700
-                  }}>
-                    {selectedStudent.category}
-                  </span>
-                  <h3 style={{ fontSize: '1.5rem', color: 'var(--primary-900)', marginTop: '0.4rem' }}>
+                  <h3 style={{ fontSize: '1.6rem', color: 'var(--primary-900)' }}>
                     {selectedStudent.name}
                   </h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginTop: '0.1rem' }}>
                     {selectedStudent.grade} • {selectedStudent.tutor}
                   </p>
                 </div>
@@ -437,7 +475,6 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                     Actualizado: {selectedStudent.lastReviewDate}
                   </div>
 
-                  {/* Acciones de Edición/Borrado para Orientador */}
                   {isCounselor && (
                     <div className="no-print" style={{ display: 'flex', gap: '0.4rem', marginTop: '0.5rem' }}>
                       <button
@@ -446,7 +483,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                         onClick={() => handleOpenEditModal(selectedStudent)}
                         style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
                       >
-                        <Pencil size={13} /> Editar Alumno
+                        <Pencil size={13} /> Editar Alumno y Diagnóstico
                       </button>
                       <button
                         type="button"
@@ -464,9 +501,56 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 </div>
               </div>
 
+              {/* BLOQUE DESTACADO: NECESIDAD ESPECÍFICA / DIAGNÓSTICO */}
+              <div style={{ 
+                background: 'linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%)', 
+                border: '1.5px solid #99f6e4', 
+                padding: '0.9rem 1.15rem', 
+                borderRadius: '12px', 
+                marginTop: '1.1rem',
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '0.75rem'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <div style={{ 
+                    background: '#0d9488', 
+                    color: 'white', 
+                    width: '38px', 
+                    height: '38px', 
+                    borderRadius: '10px', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Stethoscope size={20} />
+                  </div>
+                  <div>
+                    <span style={{ fontSize: '0.72rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>
+                      Necesidad Específica / Diagnóstico del Alumno
+                    </span>
+                    <h4 style={{ fontSize: '1.2rem', color: '#0f172a', margin: '0.1rem 0', fontWeight: 800 }}>
+                      {selectedStudent.specificNeed || selectedStudent.category}
+                    </h4>
+                    <span style={{ fontSize: '0.75rem', color: '#475569' }}>
+                      Categoría administrativa: {selectedStudent.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span style={{ fontSize: '0.75rem', background: 'white', color: '#0d9488', padding: '0.25rem 0.65rem', borderRadius: '20px', fontWeight: 700, border: '1px solid #99f6e4' }}>
+                    Dictamen de Gabinete
+                  </span>
+                </div>
+              </div>
+
               {/* Especialistas Asignados */}
               {(selectedStudent.ptTeacher || selectedStudent.alTeacher) && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '1rem', background: 'var(--bg-subtle)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '0.85rem', background: 'var(--bg-subtle)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.8rem' }}>
                   {selectedStudent.ptTeacher && (
                     <div><strong>Especialista PT:</strong> {selectedStudent.ptTeacher} ({guidelines.ptHoursPerWeek || 0} h/sem)</div>
                   )}
@@ -540,7 +624,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
           </div>
         ) : (
           <div className="card" style={{ padding: '3rem 1.5rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-            Selecciona un alumno/a de la lista para consultar o editar sus pautas pedagógicas.
+            Selecciona un alumno/a de la lista para consultar o editar sus necesidades y pautas pedagógicas.
           </div>
         )}
       </div>
@@ -552,10 +636,10 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
               <div>
                 <h3 style={{ fontSize: '1.25rem', color: 'var(--primary-900)' }}>
-                  {studentToEdit ? `✏️ Editar Alumno NEAE: ${studentToEdit.name}` : '➕ Alta de Nuevo Alumno en Censo NEAE'}
+                  {studentToEdit ? `✏️ Editar Alumno: ${studentToEdit.name}` : '➕ Alta de Nuevo Alumno en Censo NEAE'}
                 </h3>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  Gestión exclusiva de Orientación Psicopedagógica. Los cambios se actualizarán de forma inmediata en el portal del profesorado.
+                  Gestión exclusiva de Orientación Psicopedagógica. Puedes especificar la necesidad/diagnóstico concreto (TDAH, Dislexia, AACC, etc.) y las pautas para los profesores.
                 </p>
               </div>
               <button 
@@ -568,11 +652,12 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
             </div>
 
             <form onSubmit={handleSaveSubmit}>
-              {/* Sección 1: Datos Básicos */}
+              {/* Sección 1: Datos Básicos y Necesidad/Diagnóstico */}
               <div style={{ marginBottom: '1.25rem' }}>
                 <h4 style={{ fontSize: '0.95rem', color: 'var(--primary-800)', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.3rem', marginBottom: '0.75rem' }}>
-                  1. Datos del Alumno y Escolarización
+                  1. Datos del Alumno y Necesidad Específica (Diagnóstico)
                 </h4>
+                
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
                   <div>
                     <label className="form-label" style={{ fontSize: '0.78rem' }}>Nombre Completo *</label>
@@ -654,14 +739,67 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                   </div>
                 </div>
 
+                {/* CAMPO CLAVE: NECESIDAD ESPECÍFICA / DIAGNÓSTICO */}
+                <div style={{ marginTop: '0.85rem', background: '#f0fdfa', padding: '0.85rem', borderRadius: '8px', border: '1px solid #99f6e4' }}>
+                  <label className="form-label" style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800 }}>
+                    🩺 Necesidad Específica / Diagnóstico del Alumno (Visible para el Claustro) *
+                  </label>
+                  
+                  {/* Botones de sugerencias rápidas */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '0.5rem' }}>
+                    {[
+                      'TDAH (Déficit de Atención con Hiperactividad)',
+                      'TDA (Déficit de Atención Inatento)',
+                      'Dislexia / DEA (Lectoescritura)',
+                      'Discalculia (Dificultades Matemáticas)',
+                      'Trastorno del Desarrollo del Lenguaje (TEL/TDL)',
+                      'Altas Capacidades Intelectuales (AACC)',
+                      'Trastorno del Espectro Autista (TEA)',
+                      'Retraso Madurativo',
+                      'Apoyo Específico Instrumental (PT/AL)',
+                      'Refuerzo Pedagógico Ordinario'
+                    ].map(sug => (
+                      <button
+                        key={sug}
+                        type="button"
+                        onClick={() => setFormData({ ...formData, specificNeed: sug })}
+                        style={{
+                          fontSize: '0.7rem',
+                          background: formData.specificNeed === sug ? '#0d9488' : 'white',
+                          color: formData.specificNeed === sug ? 'white' : '#0f766e',
+                          border: '1px solid #99f6e4',
+                          padding: '0.15rem 0.45rem',
+                          borderRadius: '12px',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        + {sug.split('(')[0].trim()}
+                      </button>
+                    ))}
+                  </div>
+
+                  <input
+                    type="text"
+                    required
+                    className="input-text"
+                    placeholder="Ej: TDAH, Dislexia, Altas Capacidades, Discalculia, TEL..."
+                    value={formData.specificNeed}
+                    onChange={(e) => setFormData({ ...formData, specificNeed: e.target.value })}
+                    style={{ fontWeight: 600, color: '#0f172a' }}
+                  />
+                  <span style={{ fontSize: '0.72rem', color: '#64748b', display: 'block', marginTop: '0.25rem' }}>
+                    Puedes hacer clic en cualquiera de las sugerencias superiores o escribir libremente el diagnóstico exacto.
+                  </span>
+                </div>
+
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem', marginTop: '0.75rem' }}>
                   <div>
-                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Categoría NEAE *</label>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Categoría Administrativa *</label>
                     <input
                       type="text"
                       required
                       className="input-text"
-                      placeholder="Ej: Altas Capacidades (AACC) o Apoyo Específico (PT/AL)"
+                      placeholder="Ej: ACNEAE, ACNEE, Dificultades de Aprendizaje..."
                       value={formData.category}
                       onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                     />
@@ -853,7 +991,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
               ¿Dar de baja a {studentToDelete.name}?
             </h3>
             <p style={{ fontSize: '0.85rem', color: '#64748b', lineHeight: '1.5', marginBottom: '1.25rem' }}>
-              Esta acción eliminará al alumno/a del censo oficial de NEAE ({studentToDelete.grade}). Los profesores dejarán de visualizar sus pautas en el portal.
+              Esta acción eliminará al alumno/a del censo oficial de NEAE ({studentToDelete.grade}). Los profesores dejarán de visualizar su diagnóstico y pautas en el portal.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem' }}>
               <button

@@ -190,6 +190,7 @@ export interface StudentNEAE {
   grade: string;
   photoUrl?: string;
   category: string;
+  specificNeed?: string; // Necesidad específica / Diagnóstico: TDAH, Dislexia (DEA), Altas Capacidades (AACC), etc.
   tutor: string;
   ptTeacher?: string;
   alTeacher?: string;

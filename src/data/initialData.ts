@@ -39,7 +39,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-02",
@@ -73,7 +74,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-03",
@@ -106,7 +108,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-04",
@@ -139,7 +142,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-05",
@@ -173,7 +177,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-06",
@@ -207,7 +212,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-07",
@@ -241,7 +247,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-08",
@@ -275,7 +282,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-09",
@@ -309,7 +317,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-10",
@@ -343,7 +352,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-11",
@@ -377,7 +387,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-12",
@@ -413,7 +424,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-13",
@@ -447,7 +459,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-14",
@@ -481,7 +494,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-15",
@@ -515,7 +529,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-16",
@@ -549,7 +564,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-17",
@@ -583,7 +599,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-18",
@@ -617,7 +634,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-19",
@@ -653,7 +671,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-20",
@@ -687,7 +706,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-21",
@@ -720,7 +740,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-22",
@@ -753,7 +774,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-23",
@@ -789,7 +811,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-24",
@@ -825,7 +848,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-25",
@@ -859,7 +883,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-26",
@@ -893,7 +918,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-27",
@@ -927,7 +953,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-28",
@@ -961,7 +988,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-29",
@@ -995,7 +1023,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-30",
@@ -1029,7 +1058,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-31",
@@ -1062,7 +1092,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-32",
@@ -1095,7 +1126,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-33",
@@ -1128,7 +1160,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-34",
@@ -1162,7 +1195,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-35",
@@ -1198,7 +1232,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-36",
@@ -1234,7 +1269,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-37",
@@ -1268,7 +1304,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-38",
@@ -1302,7 +1339,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-39",
@@ -1336,7 +1374,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-40",
@@ -1372,7 +1411,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-41",
@@ -1406,7 +1446,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-42",
@@ -1440,7 +1481,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-43",
@@ -1473,7 +1515,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-44",
@@ -1506,7 +1549,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-45",
@@ -1539,7 +1583,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-46",
@@ -1572,7 +1617,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-47",
@@ -1606,7 +1652,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-48",
@@ -1640,7 +1687,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-49",
@@ -1673,7 +1721,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-50",
@@ -1707,7 +1756,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-51",
@@ -1741,7 +1791,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-52",
@@ -1775,7 +1826,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-53",
@@ -1809,7 +1861,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-54",
@@ -1843,7 +1896,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-55",
@@ -1877,7 +1931,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-56",
@@ -1913,7 +1968,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-57",
@@ -1946,7 +2002,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-58",
@@ -1980,7 +2037,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-59",
@@ -2013,7 +2071,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-60",
@@ -2046,7 +2105,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-61",
@@ -2080,7 +2140,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-62",
@@ -2116,7 +2177,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-63",
@@ -2150,7 +2212,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-64",
@@ -2183,7 +2246,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-65",
@@ -2217,7 +2281,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-66",
@@ -2250,7 +2315,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Pedagógico Ordinario en Aula"
   },
   {
     "id": "NEAE-67",
@@ -2284,7 +2350,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-68",
@@ -2318,7 +2385,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-69",
@@ -2352,7 +2420,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-70",
@@ -2386,7 +2455,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-71",
@@ -2420,7 +2490,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-72",
@@ -2454,7 +2525,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-73",
@@ -2490,7 +2562,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-74",
@@ -2526,7 +2599,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-75",
@@ -2560,7 +2634,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-76",
@@ -2594,7 +2669,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-77",
@@ -2628,7 +2704,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-78",
@@ -2662,7 +2739,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-79",
@@ -2696,7 +2774,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-80",
@@ -2730,7 +2809,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-81",
@@ -2764,7 +2844,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-82",
@@ -2798,7 +2879,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-83",
@@ -2832,7 +2914,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-84",
@@ -2866,7 +2949,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-85",
@@ -2900,7 +2984,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-86",
@@ -2934,7 +3019,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-87",
@@ -2968,7 +3054,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-88",
@@ -3002,7 +3089,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 0,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Altas Capacidades Intelectuales (AACC)"
   },
   {
     "id": "NEAE-89",
@@ -3036,7 +3124,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-90",
@@ -3072,7 +3161,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-91",
@@ -3108,7 +3198,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-92",
@@ -3144,7 +3235,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-93",
@@ -3180,7 +3272,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       "alHoursPerWeek": 1
     },
     "ptTeacher": "Mª Ángeles Gómez (PT)",
-    "alTeacher": "Sara Domínguez (AL)"
+    "alTeacher": "Sara Domínguez (AL)",
+    "specificNeed": "Dificultades Específicas de Aprendizaje / Apoyo Instrumental (PT/AL)"
   },
   {
     "id": "NEAE-94",
@@ -3214,7 +3307,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-95",
@@ -3248,7 +3342,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-96",
@@ -3282,7 +3377,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-97",
@@ -3316,7 +3412,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-98",
@@ -3350,7 +3447,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-99",
@@ -3384,7 +3482,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-100",
@@ -3418,7 +3517,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-101",
@@ -3452,7 +3552,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Refuerzo Curricular Coordinado (Tutor y Profesor de Apoyo)"
   },
   {
     "id": "NEAE-102",
@@ -3486,7 +3587,8 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   },
   {
     "id": "NEAE-103",
@@ -3520,6 +3622,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
       ],
       "ptHoursPerWeek": 1,
       "alHoursPerWeek": 0
-    }
+    },
+    "specificNeed": "Seguimiento y Refuerzo en Tutoría"
   }
 ];
