@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { ReferralCase, CaseStatus, CasePriority, ActionPlanGuidelines } from '../types';
-import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, Clock } from 'lucide-react';
+import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, Clock, RefreshCw } from 'lucide-react';
 
 interface CounselorDashboardProps {
   cases: ReferralCase[];
   onUpdateCase: (updatedCase: ReferralCase) => void;
   onSelectCase: (c: ReferralCase) => void;
+  onRefresh?: () => void;
+  isRefreshing?: boolean;
 }
 
 export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   cases = [],
   onUpdateCase,
-  onSelectCase
+  onSelectCase,
+  onRefresh,
+  isRefreshing = false
 }) => {
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [filterPriority, setFilterPriority] = useState<string>('ALL');
@@ -169,16 +173,55 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
               <option value="BAJA">Baja</option>
             </select>
           </div>
+
+          {onRefresh && (
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={onRefresh}
+              disabled={isRefreshing}
+              style={{ marginLeft: 'auto', padding: '0.35rem 0.75rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+              title="Sincronizar con la nube (Firestore)"
+            >
+              <RefreshCw size={14} className={isRefreshing ? 'animate-spin' : ''} />
+              {isRefreshing ? 'Sincronizando...' : 'Actualizar Bandeja'}
+            </button>
+          )}
         </div>
       </div>
 
       {/* Cases List */}
       <div className="card">
-        <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
-          Expedientes en Tramitación ({filteredCases.length})
-        </h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h3 style={{ fontSize: '1.1rem', margin: 0 }}>
+            Expedientes en Tramitación ({filteredCases.length})
+          </h3>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+            Total en sistema: {cases.length} expediente(s)
+          </span>
+        </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        {filteredCases.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '3rem 1.5rem', background: '#f8fafc', borderRadius: '10px', border: '1px dashed var(--border-light)' }}>
+            <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.3rem' }}>
+              No hay solicitudes pendientes o coincidentes con los filtros
+            </p>
+            <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', maxWidth: '500px', margin: '0 auto 1rem auto' }}>
+              Cuando los tutores y maestros cumplimenten y envíen solicitudes de derivación psicopedagógica, aparecerán aquí automáticamente sincronizadas en la nube.
+            </p>
+            {onRefresh && (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={onRefresh}
+                style={{ fontSize: '0.8rem', padding: '0.4rem 0.85rem' }}
+              >
+                <RefreshCw size={14} style={{ marginRight: '0.35rem' }} /> Comprobar nuevas derivaciones
+              </button>
+            )}
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {filteredCases.map((c) => {
             const isInfantil = c.stage === 'INFANTIL';
             const priorityClass = (c.priority || 'MEDIA').toLowerCase();

@@ -55,14 +55,7 @@ export function App() {
 
       try {
         const remoteCases = await FirebaseService.getCases(currentUser);
-        if (remoteCases && remoteCases.length > 0) {
-          setCases(remoteCases);
-        } else if (currentUser.role === 'ORIENTADOR') {
-          setCases(INITIAL_CASES);
-        } else {
-          // Si el docente no tiene casos remotos, lista vacía
-          setCases([]);
-        }
+        setCases(remoteCases || []);
 
         const localSavedCensus = localStorage.getItem('edubuenaventura_neae_census');
         let fallbackCensus = INITIAL_STUDENTS_NEAE;
@@ -87,7 +80,7 @@ export function App() {
       }
     }
     loadData();
-  }, [authLevel, currentUser]);
+  }, [authLevel, currentUser, activeTab]);
 
   // Gestión de Alumnos NEAE (Exclusivo Orientación)
   const handleSaveNeaeStudent = async (student: StudentNEAE) => {
@@ -529,6 +522,15 @@ export function App() {
             cases={cases}
             onUpdateCase={handleUpdateCase}
             onSelectCase={(c) => setSelectedCaseForModal(c)}
+            onRefresh={async () => {
+              if (!currentUser) return;
+              try {
+                const updated = await FirebaseService.getCases(currentUser);
+                setCases(updated || []);
+              } catch (e) {
+                console.error(e);
+              }
+            }}
           />
         )}
 
