@@ -524,9 +524,9 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
 
       {/* Banner de Edición de Datos del Profesor/a */}
       {(isEditingTeacher || currentUser.email === 'docentes@sanbuenaventura.es') && (
-        <div style={{
+        <div id="field-teacherEmail" style={{
           background: currentUser.email === 'docentes@sanbuenaventura.es' ? '#fef3c7' : '#eff6ff',
-          border: currentUser.email === 'docentes@sanbuenaventura.es' ? '1.5px solid #f59e0b' : '1.5px solid #3b82f6',
+          border: validationErrors.teacherEmail ? '2px solid #ef4444' : (currentUser.email === 'docentes@sanbuenaventura.es' ? '1.5px solid #f59e0b' : '1.5px solid #3b82f6'),
           borderRadius: '12px',
           padding: '1rem 1.25rem',
           marginBottom: '1.5rem'
@@ -895,7 +895,15 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               tabIndex={-1}
               role="group" 
               aria-labelledby="label-affectedSubjects"
-              style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '0.35rem' }}
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.45rem',
+                marginTop: '0.35rem',
+                padding: validationErrors.affectedSubjects ? '0.5rem' : '0',
+                borderRadius: '8px',
+                border: validationErrors.affectedSubjects ? '2px solid #ef4444' : 'none'
+              }}
             >
               {stage ? (
                 (stage === 'INFANTIL' ? subjectsListInfantil : subjectsListPrimaria).map(sub => {
@@ -1021,7 +1029,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
           {stage === 'PRIMARIA' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {/* Área 1: Atención */}
-              <div className="rating-group" id="field-attentionFocus">
+              <div
+                className="rating-group"
+                id="field-attentionFocus"
+                style={{
+                  border: validationErrors.attentionFocus ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.attentionFocus ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>1. Atención y Concentración en el Aula *</span>
                   <span className={`rating-badge ${attentionFocus ? `val-${attentionFocus}` : ''}`}>
@@ -1063,7 +1078,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Área 2: Lectura */}
-              <div className="rating-group" id="field-readingComprehension">
+              <div
+                className="rating-group"
+                id="field-readingComprehension"
+                style={{
+                  border: validationErrors.readingComprehension ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.readingComprehension ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>2. Fluidez y Comprensión Lectora *</span>
                   <span className={`rating-badge ${readingComprehension ? `val-${readingComprehension}` : ''}`}>
@@ -1101,7 +1123,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Área 3: Matemáticas */}
-              <div className="rating-group" id="field-mathReasoning">
+              <div
+                className="rating-group"
+                id="field-mathReasoning"
+                style={{
+                  border: validationErrors.mathReasoning ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.mathReasoning ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>3. Razonamiento Matemático y Problemas *</span>
                   <span className={`rating-badge ${mathReasoning ? `val-${mathReasoning}` : ''}`}>
@@ -1139,7 +1168,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Área 4: Ritmo */}
-              <div className="rating-group" id="field-taskPaceAndCompletion">
+              <div
+                className="rating-group"
+                id="field-taskPaceAndCompletion"
+                style={{
+                  border: validationErrors.taskPaceAndCompletion ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.taskPaceAndCompletion ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>4. Ritmo de Trabajo y Finalización de Tareas *</span>
                   <span className={`rating-badge ${taskPaceAndCompletion ? `val-${taskPaceAndCompletion}` : ''}`}>
@@ -1177,7 +1213,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Área 5: Impulsividad */}
-              <div className="rating-group" id="field-impulsivityAndAutonomy">
+              <div
+                className="rating-group"
+                id="field-impulsivityAndAutonomy"
+                style={{
+                  border: validationErrors.impulsivityAndAutonomy ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.impulsivityAndAutonomy ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>5. Control de Impulsividad y Autonomía *</span>
                   <span className={`rating-badge ${impulsivityAndAutonomy ? `val-${impulsivityAndAutonomy}` : ''}`}>
@@ -1215,7 +1258,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Área 6: Emocional */}
-              <div className="rating-group" id="field-emotionalAndPeerRel">
+              <div
+                className="rating-group"
+                id="field-emotionalAndPeerRel"
+                style={{
+                  border: validationErrors.emotionalAndPeerRel ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.emotionalAndPeerRel ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>6. Gestión Emocional y Relación con Iguales *</span>
                   <span className={`rating-badge ${emotionalAndPeerRel ? `val-${emotionalAndPeerRel}` : ''}`}>
@@ -1257,7 +1307,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
           {stage === 'INFANTIL' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {/* Infantil Área 1: Lenguaje Oral */}
-              <div className="rating-group" id="field-infantilOralLanguage">
+              <div
+                className="rating-group"
+                id="field-infantilOralLanguage"
+                style={{
+                  border: validationErrors.infantilOralLanguage ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.infantilOralLanguage ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>1. Lenguaje y Comunicación Oral *</span>
                   <span className={`rating-badge ${infantilOralLanguage ? `val-${infantilOralLanguage}` : ''}`}>
@@ -1295,7 +1352,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Infantil Área 2: Asamblea */}
-              <div className="rating-group" id="field-infantilAttentionAssembly">
+              <div
+                className="rating-group"
+                id="field-infantilAttentionAssembly"
+                style={{
+                  border: validationErrors.infantilAttentionAssembly ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.infantilAttentionAssembly ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>2. Atención en Asamblea e Inquietud Motriz *</span>
                   <span className={`rating-badge ${infantilAttentionAssembly ? `val-${infantilAttentionAssembly}` : ''}`}>
@@ -1333,7 +1397,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Infantil Área 3: Motricidad Fina */}
-              <div className="rating-group" id="field-infantilPsychomotorFine">
+              <div
+                className="rating-group"
+                id="field-infantilPsychomotorFine"
+                style={{
+                  border: validationErrors.infantilPsychomotorFine ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.infantilPsychomotorFine ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>3. Psicomotricidad Fina y Pinza Digital *</span>
                   <span className={`rating-badge ${infantilPsychomotorFine ? `val-${infantilPsychomotorFine}` : ''}`}>
@@ -1371,7 +1442,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Infantil Área 4: Lógica */}
-              <div className="rating-group" id="field-infantilLogicConcepts">
+              <div
+                className="rating-group"
+                id="field-infantilLogicConcepts"
+                style={{
+                  border: validationErrors.infantilLogicConcepts ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.infantilLogicConcepts ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>4. Pensamiento Lógico y Conceptos Básicos *</span>
                   <span className={`rating-badge ${infantilLogicConcepts ? `val-${infantilLogicConcepts}` : ''}`}>
@@ -1409,7 +1487,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Infantil Área 5: Autonomía */}
-              <div className="rating-group" id="field-infantilPersonalAutonomy">
+              <div
+                className="rating-group"
+                id="field-infantilPersonalAutonomy"
+                style={{
+                  border: validationErrors.infantilPersonalAutonomy ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.infantilPersonalAutonomy ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>5. Autonomía Personal y Hábitos de Aula *</span>
                   <span className={`rating-badge ${infantilPersonalAutonomy ? `val-${infantilPersonalAutonomy}` : ''}`}>
@@ -1447,7 +1532,14 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               </div>
 
               {/* Infantil Área 6: Juego */}
-              <div className="rating-group" id="field-infantilSocialPlay">
+              <div
+                className="rating-group"
+                id="field-infantilSocialPlay"
+                style={{
+                  border: validationErrors.infantilSocialPlay ? '2px solid #ef4444' : '1px solid var(--border-light)',
+                  background: validationErrors.infantilSocialPlay ? '#fff5f5' : 'var(--bg-subtle)'
+                }}
+              >
                 <div className="rating-header">
                   <span>6. Socialización y Juego Simbólico *</span>
                   <span className={`rating-badge ${infantilSocialPlay ? `val-${infantilSocialPlay}` : ''}`}>
@@ -1538,7 +1630,15 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               tabIndex={-1}
               role="group"
               aria-labelledby="label-appliedMeasures"
-              style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.35rem' }}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.4rem',
+                marginTop: '0.35rem',
+                padding: validationErrors.appliedMeasuresList ? '0.5rem' : '0',
+                borderRadius: '8px',
+                border: validationErrors.appliedMeasuresList ? '2px solid #ef4444' : 'none'
+              }}
             >
               {(stage === 'INFANTIL' ? availableMeasuresInfantil : availableMeasuresPrimaria).map(mea => {
                 const isChecked = appliedMeasuresList.includes(mea);
@@ -1776,17 +1876,15 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
           </div>
         </div>
 
-        {/* BOTÓN DE ENVÍO / REVISIÓN: DESHABILITADO HASTA COMPLETAR REQUISITOS */}
+        {/* BOTÓN DE ENVÍO / REVISIÓN */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem' }}>
           <button
             type="submit"
-            disabled={!isFormComplete}
             className="btn btn-primary"
             style={{
               padding: '0.75rem 1.5rem',
               fontSize: '0.9rem',
-              opacity: isFormComplete ? 1 : 0.5,
-              cursor: isFormComplete ? 'pointer' : 'not-allowed'
+              cursor: 'pointer'
             }}
           >
             <Eye size={18} /> Revisar Expediente antes de Enviar
@@ -1794,7 +1892,7 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
         </div>
         {!isFormComplete && (
           <p style={{ textAlign: 'right', fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.4rem' }}>
-            ℹ️ El botón se habilitará cuando todos los campos obligatorios y la cláusula de privacidad estén cumplimentados.
+            ℹ️ Si falta algún campo por completar al pulsar el botón, se señalará en rojo indicando lo que debes terminar.
           </p>
         )}
       </form>
