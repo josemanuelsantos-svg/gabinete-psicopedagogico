@@ -294,6 +294,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
             );
           })}
         </div>
+        )}
       </div>
 
       {/* MODAL GESTIONAR DICTAMEN MANUAL */}
