@@ -197,6 +197,13 @@ export function App() {
     }
   };
 
+  const handleDeleteCase = async (caseId: string) => {
+    setCases(prev => prev.filter(c => c.id !== caseId));
+    if (currentUser?.role === 'ORIENTADOR') {
+      await FirebaseService.deleteCase(caseId, currentUser);
+    }
+  };
+
   const handleAddEvaluationSession = async (caseId: string, session: EvaluationSession) => {
     const updated = cases.map(c => {
       if (c.id === caseId) {
@@ -521,6 +528,7 @@ export function App() {
           <CounselorDashboard
             cases={cases}
             onUpdateCase={handleUpdateCase}
+            onDeleteCase={handleDeleteCase}
             onSelectCase={(c) => setSelectedCaseForModal(c)}
             onRefresh={async () => {
               if (!currentUser) return;

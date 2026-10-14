@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { ReferralCase, CaseStatus, CasePriority, ActionPlanGuidelines } from '../types';
-import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, Clock, RefreshCw } from 'lucide-react';
+import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, Clock, RefreshCw, Trash2, AlertTriangle } from 'lucide-react';
 
 interface CounselorDashboardProps {
   cases: ReferralCase[];
   onUpdateCase: (updatedCase: ReferralCase) => void;
+  onDeleteCase?: (caseId: string) => void;
   onSelectCase: (c: ReferralCase) => void;
   onRefresh?: () => void;
   isRefreshing?: boolean;
@@ -13,6 +14,7 @@ interface CounselorDashboardProps {
 export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   cases = [],
   onUpdateCase,
+  onDeleteCase,
   onSelectCase,
   onRefresh,
   isRefreshing = false
@@ -21,6 +23,8 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   const [filterPriority, setFilterPriority] = useState<string>('ALL');
   const [filterStage, setFilterStage] = useState<string>('ALL');
   const [selectedCaseForAction, setSelectedCaseForAction] = useState<ReferralCase | null>(null);
+  const [caseToDelete, setCaseToDelete] = useState<ReferralCase | null>(null);
+  const [isDeletingCase, setIsDeletingCase] = useState<boolean>(false);
 
   // Formulario manual del Orientador (técnico, no automatizado)
   const [counselorNotes, setCounselorNotes] = useState<string>('');
@@ -94,6 +98,18 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
 
     onUpdateCase(updated);
     setSelectedCaseForAction(null);
+  };
+
+  const handleOpenDeleteModal = (c: ReferralCase) => {
+    setCaseToDelete(c);
+    setIsDeletingCase(true);
+  };
+
+  const handleConfirmDeleteCase = () => {
+    if (!caseToDelete || !onDeleteCase) return;
+    onDeleteCase(caseToDelete.id);
+    setCaseToDelete(null);
+    setIsDeletingCase(false);
   };
 
   return (
@@ -273,8 +289,9 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                   )}
                 </div>
 
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                   <button
+                    type="button"
                     className="btn btn-secondary"
                     style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
                     onClick={() => onSelectCase(c)}
@@ -283,12 +300,32 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                   </button>
 
                   <button
+                    type="button"
                     className="btn btn-primary"
                     style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
                     onClick={() => handleOpenActionModal(c)}
                   >
                     <Edit3 size={15} /> Dictaminar / Asignar Pruebas
                   </button>
+
+                  {onDeleteCase && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={() => handleOpenDeleteModal(c)}
+                      title="Eliminar solicitud de dictamen"
+                      style={{
+                        padding: '0.45rem 0.75rem',
+                        fontSize: '0.8rem',
+                        background: '#fee2e2',
+                        color: '#b91c1c',
+                        border: '1px solid #fca5a5',
+                        borderRadius: 'var(--radius-md)'
+                      }}
+                    >
+                      <Trash2 size={15} />
+                    </button>
+                  )}
                 </div>
               </div>
             );
@@ -381,6 +418,43 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedCaseForAction(null)}>Cancelar</button>
               <button type="button" className="btn btn-primary" onClick={handleSaveDecision}>
                 <Check size={16} /> Guardar Dictamen Técnico
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL DE CONFIRMACIÓN DE BORRADO DE SOLICITUD DE DICTAMEN */}
+      {isDeletingCase && caseToDelete && (
+        <div className="modal-overlay" role="dialog" aria-modal="true" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="modal-content" style={{ maxWidth: '480px', padding: '1.75rem', textAlign: 'center' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#fee2e2', color: '#dc2626', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
+              <AlertTriangle size={26} />
+            </div>
+            <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '0.5rem' }}>
+              ¿Eliminar solicitud de dictamen?
+            </h3>
+            <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: '1.5', marginBottom: '1.25rem' }}>
+              Se va a eliminar definitivamente el expediente de <strong>{caseToDelete.studentName}</strong> ({caseToDelete.grade}), tramitado por <strong>{caseToDelete.teacherName}</strong>. Esta acción borrará el informe tanto del panel como de la sincronización en la nube.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem' }}>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setIsDeletingCase(false);
+                  setCaseToDelete(null);
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                className="btn"
+                onClick={handleConfirmDeleteCase}
+                style={{ background: '#dc2626', color: 'white', border: 'none', padding: '0.55rem 1.35rem', borderRadius: 'var(--radius-md)', fontWeight: 600 }}
+              >
+                Sí, Eliminar Solicitud
               </button>
             </div>
           </div>

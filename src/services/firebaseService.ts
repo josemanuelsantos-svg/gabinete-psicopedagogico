@@ -248,6 +248,64 @@ export const FirebaseService = {
     return { success: true };
   },
 
+  // 2.B Eliminar expediente/solicitud de derivación (Exclusivo Orientación)
+  async deleteCase(caseId: string, session?: CurrentUserSession | null): Promise<boolean> {
+    if (!session || session.role !== 'ORIENTADOR') {
+      logSecurityEvent({
+        action: 'CONSULTA_DENEGADA',
+        actorEmail: session?.email || 'anonimo',
+        actorRole: session?.role || 'ANONIMO',
+        success: false,
+        notes: `Intento no autorizado de eliminar solicitud de dictamen ${caseId}`
+      });
+      return false;
+    }
+
+    // 1. Eliminar de almacenamiento local
+    try {
+      const stored = localStorage.getItem('edubuenaventura_cases');
+      if (stored) {
+        const currentLocal: ReferralCase[] = JSON.parse(stored);
+        if (Array.isArray(currentLocal)) {
+          const filtered = currentLocal.filter(c => c.id !== caseId);
+          localStorage.setItem('edubuenaventura_cases', JSON.stringify(filtered));
+        }
+      }
+    } catch (storageErr) {
+      console.warn('Advertencia al eliminar del almacenamiento local:', storageErr);
+    }
+
+    // 2. Eliminar de Firestore en la nube
+    try {
+      const token = await getAuthToken();
+      if (token) {
+        const url = `https://firestore.googleapis.com/v1/projects/${FIRESTORE_PROJECT}/databases/(default)/documents/${FIRESTORE_COLLECTION}/${caseId}`;
+        const response = await fetch(url, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (response.ok) {
+          logSecurityEvent({
+            action: 'BAJA_EXPEDIENTE',
+            actorEmail: session.email,
+            actorRole: session.role,
+            caseIdMasked: maskIdentifier(caseId),
+            success: true,
+            notes: `Solicitud de dictamen/expediente ${caseId} eliminada por Orientación`
+          });
+          return true;
+        }
+      }
+    } catch (networkError) {
+      console.warn('Error al eliminar de Firestore en la nube:', networkError);
+    }
+
+    return true;
+  },
+
   // 3. Obtener alumnos NEAE
   async getNeaeStudents(session?: CurrentUserSession | null): Promise<StudentNEAE[]> {
     if (!session) return [];
