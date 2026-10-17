@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { EducationalStage, ReferralCase, ReferralQuestionnaire } from '../types';
 import { validateAttachment } from '../utils/fileSecurity';
 import { generateSecureCaseId, CURRENT_PRIVACY_POLICY_VERSION } from '../utils/privacyAudit';
@@ -34,8 +34,11 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
   
   // Archivo adjunto
   const [attachedEvidenceName, setAttachedEvidenceName] = useState<string>('');
+  const [attachedEvidenceDataUrl, setAttachedEvidenceDataUrl] = useState<string>('');
+  const [attachedEvidenceMimeType, setAttachedEvidenceMimeType] = useState<string>('');
   const [fileError, setFileError] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [savedDraftData, setSavedDraftData] = useState<any | null>(null);
 
   // 2.A Indicadores Primaria (Inician estrictamente en null = "Sin valorar")
   const [attentionFocus, setAttentionFocus] = useState<number | null>(null);
@@ -226,12 +229,117 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
     );
   };
 
-  // Manejo seguro de archivos adjuntos con validación binaria
+  // Comprobar si existe un borrador guardado al montar el componente
+  useEffect(() => {
+    try {
+      const rawDraft = localStorage.getItem('edubuenaventura_referral_draft');
+      if (rawDraft) {
+        const parsed = JSON.parse(rawDraft);
+        if (parsed && (parsed.studentName || parsed.mainReason)) {
+          setSavedDraftData(parsed);
+        }
+      }
+    } catch (e) {}
+  }, []);
+
+  // Autoguardado automático del borrador mientras el docente escribe
+  useEffect(() => {
+    if (!studentName.trim() && !mainReason.trim() && !stage) return;
+    try {
+      const draftPayload = {
+        stage,
+        studentName,
+        grade,
+        mainReason,
+        affectedSubjects,
+        isHighCapacityEvaluation,
+        attentionFocus,
+        readingComprehension,
+        mathReasoning,
+        taskPaceAndCompletion,
+        impulsivityAndAutonomy,
+        emotionalAndPeerRel,
+        infantilOralLanguage,
+        infantilAttentionAssembly,
+        infantilPsychomotorFine,
+        infantilLogicConcepts,
+        infantilPersonalAutonomy,
+        infantilSocialPlay,
+        measuresDuration,
+        appliedMeasuresList,
+        measuresResult,
+        measuresObservations,
+        perceivedDifficulty,
+        favoriteSubjects,
+        hardestSubjects,
+        schoolMotivation,
+        familyMeetingDone,
+        familyAgreement,
+        externalAssessmentDone,
+        externalAssessmentDetails,
+        updatedAt: new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+      };
+      localStorage.setItem('edubuenaventura_referral_draft', JSON.stringify(draftPayload));
+    } catch (e) {}
+  }, [
+    stage, studentName, grade, mainReason, affectedSubjects, isHighCapacityEvaluation,
+    attentionFocus, readingComprehension, mathReasoning, taskPaceAndCompletion, impulsivityAndAutonomy, emotionalAndPeerRel,
+    infantilOralLanguage, infantilAttentionAssembly, infantilPsychomotorFine, infantilLogicConcepts, infantilPersonalAutonomy, infantilSocialPlay,
+    measuresDuration, appliedMeasuresList, measuresResult, measuresObservations,
+    perceivedDifficulty, favoriteSubjects, hardestSubjects, schoolMotivation,
+    familyMeetingDone, familyAgreement, externalAssessmentDone, externalAssessmentDetails
+  ]);
+
+  const handleRestoreDraft = () => {
+    if (!savedDraftData) return;
+    if (savedDraftData.stage) setStage(savedDraftData.stage);
+    if (savedDraftData.studentName) setStudentName(savedDraftData.studentName);
+    if (savedDraftData.grade) setGrade(savedDraftData.grade);
+    if (savedDraftData.mainReason) setMainReason(savedDraftData.mainReason);
+    if (Array.isArray(savedDraftData.affectedSubjects)) setAffectedSubjects(savedDraftData.affectedSubjects);
+    if (typeof savedDraftData.isHighCapacityEvaluation === 'boolean') setIsHighCapacityEvaluation(savedDraftData.isHighCapacityEvaluation);
+    if (savedDraftData.attentionFocus !== undefined) setAttentionFocus(savedDraftData.attentionFocus);
+    if (savedDraftData.readingComprehension !== undefined) setReadingComprehension(savedDraftData.readingComprehension);
+    if (savedDraftData.mathReasoning !== undefined) setMathReasoning(savedDraftData.mathReasoning);
+    if (savedDraftData.taskPaceAndCompletion !== undefined) setTaskPaceAndCompletion(savedDraftData.taskPaceAndCompletion);
+    if (savedDraftData.impulsivityAndAutonomy !== undefined) setImpulsivityAndAutonomy(savedDraftData.impulsivityAndAutonomy);
+    if (savedDraftData.emotionalAndPeerRel !== undefined) setEmotionalAndPeerRel(savedDraftData.emotionalAndPeerRel);
+    if (savedDraftData.infantilOralLanguage !== undefined) setInfantilOralLanguage(savedDraftData.infantilOralLanguage);
+    if (savedDraftData.infantilAttentionAssembly !== undefined) setInfantilAttentionAssembly(savedDraftData.infantilAttentionAssembly);
+    if (savedDraftData.infantilPsychomotorFine !== undefined) setInfantilPsychomotorFine(savedDraftData.infantilPsychomotorFine);
+    if (savedDraftData.infantilLogicConcepts !== undefined) setInfantilLogicConcepts(savedDraftData.infantilLogicConcepts);
+    if (savedDraftData.infantilPersonalAutonomy !== undefined) setInfantilPersonalAutonomy(savedDraftData.infantilPersonalAutonomy);
+    if (savedDraftData.infantilSocialPlay !== undefined) setInfantilSocialPlay(savedDraftData.infantilSocialPlay);
+    if (savedDraftData.measuresDuration) setMeasuresDuration(savedDraftData.measuresDuration);
+    if (Array.isArray(savedDraftData.appliedMeasuresList)) setAppliedMeasuresList(savedDraftData.appliedMeasuresList);
+    if (savedDraftData.measuresResult) setMeasuresResult(savedDraftData.measuresResult);
+    if (savedDraftData.measuresObservations) setMeasuresObservations(savedDraftData.measuresObservations);
+    if (savedDraftData.perceivedDifficulty) setPerceivedDifficulty(savedDraftData.perceivedDifficulty);
+    if (savedDraftData.favoriteSubjects) setFavoriteSubjects(savedDraftData.favoriteSubjects);
+    if (savedDraftData.hardestSubjects) setHardestSubjects(savedDraftData.hardestSubjects);
+    if (savedDraftData.schoolMotivation) setSchoolMotivation(savedDraftData.schoolMotivation);
+    if (savedDraftData.familyMeetingDone !== undefined) setFamilyMeetingDone(savedDraftData.familyMeetingDone);
+    if (savedDraftData.familyAgreement) setFamilyAgreement(savedDraftData.familyAgreement);
+    if (typeof savedDraftData.externalAssessmentDone === 'boolean') setExternalAssessmentDone(savedDraftData.externalAssessmentDone);
+    if (savedDraftData.externalAssessmentDetails) setExternalAssessmentDetails(savedDraftData.externalAssessmentDetails);
+    setSavedDraftData(null);
+  };
+
+  const handleDiscardDraft = () => {
+    try {
+      localStorage.removeItem('edubuenaventura_referral_draft');
+    } catch (e) {}
+    setSavedDraftData(null);
+  };
+
+  // Manejo seguro de archivos adjuntos con validación binaria y lectura DataURL
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setFileError('');
     const files = e.target.files;
     if (!files || files.length === 0) {
       setAttachedEvidenceName('');
+      setAttachedEvidenceDataUrl('');
+      setAttachedEvidenceMimeType('');
       return;
     }
 
@@ -241,11 +349,27 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
     if (!validation.valid) {
       setFileError(validation.error || 'Archivo no válido.');
       setAttachedEvidenceName('');
+      setAttachedEvidenceDataUrl('');
+      setAttachedEvidenceMimeType('');
       if (fileInputRef.current) fileInputRef.current.value = '';
       return;
     }
 
     setAttachedEvidenceName(validation.sanitizedName || file.name);
+    setAttachedEvidenceMimeType(file.type || '');
+
+    // Si el archivo pesa menos de 750 KB, convertirlo a DataURL para previsualización y descarga en Orientación
+    if (file.size <= 750 * 1024) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          setAttachedEvidenceDataUrl(reader.result);
+        }
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setAttachedEvidenceDataUrl('');
+    }
   };
 
   // Validación completa del formulario
@@ -362,6 +486,8 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
       mainReason: mainReason.trim(),
       affectedSubjects: isHighCapacityEvaluation && affectedSubjects.length === 0 ? ['Enriquecimiento Curricular General'] : affectedSubjects,
       attachedEvidenceName: attachedEvidenceName || undefined,
+      attachedEvidenceDataUrl: attachedEvidenceDataUrl || undefined,
+      attachedEvidenceMimeType: attachedEvidenceMimeType || undefined,
       isHighCapacityEvaluation: isHighCapacityEvaluation,
 
       // Primaria
@@ -441,6 +567,9 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
 
     try {
       await onSubmitCase(newCase);
+      try {
+        localStorage.removeItem('edubuenaventura_referral_draft');
+      } catch (e) {}
       setShowReviewModal(false);
     } catch (err) {
       console.error('Error al guardar caso:', err);
@@ -484,6 +613,46 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
 
   return (
     <div className="card" style={{ maxWidth: '880px', margin: '0 auto', padding: '1.75rem' }}>
+      {/* Banner de recuperación de borrador autoguardado */}
+      {savedDraftData && (
+        <div style={{
+          background: '#eff6ff',
+          border: '1.5px solid #93c5fd',
+          borderRadius: '10px',
+          padding: '0.85rem 1.1rem',
+          marginBottom: '1.25rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '0.75rem'
+        }}>
+          <div style={{ fontSize: '0.83rem', color: '#1e3a8a' }}>
+            💾 <strong>Borrador sin enviar detectado</strong>
+            {savedDraftData.studentName ? ` (${savedDraftData.studentName})` : ''}
+            {savedDraftData.updatedAt ? ` • Guardado a las ${savedDraftData.updatedAt}` : ''}. ¿Deseas continuar donde lo dejaste?
+          </div>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={handleRestoreDraft}
+              style={{ padding: '0.32rem 0.75rem', fontSize: '0.78rem', minHeight: '32px' }}
+            >
+              Recuperar Borrador
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleDiscardDraft}
+              style={{ padding: '0.32rem 0.75rem', fontSize: '0.78rem', minHeight: '32px' }}
+            >
+              Descartar
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Header Institucional */}
       <div style={{ borderBottom: '1px solid var(--border-light)', paddingBottom: '0.85rem', marginBottom: '1.25rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>

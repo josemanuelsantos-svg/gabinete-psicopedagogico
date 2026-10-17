@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ReferralCase, CaseStatus, CasePriority, ActionPlanGuidelines } from '../types';
-import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, Clock, RefreshCw, Trash2, AlertTriangle } from 'lucide-react';
+import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, RefreshCw, Trash2, AlertTriangle, Sparkles, Printer, FileCheck2 } from 'lucide-react';
 
 interface CounselorDashboardProps {
   cases: ReferralCase[];
@@ -10,6 +10,183 @@ interface CounselorDashboardProps {
   onRefresh?: () => void;
   isRefreshing?: boolean;
 }
+
+const CLINICAL_TEMPLATES: Record<string, {
+  label: string;
+  category: string;
+  specificNeed: string;
+  adaptation: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
+  ptHours: number;
+  plan: ActionPlanGuidelines;
+}> = {
+  TDAH: {
+    label: '⚡ TDAH / Atención',
+    category: 'ACNEAE - TDAH y Funciones Ejecutivas',
+    specificNeed: 'TDAH (Déficit de Atención con/sin Hiperactividad)',
+    adaptation: 'No Significativa (ACNS)',
+    ptHours: 2,
+    plan: {
+      generalGoal: 'Potenciar la atención sostenida, la autorregulación ejecutiva y la finalización secuencial de tareas en el aula.',
+      methodologicalAdaptations: [
+        'Fraccionar las tareas largas y exámenes en bloques cortos y secuenciales.',
+        'Combinar instrucciones verbales breves con apoyo visual en pizarra o mesa.',
+        'Supervisar la agenda escolar y verificar la comprensión del enunciado antes de iniciar.'
+      ],
+      environmentalAdaptations: [
+        'Ubicación en primera fila, cerca del docente y lejos de ventanas o zonas de paso.',
+        'Permitir pequeños desplazamientos funcionales (repartir material, borrar pizarra) para canalizar la inquietud motora.'
+      ],
+      evaluationAdaptations: [
+        'Ampliación del 25-35% de tiempo en controles y pruebas escritas.',
+        'Subrayar en negrita las palabras clave y verbos de acción en los exámenes.',
+        'Realizar lectura previa guiada de las preguntas antes de comenzar la prueba.'
+      ],
+      emotionalTips: [
+        'Refuerzo positivo inmediato ante el esfuerzo y el autocontrol.',
+        'Evitar reprimendas públicas por despistes; emplear señales privadas acordadas con el alumno/a.'
+      ],
+      ptHoursPerWeek: 2
+    }
+  },
+  DISLEXIA: {
+    label: '📖 Dislexia / DEA',
+    category: 'ACNEAE - Dificultades Específicas de Aprendizaje (DEA)',
+    specificNeed: 'Dislexia / Dificultad Específica de Lectoescritura',
+    adaptation: 'No Significativa (ACNS)',
+    ptHours: 3,
+    plan: {
+      generalGoal: 'Reforzar la conciencia fonológica, la fluidez lectora y garantizar que la dificultad lectoescritora no penalice la evaluación de contenidos.',
+      methodologicalAdaptations: [
+        'No forzar la lectura en voz alta en público sin preparación previa del texto.',
+        'Facilitar esquemas visuales, mapas conceptuales y tipografía clara (Arial/Verdana 12-14pt, interlineado 1.5).',
+        'Reducir la carga de copiado mecánico de pizarra o enunciados largos.'
+      ],
+      environmentalAdaptations: [
+        'Ubicación cercana al profesor para supervisión silenciosa de la comprensión lectora.',
+        'Permitir el uso de guía de lectura o regla para no saltar de línea.'
+      ],
+      evaluationAdaptations: [
+        'No penalizar las faltas de ortografía natural o arbitraria en áreas no lingüísticas.',
+        'Lectura oral de todos los enunciados del examen por parte del docente.',
+        'Complementar o verificar oralmente aquellas respuestas escritas que resulten incompletas.'
+      ],
+      emotionalTips: [
+        'Valorar el contenido y el razonamiento oral por encima de la forma ortográfica.',
+        'Visibilizar sus fortalezas en creatividad, expresión oral o razonamiento.'
+      ],
+      ptHoursPerWeek: 3
+    }
+  },
+  AACC: {
+    label: '🌟 Altas Capacidades (AACC)',
+    category: 'ACNEAE - Altas Capacidades Intelectuales',
+    specificNeed: 'Altas Capacidades Intelectuales (AACC) / Sobredotación',
+    adaptation: 'Enriquecimiento',
+    ptHours: 0,
+    plan: {
+      generalGoal: 'Prevenir la desmotivación escolar mediante enriquecimiento curricular horizontal, retos de investigación y aprendizaje basado en proyectos.',
+      methodologicalAdaptations: [
+        'Compactar contenidos ya dominados evitando la repetición mecánica de ejercicios.',
+        'Proponer retos de profundización, pensamiento divergente y proyectos interdisciplinares.',
+        'Fomentar la autonomía investigadora y el uso de fuentes avanzadas.'
+      ],
+      environmentalAdaptations: [
+        'Rincón o carpeta de ampliación disponible al finalizar las tareas ordinarias.',
+        'Agrupamientos flexibles y tutoría entre iguales cuidando que no se convierta en una carga.'
+      ],
+      evaluationAdaptations: [
+        'Valorar la originalidad de los planteamientos, la argumentación crítica y los proyectos de investigación.',
+        'Permitir formatos alternativos de presentación de saberes (exposiciones, maquetas, ensayos).'
+      ],
+      emotionalTips: [
+        'Acompañar la gestión del perfeccionismo y la tolerancia al error.',
+        'Cuidar la integración socioemocional con su grupo de iguales.'
+      ],
+      ptHoursPerWeek: 0
+    }
+  },
+  TEA: {
+    label: '🧩 TEA / Espectro Autista',
+    category: 'ACNEAE - Apoyo Específico (PT)',
+    specificNeed: 'Trastorno del Espectro Autista (TEA)',
+    adaptation: 'No Significativa (ACNS)',
+    ptHours: 3,
+    plan: {
+      generalGoal: 'Proporcionar predictibilidad ambiental, estructuración visual de rutinas y apoyo en la regulación sensorial y habilidades pragmáticas.',
+      methodologicalAdaptations: [
+        'Anticipar con antelación cualquier cambio de rutina, excursión o sustitución docente.',
+        'Emplear lenguaje literal, directo y claro, evitando dobles sentidos o ironías.',
+        'Secuenciar las tareas con agendas visuales o listas de verificación paso a paso.'
+      ],
+      environmentalAdaptations: [
+        'Entorno estructurado con baja sobrecarga sensorial (ruido y estímulos visuales).',
+        'Acordar un espacio tranquilo de regulación emocional en caso de saturación.'
+      ],
+      evaluationAdaptations: [
+        'Exámenes con formato estructurado, preguntas directas y ejemplos resueltos.',
+        'Tiempo adicional y posibilidad de realizar pruebas en entorno tranquilo con el PT.'
+      ],
+      emotionalTips: [
+        'Mediar positivamente en los juegos de patio y trabajos en equipo.',
+        'Utilizar sus centros de interés para conectar con los aprendizajes curriculares.'
+      ],
+      ptHoursPerWeek: 3
+    }
+  },
+  TEL: {
+    label: '🗣️ TEL / Lenguaje',
+    category: 'ACNEAE - Trastornos del Lenguaje y la Comunicación',
+    specificNeed: 'Trastorno Específico del Lenguaje (TEL / TDL)',
+    adaptation: 'No Significativa (ACNS)',
+    ptHours: 3,
+    plan: {
+      generalGoal: 'Estimular la comprensión y expresión morfosintáctica y léxica apoyando el acceso al currículo mediante canal visual.',
+      methodologicalAdaptations: [
+        'Hablar de forma pausada asegurando el contacto visual y apoyando la explicación con imágenes o esquemas.',
+        'Modelar de forma natural las expresiones del alumno/a (reformulación positiva sin corrección brusca).',
+        'Dar tiempo extra de respuesta oral sin completar sus frases prematuramente.'
+      ],
+      environmentalAdaptations: [
+        'Ubicación cercana al docente para facilitar la discriminación auditiva y visual.',
+        'Diccionario visual de vocabulario clave de cada unidad didáctica.'
+      ],
+      evaluationAdaptations: [
+        'Simplificar la complejidad sintáctica de los enunciados de examen.',
+        'Priorizar preguntas de relacionar, opción múltiple o esquemas frente a redacciones extensas.'
+      ],
+      emotionalTips: [
+        'Garantizar un clima de confianza donde se sienta seguro/a al participar oralmente.'
+      ],
+      ptHoursPerWeek: 3
+    }
+  },
+  ORDINARIO: {
+    label: '📚 Refuerzo Ordinario',
+    category: 'ACNEAE - Apoyo Ordinario',
+    specificNeed: 'Refuerzo Pedagógico en Competencias Básicas',
+    adaptation: 'Pautas Ordinarias',
+    ptHours: 0,
+    plan: {
+      generalGoal: 'Consolidar los aprendizajes instrumentales básicos y los hábitos de estudio mediante medidas ordinarias de atención a la diversidad.',
+      methodologicalAdaptations: [
+        'Supervisión cercana del trabajo diario en el aula y revisión de agenda.',
+        'Explicación individualizada de refuerzo tras la exposición general al grupo.',
+        'Uso de apoyos manipulativos y ejemplos prácticos.'
+      ],
+      environmentalAdaptations: [
+        'Ubicación estratégica cerca del docente y con compañero/a tutor de referencia.'
+      ],
+      evaluationAdaptations: [
+        'Verificación previa de la comprensión de los enunciados de control.',
+        'Flexibilidad de tiempo (+20%) para revisar la prueba antes de entregar.'
+      ],
+      emotionalTips: [
+        'Refuerzo positivo del progreso individual para afianzar la autoestima escolar.'
+      ],
+      ptHoursPerWeek: 0
+    }
+  }
+};
 
 export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   cases = [],
@@ -25,6 +202,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   const [selectedCaseForAction, setSelectedCaseForAction] = useState<ReferralCase | null>(null);
   const [caseToDelete, setCaseToDelete] = useState<ReferralCase | null>(null);
   const [isDeletingCase, setIsDeletingCase] = useState<boolean>(false);
+  const [caseForFamilyAuth, setCaseForFamilyAuth] = useState<ReferralCase | null>(null);
 
   // Formulario manual del Orientador (técnico, no automatizado)
   const [counselorNotes, setCounselorNotes] = useState<string>('');
@@ -32,18 +210,21 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   const [newStatus, setNewStatus] = useState<CaseStatus>('EN_EVALUACION');
   const [assignedPriority, setAssignedPriority] = useState<CasePriority>('MEDIA');
 
-  // Pautas metodológicas dictaminadas
-  const [actionPlan, setActionPlan] = useState<ActionPlanGuidelines>({
-    generalGoal: 'Intervención y apoyo metodológico individualizado en el aula ordinaria.',
-    methodologicalAdaptations: [
-      'Fraccionamiento de instrucciones complejas en pasos secuenciales.',
-      'Ampliación del 25% de tiempo en pruebas y controles de evaluación.',
-      'Uso de apoyos visuales y esquemas resumen en la mesa de trabajo.'
-    ],
-    environmentalAdaptations: ['Ubicación en primera fila libre de distracciones visuales.'],
-    evaluationAdaptations: ['Lectura previa guiada de enunciados de examen.'],
-    emotionalTips: ['Refuerzo positivo contingente ante el esfuerzo y perseverancia.']
-  });
+  // Campos de incorporación al Censo NEAE al dictaminar
+  const [dictamenCategory, setDictamenCategory] = useState<string>('ACNEAE - Dificultades Específicas de Aprendizaje (DEA)');
+  const [dictamenSpecificNeed, setDictamenSpecificNeed] = useState<string>('TDAH / Dificultad de Atención');
+  const [dictamenAdaptation, setDictamenAdaptation] = useState<'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias'>('No Significativa (ACNS)');
+  const [dictamenPtTeacher, setDictamenPtTeacher] = useState<string>('');
+  const [dictamenPtHours, setDictamenPtHours] = useState<number>(0);
+
+  // Pautas metodológicas editables en texto (una por línea)
+  const [generalGoal, setGeneralGoal] = useState<string>('Intervención y apoyo metodológico individualizado en el aula ordinaria.');
+  const [methodologicalText, setMethodologicalText] = useState<string>(
+    'Fraccionamiento de instrucciones complejas en pasos secuenciales.\nAmpliación del 25% de tiempo en pruebas y controles de evaluación.\nUso de apoyos visuales y esquemas resumen en la mesa de trabajo.'
+  );
+  const [environmentalText, setEnvironmentalText] = useState<string>('Ubicación en primera fila libre de distracciones visuales.');
+  const [evaluationText, setEvaluationText] = useState<string>('Lectura previa guiada de enunciados de examen.');
+  const [emotionalText, setEmotionalText] = useState<string>('Refuerzo positivo contingente ante el esfuerzo y perseverancia.');
 
   const availableTests = [
     { code: 'WISC-V', name: 'Escala Wechsler de Inteligencia (6-16 años)', area: 'Cognitiva' },
@@ -66,14 +247,48 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
     return true;
   });
 
+  const applyClinicalTemplate = (key: string) => {
+    const tpl = CLINICAL_TEMPLATES[key];
+    if (!tpl) return;
+    setDictamenCategory(tpl.category);
+    setDictamenSpecificNeed(tpl.specificNeed);
+    setDictamenAdaptation(tpl.adaptation);
+    setDictamenPtHours(tpl.ptHours);
+    if (tpl.ptHours > 0 && !dictamenPtTeacher) {
+      setDictamenPtTeacher('Daniel Asenjo (PT)');
+    } else if (tpl.ptHours === 0) {
+      setDictamenPtTeacher('');
+    }
+    setGeneralGoal(tpl.plan.generalGoal);
+    setMethodologicalText(tpl.plan.methodologicalAdaptations.join('\n'));
+    setEnvironmentalText(tpl.plan.environmentalAdaptations.join('\n'));
+    setEvaluationText(tpl.plan.evaluationAdaptations.join('\n'));
+    setEmotionalText(tpl.plan.emotionalTips.join('\n'));
+  };
+
   const handleOpenActionModal = (c: ReferralCase) => {
     setSelectedCaseForAction(c);
     setCounselorNotes(c.counselorNotes || '');
     setSelectedTests(c.assignedTests || []);
     setNewStatus(c.status === 'PENDIENTE_REVISION' ? 'EN_EVALUACION' : c.status);
     setAssignedPriority(c.priority || 'MEDIA');
-    if (c.actionPlan) {
-      setActionPlan(c.actionPlan);
+
+    // Si es una solicitud de Altas Capacidades, preseleccionar plantilla AACC si aún no tenía plan
+    if (c.questionnaire?.isHighCapacityEvaluation && !c.actionPlan) {
+      applyClinicalTemplate('AACC');
+    } else if (c.actionPlan) {
+      setDictamenCategory(c.dictamenCategory || 'ACNEAE - Apoyo Educativo');
+      setDictamenSpecificNeed(c.dictamenSpecificNeed || 'Necesidades Específicas de Apoyo Educativo');
+      setDictamenAdaptation(c.dictamenAdaptation || 'No Significativa (ACNS)');
+      setDictamenPtTeacher(c.dictamenPtTeacher || '');
+      setDictamenPtHours(c.actionPlan.ptHoursPerWeek || 0);
+      setGeneralGoal(c.actionPlan.generalGoal || '');
+      setMethodologicalText((c.actionPlan.methodologicalAdaptations || []).join('\n'));
+      setEnvironmentalText((c.actionPlan.environmentalAdaptations || []).join('\n'));
+      setEvaluationText((c.actionPlan.evaluationAdaptations || []).join('\n'));
+      setEmotionalText((c.actionPlan.emotionalTips || []).join('\n'));
+    } else {
+      applyClinicalTemplate('TDAH');
     }
   };
 
@@ -83,8 +298,19 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
     );
   };
 
+  const splitLines = (txt: string) => txt.split('\n').map(l => l.trim()).filter(Boolean);
+
   const handleSaveDecision = () => {
     if (!selectedCaseForAction) return;
+
+    const builtPlan: ActionPlanGuidelines = {
+      generalGoal: generalGoal.trim() || 'Intervención y apoyo metodológico individualizado en el aula ordinaria.',
+      methodologicalAdaptations: splitLines(methodologicalText),
+      environmentalAdaptations: splitLines(environmentalText),
+      evaluationAdaptations: splitLines(evaluationText),
+      emotionalTips: splitLines(emotionalText),
+      ptHoursPerWeek: dictamenPtTeacher ? dictamenPtHours : 0
+    };
 
     const updated: ReferralCase = {
       ...selectedCaseForAction,
@@ -93,7 +319,11 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
       counselorNotes: counselorNotes.trim(),
       assignedTests: selectedTests,
       decisionDate: new Date().toISOString().split('T')[0],
-      actionPlan: newStatus === 'DICTAMINADO_CON_PAUTAS' ? actionPlan : selectedCaseForAction.actionPlan
+      actionPlan: newStatus === 'DICTAMINADO_CON_PAUTAS' ? builtPlan : selectedCaseForAction.actionPlan,
+      dictamenCategory: newStatus === 'DICTAMINADO_CON_PAUTAS' ? dictamenCategory : selectedCaseForAction.dictamenCategory,
+      dictamenSpecificNeed: newStatus === 'DICTAMINADO_CON_PAUTAS' ? dictamenSpecificNeed : selectedCaseForAction.dictamenSpecificNeed,
+      dictamenAdaptation: newStatus === 'DICTAMINADO_CON_PAUTAS' ? dictamenAdaptation : selectedCaseForAction.dictamenAdaptation,
+      dictamenPtTeacher: newStatus === 'DICTAMINADO_CON_PAUTAS' ? dictamenPtTeacher : selectedCaseForAction.dictamenPtTeacher
     };
 
     onUpdateCase(updated);
@@ -115,7 +345,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Header Banner */}
-      <div style={{
+      <div className="no-print" style={{
         background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)',
         color: 'white',
         borderRadius: 'var(--radius-xl)',
@@ -154,7 +384,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
       </div>
 
       {/* Filters Toolbar */}
-      <div className="card" style={{ padding: '1rem 1.25rem' }}>
+      <div className="card no-print" style={{ padding: '1rem 1.25rem' }}>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 700 }}>
             <Filter size={16} /> Filtros Técnicos:
@@ -207,7 +437,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
       </div>
 
       {/* Cases List */}
-      <div className="card">
+      <div className="card no-print">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h3 style={{ fontSize: '1.1rem', margin: 0 }}>
             Expedientes en Tramitación ({filteredCases.length})
@@ -256,12 +486,17 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                 flexWrap: 'wrap',
                 gap: '1rem'
               }}>
-                <div style={{ flex: '1 1 400px' }}>
+                <div style={{ flex: '1 1 380px' }}>
                   <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', marginBottom: '0.3rem', flexWrap: 'wrap' }}>
                     <span style={{ background: isInfantil ? '#fef3c7' : '#e0e7ff', color: isInfantil ? '#92400e' : '#3730a3', padding: '0.15rem 0.45rem', borderRadius: '10px', fontSize: '0.72rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
                       {isInfantil ? <Baby size={13} /> : <School size={13} />}
                       {isInfantil ? 'Infantil' : 'Primaria'}
                     </span>
+                    {c.questionnaire?.isHighCapacityEvaluation && (
+                      <span style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #f59e0b', padding: '0.12rem 0.5rem', borderRadius: '10px', fontSize: '0.7rem', fontWeight: 700 }}>
+                        🌟 Evaluación AACC
+                      </span>
+                    )}
                     <span className={`badge badge-${priorityClass}`}>{c.priority || 'MEDIA'}</span>
                     <span className={`status-badge status-${c.status || 'PENDIENTE_REVISION'}`}>
                       {statusLabel}
@@ -289,23 +524,33 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                   )}
                 </div>
 
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '0.45rem', alignItems: 'center', flexWrap: 'wrap' }}>
                   <button
                     type="button"
                     className="btn btn-secondary"
-                    style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
+                    style={{ padding: '0.45rem 0.75rem', fontSize: '0.78rem' }}
                     onClick={() => onSelectCase(c)}
                   >
-                    <FileText size={15} /> Ver Cuestionario
+                    <FileText size={14} /> Cuestionario
+                  </button>
+
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    style={{ padding: '0.45rem 0.75rem', fontSize: '0.78rem', background: '#eff6ff', color: '#1e40af', borderColor: '#bfdbfe' }}
+                    onClick={() => setCaseForFamilyAuth(c)}
+                    title="Generar Hoja Oficial de Autorización Familiar para Evaluación Psicopedagógica"
+                  >
+                    <FileCheck2 size={14} /> Autorización Familia
                   </button>
 
                   <button
                     type="button"
                     className="btn btn-primary"
-                    style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
+                    style={{ padding: '0.45rem 0.85rem', fontSize: '0.78rem' }}
                     onClick={() => handleOpenActionModal(c)}
                   >
-                    <Edit3 size={15} /> Dictaminar / Asignar Pruebas
+                    <Edit3 size={14} /> Dictaminar / Pruebas
                   </button>
 
                   {onDeleteCase && (
@@ -315,15 +560,15 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                       onClick={() => handleOpenDeleteModal(c)}
                       title="Eliminar solicitud de dictamen"
                       style={{
-                        padding: '0.45rem 0.75rem',
-                        fontSize: '0.8rem',
+                        padding: '0.45rem 0.7rem',
+                        fontSize: '0.78rem',
                         background: '#fee2e2',
                         color: '#b91c1c',
                         border: '1px solid #fca5a5',
                         borderRadius: 'var(--radius-md)'
                       }}
                     >
-                      <Trash2 size={15} />
+                      <Trash2 size={14} />
                     </button>
                   )}
                 </div>
@@ -334,17 +579,17 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
         )}
       </div>
 
-      {/* MODAL GESTIONAR DICTAMEN MANUAL */}
+      {/* MODAL GESTIONAR DICTAMEN MANUAL ENRIQUECIDO */}
       {selectedCaseForAction && (
         <div className="modal-overlay" role="dialog" aria-modal="true">
-          <div className="modal-content" style={{ maxWidth: '680px' }}>
+          <div className="modal-content" style={{ maxWidth: '780px', maxHeight: '90vh', overflowY: 'auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem', marginBottom: '1rem' }}>
               <div>
                 <span style={{ fontSize: '0.75rem', background: selectedCaseForAction.stage === 'INFANTIL' ? '#fef3c7' : '#e0e7ff', color: selectedCaseForAction.stage === 'INFANTIL' ? '#92400e' : '#3730a3', padding: '0.15rem 0.5rem', borderRadius: '10px', fontWeight: 700 }}>
                   {selectedCaseForAction.stage === 'INFANTIL' ? '🧸 Infantil' : '🎒 Primaria'}
                 </span>
                 <h3 style={{ fontSize: '1.2rem', color: 'var(--text-main)', marginTop: '0.2rem' }}>
-                  Valoración Técnica: {selectedCaseForAction.studentName}
+                  Valoración Técnica y Dictamen: {selectedCaseForAction.studentName} ({selectedCaseForAction.grade})
                 </h3>
               </div>
               <button className="btn btn-secondary" onClick={() => setSelectedCaseForAction(null)} style={{ padding: '0.35rem' }}>✕</button>
@@ -356,7 +601,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                 <select className="select-input" value={newStatus} onChange={(e) => setNewStatus(e.target.value as CaseStatus)}>
                   <option value="PENDIENTE_REVISION">Pendiente de Revisión</option>
                   <option value="EN_EVALUACION">Aceptar e Iniciar Evaluación Psicopedagógica</option>
-                  <option value="DICTAMINADO_CON_PAUTAS">Dictaminar y Asignar Pautas NEAE de Aula</option>
+                  <option value="DICTAMINADO_CON_PAUTAS">Dictaminar e Incorporar al Censo NEAE con Pautas</option>
                   <option value="OBSERVACION_AULA">Recomendar Periodo de Medidas Ordinarias Previas</option>
                   <option value="EVALUACION_RECHAZADA">Desestimar (Derivación prematura / Resuelta)</option>
                 </select>
@@ -375,7 +620,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
 
             {/* Asignación Manual de Baterías Psicométricas */}
             <div className="form-group">
-              <label className="form-label">Selección Manual de Pruebas Psicométricas a Aplicar:</label>
+              <label className="form-label">Selección Manual de Pruebas Psicométricas a Aplicar / Aplicadas:</label>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.35rem' }}>
                 {availableTests.map(t => {
                   const isChecked = selectedTests.includes(t.code);
@@ -385,9 +630,9 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                       key={t.code}
                       onClick={() => handleTestToggle(t.code)}
                       style={{
-                        padding: '0.35rem 0.75rem',
+                        padding: '0.32rem 0.7rem',
                         borderRadius: '20px',
-                        fontSize: '0.78rem',
+                        fontSize: '0.76rem',
                         fontWeight: 600,
                         cursor: 'pointer',
                         border: isChecked ? '1px solid var(--primary-600)' : '1px solid var(--border-light)',
@@ -404,21 +649,254 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
 
             {/* Dictamen Técnico Clínico */}
             <div className="form-group">
-              <label className="form-label">Dictamen Técnico y Observaciones Clínicas de Orientación *</label>
+              <label className="form-label">Dictamen Técnico y Conclusiones Clínicas de Orientación *</label>
               <textarea
-                rows={4}
+                rows={3}
                 className="textarea-input"
-                placeholder="Escribe las valoraciones profesionales, conclusiones técnicas y plan de intervención recomendado para el tutor..."
+                placeholder="Escribe las conclusiones psicopedagógicas, resultados de pruebas y síntesis diagnóstica..."
                 value={counselorNotes}
                 onChange={(e) => setCounselorNotes(e.target.value)}
               />
             </div>
+
+            {/* BLOQUE EXPANDIBLE SI SE SELECCIONA "DICTAMINADO_CON_PAUTAS" */}
+            {newStatus === 'DICTAMINADO_CON_PAUTAS' && (
+              <div style={{ background: '#f0fdfa', border: '1.5px solid #5eead4', borderRadius: 'var(--radius-md)', padding: '1rem 1.15rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                  <h4 style={{ fontSize: '0.95rem', color: '#0f766e', display: 'flex', alignItems: 'center', gap: '0.35rem', margin: 0 }}>
+                    <Sparkles size={16} /> Configuración de Alta Automática en Censo NEAE y Pautas de Aula
+                  </h4>
+                  <span style={{ fontSize: '0.72rem', background: '#ccfbf1', color: '#115e59', padding: '0.15rem 0.5rem', borderRadius: '10px', fontWeight: 700 }}>
+                    Sincronización directa con Censo y PT
+                  </span>
+                </div>
+
+                {/* Selector de Plantillas Rápidas */}
+                <div style={{ marginBottom: '0.85rem' }}>
+                  <span style={{ fontSize: '0.76rem', fontWeight: 700, color: '#134e4a', display: 'block', marginBottom: '0.35rem' }}>
+                    Cargar Plantilla Clínica de Pautas (1 clic):
+                  </span>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                    {Object.entries(CLINICAL_TEMPLATES).map(([key, tpl]) => (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() => applyClinicalTemplate(key)}
+                        style={{
+                          padding: '0.28rem 0.65rem',
+                          borderRadius: '8px',
+                          fontSize: '0.75rem',
+                          fontWeight: 600,
+                          background: '#ffffff',
+                          border: '1px solid #14b8a6',
+                          color: '#0f766e',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {tpl.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid-2" style={{ gap: '0.75rem', marginBottom: '0.75rem' }}>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Diagnóstico / Necesidad Específica (Censo)</label>
+                    <input
+                      type="text"
+                      className="text-input"
+                      value={dictamenSpecificNeed}
+                      onChange={(e) => setDictamenSpecificNeed(e.target.value)}
+                      placeholder="Ej: TDAH, Dislexia, Altas Capacidades..."
+                    />
+                  </div>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Tipo de Adaptación Curricular</label>
+                    <select
+                      className="select-input"
+                      value={dictamenAdaptation}
+                      onChange={(e) => setDictamenAdaptation(e.target.value as any)}
+                    >
+                      <option value="No Significativa (ACNS)">No Significativa (ACNS)</option>
+                      <option value="Significativa (ACS)">Significativa (ACS)</option>
+                      <option value="Enriquecimiento">Programa de Enriquecimiento (AACC)</option>
+                      <option value="Pautas Ordinarias">Pautas Ordinarias de Aula</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid-2" style={{ gap: '0.75rem', marginBottom: '0.75rem' }}>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Especialista PT Asignado</label>
+                    <select
+                      className="select-input"
+                      value={dictamenPtTeacher}
+                      onChange={(e) => {
+                        setDictamenPtTeacher(e.target.value);
+                        if (e.target.value && dictamenPtHours === 0) setDictamenPtHours(2);
+                        if (!e.target.value) setDictamenPtHours(0);
+                      }}
+                    >
+                      <option value="">Sin apoyo de PT (Seguimiento ordinario en aula)</option>
+                      <option value="Daniel Asenjo (PT)">Daniel Asenjo (PT)</option>
+                      <option value="Diego López (PT)">Diego López (PT)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Horas Semanales de PT</label>
+                    <input
+                      type="number"
+                      min={0}
+                      max={10}
+                      className="text-input"
+                      value={dictamenPtHours}
+                      onChange={(e) => setDictamenPtHours(Number(e.target.value))}
+                      disabled={!dictamenPtTeacher}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group" style={{ marginBottom: '0.6rem' }}>
+                  <label className="form-label" style={{ fontSize: '0.78rem' }}>Objetivo Pedagógico General</label>
+                  <input
+                    type="text"
+                    className="text-input"
+                    value={generalGoal}
+                    onChange={(e) => setGeneralGoal(e.target.value)}
+                  />
+                </div>
+
+                <div className="grid-2" style={{ gap: '0.75rem' }}>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.76rem' }}>Pautas Metodológicas (1 por línea)</label>
+                    <textarea
+                      rows={3}
+                      className="textarea-input"
+                      style={{ fontSize: '0.8rem' }}
+                      value={methodologicalText}
+                      onChange={(e) => setMethodologicalText(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.76rem' }}>Adaptaciones de Evaluación (1 por línea)</label>
+                    <textarea
+                      rows={3}
+                      className="textarea-input"
+                      style={{ fontSize: '0.8rem' }}
+                      value={evaluationText}
+                      onChange={(e) => setEvaluationText(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: '1rem' }}>
               <button type="button" className="btn btn-secondary" onClick={() => setSelectedCaseForAction(null)}>Cancelar</button>
               <button type="button" className="btn btn-primary" onClick={handleSaveDecision}>
                 <Check size={16} /> Guardar Dictamen Técnico
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL DE AUTORIZACIÓN FAMILIAR OFICIAL IMPRIMIBLE */}
+      {caseForFamilyAuth && (
+        <div className="modal-overlay" role="dialog" aria-modal="true">
+          <div className="modal-content" style={{ maxWidth: '760px', padding: '2rem', maxHeight: '92vh', overflowY: 'auto' }}>
+            <div className="no-print" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', paddingBottom: '0.75rem', borderBottom: '1px solid var(--border-light)' }}>
+              <div>
+                <span style={{ fontSize: '0.75rem', color: 'var(--primary-700)', fontWeight: 700 }}>
+                  Documento Oficial RGPD / LOPD-GDD
+                </span>
+                <h3 style={{ fontSize: '1.15rem', margin: 0 }}>
+                  Autorización Familiar para Evaluación Psicopedagógica
+                </h3>
+              </div>
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <button type="button" className="btn btn-primary" onClick={() => window.print()}>
+                  <Printer size={15} /> Imprimir / Guardar PDF
+                </button>
+                <button type="button" className="btn btn-secondary" onClick={() => setCaseForFamilyAuth(null)}>
+                  Cerrar
+                </button>
+              </div>
+            </div>
+
+            {/* Contenido Imprimible Oficial */}
+            <div style={{ border: '1px solid #cbd5e1', borderRadius: '10px', padding: '1.75rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.55 }}>
+              <div style={{ textAlign: 'center', borderBottom: '2px solid #0d9488', paddingBottom: '0.85rem', marginBottom: '1.25rem' }}>
+                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#475569', fontWeight: 700 }}>
+                  Colegio San Buenaventura • Madrid • Gabinete de Orientación Psicopedagógica
+                </div>
+                <h2 style={{ fontSize: '1.25rem', color: '#0f172a', marginTop: '0.25rem', marginBottom: '0.15rem' }}>
+                  AUTORIZACIÓN E INFORMACIÓN A LAS FAMILIAS PARA VALORACIÓN PSICOPEDAGÓGICA
+                </h2>
+                <div style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                  Expediente Ref: {caseForFamilyAuth.id.slice(0, 8).toUpperCase()} • Fecha de emisión: {new Date().toLocaleDateString('es-ES')}
+                </div>
+              </div>
+
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '0.9rem 1.1rem', marginBottom: '1.15rem', fontSize: '0.86rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                  <div><strong>Alumno/a:</strong> {caseForFamilyAuth.studentName}</div>
+                  <div><strong>Curso y Etapa:</strong> {caseForFamilyAuth.grade} ({caseForFamilyAuth.stage})</div>
+                  <div><strong>Profesor/a Solicitante:</strong> {caseForFamilyAuth.teacherName}</div>
+                  <div><strong>Modalidad:</strong> {caseForFamilyAuth.questionnaire?.isHighCapacityEvaluation ? 'Detección de Altas Capacidades (AACC)' : 'Valoración Psicopedagógica Ordinaria / NEAE'}</div>
+                </div>
+              </div>
+
+              <p style={{ fontSize: '0.86rem', textAlign: 'justify', marginBottom: '0.85rem' }}>
+                Estimada familia:
+              </p>
+              <p style={{ fontSize: '0.86rem', textAlign: 'justify', marginBottom: '0.85rem' }}>
+                Desde el <strong>Equipo de Orientación y Gabinete Psicopedagógico del Colegio San Buenaventura</strong>, en coordinación con la tutoría de su hijo/a, les informamos de la propuesta para realizar una <strong>valoración psicopedagógica individualizada</strong> con el objetivo de conocer con mayor precisión su perfil de aprendizaje, fortalezas y necesidades educativas, a fin de ofrecerle la mejor respuesta pedagógica en el aula.
+              </p>
+
+              <div style={{ marginBottom: '1rem', fontSize: '0.85rem', background: '#f0fdfa', borderLeft: '4px solid #0d9488', padding: '0.75rem 1rem', borderRadius: '4px' }}>
+                <strong>Síntesis del motivo pedagógico de la valoración:</strong>
+                <div style={{ fontStyle: 'italic', marginTop: '0.25rem', color: '#1e293b' }}>
+                  "{caseForFamilyAuth.questionnaire?.mainReason}"
+                </div>
+                {caseForFamilyAuth.assignedTests && caseForFamilyAuth.assignedTests.length > 0 && (
+                  <div style={{ marginTop: '0.45rem' }}>
+                    <strong>Pruebas estandarizadas previstas:</strong> {caseForFamilyAuth.assignedTests.join(', ')}.
+                  </div>
+                )}
+              </div>
+
+              <div style={{ fontSize: '0.78rem', color: '#475569', textAlign: 'justify', marginBottom: '1.25rem', padding: '0.75rem', background: '#f8fafc', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                <strong>Protección de Datos y Confidencialidad (RGPD / LOPD-GDD):</strong> Los datos obtenidos tendrán carácter estrictamente confidencial y uso exclusivamente educativo dentro del centro escolar conforme a la Ley Orgánica 3/2018 y normativa educativa vigente. Una vez concluida la valoración, serán citados a una entrevista de devolución para compartir las conclusiones y pautas propuestas.
+              </div>
+
+              <div style={{ border: '1.5px solid #94a3b8', borderRadius: '8px', padding: '1rem', marginBottom: '1.5rem', fontSize: '0.85rem' }}>
+                <p style={{ margin: '0 0 0.65rem 0', fontWeight: 700 }}>
+                  DECLARACIÓN DE CONSENTIMIENTO INFORMADO FAMILIAR:
+                </p>
+                <p style={{ margin: '0 0 0.65rem 0' }}>
+                  D./Dª ________________________________________________________, con DNI ____________________, en calidad de madre / padre / tutor legal del alumno/a <strong>{caseForFamilyAuth.studentName}</strong>:
+                </p>
+                <div style={{ display: 'flex', gap: '2rem', margin: '0.75rem 0', fontWeight: 700 }}>
+                  <span>[ &nbsp; ] SÍ AUTORIZO la valoración psicopedagógica</span>
+                  <span>[ &nbsp; ] NO AUTORIZO la valoración</span>
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '2.25rem', paddingTop: '1rem', borderTop: '1px solid #cbd5e1', fontSize: '0.82rem' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ height: '55px' }}></div>
+                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
+                    <strong>Firma del Padre / Madre / Tutor Legal</strong>
+                  </div>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ height: '55px' }}></div>
+                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
+                    <strong>Gabinete de Orientación • Col. San Buenaventura</strong>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,10 +1,12 @@
 import { ReferralCase, StudentNEAE } from '../types';
+import { INITIAL_STUDENTS_NEAE } from '../data/initialData';
 import { generateSecureCaseId, logSecurityEvent, maskIdentifier } from '../utils/privacyAudit';
 
 const FIREBASE_BASE_URL = 'https://avengers-6a-cbbcc-default-rtdb.europe-west1.firebasedatabase.app/edubuenaventura';
 const FIRESTORE_API_KEY = "AIzaSyBlgbaGrSIjdaqXI0SVbZgdim5z8uNzBxs";
 const FIRESTORE_PROJECT = "comedorcsb";
 const FIRESTORE_COLLECTION = "gabinete_cases";
+const FIRESTORE_NEAE_COLLECTION = "gabinete_neae_census";
 
 let cachedToken: string | null = null;
 let tokenExpiry = 0;
@@ -306,97 +308,172 @@ export const FirebaseService = {
     return true;
   },
 
-  // 3. Obtener alumnos NEAE
+  // 3. Obtener alumnos NEAE sincronizados en tiempo real con Firestore + semilla oficial
   async getNeaeStudents(session?: CurrentUserSession | null): Promise<StudentNEAE[]> {
     if (!session) return [];
 
+    // 1. Cargar semilla institucional y respaldo local
+    const studentMap = new Map<string, StudentNEAE>();
+    INITIAL_STUDENTS_NEAE.forEach(s => studentMap.set(s.id, s));
+
+    const deletedIds = new Set<string>();
     try {
-      const response = await fetch(`${FIREBASE_BASE_URL}/neae.json`);
-      if (!response.ok) throw new Error('Error de conexión');
-      const data = await response.json();
-      if (!data) return [];
-      
-      const rawList: any[] = typeof data === 'object' ? Object.values(data) : (Array.isArray(data) ? data : []);
+      const savedDeleted = localStorage.getItem('edubuenaventura_deleted_neae_ids');
+      if (savedDeleted) {
+        const parsedDel = JSON.parse(savedDeleted);
+        if (Array.isArray(parsedDel)) parsedDel.forEach((id: string) => deletedIds.add(id));
+      }
+    } catch (e) {}
 
-      return rawList.map((item: any, idx: number) => {
-        const tips = Array.isArray(item.tips) ? item.tips : [];
-        const methodological = item.guidelines?.methodologicalAdaptations || (tips.length > 0 ? tips : [
-          'Instrucciones paso a paso.',
-          'Apoyo visual y anticipación.',
-          'Fraccionamiento de tareas.'
-        ]);
+    try {
+      const localSaved = localStorage.getItem('edubuenaventura_neae_census');
+      if (localSaved) {
+        const parsed = JSON.parse(localSaved);
+        if (Array.isArray(parsed)) {
+          parsed.forEach((s: StudentNEAE) => {
+            if (s && s.id) studentMap.set(s.id, s);
+          });
+        }
+      }
+    } catch (e) {}
 
-        return {
-          id: item.id || `NEAE-${100 + idx}`,
-          name: item.name || 'Alumno NEAE',
-          grade: item.grade || '1º Primaria',
-          category: item.category || 'ACNEAE - Apoyo Educativo',
-          tutor: item.tutor || 'Tutor de Aula',
-          curricularAdaptation: item.adaptation || item.curricularAdaptation || 'No Significativa (ACNS)',
-          status: item.status || 'Activo',
-          lastReviewDate: item.lastReviewDate || '2026-10-08',
-          ptTeacher: item.ptTeacher || (item.category?.includes('Específico') ? 'Daniel Asenjo (PT)' : undefined),
-          guidelines: {
-            generalGoal: item.goal || item.guidelines?.generalGoal || 'Intervención educativa y metodológica adaptada en aula.',
-            methodologicalAdaptations: methodological,
-            environmentalAdaptations: item.guidelines?.environmentalAdaptations || [
-              'Ubicación en primera fila cerca del profesor o pizarra.',
-              'Espacio estructurado y libre de distracciones visuales.'
-            ],
-            evaluationAdaptations: item.guidelines?.evaluationAdaptations || [
-              'Dar 25% más de tiempo en controles y exámenes.',
-              'Lectura oral previa de enunciados complejos.'
-            ],
-            emotionalTips: item.guidelines?.emotionalTips || [
-              'Reforzamiento positivo constante ante el esfuerzo.',
-              'Validación de la frustración y clima seguro.'
-            ],
-            ptHoursPerWeek: item.guidelines?.ptHoursPerWeek || (item.category?.includes('Específico') ? 3 : 0)
-          }
-        } as StudentNEAE;
-      });
+    // 2. Sincronizar con Cloud Firestore (gabinete_neae_census)
+    try {
+      const token = await getAuthToken();
+      if (token) {
+        const url = `https://firestore.googleapis.com/v1/projects/${FIRESTORE_PROJECT}/databases/(default)/documents/${FIRESTORE_NEAE_COLLECTION}?pageSize=300`;
+        const res = await fetch(url, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const docs = data.documents || [];
+          docs.forEach((d: any) => {
+            try {
+              const docId = d.fields?.id?.stringValue;
+              const isDeleted = d.fields?.deleted?.booleanValue === true;
+              if (isDeleted && docId) {
+                deletedIds.add(docId);
+                studentMap.delete(docId);
+                return;
+              }
+              if (d.fields?.studentJson?.stringValue) {
+                const parsedStudent = JSON.parse(d.fields.studentJson.stringValue) as StudentNEAE;
+                if (parsedStudent && parsedStudent.id) {
+                  studentMap.set(parsedStudent.id, parsedStudent);
+                }
+              }
+            } catch (pErr) {
+              console.warn('Error al parsear alumno NEAE remoto:', pErr);
+            }
+          });
+        }
+      }
     } catch (error) {
-      return [];
+      console.warn('Usando respaldo local del censo NEAE:', error);
     }
+
+    // Filtrar dados de baja/eliminados
+    deletedIds.forEach(id => studentMap.delete(id));
+    const finalStudents = Array.from(studentMap.values());
+
+    try {
+      localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(finalStudents));
+      localStorage.setItem('edubuenaventura_deleted_neae_ids', JSON.stringify(Array.from(deletedIds)));
+    } catch (e) {}
+
+    return finalStudents;
   },
 
-  // 4. Guardar alumno NEAE (Exclusivo Orientación)
+  // 4. Guardar o actualizar alumno NEAE en Firestore y local (Orientador o Revisión Trimestral Docente)
   async saveNeaeStudent(student: StudentNEAE, session?: CurrentUserSession | null): Promise<boolean> {
-    if (!session || session.role !== 'ORIENTADOR') {
+    if (!session) {
       logSecurityEvent({
         action: 'CONSULTA_DENEGADA',
-        actorEmail: session?.email || 'anonimo',
-        actorRole: session?.role || 'ANONIMO',
+        actorEmail: 'anonimo',
+        actorRole: 'ANONIMO',
         success: false,
-        notes: 'Intento no autorizado de editar censo NEAE'
+        notes: 'Intento no autorizado de editar censo NEAE sin sesión'
       });
       return false;
     }
 
+    // 1. Actualizar almacenamiento local inmediatamente
     try {
-      const response = await fetch(`${FIREBASE_BASE_URL}/neae/${student.id}.json`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(student)
-      });
-
-      if (response.ok) {
-        logSecurityEvent({
-          action: 'EDICION_CENSO_NEAE',
-          actorEmail: session.email,
-          actorRole: session.role,
-          success: true,
-          notes: `Guardado/actualizado alumno NEAE ${student.name} (${student.id})`
-        });
+      const localSaved = localStorage.getItem('edubuenaventura_neae_census');
+      let list: StudentNEAE[] = localSaved ? JSON.parse(localSaved) : [...INITIAL_STUDENTS_NEAE];
+      if (!Array.isArray(list)) list = [...INITIAL_STUDENTS_NEAE];
+      const idx = list.findIndex(s => s.id === student.id);
+      if (idx >= 0) {
+        list[idx] = student;
+      } else {
+        list = [student, ...list];
       }
+      localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(list));
+    } catch (e) {}
 
-      return response.ok;
+    // 2. Sincronizar en la nube con Firestore
+    try {
+      const token = await getAuthToken();
+      if (token) {
+        const safeDocId = student.id.replace(/[^a-zA-Z0-9_-]/g, '_');
+        const url = `https://firestore.googleapis.com/v1/projects/${FIRESTORE_PROJECT}/databases/(default)/documents/${FIRESTORE_NEAE_COLLECTION}/${safeDocId}`;
+        const payload = {
+          fields: {
+            id: { stringValue: student.id },
+            name: { stringValue: student.name || '' },
+            grade: { stringValue: student.grade || '' },
+            category: { stringValue: student.category || '' },
+            status: { stringValue: student.status || 'Activo' },
+            deleted: { booleanValue: false },
+            updatedAt: { stringValue: new Date().toISOString() },
+            studentJson: { stringValue: JSON.stringify(student) }
+          }
+        };
+
+        const response = await fetch(url, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          logSecurityEvent({
+            action: 'EDICION_CENSO_NEAE',
+            actorEmail: session.email,
+            actorRole: session.role,
+            success: true,
+            notes: `Sincronizado en Firestore alumno NEAE ${student.name} (${student.id})`
+          });
+          return true;
+        }
+      }
     } catch (error) {
+      console.warn('Error al sincronizar alumno NEAE en Firestore:', error);
+    }
+
+    return true;
+  },
+
+  // 4.B Guardado masivo de censo NEAE (Para Promoción de Curso Escolar)
+  async saveBulkNeaeStudents(students: StudentNEAE[], session?: CurrentUserSession | null): Promise<boolean> {
+    if (!session || session.role !== 'ORIENTADOR') return false;
+    try {
+      localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(students));
+    } catch (e) {}
+
+    try {
+      await Promise.all(students.map(s => this.saveNeaeStudent(s, session)));
+      return true;
+    } catch (e) {
       return false;
     }
   },
 
-  // 5. Eliminar alumno NEAE del censo (Exclusivo Orientación)
+  // 5. Eliminar alumno NEAE del censo en Firestore y local (Exclusivo Orientación)
   async deleteNeaeStudent(studentId: string, session?: CurrentUserSession | null): Promise<boolean> {
     if (!session || session.role !== 'ORIENTADOR') {
       logSecurityEvent({
@@ -409,24 +486,52 @@ export const FirebaseService = {
       return false;
     }
 
+    // 1. Registrar baja local
     try {
-      const response = await fetch(`${FIREBASE_BASE_URL}/neae/${studentId}.json`, {
-        method: 'DELETE'
-      });
-
-      if (response.ok) {
-        logSecurityEvent({
-          action: 'BAJA_CENSO_NEAE',
-          actorEmail: session.email,
-          actorRole: session.role,
-          success: true,
-          notes: `Eliminado alumno NEAE ${studentId} por Orientación`
-        });
+      const savedDeleted = localStorage.getItem('edubuenaventura_deleted_neae_ids');
+      const delList: string[] = savedDeleted ? JSON.parse(savedDeleted) : [];
+      if (!delList.includes(studentId)) {
+        delList.push(studentId);
+        localStorage.setItem('edubuenaventura_deleted_neae_ids', JSON.stringify(delList));
       }
+    } catch (e) {}
 
-      return response.ok;
+    // 2. Sincronizar baja en Firestore (tombstone deleted=true para que no reaparezca desde semilla)
+    try {
+      const token = await getAuthToken();
+      if (token) {
+        const safeDocId = studentId.replace(/[^a-zA-Z0-9_-]/g, '_');
+        const url = `https://firestore.googleapis.com/v1/projects/${FIRESTORE_PROJECT}/databases/(default)/documents/${FIRESTORE_NEAE_COLLECTION}/${safeDocId}`;
+        const payload = {
+          fields: {
+            id: { stringValue: studentId },
+            deleted: { booleanValue: true },
+            updatedAt: { stringValue: new Date().toISOString() }
+          }
+        };
+        const response = await fetch(url, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          logSecurityEvent({
+            action: 'BAJA_CENSO_NEAE',
+            actorEmail: session.email,
+            actorRole: session.role,
+            success: true,
+            notes: `Eliminado en Firestore alumno NEAE ${studentId} por Orientación`
+          });
+        }
+      }
     } catch (error) {
-      return false;
+      console.warn('Error al sincronizar baja NEAE en Firestore:', error);
     }
+
+    return true;
   }
 };

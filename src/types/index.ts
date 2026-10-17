@@ -71,6 +71,8 @@ export interface ReferralQuestionnaire {
   mainReason: string;
   affectedSubjects: string[];
   attachedEvidenceName?: string;
+  attachedEvidenceDataUrl?: string;
+  attachedEvidenceMimeType?: string;
   isHighCapacityEvaluation?: boolean;
 
   // 2. Indicadores de Observación de Aula (Inician en null / Sin valorar)
@@ -170,6 +172,10 @@ export interface ReferralCase {
   quarterlyReviews?: QuarterlyReview[];
   actionPlan?: ActionPlanGuidelines;
   categoryTag?: string;
+  dictamenCategory?: string;
+  dictamenSpecificNeed?: string;
+  dictamenAdaptation?: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
+  dictamenPtTeacher?: string;
   privacyConsent?: PrivacyConsentRecord;
 
   // Optional backwards compatibility field for legacy views if needed

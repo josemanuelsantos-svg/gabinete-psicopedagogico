@@ -102,6 +102,14 @@ export function App() {
     }
   };
 
+  const handleBulkSaveNeaeStudents = async (updatedList: StudentNEAE[]) => {
+    setNeaeStudents(updatedList);
+    localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(updatedList));
+    if (currentUser?.role === 'ORIENTADOR') {
+      await FirebaseService.saveBulkNeaeStudents(updatedList, currentUser);
+    }
+  };
+
   const handleDeleteNeaeStudent = async (studentId: string) => {
     setNeaeStudents(prev => {
       const updated = prev.filter(s => s.id !== studentId);
@@ -178,22 +186,34 @@ export function App() {
     await FirebaseService.saveCase(updatedCase, currentUser);
 
     if (updatedCase.status === 'DICTAMINADO_CON_PAUTAS' && updatedCase.actionPlan) {
-      const exists = neaeStudents.some(s => s.name === updatedCase.studentName);
-      if (!exists) {
-        const newNeae: StudentNEAE = {
-          id: `NEAE-${Math.floor(100 + Math.random() * 900)}`,
-          name: updatedCase.studentName,
-          grade: updatedCase.grade,
-          category: `ACNEAE - Apoyo Educativo`,
-          tutor: updatedCase.teacherName,
-          curricularAdaptation: 'No Significativa (ACNS)',
-          status: 'Activo',
-          lastReviewDate: updatedCase.decisionDate || new Date().toISOString().split('T')[0],
-          guidelines: updatedCase.actionPlan
-        };
-        setNeaeStudents([newNeae, ...neaeStudents]);
-        await FirebaseService.saveNeaeStudent(newNeae, currentUser);
+      const existingIdx = neaeStudents.findIndex(
+        s => s.name.trim().toLowerCase() === updatedCase.studentName.trim().toLowerCase()
+      );
+      const neaeRecord: StudentNEAE = {
+        id: existingIdx >= 0 ? neaeStudents[existingIdx].id : `NEAE-${Math.floor(100 + Math.random() * 900)}`,
+        stage: updatedCase.stage,
+        name: updatedCase.studentName,
+        grade: updatedCase.grade,
+        category: updatedCase.dictamenCategory || `ACNEAE - Apoyo Educativo`,
+        specificNeed: updatedCase.dictamenSpecificNeed || updatedCase.dictamenCategory || 'Necesidades Específicas de Apoyo Educativo',
+        tutor: updatedCase.teacherName,
+        ptTeacher: updatedCase.dictamenPtTeacher || undefined,
+        curricularAdaptation: updatedCase.dictamenAdaptation || 'No Significativa (ACNS)',
+        status: 'Activo',
+        lastReviewDate: updatedCase.decisionDate || new Date().toISOString().split('T')[0],
+        guidelines: updatedCase.actionPlan,
+        supportSlots: existingIdx >= 0 ? neaeStudents[existingIdx].supportSlots : undefined,
+        quarterlyReviews: existingIdx >= 0 ? neaeStudents[existingIdx].quarterlyReviews : undefined
+      };
+
+      if (existingIdx >= 0) {
+        const nextList = [...neaeStudents];
+        nextList[existingIdx] = neaeRecord;
+        setNeaeStudents(nextList);
+      } else {
+        setNeaeStudents([neaeRecord, ...neaeStudents]);
       }
+      await FirebaseService.saveNeaeStudent(neaeRecord, currentUser);
     }
   };
 
@@ -520,6 +540,8 @@ export function App() {
             isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
             onSaveStudent={handleSaveNeaeStudent}
             onDeleteStudent={handleDeleteNeaeStudent}
+            onBulkSaveStudents={handleBulkSaveNeaeStudents}
+            onOpenQuarterlyReview={(s) => setSelectedStudentForReview(s)}
           />
         )}
 
@@ -544,7 +566,10 @@ export function App() {
 
         {/* VISTA 5: CUADRANTE PT (SOLO ORIENTACIÓN) */}
         {authLevel === 'ORIENTADOR_ADMIN' && activeTab === 'SPECIALIST_SCHEDULE' && (
-          <SpecialistSchedulePortal students={neaeStudents} />
+          <SpecialistSchedulePortal
+            students={neaeStudents}
+            onSaveStudent={handleSaveNeaeStudent}
+          />
         )}
 
         {/* VISTA 6: MEMORIA ANUAL (SOLO ORIENTACIÓN) */}

@@ -15,7 +15,9 @@ import {
   AlertTriangle,
   Stethoscope,
   Activity,
-  Bookmark
+  Bookmark,
+  GraduationCap,
+  ClipboardCheck
 } from 'lucide-react';
 
 interface NeaePortalProps {
@@ -23,13 +25,40 @@ interface NeaePortalProps {
   isCounselor?: boolean;
   onSaveStudent?: (student: StudentNEAE) => Promise<void> | void;
   onDeleteStudent?: (studentId: string) => Promise<void> | void;
+  onBulkSaveStudents?: (students: StudentNEAE[]) => Promise<void> | void;
+  onOpenQuarterlyReview?: (student: StudentNEAE) => void;
+}
+
+function computeNextGrade(currentGrade: string): { nextGrade: string; nextStage: EducationalStage; isGraduatingPrimary: boolean } {
+  const g = currentGrade.trim();
+  const groupMatch = g.match(/\b([AB])\b$/i);
+  const groupSuffix = groupMatch ? ` ${groupMatch[1].toUpperCase()}` : '';
+
+  if (g.includes('3 años') || g.includes('1º Infantil')) {
+    return { nextGrade: `Infantil 4 años${groupSuffix}`, nextStage: 'INFANTIL', isGraduatingPrimary: false };
+  }
+  if (g.includes('4 años') || g.includes('2º Infantil')) {
+    return { nextGrade: `Infantil 5 años${groupSuffix}`, nextStage: 'INFANTIL', isGraduatingPrimary: false };
+  }
+  if (g.includes('5 años') || g.includes('3º Infantil')) {
+    return { nextGrade: `1º Educación Primaria${groupSuffix || ' A'}`, nextStage: 'PRIMARIA', isGraduatingPrimary: false };
+  }
+  if (g.startsWith('1º')) return { nextGrade: `2º Educación Primaria${groupSuffix}`, nextStage: 'PRIMARIA', isGraduatingPrimary: false };
+  if (g.startsWith('2º')) return { nextGrade: `3º Educación Primaria${groupSuffix}`, nextStage: 'PRIMARIA', isGraduatingPrimary: false };
+  if (g.startsWith('3º')) return { nextGrade: `4º Educación Primaria${groupSuffix}`, nextStage: 'PRIMARIA', isGraduatingPrimary: false };
+  if (g.startsWith('4º')) return { nextGrade: `5º Educación Primaria${groupSuffix}`, nextStage: 'PRIMARIA', isGraduatingPrimary: false };
+  if (g.startsWith('5º')) return { nextGrade: `6º Educación Primaria${groupSuffix}`, nextStage: 'PRIMARIA', isGraduatingPrimary: false };
+  if (g.startsWith('6º')) return { nextGrade: `1º ESO (Paso a Secundaria)`, nextStage: 'PRIMARIA', isGraduatingPrimary: true };
+  return { nextGrade: g, nextStage: 'PRIMARIA', isGraduatingPrimary: false };
 }
 
 export const NeaePortal: React.FC<NeaePortalProps> = ({ 
   students = [], 
   isCounselor = false,
   onSaveStudent,
-  onDeleteStudent
+  onDeleteStudent,
+  onBulkSaveStudents,
+  onOpenQuarterlyReview
 }) => {
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(students[0]?.id || null);
   const [filterNeed, setFilterNeed] = useState<string>('ALL');
@@ -41,6 +70,10 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
   const [studentToEdit, setStudentToEdit] = useState<StudentNEAE | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [studentToDelete, setStudentToDelete] = useState<StudentNEAE | null>(null);
+
+  // Asistente de Promoción de Curso Escolar
+  const [isPromotionModalOpen, setIsPromotionModalOpen] = useState(false);
+  const [repeatingStudentIds, setRepeatingStudentIds] = useState<string[]>([]);
 
   // Form Fields State
   const [formData, setFormData] = useState<{
@@ -255,13 +288,29 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
 
         <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
           {isCounselor && (
-            <button 
-              className="btn btn-primary no-print" 
-              onClick={handleOpenAddModal}
-              style={{ background: 'white', color: '#047857', border: 'none', fontWeight: 700 }}
-            >
-              <Plus size={16} /> Añadir Alumno NEAE
-            </button>
+            <>
+              <button 
+                className="btn btn-primary no-print" 
+                onClick={handleOpenAddModal}
+                style={{ background: 'white', color: '#047857', border: 'none', fontWeight: 700 }}
+              >
+                <Plus size={16} /> Añadir Alumno NEAE
+              </button>
+
+              {onBulkSaveStudents && (
+                <button
+                  type="button"
+                  className="btn btn-secondary no-print"
+                  onClick={() => {
+                    setRepeatingStudentIds([]);
+                    setIsPromotionModalOpen(true);
+                  }}
+                  style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #f59e0b', fontWeight: 700 }}
+                >
+                  <GraduationCap size={16} /> Promoción de Curso
+                </button>
+              )}
+            </>
           )}
 
           <button className="btn btn-secondary no-print" onClick={handlePrint} style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}>
@@ -475,29 +524,42 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                     Actualizado: {selectedStudent.lastReviewDate}
                   </div>
 
-                  {isCounselor && (
-                    <div className="no-print" style={{ display: 'flex', gap: '0.4rem', marginTop: '0.5rem' }}>
+                  <div className="no-print" style={{ display: 'flex', gap: '0.4rem', marginTop: '0.5rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                    {onOpenQuarterlyReview && (
                       <button
                         type="button"
                         className="btn btn-secondary"
-                        onClick={() => handleOpenEditModal(selectedStudent)}
-                        style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+                        onClick={() => onOpenQuarterlyReview(selectedStudent)}
+                        style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem', background: '#f0fdf4', color: '#166534', borderColor: '#86efac', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
                       >
-                        <Pencil size={13} /> Editar Alumno y Diagnóstico
+                        <ClipboardCheck size={13} /> Valorar Eficacia Trimestral
                       </button>
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={() => {
-                          setStudentToDelete(selectedStudent);
-                          setIsDeleting(true);
-                        }}
-                        style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem', color: '#b91c1c', borderColor: '#fca5a5', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
-                      >
-                        <Trash2 size={13} /> Dar de Baja
-                      </button>
-                    </div>
-                  )}
+                    )}
+
+                    {isCounselor && (
+                      <>
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          onClick={() => handleOpenEditModal(selectedStudent)}
+                          style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+                        >
+                          <Pencil size={13} /> Editar Alumno
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          onClick={() => {
+                            setStudentToDelete(selectedStudent);
+                            setIsDeleting(true);
+                          }}
+                          style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem', color: '#b91c1c', borderColor: '#fca5a5', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+                        >
+                          <Trash2 size={13} /> Dar de Baja
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -616,6 +678,35 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 </ul>
               </div>
             </div>
+
+            {/* Historial de Revisiones Trimestrales si existen */}
+            {selectedStudent.quarterlyReviews && selectedStudent.quarterlyReviews.length > 0 && (
+              <div style={{ marginTop: '1.25rem', background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: 'var(--radius-md)', padding: '1rem 1.15rem' }}>
+                <h4 style={{ fontSize: '0.92rem', color: 'var(--primary-800)', marginBottom: '0.6rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <ClipboardCheck size={16} /> Historial Longitudinal de Revisiones Trimestrales ({selectedStudent.quarterlyReviews.length})
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {selectedStudent.quarterlyReviews.map(rev => (
+                    <div key={rev.id} style={{ background: '#ffffff', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1px solid var(--border-light)', fontSize: '0.8rem' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.2rem', flexWrap: 'wrap', gap: '0.4rem' }}>
+                        <strong>{rev.quarter} ({rev.date}) — Docente: {rev.teacherName}</strong>
+                        <span style={{
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          padding: '0.1rem 0.5rem',
+                          borderRadius: '10px',
+                          background: rev.effectivenessRating === 'ALTA' ? '#dcfce7' : rev.effectivenessRating === 'MEDIA' ? '#fef3c7' : '#fee2e2',
+                          color: rev.effectivenessRating === 'ALTA' ? '#166534' : rev.effectivenessRating === 'MEDIA' ? '#92400e' : '#991b1b'
+                        }}>
+                          Eficacia: {rev.effectivenessRating.replace(/_/g, ' ')}
+                        </span>
+                      </div>
+                      <p style={{ margin: 0, color: '#334155' }}>{rev.classroomProgressNotes}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="card" style={{ padding: '3rem 1.5rem', textAlign: 'center', color: 'var(--text-muted)' }}>
@@ -987,6 +1078,101 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 style={{ background: '#dc2626', color: 'white', border: 'none', padding: '0.5rem 1.25rem', borderRadius: 'var(--radius-md)' }}
               >
                 Sí, Dar de Baja
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ASISTENTE DE PROMOCIÓN DE CURSO ESCOLAR (EXCLUSIVO ORIENTACIÓN) */}
+      {isPromotionModalOpen && (
+        <div className="modal-overlay" role="dialog" aria-modal="true">
+          <div className="modal-content" style={{ maxWidth: '720px', padding: '1.75rem', maxHeight: '90vh', overflowY: 'auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem', marginBottom: '1rem' }}>
+              <div>
+                <span style={{ fontSize: '0.75rem', color: '#92400e', background: '#fef3c7', padding: '0.15rem 0.55rem', borderRadius: '10px', fontWeight: 700 }}>
+                  Automatización de Inicio de Curso • Orientación
+                </span>
+                <h3 style={{ fontSize: '1.2rem', margin: '0.25rem 0 0 0' }}>
+                  🎓 Asistente de Promoción Anual de Curso Escolar
+                </h3>
+              </div>
+              <button type="button" className="btn btn-secondary" onClick={() => setIsPromotionModalOpen(false)} style={{ padding: '0.35rem 0.6rem' }}>
+                <X size={16} />
+              </button>
+            </div>
+
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: 1.5 }}>
+              Esta herramienta actualiza automáticamente el curso de todos los alumnos activos del Censo NEAE al siguiente nivel escolar (ej. <em>1º → 2º Primaria</em>, <em>6º Primaria → 1º ESO</em>). Marca la casilla <strong>"Repite curso"</strong> únicamente en aquellos alumnos que permanezcan en el mismo nivel.
+            </p>
+
+            <div style={{ maxHeight: '380px', overflowY: 'auto', border: '1px solid var(--border-light)', borderRadius: '8px', marginBottom: '1.25rem' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem' }}>
+                <thead>
+                  <tr style={{ background: '#f8fafc', borderBottom: '1px solid var(--border-light)', textAlign: 'left' }}>
+                    <th style={{ padding: '0.6rem 0.75rem' }}>Alumno/a</th>
+                    <th style={{ padding: '0.6rem 0.75rem' }}>Curso Actual</th>
+                    <th style={{ padding: '0.6rem 0.75rem' }}>Nuevo Curso Propuesto</th>
+                    <th style={{ padding: '0.6rem 0.75rem', textAlign: 'center' }}>¿Repite curso?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {students.filter(s => s.status !== 'Alta').map(st => {
+                    const isRepeating = repeatingStudentIds.includes(st.id);
+                    const { nextGrade, isGraduatingPrimary } = computeNextGrade(st.grade);
+                    return (
+                      <tr key={st.id} style={{ borderBottom: '1px solid #f1f5f9', background: isRepeating ? '#fffbeb' : '#ffffff' }}>
+                        <td style={{ padding: '0.55rem 0.75rem', fontWeight: 600 }}>{st.name}</td>
+                        <td style={{ padding: '0.55rem 0.75rem', color: 'var(--text-muted)' }}>{st.grade}</td>
+                        <td style={{ padding: '0.55rem 0.75rem', fontWeight: 700, color: isRepeating ? '#92400e' : isGraduatingPrimary ? '#4f46e5' : '#0f766e' }}>
+                          {isRepeating ? `${st.grade} (Permanece)` : nextGrade}
+                        </td>
+                        <td style={{ padding: '0.55rem 0.75rem', textAlign: 'center' }}>
+                          <input
+                            type="checkbox"
+                            checked={isRepeating}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setRepeatingStudentIds(prev => [...prev, st.id]);
+                              } else {
+                                setRepeatingStudentIds(prev => prev.filter(id => id !== st.id));
+                              }
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem' }}>
+              <button type="button" className="btn btn-secondary" onClick={() => setIsPromotionModalOpen(false)}>
+                Cancelar
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={async () => {
+                  if (!onBulkSaveStudents) return;
+                  const promoted = students.map(st => {
+                    if (st.status === 'Alta' || repeatingStudentIds.includes(st.id)) return st;
+                    const { nextGrade, nextStage, isGraduatingPrimary } = computeNextGrade(st.grade);
+                    return {
+                      ...st,
+                      grade: nextGrade,
+                      stage: nextStage,
+                      tutor: `Tutor/a de ${nextGrade.replace('Educación Primaria ', '')}`,
+                      status: isGraduatingPrimary ? ('En Seguimiento' as const) : st.status,
+                      lastReviewDate: new Date().toISOString().split('T')[0]
+                    };
+                  });
+                  await onBulkSaveStudents(promoted);
+                  setIsPromotionModalOpen(false);
+                }}
+              >
+                <GraduationCap size={16} /> Aplicar Promoción al Censo Oficial
               </button>
             </div>
           </div>
