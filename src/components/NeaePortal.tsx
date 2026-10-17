@@ -88,13 +88,14 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     status: 'Activo' | 'En Seguimiento' | 'Alta';
     ptTeacher: string;
     ptHours: number;
-    alTeacher: string;
-    alHours: number;
+    alTeacher?: string;
+    alHours?: number;
     generalGoal: string;
     methodological: string;
     environmental: string;
     evaluation: string;
     emotional: string;
+    subjectSpecificGuidelines?: Record<string, string[]>;
   }>({
     id: '',
     name: '',
@@ -111,8 +112,425 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     methodological: 'Fraccionamiento de tareas en pasos sencillos.\nSupervisión y confirmación del trabajo realizado.\nUso de apoyos manipulativos y visuales.',
     environmental: 'Ubicación en primera fila cerca de la pizarra.\nMesa de trabajo libre de distracciones visuales.',
     evaluation: 'Ampliación del tiempo en actividades escritas y controles (+25%).\nLectura oral previa de enunciados complejos.',
-    emotional: 'Refuerzo positivo constante ante el esfuerzo.\nValidación emocional y fomento de un clima seguro.'
+    emotional: 'Refuerzo positivo constante ante el esfuerzo.\nValidación emocional y fomento de un clima seguro.',
+    subjectSpecificGuidelines: undefined
   });
+
+  const applyClinicalTemplate = (templateKey: string) => {
+    const templates: Record<string, {
+      category: string;
+      specificNeed: string;
+      curricularAdaptation: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
+      generalGoal: string;
+      methodological: string[];
+      environmental: string[];
+      evaluation: string[];
+      emotional: string[];
+      subjectSpecificGuidelines: Record<string, string[]>;
+    }> = {
+      TEA: {
+        category: 'ACNEE - Trastorno del Espectro Autista (TEA)',
+        specificNeed: 'TEA (Estructuración TEACCH, Comprensión Pragmática y Regulación Sensorial)',
+        curricularAdaptation: 'Significativa (ACS)',
+        generalGoal: 'Garantizar la inclusión socioeducativa, predictibilidad del entorno escolar (metodología TEACCH), autorregulación sensorial y generalización de aprendizajes funcionales en coordinación con PT.',
+        methodological: [
+          'Estructuración visual TEACCH de la jornada: agenda visual individualizada en pupitre o pizarra anticipando cambios de actividad, profesores o salidas con al menos 15 minutos de antelación.',
+          'Uso de lenguaje literal, claro, conciso y directo; evitar ironías, dobles sentidos, metáforas o preguntas abiertas ambiguas.',
+          'Secuenciación paso a paso ("Primero... Después...") mediante apoyos visuales o pictogramas ARASAAC/esquemas numerados para iniciar y finalizar tareas de forma autónoma.',
+          'Apoyo mediante Historias Sociales breves y guiones visuales para trabajar normas de convivencia, resolución de conflictos en el patio y trabajo en equipo.',
+          'Integración funcional de sus centros de interés restringidos como puente motivacional para introducir contenidos curriculares nuevos.',
+          'Tiempos de procesamiento verbal ampliados (espera estructurada de 5–8 segundos tras formularle una pregunta antes de repetirla o reformularla).'
+        ],
+        environmental: [
+          'Ubicación preferente en primera fila lateral o zona de baja sobrecarga sensorial (alejado de timbres, puertas de paso continuo, ventanas ruidosas o luces parpadeantes).',
+          'Habilitar un "Rincón de Calma" o permiso pactado de regulación sensorial (5 minutos con tarjeta visual de descanso) ante signos incipientes de saturación acústica o bloqueo.',
+          'Mantener un entorno de trabajo visualmente limpio y predecible: en la mesa solo debe estar el material de la tarea en curso.',
+          'Compañero/a tutor/a de referencia sensibilizado/a para acompañar en transiciones de aula, recreos estructurados y trabajos por parejas.'
+        ],
+        evaluation: [
+          'Pruebas de evaluación altamente estructuradas, con formato visual limpio, un único ejercicio por bloque y ejemplo resuelto al inicio de cada pregunta.',
+          'Sustituir preguntas abiertas o de inferencia pragmática compleja por ítems concretos: elección múltiple, unir con flechas, mapas conceptuales mudos o respuesta corta.',
+          'Ampliación del tiempo de examen (+35% a +50%) o fraccionamiento del control en dos sesiones breves para evitar fatiga ejecutiva y bloqueo.',
+          'Evaluación conforme a los criterios de su Adaptación Curricular Significativa (ACS) o ACNS en coordinación directa con el especialista de Pedagogía Terapéutica (PT).'
+        ],
+        emotional: [
+          'No interpretar la rigidez cognitiva, la falta de contacto ocular sostenido o la literalidad como desafío de conducta o falta de respeto.',
+          'Anticipar y validar emocionalmente cualquier imprevisto (ausencia de un profesor, lluvia en el recreo, excursión) ofreciendo una alternativa clara y segura.',
+          'Intervenir de forma preventiva ante los primeros signos de sobrecarga (taparse los oídos, balanceo, bloqueo verbal) reduciendo inmediatamente las demandas verbales.'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Trabajar la comprensión lectora con organizadores gráficos visuales (¿Quién?, ¿Dónde?, ¿Qué pasó?, ¿Cómo terminó?) y apoyo de imágenes secuenciadas.',
+            'Explicar explícitamente las frases hechas, modismos e intenciones emocionales de los personajes en las lecturas.'
+          ],
+          'Matemáticas': [
+            'Apoyar la resolución de problemas con material manipulativo (regletas, bloques base 10) y plantilla visual dividida en: Datos / Dibujo / Operación / Solución.',
+            'Resaltar con código de color el signo de la operación (+ en verde, - en rojo) para evitar errores por rigidez o cambio de operación.'
+          ],
+          'Ciencias / STEM': [
+            'Presentar los temas mediante mapas visuales, esquemas causa-efecto y experimentos manipulativos concretos antes de la teoría abstracta.'
+          ],
+          'Idiomas / Inglés': [
+            'Priorizar vocabulario funcional con flashcards visuales y rutinas predecibles; evitar exposiciones orales improvisadas frente a todo el grupo.'
+          ]
+        }
+      },
+      TEL: {
+        category: 'ACNEE - Trastorno Específico del Lenguaje (TEL/TDL)',
+        specificNeed: 'TEL / TDL (Estructuración Morfosintáctica y Comprensión Verbal)',
+        curricularAdaptation: 'Significativa (ACS)',
+        generalGoal: 'Desarrollar la competencia comunicativa expresiva y comprensiva, reduciendo la barrera lingüística en el acceso al currículo ordinario mediante apoyos visuales y modelado morfosintáctico.',
+        methodological: [
+          'Acompañar toda explicación oral con soporte visual simultáneo (esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave destacadas).',
+          'Hablar a velocidad pausada, vocalizando con claridad y empleando frases gramaticalmente completas pero de estructura sintáctica sencilla (Sujeto + Verbo + Objeto).',
+          'Aplicar la técnica de modelado y expansión indirecta: ante un error morfosintáctico o léxico al hablar, no interrumpir ni corregir bruscamente, sino devolverle la frase bien construida de forma natural.',
+          'Anticipar el vocabulario técnico o nuevo de cada unidad didáctica (glosario visual con imagen + definición sencilla) antes de explicarlo al grupo.',
+          'Verificar la comprensión real de los enunciados pidiéndole que muestre o explique brevemente qué debe hacer.'
+        ],
+        environmental: [
+          'Ubicación en primera o segunda fila centrada, garantizando contacto visual directo con el rostro del docente para facilitar la lectura labial y captación de claves gestuales.',
+          'Agrupamiento en parejas o pequeño grupo cooperativo con compañeros de buen modelo lingüístico y actitud empática.',
+          'Controlar el ruido ambiental del aula durante las explicaciones orales y puestas en común.'
+        ],
+        evaluation: [
+          'Lectura oral mediada y explicación previa de todos los enunciados del examen para asegurar que se evalúa el conocimiento de la materia y no el déficit lingüístico.',
+          'Priorizar pruebas con apoyo gráfico, esquemas para completar, verdadero/falso, relacionar conceptos o preguntas cortas frente a desarrollos extensos.',
+          'No penalizar errores morfosintácticos, de concordancia o de vocabulario limitado en áreas no lingüísticas (Ciencias, Matemáticas).',
+          'Permitir apoyo oral complementario en privado con el profesor para matizar respuestas que por escrito hayan quedado incompletas.'
+        ],
+        emotional: [
+          'Respetar su turno de palabra sin meterle prisa ni terminar sus frases por impaciencia; darle seguridad comunicativa.',
+          'Evitar exponerle a leer o hablar en público sin preparación previa; pactar de antemano qué pregunta o fragmento va a intervenir para que lo lleve ensayado.',
+          'Reforzar positivamente toda iniciativa de comunicación oral y participación en el aula.'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Utilizar plantillas de estructuración de frases (¿Quién? + ¿Qué hace? + ¿Dónde/Cuándo?) con apoyo de colores para la expresión escrita.',
+            'Trabajar lecturas con vocabulario glosado y preguntas literales directas antes de pasar a inferencias.'
+          ],
+          'Matemáticas': [
+            'Traducir el enunciado verbal de los problemas matemáticos a dibujos o esquemas visuales, subrayando los datos numéricos y la pregunta final.'
+          ],
+          'Ciencias / STEM': [
+            'Evaluar mediante mapas conceptuales visuales, maquetas o asociación imagen-concepto en lugar de definiciones memorísticas literales.'
+          ],
+          'Idiomas / Inglés': [
+            'Priorizar la comprensión oral apoyada en gestos/imágenes (Total Physical Response) y vocabulario básico sin exigir precisión gramatical escrita compleja.'
+          ]
+        }
+      },
+      AUDITIVA: {
+        category: 'ACNEE - Discapacidad Auditiva',
+        specificNeed: 'Hipoacusia Neurosensorial (Adaptación Acústica, Lectura Labial y Apoyo Visual)',
+        curricularAdaptation: 'No Significativa (ACNS)',
+        generalGoal: 'Garantizar la plena accesibilidad auditiva y visual a la información oral del aula, optimizando el canal visual, la lectura labiofacial y el rendimiento de sus prótesis auditivas.',
+        methodological: [
+          'Hablar siempre de frente al alumno/a, con el rostro bien iluminado y sin obstáculos visuales (no explicar mientras se escribe de espaldas en la pizarra ni taparse la boca con papeles).',
+          'Asegurar su atención visual (llamarle suavemente o hacer una señal visual) ANTES de comenzar una explicación oral o dar una instrucción importante.',
+          'Escribir siempre en la pizarra las palabras técnicas nuevas, fechas de exámenes, páginas de deberes y cambios de tarea.',
+          'En debates o intervenciones de compañeros situados detrás, repetir o resumir brevemente desde la posición del profesor lo que ha dicho el compañero.',
+          'Activar subtítulos en español/inglés en todos los vídeos, proyecciones multimedia o audios empleados en el aula.'
+        ],
+        environmental: [
+          'Ubicación en segunda fila central o ligeramente lateralizada (con el oído de mejor resto auditivo orientado hacia el centro del aula y visión panorámica de pizarra y compañeros).',
+          'Reducción drástica de la reverberación y ruido de fondo: cerrar puerta/ventanas en momentos de explicación o audición y colocar fieltros en patas de sillas.',
+          'Comprobación discreta diaria del correcto funcionamiento de audífonos / implante coclear / equipo de FM al inicio de la jornada.'
+        ],
+        evaluation: [
+          'Sustituir o adaptar las pruebas de audición pura (dictados, listenings de idiomas sin apoyo visual) mediante lectura labiofacial directa con el profesor en silencio o transcripción escrita.',
+          'Entregar por escrito todas las aclaraciones o correcciones que se digan en voz alta durante el transcurso de un examen.',
+          'Tiempo adicional (+25%) en pruebas con alta carga de comprensión lectora y redacción.'
+        ],
+        emotional: [
+          'Tener en cuenta la "fatiga auditiva y visual" acumulada a últimas horas de la mañana por el sobreesfuerzo constante de concentración labiofacial.',
+          'Fomentar la empatía del grupo-clase (respetar turnos de palabra de uno en uno sin solaparse al hablar).'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'En los dictados, situarse cerca del alumno/a articulando con claridad y ritmo pausado para permitir lectura labiofacial.',
+            'Apoyar el nuevo vocabulario mediante campos semánticos visuales.'
+          ],
+          'Matemáticas': [
+            'Acompañar la explicación del cálculo mental y resolución de problemas con representación simultánea en pizarra.'
+          ],
+          'Ciencias / STEM': [
+            'Facilitar guiones escritos o presentaciones visuales de los temas y vídeos con subtítulos activados.'
+          ],
+          'Idiomas / Inglés': [
+            'Adaptar los ejercicios de Listening: realizarlos a viva voz por el docente frente al alumno/a a velocidad reducida o con apoyo del texto escrito.'
+          ]
+        }
+      },
+      CONDUCTA: {
+        category: 'ACNEE - Trastorno de Conducta y Regulación Emocional',
+        specificNeed: 'Trastorno de Conducta y Autorregulación Emocional (Apoyo Conductual Positivo)',
+        curricularAdaptation: 'No Significativa (ACNS)',
+        generalGoal: 'Consolidar la autorregulación emocional, el control de la impulsividad reactiva y la tolerancia a la frustración mediante un Plan de Apoyo Conductual Positivo y co-regulación adulta.',
+        methodological: [
+          'Establecer normas de aula pocas, claras, formuladas en positivo ("Hablamos en tono suave", "Levantamos la mano") y visibles, pactando previamente las consecuencias lógicas.',
+          'Aplicar la técnica del "Refuerzo Diferencial": prestar atención inmediata y elogio descriptivo cuando está trabajando tranquilo o cumpliendo normas, ignorando conductas leves de búsqueda de atención.',
+          'Fraccionar las tareas de mayor exigencia ofreciendo "elecciones forzadas positivas" ("¿Prefieres empezar por el ejercicio 1 o por el 2?") para reducir la oposición reactiva.',
+          'Intercalar responsabilidades prosociales en el aula (encargado de material, repartir fichas, borrar pizarra) que canalicen su liderazgo en rol positivo.',
+          'Economía de fichas o contrato conductual individualizado con metas diarias cortas (por tramos de mañana/tarde) y refuerzo inmediato.'
+        ],
+        environmental: [
+          'Ubicación en primera fila cerca de la mesa del docente, rodeado de compañeros tranquilos y prosociales que no entren en escaladas ni provocaciones.',
+          'Pactar una "Señal Privada de Calma" (gesto discreto o tarjeta sobre la mesa) y una zona o salida regulada de enfriamiento emocional (2–3 min) antes de que estalle una crisis.',
+          'Supervisión activa y estructuración de los tiempos no lectivos (transiciones en pasillos, filas y patio de recreo), que son los momentos de mayor vulnerabilidad.'
+        ],
+        evaluation: [
+          'Separar estrictamente la calificación académica del comportamiento conductual: evaluar los aprendizajes objetivos sin restar nota académica por conducta.',
+          'Fraccionar los exámenes largos y ofrecer supervisión cercana al inicio de la prueba para evitar que abandone el examen ante el primer bloqueo por frustración.',
+          'Permitir pausas breves de regulación durante el control si se observa tensión motora o bloqueo.'
+        ],
+        emotional: [
+          'Evitar SIEMPRE las reprimendas públicas en voz alta o las luchas de poder frente al grupo; corregir en privado, a su altura visual, con tono de voz firme, sereno y neutro.',
+          'En fase de escalada emocional, reducir la carga verbal, validar la emoción ("Veo que estás muy enfadado ahora mismo, vamos a respirar") y posponer la reflexión para cuando haya recuperado la calma.',
+          'Cuidar el vínculo diario: recibirle cada mañana desde cero ("borrón y cuenta nueva"), sin arrastrar etiquetas del día anterior.'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Alternar actividades de escritura con tareas dinámicas u orales para evitar picos de frustración ante textos largos.'
+          ],
+          'Matemáticas': [
+            'Presentar los retos matemáticos de menor a mayor dificultad (empezar siempre con un ejercicio que domine para generar éxito inicial).'
+          ],
+          'Ciencias / STEM': [
+            'Asignarle un rol concreto y estructurado dentro de los trabajos en equipo o experimentos prácticos.'
+          ],
+          'Idiomas / Inglés': [
+            'Utilizar dinámicas participativas y gamificadas con feedback positivo inmediato.'
+          ]
+        }
+      },
+      TDAH: {
+        category: 'ACNEAE - Dificultades Específicas de Aprendizaje',
+        specificNeed: 'TDAH (Déficit de Atención con Hiperactividad e Impulsividad)',
+        curricularAdaptation: 'No Significativa (ACNS)',
+        generalGoal: 'Mejorar la atención sostenida, la inhibición de la respuesta impulsiva y la planificación ejecutiva en el aula ordinaria.',
+        methodological: [
+          'Fragmentación ejecutiva de tareas: entregar o señalar las actividades de una en una (o por bloques de 10–15 min) con metas cortas y verificación inmediata.',
+          'Asegurar el contacto ocular antes de dar una instrucción; pedirle que verbalice en voz baja los pasos que va a seguir (autoinstrucciones de Meichenbaum: "¿Qué tengo que hacer?, ¿Cómo lo haré?, Repaso").',
+          'Permitir movimiento funcional regulado ("recados pedagógicos": repartir material, llevar un aviso, borrar la pizarra) tras finalizar un bloque de concentración.',
+          'Subrayar o resaltar con marcador fluorescente las palabras clave y verbos de acción en los enunciados antes de que empiece a responder.',
+          'Supervisión obligatoria de la agenda escolar en los últimos 5 minutos de clase (verificar que ha anotado deberes y mete el material en la mochila).'
+        ],
+        environmental: [
+          'Ubicación en primera fila, frente a la mesa del profesor, lejos de ventanas, puertas y compañeros distractores.',
+          'Política de "Mesa Limpia": mantener sobre el pupitre únicamente el libro, cuaderno y estuche necesarios para la asignatura actual.',
+          'Uso de apoyos visuales de gestión del tiempo (reloj visible o temporizador visual tipo Time Timer) para que autorregule el tiempo restante de cada tarea.'
+        ],
+        evaluation: [
+          'Ampliación del tiempo de evaluación (+25% a +35%) y entrega del examen en páginas separadas o dobladas para que centre el foco en una sola parte a la vez.',
+          'Subrayado previo en negrita/color de las palabras clave de los enunciados (especialmente cuando hay dos preguntas dentro de un mismo ítem).',
+          'Recordatorio expreso y guiado 5 minutos antes de entregar el examen para que revise olvidos por impulsividad (preguntas sin contestar detrás de la hoja, signos de operaciones).',
+          'Combinar el examen escrito tradicional con evaluación continua de cuaderno, proyectos y preguntas orales en clase.'
+        ],
+        emotional: [
+          'Refuerzo positivo inmediato y frecuente cuando permanece concentrado o levanta la mano esperando su turno.',
+          'No castigar sistemáticamente con "sin recreo": el alumnado con TDAH necesita imperiosamente la descarga motriz del patio para poder concentrarse en las sesiones posteriores.',
+          'Separar la persona de la conducta al corregir despistes u olvidos, fomentando su autoestima académica.'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Dividir las lecturas largas en párrafos numerados con preguntas breves intercaladas para mantener la atención activa.',
+            'Facilitar guiones de planificación antes de redactar un texto (Introducción - Nudo - Desenlace).'
+          ],
+          'Matemáticas': [
+            'Exigir el uso de cuadrícula clara y rodear con color el signo de la operación (+, -, x, :) para evitar fallos por precipitación impulsiva.',
+            'No penalizar el planteamiento completo de un problema si el único fallo es un error mecánico de cálculo final por inatención.'
+          ],
+          'Ciencias / STEM': [
+            'Apoyar el estudio con esquemas visuales, mapas mentales con colores y vídeos cortos e interactivos.'
+          ],
+          'Idiomas / Inglés': [
+            'Alternar actividades cortas (listening, speaking, juego de vocabulario, ejercicio escrito breve) cada 12–15 minutos.'
+          ]
+        }
+      },
+      TDA: {
+        category: 'ACNEAE - Dificultades Específicas de Aprendizaje',
+        specificNeed: 'TDA (Déficit de Atención Predominio Inatento y Velocidad de Procesamiento)',
+        curricularAdaptation: 'No Significativa (ACNS)',
+        generalGoal: 'Potenciar la atención selectiva, la memoria de trabajo y la velocidad de procesamiento, evitando la desconexión silenciosa en el aula.',
+        methodological: [
+          'Activar el foco atencional mediante señales discretas pactadas (tocar suavemente su hombro o su mesa al pasar, o nombrarle con naturalidad) sin exponerle ante la clase.',
+          'Respetar su menor velocidad de procesamiento cognitivo: reducir un 20–30% el volumen de ejercicios repetitivos (ej. hacer 3 operaciones bien hechas en lugar de 6 iguales) y eximir de copiar enunciados largos.',
+          'Acompañar las explicaciones orales con organizadores gráficos en la pizarra para compensar las sobrecargas en su memoria de trabajo.',
+          'Dar las instrucciones por escrito o en lista de verificación (checklist de pasos) en su mesa para que pueda consultarlas si pierde el hilo de la explicación oral.',
+          'Revisar la agenda escolar y el material necesario al cierre de la jornada junto con un compañero-tutor o el docente.'
+        ],
+        environmental: [
+          'Ubicación en primera fila directamente frente al profesor, donde sea fácil mantener el contacto visual y detectar precozmente si "se queda en blanco" o desconecta.',
+          'Sentarle junto a un compañero/a organizado/a y tranquilo/a que sirva de referente silencioso para seguir la página del libro o la tarea actual.',
+          'Mesa despejada de estímulos innecesarios que favorezcan la ensoñación o distracción interna.'
+        ],
+        evaluation: [
+          'Conceder entre un +25% y +35% de tiempo extra en todos los controles y pruebas escritas debido a su ritmo lento de procesamiento y ejecución.',
+          'Diseñar exámenes con tipografía clara, interlineado amplio y sin saturación visual de preguntas en la misma hoja.',
+          'Lectura inicial guiada de los enunciados y verificación a mitad del examen de que está gestionando bien el tiempo y no se ha bloqueado en una pregunta.'
+        ],
+        emotional: [
+          'No confundir su lentitud cognitiva o sus despistes con "vagancia", desinterés o falta de esfuerzo; realiza un sobreesfuerzo mental invisible muy elevado.',
+          'Valorar el porcentaje de acierto sobre los ejercicios realizados en lugar de penalizar severamente por no terminar a tiempo tareas largas.',
+          'Fomentar su participación en clase avisándole unos minutos antes ("Enseguida te preguntaré tu opinión sobre este punto") para que pueda preparar su respuesta con seguridad.'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Permitir usar marcapáginas o regla de lectura para no saltar de línea y subrayar ideas principales párrafo a párrafo.'
+          ],
+          'Matemáticas': [
+            'Proporcionar hojas con las operaciones ya copiadas o permitir responder directamente en la ficha para que dedique su energía mental al razonamiento matemático.'
+          ],
+          'Ciencias / STEM': [
+            'Entregar esquemas-resumen de la unidad con los conceptos esenciales destacados para orientar su estudio en casa.'
+          ],
+          'Idiomas / Inglés': [
+            'Repetir las pistas de audio (Listening) una vez adicional y facilitar apoyo visual del vocabulario.'
+          ]
+        }
+      },
+      DISLEXIA: {
+        category: 'ACNEAE - Dificultades Específicas de Aprendizaje',
+        specificNeed: 'Dislexia y Disortografía (Dificultad Específica en Lectoescritura)',
+        curricularAdaptation: 'No Significativa (ACNS)',
+        generalGoal: 'Garantizar el acceso al aprendizaje y la evaluación justa eliminando la barrera mecánica de la decodificación lectora y la ortografía arbitraria.',
+        methodological: [
+          'Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra: permitir contestar directamente indicando el número de ejercicio o entregar material impreso.',
+          'Tipografía accesible en fichas y apuntes: fuente sin serifa (Arial, Verdana, OpenDyslexic o Comic Sans), tamaño mínimo 12–14 pt, interlineado 1.5 y texto alineado a la izquierda (no justificado).',
+          'No obligarle a leer en voz alta en público de forma imprevista; si va a leer en clase, entregarle el fragmento el día anterior para que pueda prepararlo con seguridad.',
+          'Apoyar las reglas ortográficas mediante memoria visual (tarjetas ideovisuales con dibujos integrados en las letras dudosas b/v, g/j, h) en lugar de la simple repetición de normas.',
+          'Facilitar esquemas previos, mapas mentales y audiolibros o lectura compartida para los libros de lectura obligatoria.'
+        ],
+        environmental: [
+          'Ubicación cercana a la pizarra y al profesor para minimizar errores de copia a distancia y facilitar el apoyo discreto en la lectura.',
+          'Permitir el uso de regla de lectura o guía con ventana coloreada para evitar saltos de línea y fatiga visual.'
+        ],
+        evaluation: [
+          'Lectura oral en voz alta de todos los enunciados del examen por parte del profesor al inicio de la prueba (y a demanda durante la misma).',
+          'NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, rotaciones b/d, p/q, sustituciones, uniones/fragmentaciones de palabras) en la calificación de ninguna asignatura.',
+          'Ampliación del tiempo de examen (+25% a +35%) y posibilidad de complementar o sustituir preguntas de desarrollo largo por comprobación oral o esquemas.',
+          'En exámenes de Lengua y Literatura, evaluar el bloque de ortografía mediante actividades de reconocimiento visual o aplicación guiada, no por dictado puro penalizador.'
+        ],
+        emotional: [
+          'No mandar repetir 10 o 20 veces cada palabra mal escrita como castigo mecánico (es pedagógicamente ineficaz en la dislexia y genera rechazo hacia la escritura).',
+          'Corregir los textos usando bolígrafo verde o destacando los aciertos y el contenido creativo, señalando solo las 3–4 palabras de mayor frecuencia para trabajar en su diccionario personal.',
+          'Destacar públicamente sus fortalezas en razonamiento oral, creatividad, resolución práctica o expresión artística.'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Evaluar la expresión escrita por la riqueza de ideas y coherencia del texto, separándola de la exactitud ortográfica.',
+            'Ofrecer audiolibros o lectura bimodal (escuchar mientras sigue el texto) para las lecturas trimestrales.'
+          ],
+          'Matemáticas': [
+            'Permitir tabla pitagórica de apoyo o calculadora básica cuando el objetivo sea la resolución de problemas (la dislexia afecta a la automatización verbal de las tablas de multiplicar).',
+            'Leerle los enunciados de los problemas para asegurar que comprende el planteamiento.'
+          ],
+          'Ciencias / STEM': [
+            'No descontar puntos por escribir con errores fonológicos los nombres científicos complejos si se identifica claramente el concepto.'
+          ],
+          'Idiomas / Inglés': [
+            'Priorizar el peso de las destrezas orales (Speaking y Listening) frente al Spelling escrito literal; evaluar vocabulario reconociendo la palabra o uniéndola con su significado/imagen.'
+          ]
+        }
+      },
+      DISCALCULIA: {
+        category: 'ACNEAE - Dificultades Específicas de Aprendizaje',
+        specificNeed: 'Discalculia (Dificultad Específica en el Procesamiento Numérico y Cálculo)',
+        curricularAdaptation: 'No Significativa (ACNS)',
+        generalGoal: 'Desarrollar el sentido numérico y el razonamiento lógico-matemático mediante la metodología manipulativa-gráfica-simbólica (CPA).',
+        methodological: [
+          'Aplicar la secuencia CPA (Concreto -> Pictórico -> Abstracto): permitir el uso de material manipulativo (regletas Cuisenaire, bloques multibase, recta numérica, ábaco) antes de exigir el algoritmo abstracto.',
+          'Proporcionar hojas pautadas con cuadrícula amplia o plantillas verticales con columnas diferenciadas por color (Centenas - Decenas - Unidades) para evitar errores de encolumnado.',
+          'Desglosar la resolución de problemas matemáticos en 4 pasos visuales fijos: 1) Subrayar datos (azul) y pregunta (rojo), 2) Dibujar/representar la situación, 3) Elegir y realizar la operación, 4) Escribir la frase de solución.',
+          'Permitir tener en la mesa apoyo visual de la recta numérica, tabla pitagórica de multiplicar y esquema de equivalencias de unidades.'
+        ],
+        environmental: [
+          'Ubicación cercana al docente durante las sesiones de Matemáticas y Ciencias para supervisar el proceso de planteamiento antes de que mecanice un error.',
+          'Disponer de banco de recursos manipulativos accesible en el aula sin estigmatización.'
+        ],
+        evaluation: [
+          'Calificar los problemas matemáticos por el proceso y el razonamiento lógico planteado (hasta el 70% del valor del ítem), sin anular el ejercicio completo por un fallo en el cálculo mecánico.',
+          'Permitir el uso de las tablas de multiplicar impresas o calculadora básica en cursos superiores cuando se evalúe resolución de problemas o geometría.',
+          'Ampliar el tiempo (+25%) y reducir la cantidad de cuentas mecánicas extensas en el examen.'
+        ],
+        emotional: [
+          'Reducir la "ansiedad matemática": evitar pruebas cronometradas de cálculo mental rápido en público que le generen bloqueo emocional.',
+          'Reforzar cada avance en la comprensión lógica del problema por encima de la rapidez de cálculo.'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Apoyar la comprensión de secuencias temporales e históricas (fechas, siglos, orden cronológico) mediante líneas del tiempo visuales.'
+          ],
+          'Matemáticas': [
+            'Uso de plantilla de resolución de problemas paso a paso, cuadrícula adaptada con código de color posicional y apoyo de tabla pitagórica.'
+          ],
+          'Ciencias / STEM': [
+            'Facilitar formularios de apoyo y tablas de conversión visual para cambios de unidades (longitud, masa, capacidad, tiempo).'
+          ],
+          'Idiomas / Inglés': [
+            'Apoyar visualmente el aprendizaje de las horas (telling the time) y los números en lengua extranjera.'
+          ]
+        }
+      },
+      AACC: {
+        category: 'ACNEAE - Altas Capacidades Intelectuales (AACC)',
+        specificNeed: 'Altas Capacidades Intelectuales (Enriquecimiento Curricular y Reto Cognitivo)',
+        curricularAdaptation: 'Enriquecimiento',
+        generalGoal: 'Estimular el potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de pensamiento crítico y proyectos de investigación autónoma, previniendo el aburrimiento escolar.',
+        methodological: [
+          'Compactación curricular ("Curriculum Compacting"): cuando demuestre dominio previo de un contenido, reducir los ejercicios mecánicos o repetitivos y sustituirlos por retos de profundización.',
+          'Aplicar enriquecimiento horizontal e interdisciplinar (Taxonomía de Bloom: analizar, evaluar, crear) mediante retos de lógica, escritura creativa, programación o investigación científica.',
+          'Diseñar una "Carpeta de Enriquecimiento / Proyecto Personal de Investigación" sobre un tema de su elección al que pueda acudir de forma autónoma al terminar las tareas ordinarias.',
+          'Formularle preguntas abiertas de alto nivel cognitivo ("¿Qué pasaría si...?", "¿Cómo demostrarías...?") que estimulen el pensamiento divergente.',
+          'Asignarle roles de coordinación creativa o mentoría cooperativa puntual, cuidando que no se convierta siempre en el "profesor ayudante" para no sobrecargarle socialmente.'
+        ],
+        environmental: [
+          'Acceso flexible a biblioteca de aula, rincón de retos lógicos/STEM o recursos de investigación cuando finalice con éxito la tarea común.',
+          'Agrupamientos flexibles: combinar momentos de trabajo con iguales de ritmo rápido en retos específicos y trabajo cooperativo inclusivo con el resto de la clase.'
+        ],
+        evaluation: [
+          'Evaluar los proyectos de ampliación e investigación mediante rúbricas de pensamiento crítico, creatividad y rigor documental, reconociendo positivamente su esfuerzo extra.',
+          'Permitir formatos alternativos y avanzados de demostración de aprendizaje (exposiciones multimedia, maquetas funcionales, ensayos de investigación, debates).',
+          'Cuidar el perfeccionismo disfuncional en los exámenes: valorar el riesgo intelectual y la originalidad en la resolución de problemas.'
+        ],
+        emotional: [
+          'Atender a la "disincronía evolutiva" (desfase entre su alta madurez intelectual y su desarrollo emocional o motriz propio de su edad cronológica).',
+          'Trabajar la tolerancia al error y a la frustración ante retos verdaderamente difíciles (muchas veces no están acostumbrados a esforzarse porque todo les sale a la primera).',
+          'Evitar exigirle que sea "perfecto en todo" o recriminarle en público ("con lo listo que eres, cómo fallas en esto").'
+        ],
+        subjectSpecificGuidelines: {
+          'Lengua y Literatura': [
+            'Proponer retos de creación literaria avanzada (cambios de narrador, finales alternativos, textos argumentativos, prensa escolar) y lecturas de mayor complejidad.'
+          ],
+          'Matemáticas': [
+            'Sustituir tandas de cuentas mecánicas por problemas de Olimpiada Matemática, enigmas lógicos, criptogramas numéricos y problemas de varias soluciones.'
+          ],
+          'Ciencias / STEM': [
+            'Fomentar la indagación mediante el método científico: formulación de hipótesis propias, diseño de experimentos y proyectos de investigación.'
+          ],
+          'Idiomas / Inglés': [
+            'Facilitar lecturas graduadas de nivel superior, vídeos auténticos y retos comunicativos de mayor riqueza léxica.'
+          ]
+        }
+      }
+    };
+
+    const tpl = templates[templateKey];
+    if (!tpl) return;
+    setFormData(prev => ({
+      ...prev,
+      category: tpl.category,
+      specificNeed: tpl.specificNeed,
+      curricularAdaptation: tpl.curricularAdaptation,
+      generalGoal: tpl.generalGoal,
+      methodological: tpl.methodological.join('\n'),
+      environmental: tpl.environmental.join('\n'),
+      evaluation: tpl.evaluation.join('\n'),
+      emotional: tpl.emotional.join('\n'),
+      subjectSpecificGuidelines: tpl.subjectSpecificGuidelines
+    }));
+  };
 
   const filteredStudents = (students || []).filter(s => {
     if (!s) return false;
@@ -165,7 +583,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       methodological: 'Fraccionamiento de tareas en pasos breves.\nInstrucciones directas y apoyo visual.\nSupervisión periódica.',
       environmental: 'Ubicación en primera fila cerca del profesor y lejos de distracciones.',
       evaluation: 'Tiempo adicional (+25%) en exámenes y controles.\nLectura oral previa de enunciados.',
-      emotional: 'Reforzamiento positivo constante ante el esfuerzo y perseverancia.'
+      emotional: 'Reforzamiento positivo constante ante el esfuerzo y perseverancia.',
+      subjectSpecificGuidelines: undefined
     });
     setStudentToEdit(null);
     setIsEditModalOpen(true);
@@ -190,7 +609,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       methodological: (student.guidelines?.methodologicalAdaptations || []).join('\n'),
       environmental: (student.guidelines?.environmentalAdaptations || []).join('\n'),
       evaluation: (student.guidelines?.evaluationAdaptations || []).join('\n'),
-      emotional: (student.guidelines?.emotionalTips || []).join('\n')
+      emotional: (student.guidelines?.emotionalTips || []).join('\n'),
+      subjectSpecificGuidelines: student.guidelines?.subjectSpecificGuidelines
     });
     setIsEditModalOpen(true);
   };
@@ -223,7 +643,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
         environmentalAdaptations: splitLines(formData.environmental),
         evaluationAdaptations: splitLines(formData.evaluation),
         emotionalTips: splitLines(formData.emotional),
-        ptHoursPerWeek: Number(formData.ptHours) || 0
+        ptHoursPerWeek: Number(formData.ptHours) || 0,
+        subjectSpecificGuidelines: formData.subjectSpecificGuidelines
       }
     };
 
@@ -669,7 +1090,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
               {/* Apoyo Emocional */}
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-light)', padding: '1.1rem', borderRadius: 'var(--radius-md)' }}>
                 <h4 style={{ fontSize: '0.92rem', color: '#92400e', display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.75rem' }}>
-                  <UserCheck size={16} /> Apoyo Emocional y Motivacional
+                  <UserCheck size={16} /> Intervención Socioemocional, Conductual y Motivacional
                 </h4>
                 <ul style={{ paddingLeft: '1.2rem', fontSize: '0.82rem', display: 'flex', flexDirection: 'column', gap: '0.45rem', color: 'var(--text-main)' }}>
                   {guidelines.emotionalTips.map((tip, idx) => (
@@ -678,6 +1099,30 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 </ul>
               </div>
             </div>
+
+            {/* PAUTAS ESPECÍFICAS POR ÁREAS CURRICULARES (LENGUA, MATES, CIENCIAS, INGLÉS) */}
+            {guidelines.subjectSpecificGuidelines && guidelines.subjectSpecificGuidelines.length > 0 && (
+              <div style={{ marginTop: '1.25rem', background: 'linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%)', border: '1px solid #99f6e4', borderRadius: 'var(--radius-md)', padding: '1.15rem 1.25rem' }}>
+                <h4 style={{ fontSize: '0.95rem', color: '#0f766e', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <BookOpen size={17} /> Pautas Didácticas Específicas por Asignatura (Adaptación de Aula)
+                </h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '0.85rem' }}>
+                  {guidelines.subjectSpecificGuidelines.map((sg, idx) => (
+                    <div key={idx} style={{ background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '8px', padding: '0.85rem 1rem' }}>
+                      <strong style={{ fontSize: '0.84rem', color: 'var(--primary-800)', display: 'block', marginBottom: '0.45rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.25rem' }}>
+                        {sg.subject === 'Lengua y Literatura' ? '📘 ' : sg.subject === 'Matemáticas' ? '🔢 ' : sg.subject === 'Ciencias / STEM' ? '🔬 ' : '🌍 '}
+                        {sg.subject}
+                      </strong>
+                      <ul style={{ paddingLeft: '1.1rem', margin: 0, fontSize: '0.79rem', display: 'flex', flexDirection: 'column', gap: '0.35rem', color: '#334155', lineHeight: '1.45' }}>
+                        {sg.tips.map((t, tidx) => (
+                          <li key={tidx}>{t}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Historial de Revisiones Trimestrales si existen */}
             {selectedStudent.quarterlyReviews && selectedStudent.quarterlyReviews.length > 0 && (
@@ -954,9 +1399,52 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
 
               {/* Sección 3: Pautas de Aula (Las 4 Dimensiones) */}
               <div style={{ marginBottom: '1.25rem' }}>
-                <h4 style={{ fontSize: '0.95rem', color: 'var(--primary-800)', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.3rem', marginBottom: '0.75rem' }}>
-                  3. Pautas Pedagógicas para el Claustro de Profesores
-                </h4>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.4rem', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <h4 style={{ fontSize: '0.95rem', color: 'var(--primary-800)', margin: 0 }}>
+                    3. Pautas Pedagógicas Especializadas para el Claustro
+                  </h4>
+                  <span style={{ fontSize: '0.72rem', color: '#4338ca', backgroundColor: '#eef2ff', padding: '0.18rem 0.55rem', borderRadius: '999px', fontWeight: 700 }}>
+                    ✨ Incluye Pautas por Asignatura (Lengua, Matemáticas, STEM e Inglés)
+                  </span>
+                </div>
+
+                {/* Selector Rápido de Plantillas Clínicas NEE / ACNEAE */}
+                <div style={{ backgroundColor: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: '10px', padding: '0.75rem', marginBottom: '0.9rem' }}>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#334155', marginBottom: '0.45rem', textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                    ⚡ Cargar Protocolo Clínico-Pedagógico Especializado (1 clic):
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {[
+                      { key: 'TEA', label: '🧩 ACNEE - TEA (Autismo / TEACCH)', bg: '#eff6ff', border: '#93c5fd', color: '#1e40af' },
+                      { key: 'TEL', label: '🗣️ ACNEE - TEL / TDL (Lenguaje)', bg: '#f0fdf4', border: '#86efac', color: '#166534' },
+                      { key: 'AUDITIVA', label: '🦻 ACNEE - Hipoacusia / Auditiva', bg: '#ecfeff', border: '#67e8f9', color: '#155e75' },
+                      { key: 'CONDUCTA', label: '🛡️ ACNEE - Conducta y Regulación', bg: '#fef2f2', border: '#fca5a5', color: '#991b1b' },
+                      { key: 'TDAH', label: '⚡ TDAH Hiperactivo-Impulsivo', bg: '#fffbeb', border: '#fcd34d', color: '#92400e' },
+                      { key: 'TDA', label: '🔍 TDA Inatento / Lentitud', bg: '#fefce8', border: '#fde047', color: '#854d0e' },
+                      { key: 'DISLEXIA', label: '📖 Dislexia y Disortografía', bg: '#f5f3ff', border: '#c4b5fd', color: '#5b21b6' },
+                      { key: 'DISCALCULIA', label: '🔢 Discalculia Matemática', bg: '#fdf2f8', border: '#f9a8d4', color: '#9d174d' },
+                      { key: 'AACC', label: '🌟 Altas Capacidades (AACC)', bg: '#f0fdfa', border: '#5eead4', color: '#115e59' },
+                    ].map(btn => (
+                      <button
+                        key={btn.key}
+                        type="button"
+                        onClick={() => applyClinicalTemplate(btn.key)}
+                        style={{
+                          padding: '0.3rem 0.6rem',
+                          fontSize: '0.73rem',
+                          fontWeight: 700,
+                          borderRadius: '6px',
+                          border: `1px solid ${btn.border}`,
+                          backgroundColor: btn.bg,
+                          color: btn.color,
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {btn.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
                 <div style={{ marginBottom: '0.75rem' }}>
                   <label className="form-label" style={{ fontSize: '0.78rem' }}>Objetivo General de Intervención *</label>

@@ -331,7 +331,21 @@ export const FirebaseService = {
         const parsed = JSON.parse(localSaved);
         if (Array.isArray(parsed)) {
           parsed.forEach((s: StudentNEAE) => {
-            if (s && s.id) studentMap.set(s.id, s);
+            if (s && s.id) {
+              const seedStudent = studentMap.get(s.id);
+              // Si el registro local es antiguo (sin pautas específicas por asignatura) y existe en semilla enriquecida, actualizar sus pautas
+              if (
+                seedStudent &&
+                (!s.guidelines?.subjectSpecificGuidelines || s.guidelines.subjectSpecificGuidelines.length === 0)
+              ) {
+                studentMap.set(s.id, {
+                  ...s,
+                  guidelines: seedStudent.guidelines
+                });
+              } else {
+                studentMap.set(s.id, s);
+              }
+            }
           });
         }
       }

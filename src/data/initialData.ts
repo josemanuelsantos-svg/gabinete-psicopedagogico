@@ -18,29 +18,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -57,28 +86,74 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -95,29 +170,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -134,29 +238,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -173,28 +305,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -211,28 +374,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -249,29 +443,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -288,29 +510,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -327,28 +578,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -365,28 +647,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -403,28 +716,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -441,29 +785,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -480,28 +852,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -518,29 +921,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -557,29 +989,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -596,28 +1056,74 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -634,28 +1140,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -672,28 +1209,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -710,29 +1278,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -749,29 +1345,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a activar el foco atencional sostenido, combatir la lentitud de velocidad de procesamiento y estructurar la planificación ejecutiva de tareas.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Activación atencional discreta: establecer una señal privada pactada (toque suave en el hombro o en su mesa al pasar) para reconectar su atención cuando se observe desconexión o ensueño, sin exponerle en voz alta.",
+        "Dividir las fichas y actividades largas en 'micro-metas' con tiempos definidos mediante reloj o temporizador visual en pizarra.",
+        "Entrenar el uso de las 'Autoinstrucciones de Meichenbaum' pegadas en su mesa: 1º ¿Qué tengo que hacer?, 2º ¿Cómo lo voy a hacer?, 3º Me fijo bien, 4º Repaso antes de entregar.",
+        "Reducir la carga de copia mecánica de enunciados largos para que invierta su energía cognitiva en pensar y resolver la actividad.",
+        "Verificar sistemáticamente el inicio de la tarea en los primeros 2 minutos tras dar la explicación grupal.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -788,28 +1413,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -826,29 +1482,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -865,29 +1549,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -904,29 +1616,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -943,29 +1683,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -982,29 +1751,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1021,29 +1818,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1060,29 +1886,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1099,28 +1954,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1137,29 +2023,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1176,29 +2091,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1215,28 +2159,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1253,28 +2228,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1291,28 +2297,74 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1329,29 +2381,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1368,28 +2448,56 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Garantizar el acceso íntegro a la información sonora del aula, lectura labiofacial y optimización acústica.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a garantizar la plena accesibilidad auditiva y visual a la información del aula, optimizando la lectura labiofacial y el canal visual.",
       "methodologicalAdaptations": [
-        "Ubicación en primera fila, con visión directa y frontal de los labios del docente.",
-        "No hablar de espaldas a la clase mientras se escribe en la pizarra ni con objetos delante de la boca.",
-        "Asegurar una iluminación adecuada sobre el rostro del docente para facilitar la lectura labiofacial.",
-        "Uso de material subtitulado en proyecciones y vídeos; proporcionar resúmenes por escrito.",
-        "Cuidado del ruido ambiente en el aula y comprobación periódica de la operatividad de audífonos."
+        "Garantizar la visibilidad labiofacial en todo momento: hablar siempre de frente a la alumna, bien iluminado (sin situarse a contraluz frente a la ventana) y nunca explicar mientras se escribe de espaldas en la pizarra.",
+        "Llamar su atención con una señal visual suave antes de iniciar una explicación general o cambiar de tema en el debate de clase.",
+        "Repetir o resumir brevemente en voz clara las preguntas o intervenciones que hagan otros compañeros desde filas traseras (ya que pierde la referencia labial de quienes están detrás).",
+        "Utilizar subtítulos siempre que se proyecten vídeos, documentales o recursos multimedia en la pizarra digital.",
+        "Entregar por escrito en papel o plataforma digital las instrucciones de trabajos, fechas de exámenes y resúmenes de los temas.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación estratégica en 1ª o 2ª fila, ligeramente descentrada hacia un lateral para disponer de un ángulo visual de 180º que le permita ver tanto la cara del profesor como al resto de compañeros.",
+        "Controlar el ruido ambiental y la reverberación del aula (cerrar puerta en momentos de explicación, fieltro en patas de sillas/mesas).",
+        "Asignar un compañero/a cotutor de mesa que le indique rápidamente la página del libro o consignas orales puntuales."
       ],
       "evaluationAdaptations": [
-        "Enunciados escritos con total claridad; apoyo del docente para clarificar vocabulario acústico complejo.",
-        "Exención de pruebas auditivas directas sin adaptación y tiempo adicional para comprensión lectora."
+        "Sustituir las pruebas de dictado auditivo o 'listening' por ejercicios escritos equivalentes o dictados realizados de frente a corta distancia con apoyo labiofacial.",
+        "Asegurar que cualquier aclaración oral dada al grupo durante un examen se le escriba en la pizarra o se le comunique individualmente de frente.",
+        "Ampliar el tiempo de realización de pruebas (+25%) y priorizar el soporte visual y escrito."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Velar por su inclusión plena en trabajos en equipo recordando a los compañeros la norma de hablar de uno en uno y mirándose a la cara.",
+        "Estar atentos a signos de 'fatiga auditiva y atencional' a últimas horas de la mañana debido al sobreesfuerzo de concentración visual."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Reforzar el vocabulario abstracto con apoyo de definiciones visuales y contextos escritos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Acompañar las explicaciones de cálculo mental con registro numérico visible en la pizarra."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Facilitar esquemas escritos completos del tema y activar subtítulos en todos los vídeos científicos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Adaptar las pruebas de 'Listening' (reproducción de audio de altavoz): realizarlas a viva voz por el docente de frente y a ritmo pausado, o sustituirlas por comprensión escrita."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1406,28 +2514,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1444,29 +2583,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a activar el foco atencional sostenido, combatir la lentitud de velocidad de procesamiento y estructurar la planificación ejecutiva de tareas.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Activación atencional discreta: establecer una señal privada pactada (toque suave en el hombro o en su mesa al pasar) para reconectar su atención cuando se observe desconexión o ensueño, sin exponerle en voz alta.",
+        "Dividir las fichas y actividades largas en 'micro-metas' con tiempos definidos mediante reloj o temporizador visual en pizarra.",
+        "Entrenar el uso de las 'Autoinstrucciones de Meichenbaum' pegadas en su mesa: 1º ¿Qué tengo que hacer?, 2º ¿Cómo lo voy a hacer?, 3º Me fijo bien, 4º Repaso antes de entregar.",
+        "Reducir la carga de copia mecánica de enunciados largos para que invierta su energía cognitiva en pensar y resolver la actividad.",
+        "Verificar sistemáticamente el inicio de la tarea en los primeros 2 minutos tras dar la explicación grupal.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1483,29 +2651,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1522,29 +2718,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1561,29 +2785,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1600,29 +2853,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1639,28 +2920,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1677,28 +2989,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1715,28 +3058,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1753,28 +3127,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1791,28 +3196,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1829,28 +3265,75 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1867,29 +3350,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1906,28 +3417,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -1944,29 +3486,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -1983,28 +3554,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2021,28 +3623,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2059,29 +3692,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2098,28 +3760,75 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2136,29 +3845,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2175,29 +3912,78 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a activar el foco atencional sostenido, combatir la lentitud de velocidad de procesamiento y estructurar la planificación ejecutiva de tareas; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "Activación atencional discreta: establecer una señal privada pactada (toque suave en el hombro o en su mesa al pasar) para reconectar su atención cuando se observe desconexión o ensueño, sin exponerle en voz alta.",
+        "Dividir las fichas y actividades largas en 'micro-metas' con tiempos definidos mediante reloj o temporizador visual en pizarra.",
+        "Entrenar el uso de las 'Autoinstrucciones de Meichenbaum' pegadas en su mesa: 1º ¿Qué tengo que hacer?, 2º ¿Cómo lo voy a hacer?, 3º Me fijo bien, 4º Repaso antes de entregar.",
+        "Reducir la carga de copia mecánica de enunciados largos para que invierta su energía cognitiva en pensar y resolver la actividad.",
+        "Verificar sistemáticamente el inicio de la tarea en los primeros 2 minutos tras dar la explicación grupal.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2214,28 +4000,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2252,28 +4069,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2290,28 +4138,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2328,28 +4207,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2366,28 +4276,31 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar el sentido numérico, la comprensión visuoespacial de las operaciones y el razonamiento lógico-matemático desde lo manipulativo hacia lo simbólico.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Aplicar la secuencia didáctica CPA (Concreto -> Pictórico -> Abstracto): introducir todo concepto matemático primero con material manipulativo (regletas, bloques base 10, policubos), luego con dibujo y finalmente con números.",
+        "Facilitar plantillas cuadriculadas con columnas coloreadas (Centenas - Decenas - Unidades) para evitar el desalineamiento espacial al colocar las cuentas.",
+        "Autorizar el uso permanente de la recta numérica, la tabla del 100 y la tabla pitagórica en su mesa durante el trabajo diario.",
+        "Desglosar la resolución de problemas mediante autoinstrucciones visuales y representación gráfica obligatoria ('Dibuja el problema antes de elegir la operación').",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
-      "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
-      ],
+      "environmentalAdaptations": [],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Permitir el uso de tablas de apoyo visual y plantillas de posición numérica durante los controles.",
+        "Valorar positivamente el planteamiento lógico y el proceso seguido en el problema aunque exista un error de cálculo mecánico final (no tachar el problema entero como 0).",
+        "Reducir el número de cuentas mecánicas repetitivas en el examen, seleccionando una muestra representativa de cada operación."
       ],
-      "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+      "emotionalTips": [],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Trabajar el cálculo mental apoyado en descomposición visual (amigos del 10, amigos del 100) sin someterle a pruebas de cálculo rápido contra reloj.",
+            "Resaltar con colores diferentes los signos de las operaciones (+ en verde, - en rojo, x en azul) para evitar confusiones perceptivas."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2404,29 +4317,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a activar el foco atencional sostenido, combatir la lentitud de velocidad de procesamiento y estructurar la planificación ejecutiva de tareas.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Activación atencional discreta: establecer una señal privada pactada (toque suave en el hombro o en su mesa al pasar) para reconectar su atención cuando se observe desconexión o ensueño, sin exponerle en voz alta.",
+        "Dividir las fichas y actividades largas en 'micro-metas' con tiempos definidos mediante reloj o temporizador visual en pizarra.",
+        "Entrenar el uso de las 'Autoinstrucciones de Meichenbaum' pegadas en su mesa: 1º ¿Qué tengo que hacer?, 2º ¿Cómo lo voy a hacer?, 3º Me fijo bien, 4º Repaso antes de entregar.",
+        "Reducir la carga de copia mecánica de enunciados largos para que invierta su energía cognitiva en pensar y resolver la actividad.",
+        "Verificar sistemáticamente el inicio de la tarea en los primeros 2 minutos tras dar la explicación grupal.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2443,29 +4385,70 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2482,29 +4465,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2521,28 +4533,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2559,28 +4602,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2597,29 +4671,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2636,29 +4740,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2675,28 +4808,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2713,28 +4877,75 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2751,28 +4962,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -2789,29 +5031,72 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a garantizar la predictibilidad del entorno escolar, la estructuración visual tipo TEACCH, la regulación sensorial y la comprensión socio-comunicativa; entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Estructuración visual TEACCH del trabajo diario: presentar siempre en su mesa una tira o secuencia visual con las 3-4 tareas de la sesión ('Primero -> Después -> Por último') para reducir la incertidumbre.",
+        "Anticipación sistemática ante cambios imprevistos: avisar de forma individualizada y con apoyo visual cualquier modificación de horario, excursión, simulacro o ausencia de un profesor.",
+        "Emplear un lenguaje oral directo, literal y conciso: evitar ironías, dobles sentidos, metáforas o preguntas retóricas que generen confusión pragmática.",
+        "Conectar los contenidos curriculares nuevos con sus centros de interés específicos para facilitar el enganche atencional y la motivación intrínseca.",
+        "Secuenciar las tareas complejas de aula en pasos cortos, cerrados y verificables, mostrándole un modelo visual del producto final esperado antes de que empiece.",
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en zona tranquila del aula, protegida de focos de sobrecarga sensorial (timbres, puertas de pasillo, proyectores ruidosos o ventanas con tránsito).",
+        "Establecer un 'espacio o rincón de regulación sensorial' acordado (o permiso de salida pautada de 3 minutos con tarjeta visual) cuando detecte saturación.",
+        "Mantener su pupitre despejado, únicamente con el material de la asignatura en curso, utilizando código de colores por área.",
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Exámenes con diseño visual altamente estructurado: recuadros delimitados para cada respuesta, sin preguntas ambiguas ni enunciados con múltiples órdenes anidadas.",
+        "Incluir un ejemplo resuelto al inicio de cada bloque de ejercicios del examen para clarificar exactamente qué se espera.",
+        "Permitir realizar las pruebas de evaluación en entorno silencioso o con el apoyo del especialista PT si el ruido del aula le bloquea.",
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Mediación estructurada en recreos y trabajos cooperativos: asignarle un rol concreto y claro dentro del grupo (ej. encargado de material o verificador de datos) y un compañero de referencia empático.",
+        "Utilizar historias sociales breves o guiones visuales para explicar normas de convivencia o resolver malentendidos con iguales sin confrontación verbal.",
+        "Respetar sus tiempos de procesamiento emocional ante el bloqueo sin forzar el contacto ocular ni exigir respuestas inmediatas bajo estrés.",
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la comprensión de textos narrativos mediante organizadores gráficos de estados mentales ('¿Qué piensa el personaje? ¿Qué siente? ¿Por qué actúa así?').",
+            "Sustituir redacciones libres o abstractas por redacciones guiadas con estructura de preguntas pautadas o apoyo de viñetas."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Traducir los problemas verbales a esquemas gráficos ('Datos - Operación - Dibujo - Resultado') eliminando información superflua del enunciado.",
+            "Emplear material manipulativo o representaciones visuales constantes para conceptos abstractos."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar mapas conceptuales visuales al inicio del tema con el vocabulario nuclear ilustrado."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el apoyo visual (flashcards, rutinas escritas) frente a dinámicas grupales ruidosas o de improvisación oral."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2828,29 +5113,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Estructuración del entorno, anticipación de rutinas y apoyo en comunicación social y flexibilidad cognitiva.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a garantizar la predictibilidad del entorno escolar, la estructuración visual tipo TEACCH, la regulación sensorial y la comprensión socio-comunicativa.",
       "methodologicalAdaptations": [
-        "Anticipación clara y visual de la jornada escolar y de cualquier cambio imprevisto de rutina.",
-        "Lenguaje directo, conciso y literal, evitando dobles sentidos, metáforas confusas o ironías.",
-        "Rincón o espacio de descompresión sensorial para momentos de sobrecarga o autorregulación.",
-        "Facilitación explícita de dinámicas de juego cooperativo y trabajo en pequeños grupos guiados.",
-        "Uso sistemático de apoyos visuales y pictogramas para secuenciar actividades complejas."
+        "Estructuración visual TEACCH del trabajo diario: presentar siempre en su mesa una tira o secuencia visual con las 3-4 tareas de la sesión ('Primero -> Después -> Por último') para reducir la incertidumbre.",
+        "Anticipación sistemática ante cambios imprevistos: avisar de forma individualizada y con apoyo visual cualquier modificación de horario, excursión, simulacro o ausencia de un profesor.",
+        "Emplear un lenguaje oral directo, literal y conciso: evitar ironías, dobles sentidos, metáforas o preguntas retóricas que generen confusión pragmática.",
+        "Conectar los contenidos curriculares nuevos con sus centros de interés específicos para facilitar el enganche atencional y la motivación intrínseca.",
+        "Secuenciar las tareas complejas de aula en pasos cortos, cerrados y verificables, mostrándole un modelo visual del producto final esperado antes de que empiece.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en zona tranquila del aula, protegida de focos de sobrecarga sensorial (timbres, puertas de pasillo, proyectores ruidosos o ventanas con tránsito).",
+        "Establecer un 'espacio o rincón de regulación sensorial' acordado (o permiso de salida pautada de 3 minutos con tarjeta visual) cuando detecte saturación.",
+        "Mantener su pupitre despejado, únicamente con el material de la asignatura en curso, utilizando código de colores por área."
       ],
       "evaluationAdaptations": [
-        "Preguntas con enunciados breves, unívocos y libres de ambigüedad.",
-        "Posibilidad de responder en formato oral o con apoyo digital si hay fatiga grafomotora.",
-        "Realización de pruebas en un entorno tranquilo y libre de sobrecarga acústica."
+        "Exámenes con diseño visual altamente estructurado: recuadros delimitados para cada respuesta, sin preguntas ambiguas ni enunciados con múltiples órdenes anidadas.",
+        "Incluir un ejemplo resuelto al inicio de cada bloque de ejercicios del examen para clarificar exactamente qué se espera.",
+        "Permitir realizar las pruebas de evaluación en entorno silencioso o con el apoyo del especialista PT si el ruido del aula le bloquea."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Mediación estructurada en recreos y trabajos cooperativos: asignarle un rol concreto y claro dentro del grupo (ej. encargado de material o verificador de datos) y un compañero de referencia empático.",
+        "Utilizar historias sociales breves o guiones visuales para explicar normas de convivencia o resolver malentendidos con iguales sin confrontación verbal.",
+        "Respetar sus tiempos de procesamiento emocional ante el bloqueo sin forzar el contacto ocular ni exigir respuestas inmediatas bajo estrés."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la comprensión de textos narrativos mediante organizadores gráficos de estados mentales ('¿Qué piensa el personaje? ¿Qué siente? ¿Por qué actúa así?').",
+            "Sustituir redacciones libres o abstractas por redacciones guiadas con estructura de preguntas pautadas o apoyo de viñetas."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Traducir los problemas verbales a esquemas gráficos ('Datos - Operación - Dibujo - Resultado') eliminando información superflua del enunciado.",
+            "Emplear material manipulativo o representaciones visuales constantes para conceptos abstractos."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar mapas conceptuales visuales al inicio del tema con el vocabulario nuclear ilustrado."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el apoyo visual (flashcards, rutinas escritas) frente a dinámicas grupales ruidosas o de improvisación oral."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2867,29 +5182,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2906,29 +5250,78 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2945,28 +5338,75 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -2983,29 +5423,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Consolidación de la ruta fonológica y visual, automatización lectoescritora y compensación de fatiga lectora.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "No forzar la lectura en voz alta delante del grupo clase sin preparación previa.",
-        "Uso de textos con tipografía legible (OpenDyslexic / Arial 12-14pt), interlineado 1.5 y textos no justificados.",
-        "Minimizar la copia innecesaria de la pizarra al cuaderno; facilitar fotocopias o esquemas.",
-        "Permitir el uso de marcadores fluorescentes y guías de lectura durante la lectura individual.",
-        "Supervisión individualizada del copiado de tareas y fechas de entrega en la agenda."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "No penalizar faltas de ortografía natural o arbitraria en contenidos no lingüísticos (Ciencias, Mates, etc.).",
-        "Permitir que el profesorado lea los enunciados de las preguntas en voz alta antes del examen.",
-        "Tiempo extra (25-30%) para la lectura y redacción en exámenes escritos, o alternativa oral."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3022,28 +5491,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3060,28 +5560,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3098,29 +5629,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3137,29 +5696,78 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3176,29 +5784,78 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3215,29 +5872,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3254,29 +5940,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3293,29 +6008,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3332,28 +6075,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3370,28 +6144,75 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3408,28 +6229,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3446,29 +6298,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3485,29 +6365,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3524,29 +6432,70 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3563,29 +6512,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3602,28 +6579,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3640,29 +6648,82 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos; afianzar la correcta articulación fonética, la discriminación auditiva de fonemas y la seguridad comunicativa en el aula.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Modelado fonético indirecto: cuando pronuncie un fonema con sustitución u omisión, repetir nosotros la palabra dentro de una frase con articulación clara y pausada, mirándole a la cara pero sin exigirle que la repita en público.",
+        "Apoyar la conciencia fonológica asociando cada sonido con su punto de articulación visual y gestual al trabajar la lectoescritura.",
+        "Coordinar con la familia y especialistas los fonemas en fase de generalización para reforzarlos positivamente en la lectura individual.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas.",
+        "No penalizar en la escritura aquellos errores ortográficos derivados directamente de su patrón articulatorio (escribir como pronuncia) mientras se consolida la rehabilitación."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3679,28 +6740,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3717,28 +6809,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3755,29 +6878,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3794,28 +6945,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3832,28 +7014,70 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a fortalecer el autocontrol conductual, la tolerancia a la frustración y la autorregulación emocional mediante estrategias proactivas y contención positiva; activar el foco atencional sostenido, combatir la lentitud de velocidad de procesamiento y estructurar la planificación ejecutiva de tareas.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Prevención y anticipación de detonantes: identificar las situaciones que suelen generar frustración (transiciones, tareas largas de escritura, cambios de actividad) y anticipar la expectativa de conducta en privado.",
+        "Aplicar la técnica del 'Opciones Limitadas Positivas': ofrecerle dos alternativas válidas de actuación ('¿Prefieres empezar por el ejercicio 1 o por el 2?') para reducir las conductas de oposición y darle sensación de control.",
+        "Fraccionar el trabajo en metas cortas de éxito inmediato (10-15 minutos) con feedback positivo inmediato al completar cada tramo.",
+        "Evitar las luchas de poder o discusiones en público delante del grupo clase; dar las indicaciones de reconducción en voz baja, a corta distancia y con tono neutro y firme.",
+        "Acordar un 'Contrato Conductual o Sistema de Economía de Fichas' con objetivos semanales muy concretos (máximo 2 conductas diana) formulados siempre en positivo.",
+        "Activación atencional discreta: establecer una señal privada pactada (toque suave en el hombro o en su mesa al pasar) para reconectar su atención cuando se observe desconexión o ensueño, sin exponerle en voz alta.",
+        "Dividir las fichas y actividades largas en 'micro-metas' con tiempos definidos mediante reloj o temporizador visual en pizarra.",
+        "Entrenar el uso de las 'Autoinstrucciones de Meichenbaum' pegadas en su mesa: 1º ¿Qué tengo que hacer?, 2º ¿Cómo lo voy a hacer?, 3º Me fijo bien, 4º Repaso antes de entregar.",
+        "Reducir la carga de copia mecánica de enunciados largos para que invierta su energía cognitiva en pensar y resolver la actividad.",
+        "Verificar sistemáticamente el inicio de la tarea en los primeros 2 minutos tras dar la explicación grupal.",
+        "Coordinación estrecha con Diego López (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación cercana al docente, rodeado de compañeros con perfil tranquilo y prosocial que actúen como modelos de regulación.",
+        "Disponer de un protocolo pactado de 'Enfriamiento Emocional' (beber agua, llevar un recado a secretaría o acudir 5 minutos al rincón de calma) antes de que escale un bloqueo.",
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Presentar los exámenes página a página o por bloques para evitar el bloqueo emocional al ver una prueba extensa.",
+        "Permitir breves pausas de regulación si muestra signos de ansiedad o frustración durante un control.",
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Aplicar la secuencia 'Conectar antes de Corregir': validar primero la emoción ('Entiendo que este ejercicio te haya resultado frustrante') y, una vez calmado, abordar la conducta.",
+        "Asignarle responsabilidades de ayuda o liderazgo positivo en el aula (encargado de material, ayudante tecnológico) para transformar su autoconcepto en el grupo.",
+        "Comunicación fluida con la familia destacando también los días y momentos de logro conductual, no únicamente las incidencias.",
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -3870,28 +7094,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3908,28 +7163,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3946,28 +7232,59 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a consolidar los aprendizajes instrumentales básicos (comprensión lectora, expresión escrita y razonamiento matemático) y afianzar hábitos eficaces de estudio y autonomía.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Andamiaje pedagógico en el aula ('Scaffolding'): tras la explicación general al grupo, acercarse a su mesa para verificar que ha comprendido la consigna y guiar el primer ejemplo.",
+        "Fraccionamiento de las tareas largas en bloques manejables, revisando y validando el primer ejercicio antes de que continúe con el resto.",
+        "Enseñanza explícita de estrategias de estudio: subrayado de palabras clave, elaboración de esquemas sencillos y autoverificación del trabajo.",
+        "Uso de apoyos manipulativos, organizadores gráficos y ejemplos resueltos en la pizarra como referencia constante.",
+        "Supervisión diaria de la agenda escolar para asegurar la organización de tareas y materiales entre colegio y familia."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en las primeras filas del aula, cerca del docente, para facilitar la consulta rápida de dudas y mantener la atención sostenida.",
+        "Emparejamiento con un 'compañero/a tutor' empático y organizado para actividades cooperativas y resolución de dudas puntuales.",
+        "Ambiente estructurado con rutinas claras de inicio, desarrollo y cierre de cada sesión lectiva."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura previa guiada de los enunciados del examen asegurando que comprende qué se pide en cada pregunta.",
+        "Destacar en negrita las palabras clave de los enunciados y distribuir las preguntas con espacio suficiente de respuesta.",
+        "Conceder tiempo adicional (+20% a +25%) para que pueda terminar y revisar su prueba sin presión temporal.",
+        "Valorar el progreso individual respecto a su propio punto de partida y el trabajo diario de cuaderno."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo frecuente del esfuerzo y de las pequeñas mejoras diarias para fortalecer su autoeficacia académica.",
+        "Fomentar su participación en clase con preguntas ajustadas a su nivel de seguridad para que experimente éxito ante sus compañeros.",
+        "Comunicación periódica y constructiva con la familia compartiendo pautas sencillas de refuerzo en casa."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Trabajar la comprensión lectora en 3 fases: antes de leer (anticipar por el título), durante la lectura (subrayar idea principal de cada párrafo) y después (resumir en una frase).",
+            "Facilitar guiones estructurados para la expresión escrita y revisar el vocabulario básico."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Apoyar el cálculo y la resolución de problemas con representación gráfica (dibujar los datos) y comprobación guiada del resultado.",
+            "Reforzar las operaciones básicas con material visual y práctica distribuida."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar esquemas resumen de cada apartado del tema para centrar el estudio en los conceptos fundamentales."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Reforzar las estructuras comunicativas básicas y el vocabulario esencial mediante apoyo visual e interactivo."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -3984,29 +7301,56 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 1º Ciclo de Primaria (etapa de adquisición instrumental de lectoescritura y noción numérica) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4023,29 +7367,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Coordinación estrecha con Daniel Asenjo (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 3
     },
     "quarterlyReviews": []
   },
@@ -4062,29 +7434,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en 3º Ciclo de Primaria (etapa de abstracción, síntesis de textos expositivos y preparación para Secundaria) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4101,29 +7501,110 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a garantizar la predictibilidad del entorno escolar, la estructuración visual tipo TEACCH, la regulación sensorial y la comprensión socio-comunicativa; desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Estructuración visual TEACCH del trabajo diario: presentar siempre en su mesa una tira o secuencia visual con las 3-4 tareas de la sesión ('Primero -> Después -> Por último') para reducir la incertidumbre.",
+        "Anticipación sistemática ante cambios imprevistos: avisar de forma individualizada y con apoyo visual cualquier modificación de horario, excursión, simulacro o ausencia de un profesor.",
+        "Emplear un lenguaje oral directo, literal y conciso: evitar ironías, dobles sentidos, metáforas o preguntas retóricas que generen confusión pragmática.",
+        "Conectar los contenidos curriculares nuevos con sus centros de interés específicos para facilitar el enganche atencional y la motivación intrínseca.",
+        "Secuenciar las tareas complejas de aula en pasos cortos, cerrados y verificables, mostrándole un modelo visual del producto final esperado antes de que empiece.",
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave.",
+        "Coordinación estrecha con Especialista de Pedagogía Terapéutica (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en zona tranquila del aula, protegida de focos de sobrecarga sensorial (timbres, puertas de pasillo, proyectores ruidosos o ventanas con tránsito).",
+        "Establecer un 'espacio o rincón de regulación sensorial' acordado (o permiso de salida pautada de 3 minutos con tarjeta visual) cuando detecte saturación.",
+        "Mantener su pupitre despejado, únicamente con el material de la asignatura en curso, utilizando código de colores por área.",
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Exámenes con diseño visual altamente estructurado: recuadros delimitados para cada respuesta, sin preguntas ambiguas ni enunciados con múltiples órdenes anidadas.",
+        "Incluir un ejemplo resuelto al inicio de cada bloque de ejercicios del examen para clarificar exactamente qué se espera.",
+        "Permitir realizar las pruebas de evaluación en entorno silencioso o con el apoyo del especialista PT si el ruido del aula le bloquea.",
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Mediación estructurada en recreos y trabajos cooperativos: asignarle un rol concreto y claro dentro del grupo (ej. encargado de material o verificador de datos) y un compañero de referencia empático.",
+        "Utilizar historias sociales breves o guiones visuales para explicar normas de convivencia o resolver malentendidos con iguales sin confrontación verbal.",
+        "Respetar sus tiempos de procesamiento emocional ante el bloqueo sin forzar el contacto ocular ni exigir respuestas inmediatas bajo estrés.",
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la comprensión de textos narrativos mediante organizadores gráficos de estados mentales ('¿Qué piensa el personaje? ¿Qué siente? ¿Por qué actúa así?').",
+            "Sustituir redacciones libres o abstractas por redacciones guiadas con estructura de preguntas pautadas o apoyo de viñetas.",
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Traducir los problemas verbales a esquemas gráficos ('Datos - Operación - Dibujo - Resultado') eliminando información superflua del enunciado.",
+            "Emplear material manipulativo o representaciones visuales constantes para conceptos abstractos.",
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar mapas conceptuales visuales al inicio del tema con el vocabulario nuclear ilustrado.",
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el apoyo visual (flashcards, rutinas escritas) frente a dinámicas grupales ruidosas o de improvisación oral.",
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4140,28 +7621,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4178,29 +7689,19 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a afianzar la correcta articulación fonética, la discriminación auditiva de fonemas y la seguridad comunicativa en el aula.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Modelado fonético indirecto: cuando pronuncie un fonema con sustitución u omisión, repetir nosotros la palabra dentro de una frase con articulación clara y pausada, mirándole a la cara pero sin exigirle que la repita en público.",
+        "Apoyar la conciencia fonológica asociando cada sonido con su punto de articulación visual y gestual al trabajar la lectoescritura.",
+        "Coordinar con la familia y especialistas los fonemas en fase de generalización para reforzarlos positivamente en la lectura individual."
       ],
-      "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
-      ],
+      "environmentalAdaptations": [],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "No penalizar en la escritura aquellos errores ortográficos derivados directamente de su patrón articulatorio (escribir como pronuncia) mientras se consolida la rehabilitación."
       ],
-      "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+      "emotionalTips": [],
+      "subjectSpecificGuidelines": [],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4217,28 +7718,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4255,28 +7786,26 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a garantizar la continuidad educativa, el bienestar físico y emocional y la flexibilización curricular adaptada a sus necesidades de salud.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "Flexibilización de ritmos y cargas de trabajo diario atendiendo a su nivel de energía o fatiga física a lo largo de la jornada.",
+        "Facilitar resúmenes, apuntes y materiales digitalizados en caso de ausencias médicas o revisiones hospitalarias para que no pierda el hilo del grupo.",
+        "Priorizar los aprendizajes esenciales y competenciales de cada unidad frente a la acumulación de tareas secundarias."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación cómoda y accesible cerca de la puerta o del docente según sus requerimientos de salud y supervisión.",
+        "Permiso flexible e inmediato para acudir al baño, beber agua o descansar si presenta malestar físico."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Flexibilidad total en las fechas de exámenes y entregas, adaptando los calendarios tras periodos de ausencia justificada.",
+        "Fraccionar las pruebas de evaluación para evitar el agotamiento prolongado."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Mantener el vínculo afectivo con sus compañeros y el sentido de pertenencia al grupo clase en todo momento.",
+        "Coordinación estrecha y cálida entre tutoría, orientación y familia."
+      ],
+      "subjectSpecificGuidelines": [],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4293,29 +7822,77 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4332,29 +7909,109 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a garantizar la predictibilidad del entorno escolar, la estructuración visual tipo TEACCH, la regulación sensorial y la comprensión socio-comunicativa; desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica; compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Estructuración visual TEACCH del trabajo diario: presentar siempre en su mesa una tira o secuencia visual con las 3-4 tareas de la sesión ('Primero -> Después -> Por último') para reducir la incertidumbre.",
+        "Anticipación sistemática ante cambios imprevistos: avisar de forma individualizada y con apoyo visual cualquier modificación de horario, excursión, simulacro o ausencia de un profesor.",
+        "Emplear un lenguaje oral directo, literal y conciso: evitar ironías, dobles sentidos, metáforas o preguntas retóricas que generen confusión pragmática.",
+        "Conectar los contenidos curriculares nuevos con sus centros de interés específicos para facilitar el enganche atencional y la motivación intrínseca.",
+        "Secuenciar las tareas complejas de aula en pasos cortos, cerrados y verificables, mostrándole un modelo visual del producto final esperado antes de que empiece.",
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en zona tranquila del aula, protegida de focos de sobrecarga sensorial (timbres, puertas de pasillo, proyectores ruidosos o ventanas con tránsito).",
+        "Establecer un 'espacio o rincón de regulación sensorial' acordado (o permiso de salida pautada de 3 minutos con tarjeta visual) cuando detecte saturación.",
+        "Mantener su pupitre despejado, únicamente con el material de la asignatura en curso, utilizando código de colores por área.",
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual.",
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Exámenes con diseño visual altamente estructurado: recuadros delimitados para cada respuesta, sin preguntas ambiguas ni enunciados con múltiples órdenes anidadas.",
+        "Incluir un ejemplo resuelto al inicio de cada bloque de ejercicios del examen para clarificar exactamente qué se espera.",
+        "Permitir realizar las pruebas de evaluación en entorno silencioso o con el apoyo del especialista PT si el ruido del aula le bloquea.",
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen.",
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Mediación estructurada en recreos y trabajos cooperativos: asignarle un rol concreto y claro dentro del grupo (ej. encargado de material o verificador de datos) y un compañero de referencia empático.",
+        "Utilizar historias sociales breves o guiones visuales para explicar normas de convivencia o resolver malentendidos con iguales sin confrontación verbal.",
+        "Respetar sus tiempos de procesamiento emocional ante el bloqueo sin forzar el contacto ocular ni exigir respuestas inmediatas bajo estrés.",
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas.",
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la comprensión de textos narrativos mediante organizadores gráficos de estados mentales ('¿Qué piensa el personaje? ¿Qué siente? ¿Por qué actúa así?').",
+            "Sustituir redacciones libres o abstractas por redacciones guiadas con estructura de preguntas pautadas o apoyo de viñetas.",
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Traducir los problemas verbales a esquemas gráficos ('Datos - Operación - Dibujo - Resultado') eliminando información superflua del enunciado.",
+            "Emplear material manipulativo o representaciones visuales constantes para conceptos abstractos.",
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Proporcionar mapas conceptuales visuales al inicio del tema con el vocabulario nuclear ilustrado.",
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el apoyo visual (flashcards, rutinas escritas) frente a dinámicas grupales ruidosas o de improvisación oral.",
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4371,29 +8028,56 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Desarrollo de la competencia lingüística funcional, ampliación de léxico y comprensión morfosintáctica.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo.",
       "methodologicalAdaptations": [
-        "Hablar a velocidad moderada, con articulación clara y contacto visual directo.",
-        "Acompañar las explicaciones orales siempre con imágenes, diagramas y apoyos visuales concretos.",
-        "Dar tiempo de respuesta suficiente (no interrumpir ni terminar sus frases de forma precipitada).",
-        "Reformulación positiva y modelado lingüístico correcto sin penalización ni reproche en público.",
-        "Verificar la comprensión de consignas complejas pidiéndole que explique con sus palabras la tarea."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión."
       ],
       "evaluationAdaptations": [
-        "Adaptación del formato de enunciados: vocabulario accesible, tipografía clara e ilustraciones de apoyo.",
-        "Priorizar la evaluación del contenido de la respuesta por encima de incorrecciones morfosintácticas.",
-        "Facilitar opciones de respuesta tipo test, emparejamiento o evaluación oral."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4410,29 +8094,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a activar el foco atencional sostenido, combatir la lentitud de velocidad de procesamiento y estructurar la planificación ejecutiva de tareas.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Activación atencional discreta: establecer una señal privada pactada (toque suave en el hombro o en su mesa al pasar) para reconectar su atención cuando se observe desconexión o ensueño, sin exponerle en voz alta.",
+        "Dividir las fichas y actividades largas en 'micro-metas' con tiempos definidos mediante reloj o temporizador visual en pizarra.",
+        "Entrenar el uso de las 'Autoinstrucciones de Meichenbaum' pegadas en su mesa: 1º ¿Qué tengo que hacer?, 2º ¿Cómo lo voy a hacer?, 3º Me fijo bien, 4º Repaso antes de entregar.",
+        "Reducir la carga de copia mecánica de enunciados largos para que invierta su energía cognitiva en pensar y resolver la actividad.",
+        "Verificar sistemáticamente el inicio de la tarea en los primeros 2 minutos tras dar la explicación grupal."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4449,29 +8161,70 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a fortalecer el autocontrol conductual, la tolerancia a la frustración y la autorregulación emocional mediante estrategias proactivas y contención positiva; entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Prevención y anticipación de detonantes: identificar las situaciones que suelen generar frustración (transiciones, tareas largas de escritura, cambios de actividad) y anticipar la expectativa de conducta en privado.",
+        "Aplicar la técnica del 'Opciones Limitadas Positivas': ofrecerle dos alternativas válidas de actuación ('¿Prefieres empezar por el ejercicio 1 o por el 2?') para reducir las conductas de oposición y darle sensación de control.",
+        "Fraccionar el trabajo en metas cortas de éxito inmediato (10-15 minutos) con feedback positivo inmediato al completar cada tramo.",
+        "Evitar las luchas de poder o discusiones en público delante del grupo clase; dar las indicaciones de reconducción en voz baja, a corta distancia y con tono neutro y firme.",
+        "Acordar un 'Contrato Conductual o Sistema de Economía de Fichas' con objetivos semanales muy concretos (máximo 2 conductas diana) formulados siempre en positivo.",
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase.",
+        "Coordinación estrecha con Especialista de Pedagogía Terapéutica (PT): alinear semanalmente los contenidos trabajados en el apoyo especializado con las actividades del aula ordinaria para garantizar la transferencia del aprendizaje."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación cercana al docente, rodeado de compañeros con perfil tranquilo y prosocial que actúen como modelos de regulación.",
+        "Disponer de un protocolo pactado de 'Enfriamiento Emocional' (beber agua, llevar un recado a secretaría o acudir 5 minutos al rincón de calma) antes de que escale un bloqueo.",
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Presentar los exámenes página a página o por bloques para evitar el bloqueo emocional al ver una prueba extensa.",
+        "Permitir breves pausas de regulación si muestra signos de ansiedad o frustración durante un control.",
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Aplicar la secuencia 'Conectar antes de Corregir': validar primero la emoción ('Entiendo que este ejercicio te haya resultado frustrante') y, una vez calmado, abordar la conducta.",
+        "Asignarle responsabilidades de ayuda o liderazgo positivo en el aula (encargado de material, ayudante tecnológico) para transformar su autoconcepto en el grupo.",
+        "Comunicación fluida con la familia destacando también los días y momentos de logro conductual, no únicamente las incidencias.",
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4488,28 +8241,74 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Profundización curricular, desarrollo de proyectos de investigación y enriquecimiento cognitivo (PIEC).",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a desarrollar la comprensión morfosintáctica, enriquecer el caudal léxico-semántico y asegurar el acceso visual al currículo; desarrollar su potencial cognitivo y creativo mediante enriquecimiento curricular horizontal, retos de investigación interdisciplinar y acompañamiento socioemocional.",
       "methodologicalAdaptations": [
-        "Actividades multinivel con desafíos opcionales de mayor profundidad conceptual.",
-        "Evitar la repetición innecesaria de contenidos ya dominados; compactación curricular.",
-        "Fomentar proyectos de investigación autónomos vinculados a sus centros de interés.",
-        "Promover el pensamiento lateral, creativo y la resolución de problemas abiertos.",
-        "Acompañamiento socioemocional para gestionar el perfeccionismo y la tolerancia al error."
+        "Canal bimodal (auditivo + visual): acompañar toda explicación verbal con esquemas en pizarra, imágenes, gestos naturales de apoyo y palabras clave escritas.",
+        "Ajuste del discurso docente: hablar a ritmo pausado, con frases bien articuladas, pausas entre ideas y asegurando el contacto visual antes de formular una consigna.",
+        "Aplicar la técnica de 'reformulación y expansión indirecta': cuando cometa un error morfosintáctico o léxico al hablar, no interrumpir bruscamente; devolverle la frase bien construida de forma natural.",
+        "Respetar el 'tiempo de latencia de respuesta' (esperar 5-8 segundos tras hacerle una pregunta oral) para permitirle organizar mentalmente la estructura de su oración.",
+        "Entregar glosarios visuales anticipados (vocabulario clave con imagen y definición sencilla) al comenzar cada unidad didáctica nueva.",
+        "Compactación curricular ('Curriculum Compacting'): evaluar brevemente qué contenidos de la unidad ya domina para eximirle de ejercicios mecánicos repetitivos y sustituirlos por retos de profundización.",
+        "Implementar actividades graduadas basadas en la Taxonomía de Bloom: priorizar tareas de análisis, evaluación crítica, diseño y creación frente a la mera reproducción memorística.",
+        "Proponer un 'Proyecto de Investigación Personal o ABP' trimestral conectado con el currículo pero elegido según sus intereses (con exposición o producto creativo para la clase).",
+        "Incorporar retos de pensamiento divergente, acertijos lógico-matemáticos, debate argumentativo y dilemas éticos o científicos.",
+        "Disponer de una 'Carpeta o Rincón de Enriquecimiento' en el aula a la que pueda acudir de forma autónoma cuando finalice con corrección la tarea nuclear."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en primera o segunda fila, frente al docente, garantizando buena recepción auditiva y lectura de apoyos gestuales y labiofaciales.",
+        "Pizarra o corcho de aula con banco visual permanente de conectores discursivos ('Primero, después, porque, por lo tanto') para apoyar su expresión.",
+        "Agrupamientos flexibles en el aula: combinar momentos de trabajo con compañeros de ritmo cognitivo similar (para retos complejos) con grupos heterogéneos cooperativos.",
+        "Evitar utilizarle sistemáticamente como 'profesor ayudante' de compañeros con dificultades; debe tener derecho a aprender retos nuevos a su propio nivel.",
+        "Acceso a recursos de consulta avanzada en el aula (biblioteca de aula, atlas, retos STEM o dispositivos de investigación supervisada)."
       ],
       "evaluationAdaptations": [
-        "Evaluación por proyectos, rúbricas abiertas y producciones creativas complejas.",
-        "Valorar el pensamiento crítico, rigor metodológico y originalidad en las respuestas."
+        "Simplificación sintáctica de los enunciados de examen: usar oraciones activas, afirmativas y cortas, evitando subordinadas complejas o dobles negaciones.",
+        "Lectura oral previa e individualizada de todas las preguntas del control, verificando que comprende qué debe hacer en cada ejercicio.",
+        "Priorizar ítems de reconocimiento visual, unir con flechas, completar esquemas o preguntas de opción múltiple frente a preguntas de desarrollo extenso.",
+        "Calificar el dominio del contenido conceptual sin descontar puntuación por errores de concordancia gramatical, omisión de nexos o pobreza léxica.",
+        "Incluir en los exámenes o tareas una 'Pregunta Estrella o Reto de Transferencia' opcional donde pueda aplicar lo aprendido a un supuesto nuevo o complejo.",
+        "Evaluar mediante rúbricas de proyectos, presentaciones orales, maquetas o ensayos de investigación además de las pruebas escritas convencionales.",
+        "Valorar la originalidad del planteamiento y el uso de estrategias propias (p. ej. si resuelve un problema matemático por un camino lógico distinto al explicado en clase)."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "No exponerle a intervenciones orales improvisadas ante toda la clase; pactar previamente qué pregunta va a responder para que pueda prepararla con seguridad.",
+        "Prevenir el aislamiento en el patio mediando en juegos reglados donde la exigencia verbal sea baja y pueda participar con éxito.",
+        "Acompañar la 'disincronía evolutiva' (desfase entre su alta madurez intelectual y su desarrollo emocional propio de la edad cronológica).",
+        "Trabajar la tolerancia a la frustración y el perfeccionismo paralizante: normalizar el error como parte esencial del aprendizaje científico cuando se enfrenta por primera vez a un reto difícil.",
+        "Fomentar un clima de aula que valore la curiosidad intelectual para evitar que oculte sus capacidades por miedo a destacar."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Apoyar la expresión escrita y oral mediante 'plantillas de estructuración de frases' (Quién + Qué hace + Dónde + Cuándo).",
+            "Trabajar la comprensión lectora con textos breves, subrayando previamente las palabras clave y anticipando el significado de términos desconocidos.",
+            "Proponer creación literaria avanzada, prensa escolar, debates orales estructurados y lecturas de mayor complejidad léxica."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Desglosar lingüísticamente los enunciados de problemas matemáticos: rodear en verde los datos numéricos y en rojo la pregunta final antes de elegir la operación.",
+            "Ofrecer problemas abiertos con múltiples soluciones, enigmas de lógica, criptogramas numéricos y geometría aplicada."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Evaluar los temas de Ciencias mediante esquemas mudos para completar, mapas visuales y asociación de conceptos clave en lugar de memorización literal de párrafos.",
+            "Fomentar la indagación mediante el método científico (formulación de hipótesis, diseño de experimentos y búsqueda de causas-consecuencias)."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Priorizar el vocabulario funcional básico con apoyo pictográfico (flashcards) y eximir de exigencias gramaticales complejas en lengua extranjera.",
+            "Facilitar lecturas graduadas de nivel superior ('Graded Readers') y proyectos comunicativos en lengua inglesa."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4526,29 +8325,57 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Mejora de las funciones ejecutivas, autorregulación atencional y estructura operativa en las tareas escolares.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a entrenar las funciones ejecutivas (inhibición de la impulsividad, memoria de trabajo y atención sostenida) y estructurar la autorregulación motora y académica.",
       "methodologicalAdaptations": [
-        "Ubicación preferente en el aula: primera fila, alejado de distractores visuales y ruidos.",
-        "Fraccionamiento de instrucciones largas en pasos secuenciales con comprobación de comprensión.",
-        "Uso de apoyos visuales: organizadores gráficos, listas de cotejo ('checklist') y temporizador visual.",
-        "Refuerzo positivo contingente y frecuente ante el inicio y mantenimiento de la tarea.",
-        "Supervisión discreta de la agenda escolar y los materiales de trabajo al terminar la sesión."
+        "Fragmentación de instrucciones: dar las consignas de una en una, de forma breve y pidiéndole que verbalice con sus palabras qué debe hacer antes de empezar ('¿Cuál es el primer paso?').",
+        "Canalización de la hiperactividad mediante 'movimiento funcional autorizado': encargarle repartir fichas, borrar la pizarra o llevar recados entre tarea y tarea.",
+        "Uso de 'Checklists' o listas de verificación visuales en su pupitre para estructurar el inicio, desarrollo y cierre de cada asignatura.",
+        "Alternar dentro de la misma hora lectiva actividades de alta demanda atencional (cálculo, comprensión) con tareas más dinámicas o manipulativas.",
+        "Supervisión directa del registro de deberes y fechas en la agenda escolar (o plataforma digital) 5 minutos antes de finalizar la clase."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación en el 'triángulo de acción docente' (primera fila, frente a la mesa del profesor), lejos de ventanas, puertas y compañeros distractores.",
+        "Norma de 'Mesa Limpia': mantener sobre el pupitre exclusivamente el libro, cuaderno y estuche necesarios para la tarea actual."
       ],
       "evaluationAdaptations": [
-        "Fraccionamiento de exámenes en dos partes o reducción del número de ítems por página.",
-        "Permitir lectura en voz baja o uso de marcapáginas/regla durante la lectura de enunciados.",
-        "Tiempo adicional (+25% a +50%) y supervisión para verificar que no deje preguntas en blanco."
+        "Formato de examen adaptado a funciones ejecutivas: resaltar en NEGRITA y MAYÚSCULAS los verbos de acción y datos clave de cada pregunta (ej. 'CALCULA Y RODEA', 'ELIGE LA OPCIÓN FALSA').",
+        "Evitar preguntas con doble enunciado en el mismo ítem (separar en apartado 'a' y apartado 'b' con su propio espacio de respuesta).",
+        "Entregar el examen en dos partes o supervisar a mitad de la prueba para comprobar que no se ha saltado ninguna pregunta ni cara del folio por impulsividad.",
+        "Ampliación de tiempo (+25% a +35%) y recordatorio individual de 'lectura reflexiva y revisión final' antes de recoger el examen."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Refuerzo positivo inmediato y específico: elogiar el proceso concreto ('Muy bien por haber leído dos veces el enunciado antes de contestar') en lugar de elogios genéricos.",
+        "Separar la valoración de su esfuerzo y capacidad del síntoma neurobiológico (olvidos involuntarios o inquietud motora), evitando etiquetas negativas."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Permitir el uso de regla o marcapáginas de lectura para no perder el renglón y pedirle subrayar de distinto color sujeto, verbo o ideas clave.",
+            "En redacciones, proporcionar un guion previo en 3 bloques (Inicio - Nudo - Desenlace) antes de escribir."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Autorizar el uso de hoja en sucio cuadriculada para alinear correctamente las columnas en operaciones y rodear con color el signo (+, -, x, :) para evitar errores por impulsividad.",
+            "Aplicar plantilla de pasos en problemas: 1º Subrayo datos, 2º Rodeo la pregunta, 3º Elijo operación, 4º Compruebo si el resultado tiene sentido."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Fomentar el estudio mediante esquemas de llaves, mapas mentales con colores y preguntas cortas en lugar de bloques extensos de texto."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Combinar apoyos auditivos y visuales cortos y dinámicos, dividiendo los ejercicios de vocabulario y gramática en bloques breves."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   },
@@ -4565,28 +8392,58 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
     "guidelines": {
-      "generalGoal": "Refuerzo pedagógico coordinado en áreas instrumentales (Lengua y Matemáticas) y consolidación de hábitos de trabajo.",
+      "generalGoal": "Intervención psicopedagógica en Educación Secundaria Obligatoria (organización departamental y autonomía ejecutiva avanzada) orientada a compensar las dificultades de acceso lectoescritor (decodificación fonológica, velocidad lectora y ortografía arbitraria) garantizando la evaluación justa de sus conocimientos.",
       "methodologicalAdaptations": [
-        "Explicación guiada en pequeños grupos de refuerzo dentro o fuera del aula.",
-        "Supervisión constante del inicio y seguimiento de las actividades de clase.",
-        "Uso de material manipulativo y cálculo asistido con apoyos concretos.",
-        "Coordinación estrecha y sistemática entre tutoría y profesorado de apoyo.",
-        "Refuerzo de la autoestima escolar y motivación hacia el aprendizaje."
+        "No exponerle a leer en voz alta ante la clase sin haberle entregado el fragmento el día anterior para que pueda prepararlo en casa o con el PT.",
+        "Adaptación tipográfica universal de materiales: fuente sin serifa (Arial, Verdana u OpenDyslexic), tamaño 12-14 puntos, interlineado 1.5 y alineación a la izquierda (nunca texto justificado).",
+        "Eliminar la exigencia de copiar enunciados largos del libro o de la pizarra: permitir responder directamente indicando el número del ejercicio o entregar ficha impresa.",
+        "Proporcionar esquemas visuales, mapas conceptuales y resúmenes con apoyos gráficos para reducir la fatiga de lectura en temas largos.",
+        "Permitir el uso de guía de lectura (regla opaca o ventana lectora) y marcadores fluorescentes para identificar palabras clave."
       ],
       "environmentalAdaptations": [
-        "Ubicación estratégica en el aula ordinaria favoreciendo la concentración y el acceso al docente.",
-        "Control de estímulos distractores y ambiente de trabajo estructurado y predecible.",
-        "Disponibilidad de material de apoyo en mesa accesible y organizado."
+        "Ubicación próxima al docente y a la pizarra para facilitar el seguimiento visual y ofrecer ayuda discreta en la lectura de consignas.",
+        "Disponer en su mesa o carpeta de 'tarjetas de consulta rápida' (reglas ortográficas visuales, tablas de multiplicar, vocabulario frecuente)."
       ],
       "evaluationAdaptations": [
-        "Adaptación del nivel de dificultad en ítems no esenciales y supervisión durante las pruebas.",
-        "Valoración continua del progreso individual y esfuerzo demostrado."
+        "Lectura oral previa de todos los enunciados del examen por parte del profesor al inicio de la prueba para asegurar la plena comprensión.",
+        "NO penalizar las faltas de ortografía natural o arbitraria (omisiones, inversiones, sustituciones b/v, g/j, h) en la calificación de áreas no lingüísticas (Matemáticas, Ciencias), y aplicar baremo adaptado en Lengua.",
+        "Complementar los exámenes escritos con breves preguntas orales de verificación cuando una respuesta escrita sea escueta o confusa por fatiga grafomotora.",
+        "Ampliación del tiempo de examen (+30% a +50%) y espaciado amplio entre preguntas."
       ],
       "emotionalTips": [
-        "Refuerzo explícito de los logros y del esfuerzo continuado.",
-        "Fomentar la participación activa en el grupo clase sin exposición a situaciones de fracaso público.",
-        "Mantener una comunicación cálida, empática y de altas expectativas adaptadas."
-      ]
+        "Proteger su autoconcepto académico reconociendo explícitamente su esfuerzo: un alumno con dislexia invierte hasta 5 veces más energía cognitiva al leer y escribir que un lector automatizado.",
+        "Evitar devolver cuadernos o exámenes llenos de tachones en tinta roja; corregir priorizando 2 o 3 palabras frecuentes para trabajar cada semana."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Evaluar las reglas ortográficas mediante ejercicios prácticos de aplicación o dictados preparados (con las palabras trabajadas previamente), nunca sobre textos sorpresa.",
+            "Fragmentar los libros de lectura obligatoria por capítulos cortos o permitir el apoyo simultáneo de audiolibro mientras sigue el texto con la vista."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Permitir tener a la vista la tabla pitagórica / tablas de multiplicar si presenta dificultad asociada en la automatización de secuencias verbales.",
+            "Leerle en voz alta los enunciados de los problemas matemáticos para que un error de lectura no impida demostrar su razonamiento lógico."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Diseñar controles con preguntas de relacionar, completar esquemas, verdadero/falso justificado o identificar en imágenes, evitando exigir el desarrollo escrito de páginas enteras."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "En Inglés (lengua opaca de alta dificultad para la dislexia): priorizar la comprensión y expresión oral (Speaking/Listening) sobre la exactitud ortográfica escrita (Spelling).",
+            "En vocabulario escrito en inglés, permitir bancos de palabras de apoyo ('Word Bank') o aceptar fonética aproximada sin penalizar letras mudas o dobles vocales."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     },
     "quarterlyReviews": []
   }
