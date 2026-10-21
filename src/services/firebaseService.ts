@@ -313,6 +313,10 @@ export const FirebaseService = {
     if (!session) return [];
 
     // 1. Cargar semilla institucional y respaldo local
+    const CENSUS_SEED_VERSION = 'v2026.10.21_official_nee_ei_ep';
+    const localVersion = localStorage.getItem('edubuenaventura_census_version');
+    const isOutdatedCensus = localVersion !== CENSUS_SEED_VERSION;
+
     const studentMap = new Map<string, StudentNEAE>();
     INITIAL_STUDENTS_NEAE.forEach(s => studentMap.set(s.id, s));
 
@@ -333,21 +337,36 @@ export const FirebaseService = {
           parsed.forEach((s: StudentNEAE) => {
             if (s && s.id) {
               const seedStudent = studentMap.get(s.id);
-              // Si el registro local es antiguo (sin pautas específicas por asignatura) y existe en semilla enriquecida, actualizar sus pautas
-              if (
-                seedStudent &&
-                (!s.guidelines?.subjectSpecificGuidelines || s.guidelines.subjectSpecificGuidelines.length === 0)
-              ) {
-                studentMap.set(s.id, {
-                  ...s,
-                  guidelines: seedStudent.guidelines
-                });
+              if (isOutdatedCensus) {
+                // Si la versión local es previa a la actualización oficial de Raíces/NEE de hoy,
+                // la semilla oficial tiene prioridad para datos clínicos y nombres oficiales,
+                // conservando alumnos creados manualmente por el orientador.
+                if (!seedStudent) {
+                  studentMap.set(s.id, s);
+                }
               } else {
-                studentMap.set(s.id, s);
+                // Si ya estamos en la versión actualizada, sincronizar respetando cambios locales
+                if (
+                  seedStudent &&
+                  (!s.guidelines?.subjectSpecificGuidelines || s.guidelines.subjectSpecificGuidelines.length === 0)
+                ) {
+                  studentMap.set(s.id, {
+                    ...s,
+                    guidelines: seedStudent.guidelines
+                  });
+                } else {
+                  studentMap.set(s.id, s);
+                }
               }
             }
           });
+          if (isOutdatedCensus) {
+            localStorage.setItem('edubuenaventura_census_version', CENSUS_SEED_VERSION);
+            localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(Array.from(studentMap.values())));
+          }
         }
+      } else {
+        localStorage.setItem('edubuenaventura_census_version', CENSUS_SEED_VERSION);
       }
     } catch (e) {}
 

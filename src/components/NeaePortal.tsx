@@ -542,7 +542,13 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       if (!matchName && !matchNeed && !matchCat) return false;
     }
     if (filterGrade !== 'ALL') {
-      if (!s.grade.toLowerCase().includes(filterGrade.toLowerCase())) return false;
+      if (filterGrade === '1º') {
+        if (!s.grade.toLowerCase().includes('1º') || s.grade.toLowerCase().includes('eso')) return false;
+      } else if (filterGrade === 'Infantil') {
+        if (!s.grade.toLowerCase().includes('infantil') && !s.grade.toLowerCase().includes('años')) return false;
+      } else if (!s.grade.toLowerCase().includes(filterGrade.toLowerCase())) {
+        return false;
+      }
     }
     if (filterNeed !== 'ALL') {
       const fullTxt = `${s.specificNeed || ''} ${s.category || ''}`.toLowerCase();
@@ -551,6 +557,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       if (filterNeed === 'AACC' && !fullTxt.includes('altas capacidades') && !fullTxt.includes('aacc')) return false;
       if (filterNeed === 'TEA' && !fullTxt.includes('tea') && !fullTxt.includes('autis')) return false;
       if (filterNeed === 'LENGUAJE' && !fullTxt.includes('lenguaje') && !fullTxt.includes('tel') && !fullTxt.includes('tdl') && !fullTxt.includes('dislalia')) return false;
+      if (filterNeed === 'AUDITIVA' && !fullTxt.includes('auditiva') && !fullTxt.includes('hipoacusia')) return false;
+      if (filterNeed === 'RETRASO' && !fullTxt.includes('retraso') && !fullTxt.includes('madurativo') && !fullTxt.includes('desarrollo')) return false;
       if (filterNeed === 'ESPECIFICO' && !fullTxt.includes('específico') && !fullTxt.includes('pt') && !s.ptTeacher) return false;
       if (filterNeed === 'ORDINARIO' && !fullTxt.includes('ordinario') && !fullTxt.includes('refuerzo')) return false;
     }
@@ -797,11 +805,13 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 onChange={(e) => setFilterNeed(e.target.value)}
               >
                 <option value="ALL">Todas las necesidades</option>
+                <option value="TEA">TEA (Autismo)</option>
+                <option value="LENGUAJE">Lenguaje / TEL-TDL</option>
+                <option value="AUDITIVA">Discapacidad Auditiva</option>
+                <option value="RETRASO">Retraso General / Madurativo</option>
                 <option value="TDAH">TDAH / Atención</option>
                 <option value="DISLEXIA">Dislexia / Lectoescritura</option>
                 <option value="AACC">Altas Capacidades (AACC)</option>
-                <option value="TEA">TEA (Autismo)</option>
-                <option value="LENGUAJE">Lenguaje / TEL-TDL</option>
                 <option value="ESPECIFICO">Apoyo Específico de PT</option>
                 <option value="ORDINARIO">Apoyo Ordinario</option>
               </select>
@@ -818,11 +828,15 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
               filteredStudents.map(s => {
                 const isSelected = s.id === selectedStudent?.id;
                 const needText = s.specificNeed || s.category;
-                const isAACC = needText.toLowerCase().includes('altas capacidades') || needText.toLowerCase().includes('aacc');
-                const isTDAH = needText.toLowerCase().includes('tda');
-                const isTEA = needText.toLowerCase().includes('tea') || needText.toLowerCase().includes('autis');
-                const isDislexia = needText.toLowerCase().includes('dislex') || needText.toLowerCase().includes('lecto') || needText.toLowerCase().includes('dea');
-                const isEsp = needText.toLowerCase().includes('específico') || !!s.ptTeacher;
+                const lowNeed = needText.toLowerCase();
+                const isAACC = lowNeed.includes('altas capacidades') || lowNeed.includes('aacc');
+                const isTEA = lowNeed.includes('tea') || lowNeed.includes('autis');
+                const isAuditiva = lowNeed.includes('auditiva') || lowNeed.includes('hipoacusia');
+                const isRetraso = lowNeed.includes('retraso') || lowNeed.includes('madurativo') || lowNeed.includes('desarrollo');
+                const isLenguaje = lowNeed.includes('lenguaje') || lowNeed.includes('tel') || lowNeed.includes('tdl') || lowNeed.includes('dislalia');
+                const isTDAH = lowNeed.includes('tda') || lowNeed.includes('atenc');
+                const isDislexia = lowNeed.includes('dislex') || lowNeed.includes('lecto') || lowNeed.includes('dea') || lowNeed.includes('aprendizaje');
+                const isEsp = lowNeed.includes('específico') || !!s.ptTeacher;
 
                 let badgeBg = '#f1f5f9';
                 let badgeColor = '#475569';
@@ -836,6 +850,18 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                   badgeBg = '#ede9fe';
                   badgeColor = '#5b21b6';
                   badgeIcon = '🧩';
+                } else if (isAuditiva) {
+                  badgeBg = '#ecfeff';
+                  badgeColor = '#155e75';
+                  badgeIcon = '🦻';
+                } else if (isRetraso) {
+                  badgeBg = '#f0fdf4';
+                  badgeColor = '#166534';
+                  badgeIcon = '🌱';
+                } else if (isLenguaje) {
+                  badgeBg = '#eef2ff';
+                  badgeColor = '#3730a3';
+                  badgeIcon = '🗣️';
                 } else if (isTDAH) {
                   badgeBg = '#fee2e2';
                   badgeColor = '#991b1b';
@@ -1110,7 +1136,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                   {guidelines.subjectSpecificGuidelines.map((sg, idx) => (
                     <div key={idx} style={{ background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '8px', padding: '0.85rem 1rem' }}>
                       <strong style={{ fontSize: '0.84rem', color: 'var(--primary-800)', display: 'block', marginBottom: '0.45rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.25rem' }}>
-                        {sg.subject === 'Lengua y Literatura' ? '📘 ' : sg.subject === 'Matemáticas' ? '🔢 ' : sg.subject === 'Ciencias / STEM' ? '🔬 ' : '🌍 '}
+                        {sg.subject === 'Lengua y Literatura' ? '📘 ' : sg.subject === 'Matemáticas' ? '🔢 ' : sg.subject === 'Ciencias / STEM' ? '🔬 ' : sg.subject === 'Áreas de Infantil' ? '🎨 ' : '🌍 '}
                         {sg.subject}
                       </strong>
                       <ul style={{ paddingLeft: '1.1rem', margin: 0, fontSize: '0.79rem', display: 'flex', flexDirection: 'column', gap: '0.35rem', color: '#334155', lineHeight: '1.45' }}>
