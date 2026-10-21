@@ -313,7 +313,7 @@ export const FirebaseService = {
     if (!session) return [];
 
     // 1. Cargar semilla institucional y respaldo local
-    const CENSUS_SEED_VERSION = 'v2026.10.21_official_nee_ei_ep';
+    const CENSUS_SEED_VERSION = 'v2026.10.21_pt_maria_v2';
     const localVersion = localStorage.getItem('edubuenaventura_census_version');
     const isOutdatedCensus = localVersion !== CENSUS_SEED_VERSION;
 

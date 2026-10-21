@@ -336,7 +336,66 @@ button, input, select, textarea {
 }
 
 @media print {
-  .header-nav, .nav-tabs, .btn, .no-print { display: none !important; }
-  .main-content { padding: 0; }
-  .card { box-shadow: none; border: none; }
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm 8mm 10mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header-nav, .nav-tabs, .btn, .no-print, button, nav, header {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  /* Impresión sin recorte para ventanas modales (Autorización familiar, ficha NEAE) */
+  .modal-overlay {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    display: block !important;
+    z-index: auto !important;
+  }
+
+  .modal-content {
+    max-height: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  /* Documento oficial de Autorización Familiar: encaje íntegro en 1 sola hoja A4 */
+  .family-auth-sheet {
+    box-shadow: none !important;
+    border: 1px solid #94a3b8 !important;
+    padding: 8mm 10mm !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    height: auto !important;
+  }
 }

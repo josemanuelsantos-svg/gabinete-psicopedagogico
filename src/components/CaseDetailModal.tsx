@@ -68,58 +68,71 @@ export const CaseDetailModal: React.FC<CaseDetailModalProps> = ({
               </div>
             </div>
 
-            <div style={{ border: '1px solid #cbd5e1', borderRadius: '10px', padding: '1.75rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.55 }}>
-              <div style={{ textAlign: 'center', borderBottom: '2px solid #0d9488', paddingBottom: '0.85rem', marginBottom: '1.25rem' }}>
-                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#475569', fontWeight: 700 }}>
+            <div className="family-auth-sheet" style={{ border: '1px solid #cbd5e1', borderRadius: '8px', padding: '1.25rem 1.5rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.45 }}>
+              <div style={{ textAlign: 'center', borderBottom: '2px solid #0d9488', paddingBottom: '0.5rem', marginBottom: '0.85rem' }}>
+                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#475569', fontWeight: 700 }}>
                   Colegio San Buenaventura • Madrid • Gabinete de Orientación Psicopedagógica
                 </div>
-                <h2 style={{ fontSize: '1.22rem', color: '#0f172a', marginTop: '0.25rem', marginBottom: '0.15rem' }}>
+                <h2 style={{ fontSize: '1.15rem', color: '#0f172a', marginTop: '0.2rem', marginBottom: '0.1rem', fontWeight: 800 }}>
                   AUTORIZACIÓN E INFORMACIÓN A LAS FAMILIAS PARA VALORACIÓN PSICOPEDAGÓGICA
                 </h2>
-                <div style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
                   Expediente Ref: {referralCase.id.slice(0, 8).toUpperCase()} • Fecha: {new Date().toLocaleDateString('es-ES')}
                 </div>
               </div>
 
-              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '0.85rem 1rem', marginBottom: '1rem', fontSize: '0.85rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem' }}>
-                <div><strong>Alumno/a:</strong> {referralCase.studentName}</div>
-                <div><strong>Curso y Etapa:</strong> {referralCase.grade} ({referralCase.stage})</div>
-                <div><strong>Tutor/a Solicitante:</strong> {referralCase.teacherName}</div>
-                <div><strong>Modalidad:</strong> {q.isHighCapacityEvaluation ? 'Detección de Altas Capacidades (AACC)' : 'Valoración Psicopedagógica Ordinaria / NEAE'}</div>
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '6px', padding: '0.65rem 0.9rem', marginBottom: '0.75rem', fontSize: '0.82rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.35rem 1rem' }}>
+                  <div><strong>Alumno/a:</strong> {referralCase.studentName}</div>
+                  <div><strong>Curso y Etapa:</strong> {referralCase.grade} ({referralCase.stage})</div>
+                  <div><strong>Tutor/a Solicitante:</strong> {referralCase.teacherName}</div>
+                  <div><strong>Modalidad:</strong> {q.isHighCapacityEvaluation ? 'Detección de Altas Capacidades (AACC)' : 'Valoración Psicopedagógica Ordinaria / NEAE'}</div>
+                </div>
               </div>
 
-              <p style={{ fontSize: '0.85rem', textAlign: 'justify', marginBottom: '0.75rem' }}>
-                Estimada familia: Desde el <strong>Gabinete Psicopedagógico del Colegio San Buenaventura</strong>, en coordinación con el tutor/a de su hijo/a, les solicitamos autorización para llevar a cabo una valoración psicopedagógica individualizada orientada a identificar sus fortalezas y necesidades de apoyo educativo en el aula.
+              <p style={{ fontSize: '0.82rem', textAlign: 'justify', marginBottom: '0.65rem', lineHeight: 1.4 }}>
+                Estimada familia: Desde el <strong>Equipo de Orientación y Gabinete Psicopedagógico del Colegio San Buenaventura</strong>, en coordinación con la tutoría de su hijo/a, les informamos de la propuesta para realizar una <strong>valoración psicopedagógica individualizada</strong> con el objetivo de conocer con mayor precisión su perfil de aprendizaje, fortalezas y necesidades educativas, a fin de ofrecerle la mejor respuesta pedagógica en el aula.
               </p>
 
-              <div style={{ marginBottom: '1rem', fontSize: '0.84rem', background: '#f0fdfa', borderLeft: '4px solid #0d9488', padding: '0.7rem 0.95rem', borderRadius: '4px' }}>
-                <strong>Síntesis del motivo de consulta:</strong> <em>"{reasonText}"</em>
+              <div style={{ marginBottom: '0.75rem', fontSize: '0.80rem', background: '#f0fdfa', borderLeft: '3.5px solid #0d9488', padding: '0.5rem 0.85rem', borderRadius: '4px', lineHeight: 1.35 }}>
+                <strong>Síntesis del motivo pedagógico de la valoración:</strong>
+                <div style={{ fontStyle: 'italic', marginTop: '0.15rem', color: '#1e293b' }}>
+                  "{reasonText}"
+                </div>
                 {referralCase.assignedTests && referralCase.assignedTests.length > 0 && (
-                  <div style={{ marginTop: '0.35rem' }}>
+                  <div style={{ marginTop: '0.25rem' }}>
                     <strong>Pruebas psicométricas previstas:</strong> {referralCase.assignedTests.join(', ')}.
                   </div>
                 )}
               </div>
 
-              <div style={{ border: '1.5px solid #94a3b8', borderRadius: '8px', padding: '0.95rem', marginBottom: '1.5rem', fontSize: '0.84rem' }}>
-                <p style={{ margin: '0 0 0.5rem 0', fontWeight: 700 }}>DECLARACIÓN DE CONSENTIMIENTO INFORMADO FAMILIAR (RGPD / LOPD-GDD):</p>
+              <div style={{ fontSize: '0.74rem', color: '#475569', textAlign: 'justify', marginBottom: '0.75rem', padding: '0.5rem 0.75rem', background: '#f8fafc', borderRadius: '4px', border: '1px solid #e2e8f0', lineHeight: 1.35 }}>
+                <strong>Protección de Datos y Confidencialidad (RGPD / LOPD-GDD):</strong> Los datos obtenidos tendrán carácter estrictamente confidencial y uso exclusivamente educativo dentro del centro escolar conforme a la Ley Orgánica 3/2018 y normativa educativa vigente. Una vez concluida la valoración, la familia será citada a una entrevista de devolución para compartir las conclusiones y orientaciones.
+              </div>
+
+              <div style={{ border: '1.5px solid #64748b', borderRadius: '6px', padding: '0.75rem 0.9rem', marginBottom: '0.85rem', fontSize: '0.82rem', background: '#ffffff' }}>
+                <p style={{ margin: '0 0 0.4rem 0', fontWeight: 700 }}>DECLARACIÓN DE CONSENTIMIENTO INFORMADO FAMILIAR (RGPD / LOPD-GDD):</p>
                 <p style={{ margin: '0 0 0.5rem 0' }}>
-                  D./Dª ______________________________________________________, con DNI __________________, como madre / padre / tutor legal de <strong>{referralCase.studentName}</strong>:
+                  D./Dª ______________________________________________________, con DNI __________________, en calidad de madre / padre / tutor legal de <strong>{referralCase.studentName}</strong>:
                 </p>
-                <div style={{ display: 'flex', gap: '2rem', marginTop: '0.6rem', fontWeight: 700 }}>
+                <div style={{ display: 'flex', gap: '2.5rem', margin: '0.4rem 0 0.1rem 0', fontWeight: 700 }}>
                   <span>[ &nbsp; ] SÍ AUTORIZO la valoración psicopedagógica</span>
                   <span>[ &nbsp; ] NO AUTORIZO la valoración</span>
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid #cbd5e1', fontSize: '0.8rem', textAlign: 'center' }}>
-                <div>
-                  <div style={{ height: '50px' }}></div>
-                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.3rem' }}><strong>Firma de Madre / Padre / Tutor Legal</strong></div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', marginTop: '1.25rem', paddingTop: '0.5rem', fontSize: '0.80rem' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ height: '38px' }}></div>
+                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
+                    <strong>Firma de la Madre / Padre / Tutor Legal</strong>
+                  </div>
                 </div>
-                <div>
-                  <div style={{ height: '50px' }}></div>
-                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.3rem' }}><strong>Gabinete de Orientación • Col. San Buenaventura</strong></div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ height: '38px' }}></div>
+                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
+                    <strong>Gabinete de Orientación • Col. San Buenaventura</strong>
+                  </div>
                 </div>
               </div>
             </div>

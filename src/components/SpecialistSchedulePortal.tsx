@@ -40,7 +40,7 @@ export const SpecialistSchedulePortal: React.FC<SpecialistSchedulePortalProps> =
 
   // Obtener las sesiones de un alumno (reales o generadas por defecto si aún no se han personalizado)
   const getStudentSlots = (s: StudentNEAE, idx: number): SpecialistSupportSlot[] => {
-    const ptName = s.ptTeacher || (idx % 2 === 0 ? 'Daniel Asenjo (PT)' : 'Diego López (PT)');
+    const ptName = s.ptTeacher || (idx % 2 === 0 ? 'Daniel Asenjo (PT)' : 'María (PT)');
     if (s.supportSlots && s.supportSlots.length > 0) {
       return s.supportSlots.map(slot => ({
         ...slot,
@@ -161,7 +161,7 @@ export const SpecialistSchedulePortal: React.FC<SpecialistSchedulePortalProps> =
             Cuadrante Semanal de Pedagogía Terapéutica (PT)
           </h2>
           <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-            Especialistas de PT en activo: <strong>Daniel Asenjo</strong> y <strong>Diego López</strong> ({ptStudents.length} alumnos atendidos • {allSlots.length} sesiones semanales).
+            Especialistas de PT en activo: <strong>Daniel Asenjo</strong> y <strong>María</strong> ({ptStudents.length} alumnos atendidos • {allSlots.length} sesiones semanales).
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export const SpecialistSchedulePortal: React.FC<SpecialistSchedulePortalProps> =
           >
             <option value="ALL">👥 Todos los Especialistas PT</option>
             <option value="Daniel Asenjo">👨‍🏫 Daniel Asenjo (PT)</option>
-            <option value="Diego López">👨‍🏫 Diego López (PT)</option>
+            <option value="María">👩‍🏫 María (PT)</option>
           </select>
 
           {onSaveStudent && ptStudents.length > 0 && (
@@ -334,7 +334,7 @@ export const SpecialistSchedulePortal: React.FC<SpecialistSchedulePortalProps> =
                   onChange={(e) => setModalPtTeacher(e.target.value)}
                 >
                   <option value="Daniel Asenjo (PT)">Daniel Asenjo (PT)</option>
-                  <option value="Diego López (PT)">Diego López (PT)</option>
+                  <option value="María (PT)">María (PT)</option>
                 </select>
               </div>
             </div>

@@ -1406,7 +1406,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                     >
                       <option value="">Sin especialista PT (Apoyo ordinario en aula)</option>
                       <option value="Daniel Asenjo (PT)">Daniel Asenjo (PT)</option>
-                      <option value="Diego López (PT)">Diego López (PT)</option>
+                      <option value="María (PT)">María (PT)</option>
                     </select>
                   </div>
                   <div>

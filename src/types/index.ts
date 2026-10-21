@@ -198,7 +198,7 @@ export interface StudentNEAE {
   category: string;
   specificNeed?: string; // Necesidad específica / Diagnóstico: TDAH, Dislexia (DEA), Altas Capacidades (AACC), etc.
   tutor: string;
-  ptTeacher?: string; // Maestro/a especialista PT (Daniel Asenjo / Diego López)
+  ptTeacher?: string; // Maestro/a especialista PT (Daniel Asenjo / María)
   curricularAdaptation: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
   guidelines: ActionPlanGuidelines;
   supportSlots?: SpecialistSupportSlot[];

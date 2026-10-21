@@ -65,7 +65,7 @@ export const CabinetAnnualReport: React.FC<CabinetAnnualReportProps> = ({ cases 
 
   // 3. Carga horaria y distribución de Especialistas PT
   const danielStudents = activeNeae.filter(s => (s.ptTeacher || '').toLowerCase().includes('daniel'));
-  const diegoStudents = activeNeae.filter(s => (s.ptTeacher || '').toLowerCase().includes('diego'));
+  const mariaStudents = activeNeae.filter(s => (s.ptTeacher || '').toLowerCase().includes('maría') || (s.ptTeacher || '').toLowerCase().includes('maria'));
   const totalPtStudents = activeNeae.filter(s => s.ptTeacher && s.ptTeacher.trim() !== '').length;
   const totalPtHours = activeNeae.reduce((acc, s) => acc + (s.guidelines?.ptHoursPerWeek || (s.ptTeacher ? 2 : 0)), 0);
 
@@ -131,7 +131,7 @@ export const CabinetAnnualReport: React.FC<CabinetAnnualReportProps> = ({ cases 
           <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700 }}>INTERVENCIÓN PT SEMANAL</span>
           <h3 style={{ fontSize: '2rem', color: 'var(--text-main)', marginTop: '0.2rem' }}>{totalPtStudents} alumnos</h3>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-            Daniel Asenjo ({danielStudents.length}) • Diego López ({diegoStudents.length}) • {totalPtHours}h/sem
+            Daniel Asenjo ({danielStudents.length}) • María ({mariaStudents.length}) • {totalPtHours}h/sem
           </p>
         </div>
       </div>
@@ -208,8 +208,8 @@ export const CabinetAnnualReport: React.FC<CabinetAnnualReportProps> = ({ cases 
                 <span style={{ fontWeight: 700, color: '#1e40af' }}>{danielStudents.length} alumnos asignados</span>
               </div>
               <div style={{ padding: '0.5rem 0.75rem', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '6px', display: 'flex', justifyContent: 'space-between' }}>
-                <span><strong>Diego López (PT):</strong></span>
-                <span style={{ fontWeight: 700, color: '#166534' }}>{diegoStudents.length} alumnos asignados</span>
+                <span><strong>María (PT):</strong></span>
+                <span style={{ fontWeight: 700, color: '#166534' }}>{mariaStudents.length} alumnos asignados</span>
               </div>
               <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
                 Total de sesiones de apoyo especializado planificadas: <strong>{totalPtHours} horas semanales</strong> (combinando apoyo dentro del aula ordinaria y aula de apoyo PT).

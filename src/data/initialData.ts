@@ -3,7 +3,7 @@ import { ReferralCase, StudentNEAE } from '../types';
 export const INITIAL_CASES: ReferralCase[] = [];
 
 // Censo Oficial Completo de Alumnos de Apoyo y Diversidad (1º a 6º Primaria)
-// Especialistas de PT oficiales del centro: Daniel Asenjo y Diego López (sin AL)
+// Especialistas de PT oficiales del centro: Daniel Asenjo y María (sin AL)
 export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
   {
     "id": "NEAE-INF-01",
@@ -2089,7 +2089,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria A",
     "category": "ACNEE - Trastorno Específico del Lenguaje (TEL/TDL)",
     "specificNeed": "Trastornos específicos del lenguaje que afectan a la comprensión y expresión",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2099,7 +2099,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Acompañar toda instrucción verbal con soporte visual complementario (imágenes, esquemas en pizarra, palabras clave subrayadas).",
         "Técnica de modelado y expansión indirecta: devolverle la frase gramaticalmente correcta de forma natural, sin corregir bruscamente ni exigir repetición punitiva.",
         "Anticipar el vocabulario técnico de cada unidad didáctica mediante un glosario visual con definición sencilla previa a la explicación grupal.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -2150,7 +2150,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria A",
     "category": "ACNEAE - Retraso Madurativo",
     "specificNeed": "Retraso madurativo",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2160,7 +2160,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Fraccionar las actividades en pasos cortos y bien definidos, con verificación intermedia del trabajo antes de pasar al siguiente ejercicio.",
         "Uso sistemático de material manipulativo (bloques lógicos, regletas, dinero ficticio) para afianzar conceptos abstractos.",
         "Instrucciones breves, unívocas y apoyadas en ejemplos visuales ya resueltos como modelo.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana al profesor y junto a un compañero tutor colaborador que preste apoyo silencioso en la organización de la mesa."
@@ -2209,7 +2209,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención (TDAH)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2220,7 +2220,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -2271,7 +2271,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria C",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Otras Dificultades Específicas de Aprendizaje; Trastorno de aprendizaje (Dislexia)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2281,7 +2281,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana a la pizarra y al profesor; uso de regla de lectura o plantilla con ventana para no saltar líneas."
@@ -2331,7 +2331,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria A",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de aprendizaje (DEA)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2341,7 +2341,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana a la pizarra y al profesor; uso de regla de lectura o plantilla con ventana para no saltar líneas."
@@ -2391,7 +2391,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno del desarrollo del lenguaje y la comunicación",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2404,7 +2404,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Fraccionar las actividades en pasos cortos y bien definidos, con verificación intermedia del trabajo antes de pasar al siguiente ejercicio.",
         "Uso sistemático de material manipulativo (bloques lógicos, regletas, dinero ficticio) para afianzar conceptos abstractos.",
         "Instrucciones breves, unívocas y apoyadas en ejemplos visuales ya resueltos como modelo.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -2463,7 +2463,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria B",
     "category": "ACNEAE - Retraso Madurativo",
     "specificNeed": "Retraso madurativo",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2473,7 +2473,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Fraccionar las actividades en pasos cortos y bien definidos, con verificación intermedia del trabajo antes de pasar al siguiente ejercicio.",
         "Uso sistemático de material manipulativo (bloques lógicos, regletas, dinero ficticio) para afianzar conceptos abstractos.",
         "Instrucciones breves, unívocas y apoyadas en ejemplos visuales ya resueltos como modelo.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana al profesor y junto a un compañero tutor colaborador que preste apoyo silencioso en la organización de la mesa."
@@ -2522,7 +2522,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de aprendizaje; Otras Dificultades Específicas de Aprendizaje",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2532,7 +2532,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana a la pizarra y al profesor; uso de regla de lectura o plantilla con ventana para no saltar líneas."
@@ -2582,7 +2582,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 5º Educación Primaria C",
     "category": "ACNEAE - Altas Capacidades Intelectuales (AACC)",
     "specificNeed": "Altas capacidades intelectuales",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "Enriquecimiento",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2595,7 +2595,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Compactación curricular ('Curriculum Compacting'): reducir ejercicios mecánicos y repetitivos cuando demuestre dominio y sustituirlos por retos de ampliación.",
         "Enriquecimiento horizontal e interdisciplinar (Taxonomía de Bloom: analizar, evaluar y crear) mediante proyectos de investigación autónoma.",
         "Disponer de una 'Carpeta de Enriquecimiento' con retos lógicos, lecturas avanzadas o experimentos a la que acudir al finalizar tareas comunes.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -2655,7 +2655,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria A",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención (TDAH)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2666,7 +2666,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -2717,7 +2717,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria C",
     "category": "ACNEE - Trastorno Específico del Lenguaje (TEL/TDL)",
     "specificNeed": "Trastornos específicos del lenguaje que afectan a la comprensión y expresión",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "Significativa (ACS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2727,7 +2727,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Acompañar toda instrucción verbal con soporte visual complementario (imágenes, esquemas en pizarra, palabras clave subrayadas).",
         "Técnica de modelado y expansión indirecta: devolverle la frase gramaticalmente correcta de forma natural, sin corregir bruscamente ni exigir repetición punitiva.",
         "Anticipar el vocabulario técnico de cada unidad didáctica mediante un glosario visual con definición sencilla previa a la explicación grupal.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -2778,7 +2778,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de aprendizaje (DEA / Dislexia)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2788,7 +2788,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana a la pizarra y al profesor; uso de regla de lectura o plantilla con ventana para no saltar líneas."
@@ -2838,7 +2838,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria C",
     "category": "ACNEE - Trastorno Específico del Lenguaje (TEL/TDL)",
     "specificNeed": "Trastornos específicos del lenguaje que afectan a la comprensión y expresión",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2848,7 +2848,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Acompañar toda instrucción verbal con soporte visual complementario (imágenes, esquemas en pizarra, palabras clave subrayadas).",
         "Técnica de modelado y expansión indirecta: devolverle la frase gramaticalmente correcta de forma natural, sin corregir bruscamente ni exigir repetición punitiva.",
         "Anticipar el vocabulario técnico de cada unidad didáctica mediante un glosario visual con definición sencilla previa a la explicación grupal.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -2899,7 +2899,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria A",
     "category": "ACNEE - Trastorno del Espectro Autista (TEA)",
     "specificNeed": "Trastorno del espectro autista (TEA)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "Significativa (ACS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2910,7 +2910,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Anticipación sistemática ante cambios imprevistos: avisar con apoyo visual cualquier modificación de horario, profesorado, excursión o actividad especial.",
         "Lenguaje oral directo, conciso y literal: evitar ironías, metáforas, dobles sentidos o preguntas retóricas que generen confusión pragmática.",
         "Integración funcional de sus intereses restringidos como puente motivacional para introducir contenidos curriculares nuevos.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en zona de baja sobrecarga acústica y visual, lejos de puertas de paso continuo, timbres o ventanas distractores.",
@@ -2961,7 +2961,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria A",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención; Trastornos específicos del desarrollo del habla y del lenguaje",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -2978,7 +2978,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -3047,7 +3047,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria C",
     "category": "ACNEE - Trastorno Específico del Lenguaje (TEL/TDL)",
     "specificNeed": "Trastornos específicos del lenguaje que afectan a la comprensión y expresión",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3057,7 +3057,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Acompañar toda instrucción verbal con soporte visual complementario (imágenes, esquemas en pizarra, palabras clave subrayadas).",
         "Técnica de modelado y expansión indirecta: devolverle la frase gramaticalmente correcta de forma natural, sin corregir bruscamente ni exigir repetición punitiva.",
         "Anticipar el vocabulario técnico de cada unidad didáctica mediante un glosario visual con definición sencilla previa a la explicación grupal.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -3108,7 +3108,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención; Trastorno de aprendizaje",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3122,7 +3122,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3182,7 +3182,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria C",
     "category": "ACNEE - Trastorno Específico del Lenguaje (TEL/TDL)",
     "specificNeed": "Trastornos específicos del lenguaje que afectan a la comprensión y expresión",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3192,7 +3192,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Acompañar toda instrucción verbal con soporte visual complementario (imágenes, esquemas en pizarra, palabras clave subrayadas).",
         "Técnica de modelado y expansión indirecta: devolverle la frase gramaticalmente correcta de forma natural, sin corregir bruscamente ni exigir repetición punitiva.",
         "Anticipar el vocabulario técnico de cada unidad didáctica mediante un glosario visual con definición sencilla previa a la explicación grupal.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -3243,7 +3243,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención (TDAH)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3254,7 +3254,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3305,7 +3305,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria C",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de aprendizaje; Trastorno por Déficit de Atención e Hiperactividad",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3319,7 +3319,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3379,7 +3379,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención (TDAH)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3390,7 +3390,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3441,7 +3441,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria A",
     "category": "ACNEAE - Altas Capacidades Intelectuales (AACC)",
     "specificNeed": "Altas capacidades intelectuales",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "Enriquecimiento",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3455,7 +3455,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Compactación curricular ('Curriculum Compacting'): reducir ejercicios mecánicos y repetitivos cuando demuestre dominio y sustituirlos por retos de ampliación.",
         "Enriquecimiento horizontal e interdisciplinar (Taxonomía de Bloom: analizar, evaluar y crear) mediante proyectos de investigación autónoma.",
         "Disponer de una 'Carpeta de Enriquecimiento' con retos lógicos, lecturas avanzadas o experimentos a la que acudir al finalizar tareas comunes.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -3516,7 +3516,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de aprendizaje; Otras Dificultades Específicas de Aprendizaje",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3526,7 +3526,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana a la pizarra y al profesor; uso de regla de lectura o plantilla con ventana para no saltar líneas."
@@ -3576,7 +3576,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria B",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención (TDAH)",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3587,7 +3587,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3638,7 +3638,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria C",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención; Trastorno por Déficit de Atención e Hiperactividad",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3649,7 +3649,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3700,7 +3700,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria A",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención; Trastorno por Déficit de Atención e Hiperactividad",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3711,7 +3711,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3762,7 +3762,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria C",
     "category": "ACNEAE - Dificultades Específicas de Aprendizaje",
     "specificNeed": "Trastorno de atención; Trastorno por Déficit de Atención e Hiperactividad",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3773,7 +3773,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Asegurar contacto visual antes de dar órdenes y pedirle que verbalice los pasos (autoinstrucciones: '¿Qué tengo que hacer? -> ¿Cómo lo haré? -> Reviso').",
         "Permitir descansos activos y movimiento funcional regulado ('recados pedagógicos': repartir material, borrar pizarra) tras bloques de concentración.",
         "Subrayar con fluorescente los verbos de acción en los enunciados y supervisar la agenda 5 minutos antes del final de la clase.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primera fila frente a la mesa del docente, lejos de ventanas, puertas y compañeros distractores.",
@@ -3824,7 +3824,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "tutor": "Tutor/a de 6º Educación Primaria B",
     "category": "ACNEAE - Altas Capacidades Intelectuales (AACC)",
     "specificNeed": "Altas capacidades intelectuales",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "Enriquecimiento",
     "status": "Activo",
     "lastReviewDate": "2026-10-21",
@@ -3837,7 +3837,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Compactación curricular ('Curriculum Compacting'): reducir ejercicios mecánicos y repetitivos cuando demuestre dominio y sustituirlos por retos de ampliación.",
         "Enriquecimiento horizontal e interdisciplinar (Taxonomía de Bloom: analizar, evaluar y crear) mediante proyectos de investigación autónoma.",
         "Disponer de una 'Carpeta de Enriquecimiento' con retos lógicos, lecturas avanzadas o experimentos a la que acudir al finalizar tareas comunes.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -3887,6 +3887,62 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         }
       ],
       "ptHoursPerWeek": 1
+    }
+  },
+  {
+    "id": "NEAE-OF-30",
+    "stage": "PRIMARIA",
+    "name": "Li , Zan",
+    "grade": "4º Educación Primaria A",
+    "tutor": "Tutor/a de 4º Educación Primaria A",
+    "category": "ACNEAE - Compensación Educativa",
+    "specificNeed": "Compensación educativa",
+    "ptTeacher": "",
+    "curricularAdaptation": "No Significativa (ACNS)",
+    "status": "Activo",
+    "lastReviewDate": "2026-10-21",
+    "guidelines": {
+      "generalGoal": "Intervención psicopedagógica en 2º Ciclo de Primaria (etapa de afianzamiento comprensivo, resolución de problemas e inicio de estudio autónomo) orientada a garantizar la equidad educativa, la inmersión lingüística y la nivelación de competencias curriculares básicas.",
+      "methodologicalAdaptations": [
+        "Apoyo lingüístico específico en vocabulario vehicular de la escuela mediante glosarios ilustrados bilingües/visuales.",
+        "Enseñanza cooperativa en pequeños grupos con compañeros tutores de referencia lingüística."
+      ],
+      "environmentalAdaptations": [
+        "Entorno inclusivo y acogedor, valorando la diversidad cultural en las dinámicas del aula."
+      ],
+      "evaluationAdaptations": [
+        "Priorizar la evaluación de competencias básicas y progreso personal sobre estándares abstractos no asimilados."
+      ],
+      "emotionalTips": [
+        "Fomentar el sentido de pertenencia y autoestima académica en el grupo-clase."
+      ],
+      "subjectSpecificGuidelines": [
+        {
+          "subject": "Lengua y Literatura",
+          "tips": [
+            "Refuerzo de lectoescritura funcional y vocabulario temático cotidiano."
+          ]
+        },
+        {
+          "subject": "Matemáticas",
+          "tips": [
+            "Enunciados con lenguaje directo y apoyo gráfico en problemas cotidianos."
+          ]
+        },
+        {
+          "subject": "Ciencias / STEM",
+          "tips": [
+            "Mapas conceptuales bilingües o ilustrados."
+          ]
+        },
+        {
+          "subject": "Idiomas / Inglés",
+          "tips": [
+            "Aprovechamiento de competencias plurilingües previas."
+          ]
+        }
+      ],
+      "ptHoursPerWeek": 0
     }
   },
   {
@@ -6336,7 +6392,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "category": "ACNEAE - Apoyo Específico PT",
     "specificNeed": "Dificultades en Razonamiento Matemático (Discalculia)",
     "tutor": "Tutor/a de 5º Educación Primaria B",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
@@ -6346,7 +6402,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Aplicar la secuencia Concreto -> Pictórico -> Abstracto (CPA): material manipulativo (regletas, ábaco, bloques multibase) antes del algoritmo.",
         "Plantillas pautadas con código de color en columnas (Centenas - Decenas - Unidades) para evitar errores de encolumnado.",
         "Plantilla de resolución de problemas en 4 fases: 1) Subrayar datos, 2) Dibujo/esquema, 3) Operación, 4) Solución.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Tener a la vista en su mesa la recta numérica y la tabla pitagórica plastificada."
@@ -7005,7 +7061,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "category": "ACNEE (Necesidades Educativas Especiales)",
     "specificNeed": "Trastorno Específico del Lenguaje (TEL/TDL)",
     "tutor": "Tutor/a de 6º Educación Primaria C",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
@@ -7015,7 +7071,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Acompañar toda instrucción verbal con soporte visual complementario (imágenes, esquemas en pizarra, palabras clave subrayadas).",
         "Técnica de modelado y expansión indirecta: devolverle la frase gramaticalmente correcta de forma natural, sin corregir bruscamente ni exigir repetición punitiva.",
         "Anticipar el vocabulario técnico de cada unidad didáctica mediante un glosario visual con definición sencilla previa a la explicación grupal.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -7067,7 +7123,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "category": "ACNEE (Necesidades Educativas Especiales)",
     "specificNeed": "Trastorno Específico del Lenguaje (TEL/TDL)",
     "tutor": "Tutor/a de 6º Educación Primaria C",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
@@ -7077,7 +7133,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Acompañar toda instrucción verbal con soporte visual complementario (imágenes, esquemas en pizarra, palabras clave subrayadas).",
         "Técnica de modelado y expansión indirecta: devolverle la frase gramaticalmente correcta de forma natural, sin corregir bruscamente ni exigir repetición punitiva.",
         "Anticipar el vocabulario técnico de cada unidad didáctica mediante un glosario visual con definición sencilla previa a la explicación grupal.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación en primeras filas centrada con visión directa del rostro del docente para facilitar la lectura labiofacial y claves gestuales.",
@@ -7129,7 +7185,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
     "category": "ACNEAE (Necesidades Específicas de Apoyo Educativo)",
     "specificNeed": "Dificultades Específicas de Aprendizaje (DEA)",
     "tutor": "Tutor/a de 6º Educación Primaria C",
-    "ptTeacher": "Diego López (PT)",
+    "ptTeacher": "María (PT)",
     "curricularAdaptation": "No Significativa (ACNS)",
     "lastReviewDate": "2026-10-08",
     "status": "Activo",
@@ -7139,7 +7195,7 @@ export const INITIAL_STUDENTS_NEAE: StudentNEAE[] = [
         "Eximir de la copia innecesaria de enunciados largos del libro o de la pizarra; permitir responder directamente o entregar material impreso.",
         "Tipografía accesible en fichas: fuente sin serifa (Arial, Comic Sans o OpenDyslexic), tamaño 12-14 pt, interlineado 1.5 y texto alineado a la izquierda.",
         "No forzar la lectura en voz alta en público de forma imprevista; avisarle el día anterior para que prepare su fragmento.",
-        "Coordinación estrecha y semanal con Diego López (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
+        "Coordinación estrecha y semanal con María (PT): alinear objetivos del apoyo específico con las unidades didácticas del aula ordinaria."
       ],
       "environmentalAdaptations": [
         "Ubicación cercana a la pizarra y al profesor; uso de regla de lectura o plantilla con ventana para no saltar líneas."
