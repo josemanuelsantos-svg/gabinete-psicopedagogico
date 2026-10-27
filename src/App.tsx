@@ -14,9 +14,12 @@ import { SpecialistSchedulePortal } from './components/SpecialistSchedulePortal'
 import { CabinetAnnualReport } from './components/CabinetAnnualReport';
 import { CaseLookupModal } from './components/CaseLookupModal';
 import { TutorDevolutionSheet } from './components/TutorDevolutionSheet';
+import { MedicalObservationModal } from './components/MedicalObservationModal';
+import { MedicalReportModal } from './components/MedicalReportModal';
+import { MedicalReferralObservations, GeneratedMedicalReport } from './types';
 import { 
   LayoutDashboard, FilePlus, BookOpen, Lock, CheckCircle2, Calendar, 
-  PieChart, Search, ShieldCheck, UserCheck, AlertCircle, Copy, Check 
+  PieChart, Search, ShieldCheck, UserCheck, AlertCircle, Copy, Check, Stethoscope 
 } from 'lucide-react';
 
 export function App() {
@@ -43,6 +46,8 @@ export function App() {
   const [selectedCaseForSchedule, setSelectedCaseForSchedule] = useState<ReferralCase | null>(null);
   const [selectedCaseForDevolution, setSelectedCaseForDevolution] = useState<ReferralCase | null>(null);
   const [selectedStudentForReview, setSelectedStudentForReview] = useState<StudentNEAE | null>(null);
+  const [selectedCaseForMedicalObs, setSelectedCaseForMedicalObs] = useState<ReferralCase | null>(null);
+  const [selectedCaseForMedicalReport, setSelectedCaseForMedicalReport] = useState<ReferralCase | null>(null);
 
   // Load data based on authenticated role
   useEffect(() => {
@@ -250,6 +255,42 @@ export function App() {
     });
     setNeaeStudents(updated);
     setSelectedStudentForReview(null);
+  };
+
+  const handleSaveMedicalObservations = async (caseId: string, obs: MedicalReferralObservations) => {
+    const updatedCases = cases.map(c => {
+      if (c.id === caseId) {
+        const updatedCase: ReferralCase = { ...c, medicalObservations: obs };
+        FirebaseService.saveCase(updatedCase, currentUser);
+        return updatedCase;
+      }
+      return c;
+    });
+    setCases(updatedCases);
+    if (selectedCaseForModal && selectedCaseForModal.id === caseId) {
+      setSelectedCaseForModal(prev => prev ? { ...prev, medicalObservations: obs } : null);
+    }
+    if (selectedCaseForMedicalObs && selectedCaseForMedicalObs.id === caseId) {
+      setSelectedCaseForMedicalObs(prev => prev ? { ...prev, medicalObservations: obs } : null);
+    }
+  };
+
+  const handleSaveMedicalReport = async (caseId: string, report: GeneratedMedicalReport) => {
+    const updatedCases = cases.map(c => {
+      if (c.id === caseId) {
+        const updatedCase: ReferralCase = { ...c, medicalReport: report };
+        FirebaseService.saveCase(updatedCase, currentUser);
+        return updatedCase;
+      }
+      return c;
+    });
+    setCases(updatedCases);
+    if (selectedCaseForModal && selectedCaseForModal.id === caseId) {
+      setSelectedCaseForModal(prev => prev ? { ...prev, medicalReport: report } : null);
+    }
+    if (selectedCaseForMedicalReport && selectedCaseForMedicalReport.id === caseId) {
+      setSelectedCaseForMedicalReport(prev => prev ? { ...prev, medicalReport: report } : null);
+    }
   };
 
   const copyToClipboard = (text: string) => {
@@ -518,14 +559,31 @@ export function App() {
                       <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Fecha de registro: {c.dateSubmitted}</p>
                     </div>
 
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      onClick={() => setSelectedCaseForModal(c)}
-                      style={{ padding: '0.35rem 0.75rem', fontSize: '0.78rem' }}
-                    >
-                      Ver Detalle
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.45rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={() => setSelectedCaseForModal(c)}
+                        style={{ padding: '0.35rem 0.75rem', fontSize: '0.78rem' }}
+                      >
+                        Ver Detalle
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={() => setSelectedCaseForMedicalObs(c)}
+                        style={{
+                          padding: '0.35rem 0.75rem',
+                          fontSize: '0.78rem',
+                          background: c.medicalObservations ? '#ecfdf5' : '#f0fdfa',
+                          color: c.medicalObservations ? '#047857' : '#0d9488',
+                          borderColor: c.medicalObservations ? '#a7f3d0' : '#99f6e4'
+                        }}
+                        title="Rellenar o actualizar cuestionario de observación para Neuropediatra o Pediatra"
+                      >
+                        <Stethoscope size={13} /> {c.medicalObservations ? 'Obs. Médica ✓' : 'Obs. Médica'}
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -552,6 +610,8 @@ export function App() {
             onUpdateCase={handleUpdateCase}
             onDeleteCase={handleDeleteCase}
             onSelectCase={(c) => setSelectedCaseForModal(c)}
+            onOpenMedicalReport={(c) => setSelectedCaseForMedicalReport(c)}
+            onOpenMedicalObs={(c) => setSelectedCaseForMedicalObs(c)}
             onRefresh={async () => {
               if (!currentUser) return;
               try {
@@ -597,7 +657,39 @@ export function App() {
       <CaseDetailModal
         referralCase={selectedCaseForModal}
         onClose={() => setSelectedCaseForModal(null)}
+        isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
+        onOpenMedicalObs={(c) => setSelectedCaseForMedicalObs(c)}
+        onOpenMedicalReport={(c) => setSelectedCaseForMedicalReport(c)}
       />
+
+      {/* Modal de Observaciones para Neuropediatra / Pediatra */}
+      {selectedCaseForMedicalObs && (
+        <MedicalObservationModal
+          referralCase={selectedCaseForMedicalObs}
+          currentUserName={currentUser?.name || 'Docente'}
+          currentUserEmail={currentUser?.email || 'docentes@sanbuenaventura.es'}
+          isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
+          onSaveObservations={handleSaveMedicalObservations}
+          onClose={() => setSelectedCaseForMedicalObs(null)}
+          onOpenReportGenerator={authLevel === 'ORIENTADOR_ADMIN' ? () => {
+            const c = selectedCaseForMedicalObs;
+            setSelectedCaseForMedicalObs(null);
+            setSelectedCaseForMedicalReport(c);
+          } : undefined}
+        />
+      )}
+
+      {/* Modal de Redacción y Emisión de Informe Médico Oficial (Solo Orientación) */}
+      {selectedCaseForMedicalReport && (
+        <MedicalReportModal
+          referralCase={selectedCaseForMedicalReport}
+          counselorName={currentUser?.name || 'Equipo de Orientación'}
+          counselorEmail={currentUser?.email || 'orientacion@sanbuenaventura.es'}
+          isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
+          onSaveReport={handleSaveMedicalReport}
+          onClose={() => setSelectedCaseForMedicalReport(null)}
+        />
+      )}
 
       {/* Modal de Devolución al Tutor */}
       <TutorDevolutionSheet

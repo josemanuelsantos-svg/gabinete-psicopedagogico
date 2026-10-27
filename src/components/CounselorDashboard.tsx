@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { ReferralCase, CaseStatus, CasePriority, ActionPlanGuidelines } from '../types';
-import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, RefreshCw, Trash2, AlertTriangle, Sparkles, Printer, FileCheck2 } from 'lucide-react';
+import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, RefreshCw, Trash2, AlertTriangle, Sparkles, Printer, FileCheck2, Stethoscope } from 'lucide-react';
 
 interface CounselorDashboardProps {
   cases: ReferralCase[];
   onUpdateCase: (updatedCase: ReferralCase) => void;
   onDeleteCase?: (caseId: string) => void;
   onSelectCase: (c: ReferralCase) => void;
+  onOpenMedicalReport?: (c: ReferralCase) => void;
+  onOpenMedicalObs?: (c: ReferralCase) => void;
   onRefresh?: () => void;
   isRefreshing?: boolean;
 }
@@ -193,6 +195,8 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   onUpdateCase,
   onDeleteCase,
   onSelectCase,
+  onOpenMedicalReport,
+  onOpenMedicalObs,
   onRefresh,
   isRefreshing = false
 }) => {
@@ -509,9 +513,21 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                   <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '0.2rem' }}>
                     {c.studentName} <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>({c.grade})</span>
                   </h4>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
-                    <strong>Docente solicitante:</strong> {c.teacherName} ({c.createdByEmail})
-                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                    <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0 }}>
+                      <strong>Docente solicitante:</strong> {c.teacherName} ({c.createdByEmail})
+                    </p>
+                    {c.medicalObservations && (
+                      <span style={{ fontSize: '0.70rem', background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0', padding: '0.12rem 0.5rem', borderRadius: '12px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                        <Stethoscope size={11} /> Obs. médica por {c.medicalObservations.filledByTeacherName}
+                      </span>
+                    )}
+                    {c.medicalReport?.isFinalized && (
+                      <span style={{ fontSize: '0.70rem', background: '#eff6ff', color: '#1e40af', border: '1px solid #bfdbfe', padding: '0.12rem 0.5rem', borderRadius: '12px', fontWeight: 700 }}>
+                        ✓ Informe Médico Oficial
+                      </span>
+                    )}
+                  </div>
 
                   <p style={{ fontSize: '0.85rem', color: '#334155', fontStyle: 'italic', background: 'rgba(255,255,255,0.7)', padding: '0.4rem 0.6rem', borderRadius: '6px', borderLeft: '3px solid var(--primary-600)' }}>
                     "{reasonText}"
@@ -543,6 +559,25 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                   >
                     <FileCheck2 size={14} /> Autorización Familia
                   </button>
+
+                  {onOpenMedicalReport && (
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      style={{
+                        padding: '0.45rem 0.75rem',
+                        fontSize: '0.78rem',
+                        background: c.medicalReport?.isFinalized ? '#ecfdf5' : '#f0fdfa',
+                        color: c.medicalReport?.isFinalized ? '#047857' : '#0d9488',
+                        borderColor: c.medicalReport?.isFinalized ? '#a7f3d0' : '#99f6e4',
+                        fontWeight: 600
+                      }}
+                      onClick={() => onOpenMedicalReport(c)}
+                      title="Redactar, editar y emitir informe formal para Neuropediatra o Pediatra"
+                    >
+                      <Stethoscope size={14} /> {c.medicalReport?.isFinalized ? 'Informe Médico ✓' : 'Informe Médico'}
+                    </button>
+                  )}
 
                   <button
                     type="button"

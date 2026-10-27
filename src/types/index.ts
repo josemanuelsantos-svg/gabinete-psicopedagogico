@@ -53,6 +53,71 @@ export interface SpecialistSupportSlot {
   mode: 'Dentro del Aula' | 'Aula de Apoyo PT';
 }
 
+export type MedicalSpecialistTarget = 
+  | 'NEUROPEDIATRA' 
+  | 'PEDIATRA' 
+  | 'SALUD_MENTAL_USMIJ' 
+  | 'OTRO_ESPECIALISTA';
+
+export interface MedicalReferralObservations {
+  specialistTarget: MedicalSpecialistTarget;
+  customSpecialistName?: string;
+  consultationReason: string;
+  
+  // 1. Atención sostenida y funciones ejecutivas
+  attentionAndFocus: string;
+  taskCompletionAndPace: string;
+  
+  // 2. Control de impulsos, actividad motora e inquietud
+  motorRestlessness: string;
+  impulsivityControl: string;
+  
+  // 3. Lenguaje, comunicación y comprensión
+  languageAndCommunication: string;
+  
+  // 4. Motricidad, grafomotricidad y coordinación
+  fineMotorAndWriting: string;
+  grossMotorCoordination: string;
+  
+  // 5. Autorregulación emocional y socialización
+  emotionalRegulation: string;
+  peerRelationships: string;
+  
+  // 6. Rendimiento curricular y asignaturas
+  academicPerformance: string;
+  
+  // 7. Medidas pedagógicas de aula probadas
+  measuresAppliedAndResults: string;
+  
+  // Metadatos de cumplimentación
+  filledByTeacherName: string;
+  filledByTeacherEmail: string;
+  filledDate: string;
+}
+
+export interface GeneratedMedicalReport {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  generatedByCounselorName: string;
+  counselorEmail: string;
+  targetSpecialistTitle: string;
+  
+  // Secciones desarrolladas formalmente (editables por Orientación)
+  studentIdentification: string;
+  clinicalReasonNarrative: string;
+  academicAndCognitiveNarrative: string;
+  attentionAndExecutiveNarrative: string;
+  motorAndRestlessnessNarrative: string;
+  languageAndCommunicationNarrative: string;
+  socioEmotionalNarrative: string;
+  measuresAndEvolutionNarrative: string;
+  counselorSynthesisAndRecommendations: string;
+  
+  isFinalized: boolean;
+  signatureDate?: string;
+}
+
 export interface SubjectGuidelines {
   subject: 'Matemáticas' | 'Lengua y Literatura' | 'Ciencias / STEM' | 'Idiomas / Inglés' | 'Generales' | 'Áreas de Infantil';
   tips: string[];
@@ -177,6 +242,8 @@ export interface ReferralCase {
   dictamenAdaptation?: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
   dictamenPtTeacher?: string;
   privacyConsent?: PrivacyConsentRecord;
+  medicalObservations?: MedicalReferralObservations;
+  medicalReport?: GeneratedMedicalReport;
 
   // Optional backwards compatibility field for legacy views if needed
   triage?: {

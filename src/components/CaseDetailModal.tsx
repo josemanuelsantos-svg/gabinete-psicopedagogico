@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { ReferralCase } from '../types';
-import { X, Clock, User, HeartHandshake, Baby, School, Eye, Download, FileCheck2, Printer } from 'lucide-react';
+import { X, Clock, User, HeartHandshake, Baby, School, Eye, Download, FileCheck2, Printer, Stethoscope, FileText } from 'lucide-react';
 
 interface CaseDetailModalProps {
   referralCase: ReferralCase | null;
   onClose: () => void;
+  isCounselor?: boolean;
+  onOpenMedicalObs?: (c: ReferralCase) => void;
+  onOpenMedicalReport?: (c: ReferralCase) => void;
 }
 
 export const CaseDetailModal: React.FC<CaseDetailModalProps> = ({
   referralCase,
-  onClose
+  onClose,
+  isCounselor = false,
+  onOpenMedicalObs,
+  onOpenMedicalReport
 }) => {
   const [showAttachmentPreview, setShowAttachmentPreview] = useState<boolean>(false);
   const [showFamilyAuthView, setShowFamilyAuthView] = useState<boolean>(false);
@@ -279,6 +285,58 @@ export const CaseDetailModal: React.FC<CaseDetailModalProps> = ({
                   <div style={{ gridColumn: '1 / -1', background: '#ffffff', padding: '0.5rem', borderRadius: '6px', border: '1px solid var(--border-light)', marginTop: '0.3rem' }}>
                     <strong>Consentimiento RGPD:</strong> Cláusula {referralCase.privacyConsent.policyVersion} aceptada por {referralCase.privacyConsent.userEmail} el {referralCase.privacyConsent.acceptedAt.slice(0, 10)}.
                   </div>
+                )}
+              </div>
+            </div>
+
+            {/* 5. CUSTODIA Y COORDINACIÓN MÉDICA / NEUROPEDIATRÍA */}
+            <div style={{ background: '#f0fdfa', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid #99f6e4', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem', flexWrap: 'wrap', gap: '0.4rem' }}>
+                <h4 style={{ fontSize: '0.92rem', color: '#0f766e', display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700, margin: 0 }}>
+                  <Stethoscope size={17} /> Coordinación con Neuropediatría / Pediatría
+                </h4>
+                {referralCase.medicalReport?.isFinalized && (
+                  <span style={{ fontSize: '0.72rem', background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0', padding: '0.15rem 0.55rem', borderRadius: '12px', fontWeight: 700 }}>
+                    ✓ Informe Oficial Emitido
+                  </span>
+                )}
+              </div>
+
+              <p style={{ fontSize: '0.82rem', color: '#334155', marginBottom: '0.75rem', lineHeight: 1.45 }}>
+                {referralCase.medicalObservations ? (
+                  <>Observaciones de aula registradas por <strong>{referralCase.medicalObservations.filledByTeacherName}</strong> para <em>{referralCase.medicalObservations.specialistTarget}</em> el {referralCase.medicalObservations.filledDate}.</>
+                ) : (
+                  <>Aún no se ha completado el cuestionario de observación específico para el médico/neuropediatra.</>
+                )}
+              </p>
+
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                {onOpenMedicalObs && (
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => onOpenMedicalObs(referralCase)}
+                    style={{ padding: '0.4rem 0.8rem', fontSize: '0.80rem', background: '#ffffff', borderColor: '#0d9488', color: '#0d9488' }}
+                  >
+                    <Stethoscope size={14} /> {referralCase.medicalObservations ? 'Editar Observación de Aula' : 'Rellenar Cuestionario para Médico'}
+                  </button>
+                )}
+
+                {isCounselor && onOpenMedicalReport && (
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => onOpenMedicalReport(referralCase)}
+                    style={{ padding: '0.4rem 0.85rem', fontSize: '0.80rem', background: '#0d9488' }}
+                  >
+                    <FileText size={14} /> {referralCase.medicalReport ? 'Ver / Editar Informe Oficial' : '⚡ Generar Informe Extenso para Médico'}
+                  </button>
+                )}
+
+                {!isCounselor && (
+                  <span style={{ fontSize: '0.74rem', color: '#64748b', fontStyle: 'italic' }}>
+                    (La emisión formal y firma del informe médico corresponde exclusivamente a Orientación)
+                  </span>
                 )}
               </div>
             </div>

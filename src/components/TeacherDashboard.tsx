@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReferralCase, StudentNEAE } from '../types';
-import { PlusCircle, FileText, CheckCircle2, Clock, Eye, BookOpen, AlertCircle, ArrowRight } from 'lucide-react';
+import { PlusCircle, FileText, CheckCircle2, Clock, Eye, BookOpen, AlertCircle, ArrowRight, Stethoscope } from 'lucide-react';
 
 interface TeacherDashboardProps {
   cases: ReferralCase[];
@@ -8,6 +8,7 @@ interface TeacherDashboardProps {
   onNewReferral: () => void;
   onSelectCase: (c: ReferralCase) => void;
   onOpenNeaePortal: () => void;
+  onOpenMedicalObs?: (c: ReferralCase) => void;
 }
 
 export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
@@ -15,7 +16,8 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
   neaeStudents,
   onNewReferral,
   onSelectCase,
-  onOpenNeaePortal
+  onOpenNeaePortal,
+  onOpenMedicalObs
 }) => {
   const pendingCases = cases.filter(c => c.status === 'PENDIENTE_REVISION');
   const evaluationCases = cases.filter(c => c.status === 'EN_EVALUACION');
@@ -157,13 +159,32 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
                       </span>
                     </td>
                     <td>
-                      <button
-                        className="btn btn-secondary"
-                        style={{ padding: '0.35rem 0.75rem', fontSize: '0.8rem' }}
-                        onClick={() => onSelectCase(c)}
-                      >
-                        <Eye size={14} /> Ver Expediente
-                      </button>
+                      <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                        <button
+                          className="btn btn-secondary"
+                          style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem' }}
+                          onClick={() => onSelectCase(c)}
+                        >
+                          <Eye size={14} /> Ver
+                        </button>
+                        {onOpenMedicalObs && (
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            style={{
+                              padding: '0.35rem 0.65rem',
+                              fontSize: '0.78rem',
+                              background: c.medicalObservations ? '#ecfdf5' : '#f0fdfa',
+                              color: c.medicalObservations ? '#047857' : '#0d9488',
+                              borderColor: c.medicalObservations ? '#a7f3d0' : '#99f6e4'
+                            }}
+                            onClick={() => onOpenMedicalObs(c)}
+                            title="Rellenar o actualizar cuestionario de observación para Neuropediatra o Pediatra"
+                          >
+                            <Stethoscope size={13} /> {c.medicalObservations ? 'Obs. Médica ✓' : 'Obs. Médica'}
+                          </button>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}
