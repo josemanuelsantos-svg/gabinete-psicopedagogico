@@ -75,15 +75,29 @@ export const CaseDetailModal: React.FC<CaseDetailModalProps> = ({
             </div>
 
             <div className="family-auth-sheet" style={{ border: '1px solid #cbd5e1', borderRadius: '8px', padding: '1.25rem 1.5rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.45 }}>
-              <div style={{ textAlign: 'center', borderBottom: '2px solid #0d9488', paddingBottom: '0.5rem', marginBottom: '0.85rem' }}>
-                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#475569', fontWeight: 700 }}>
-                  Colegio San Buenaventura • Madrid • Gabinete de Orientación Psicopedagógica
+              <div style={{ borderBottom: '2px solid #0d9488', paddingBottom: '0.5rem', marginBottom: '0.85rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <img 
+                    src="/logo-colegio.png" 
+                    alt="Colegio San Buenaventura" 
+                    style={{ height: '42px', maxWidth: '160px', objectFit: 'contain' }} 
+                  />
+                  <div style={{ textAlign: 'right', flex: 1 }}>
+                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#1e293b', fontWeight: 800 }}>
+                      Colegio San Buenaventura • Madrid • Cód. 28009033
+                    </div>
+                    <div style={{ fontSize: '0.66rem', color: '#64748b' }}>
+                      Gabinete de Orientación Psicopedagógica y Atención a la Diversidad
+                    </div>
+                  </div>
                 </div>
-                <h2 style={{ fontSize: '1.15rem', color: '#0f172a', marginTop: '0.2rem', marginBottom: '0.1rem', fontWeight: 800 }}>
-                  AUTORIZACIÓN E INFORMACIÓN A LAS FAMILIAS PARA VALORACIÓN PSICOPEDAGÓGICA
-                </h2>
-                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                  Expediente Ref: {referralCase.id.slice(0, 8).toUpperCase()} • Fecha: {new Date().toLocaleDateString('es-ES')}
+                <div style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+                  <h2 style={{ fontSize: '1.12rem', color: '#0f172a', margin: '0.1rem 0', fontWeight: 800 }}>
+                    AUTORIZACIÓN E INFORMACIÓN A LAS FAMILIAS PARA VALORACIÓN PSICOPEDAGÓGICA
+                  </h2>
+                  <div style={{ fontSize: '0.74rem', color: '#64748b' }}>
+                    Expediente Ref: {referralCase.id.slice(0, 8).toUpperCase()} • Fecha: {new Date().toLocaleDateString('es-ES')}
+                  </div>
                 </div>
               </div>
 

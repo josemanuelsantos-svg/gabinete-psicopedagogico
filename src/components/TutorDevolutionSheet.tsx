@@ -40,11 +40,24 @@ export const TutorDevolutionSheet: React.FC<TutorDevolutionSheetProps> = ({
         </div>
 
         {/* Printable 1-Page Document */}
-        <div className="card" id="printable-devolution-sheet" style={{ padding: '1.75rem', background: '#ffffff', border: '1px solid var(--border-light)' }}>
-          <div style={{ textTransform: 'uppercase', fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center', letterSpacing: '0.05em' }}>
-            Colegio San Buenaventura • Equipo de Orientación Psicopedagógica
+        <div className="card family-auth-sheet" id="printable-devolution-sheet" style={{ padding: '1.5rem', background: '#ffffff', border: '1px solid var(--border-light)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '2px solid var(--primary-600)', paddingBottom: '0.5rem', marginBottom: '0.85rem', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <img 
+              src="/logo-colegio.png" 
+              alt="Colegio San Buenaventura" 
+              style={{ height: '42px', maxWidth: '160px', objectFit: 'contain' }} 
+            />
+            <div style={{ textAlign: 'right', flex: 1 }}>
+              <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#1e293b', fontWeight: 800 }}>
+                Colegio San Buenaventura • Madrid • Cód. 28009033
+              </div>
+              <div style={{ fontSize: '0.66rem', color: '#64748b' }}>
+                Equipo de Orientación Psicopedagógica y Claustro Docente
+              </div>
+            </div>
           </div>
-          <h2 style={{ textAlign: 'center', fontSize: '1.3rem', margin: '0.3rem 0 1.25rem 0', color: 'var(--primary-900)' }}>
+
+          <h2 style={{ textAlign: 'center', fontSize: '1.2rem', margin: '0.2rem 0 0.85rem 0', color: 'var(--primary-900)', fontWeight: 800 }}>
             FICHA RESUMEN DE DEVOLUCIÓN AL TUTOR/A
           </h2>
 

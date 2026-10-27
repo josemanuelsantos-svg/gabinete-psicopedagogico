@@ -327,115 +327,132 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
               </div>
             </div>
 
-            {/* Hoja Formal Imprimible */}
-            <div className="family-auth-sheet" style={{ border: '1px solid #cbd5e1', borderRadius: '8px', padding: '2rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.5, fontSize: '0.85rem' }}>
+            {/* Hoja Formal Imprimible con Logo Oficial y Distribución Optimizada */}
+            <div className="medical-report-sheet" style={{ border: '1px solid #cbd5e1', borderRadius: '8px', padding: '1.75rem 2rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.5, fontSize: '0.84rem' }}>
               
-              {/* Membrete Oficial */}
-              <div style={{ textAlign: 'center', borderBottom: '2.5px solid #0d9488', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
-                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#475569', fontWeight: 800 }}>
-                  Colegio San Buenaventura • Madrid • Código de Centro 28009033
+              {/* Membrete Oficial con Logo del Colegio */}
+              <div className="report-header" style={{ borderBottom: '2.5px solid #0d9488', paddingBottom: '0.85rem', marginBottom: '1.15rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <img 
+                      src="/logo-colegio.png" 
+                      alt="Logo Colegio San Buenaventura" 
+                      style={{ height: '52px', maxWidth: '200px', objectFit: 'contain' }} 
+                    />
+                  </div>
+                  <div style={{ textAlign: 'right', flex: 1 }}>
+                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#0f172a', fontWeight: 800 }}>
+                      Colegio San Buenaventura • Madrid
+                    </div>
+                    <div style={{ fontSize: '0.70rem', color: '#475569', fontWeight: 600, marginTop: '0.1rem' }}>
+                      Código de Centro: 28009033 • Departamento de Orientación Psicopedagógica
+                    </div>
+                    <div style={{ fontSize: '0.67rem', color: '#64748b' }}>
+                      Calle El Greco, 16, 28011 Madrid • orientacion@sanbuenaventura.es
+                    </div>
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.70rem', color: '#64748b', marginTop: '0.15rem' }}>
-                  Departamento de Orientación Psicopedagógica y Atención a la Diversidad
-                </div>
-                <h2 style={{ fontSize: '1.25rem', color: '#0f172a', marginTop: '0.4rem', marginBottom: '0.2rem', fontWeight: 800, textTransform: 'uppercase' }}>
-                  Informe Escolar de Derivación y Coordinación Sanitaria
-                </h2>
-                <div style={{ fontSize: '0.78rem', color: '#0d9488', fontWeight: 700 }}>
-                  A la atención de: {report.targetSpecialistTitle}
+
+                <div style={{ textAlign: 'center', marginTop: '0.85rem' }}>
+                  <h2 style={{ fontSize: '1.20rem', color: '#0f172a', margin: '0.2rem 0', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                    Informe Escolar de Derivación y Coordinación Sanitaria
+                  </h2>
+                  <div style={{ fontSize: '0.80rem', color: '#0f766e', fontWeight: 700 }}>
+                    A la atención preferente de: {report.targetSpecialistTitle}
+                  </div>
                 </div>
               </div>
 
               {/* Ficha de Filiación */}
-              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '6px', padding: '0.75rem 1rem', marginBottom: '1.25rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem 1.25rem', fontSize: '0.82rem' }}>
+              <div className="report-filiation" style={{ background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: '6px', padding: '0.75rem 1rem', marginBottom: '1.15rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem 1.25rem', fontSize: '0.81rem' }}>
                 <div><strong>Alumno/a:</strong> {referralCase.studentName}</div>
                 <div><strong>Curso y Etapa:</strong> {referralCase.grade} ({referralCase.stage})</div>
                 <div><strong>Tutor/a del Grupo:</strong> {referralCase.teacherName}</div>
                 <div><strong>Orientador/a Responsable:</strong> {report.generatedByCounselorName}</div>
                 <div><strong>Expediente Ref:</strong> {referralCase.id.slice(0, 8).toUpperCase()}</div>
-                <div><strong>Fecha del Informe:</strong> {report.signatureDate || new Date().toLocaleDateString('es-ES')}</div>
+                <div><strong>Fecha de Emisión:</strong> {report.signatureDate || new Date().toLocaleDateString('es-ES')}</div>
               </div>
 
-              {/* Secciones del Informe */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem', textAlign: 'justify' }}>
+              {/* Secciones del Informe con Distribución Optimizada */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'justify' }}>
                 
                 {/* 1. Motivo */}
-                <div>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderBottom: '1px solid #ccfbf1', paddingBottom: '0.15rem' }}>
-                    1. Motivo Clínico de Derivación y Coordinación
+                <div className="report-section">
+                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                    1. Motivo Clínico de Derivación y Justificación Escolar
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.clinicalReasonNarrative}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.clinicalReasonNarrative}</p>
                 </div>
 
                 {/* 2. Rendimiento y Aprendizaje */}
-                <div>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderBottom: '1px solid #ccfbf1', paddingBottom: '0.15rem' }}>
+                <div className="report-section">
+                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
                     2. Desempeño Académico y Procesos de Aprendizaje
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.academicAndCognitiveNarrative}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.academicAndCognitiveNarrative}</p>
                 </div>
 
                 {/* 3. Atención y Funciones Ejecutivas */}
-                <div>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderBottom: '1px solid #ccfbf1', paddingBottom: '0.15rem' }}>
+                <div className="report-section">
+                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
                     3. Perfil de Atención Sostenida y Funciones Ejecutivas
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.attentionAndExecutiveNarrative}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.attentionAndExecutiveNarrative}</p>
                 </div>
 
                 {/* 4. Actividad Motora e Impulsividad */}
-                <div>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderBottom: '1px solid #ccfbf1', paddingBottom: '0.15rem' }}>
+                <div className="report-section">
+                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
                     4. Actividad Motora, Inquietud e Impulsividad
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.motorAndRestlessnessNarrative}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.motorAndRestlessnessNarrative}</p>
                 </div>
 
                 {/* 5. Lenguaje y Grafomotricidad */}
-                <div>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderBottom: '1px solid #ccfbf1', paddingBottom: '0.15rem' }}>
+                <div className="report-section">
+                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
                     5. Lenguaje, Comunicación y Desarrollo Grafomotor
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.languageAndCommunicationNarrative}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.languageAndCommunicationNarrative}</p>
                 </div>
 
                 {/* 6. Socioemocional */}
-                <div>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderBottom: '1px solid #ccfbf1', paddingBottom: '0.15rem' }}>
+                <div className="report-section">
+                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
                     6. Convivencia, Relaciones Sociales y Autorregulación Emocional
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.socioEmotionalNarrative}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.socioEmotionalNarrative}</p>
                 </div>
 
                 {/* 7. Medidas de Aula */}
-                <div>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderBottom: '1px solid #ccfbf1', paddingBottom: '0.15rem' }}>
+                <div className="report-section">
+                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
                     7. Medidas Educativas Ordinarias Aplicadas y Evolución
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.measuresAndEvolutionNarrative}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.measuresAndEvolutionNarrative}</p>
                 </div>
 
                 {/* 8. Conclusiones y Petición */}
-                <div style={{ background: '#f0fdfa', border: '1px solid #99f6e4', padding: '0.85rem 1rem', borderRadius: '6px' }}>
-                  <h4 style={{ fontSize: '0.88rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <div className="report-section" style={{ background: '#f0fdfa', border: '1.5px solid #99f6e4', borderLeft: '4px solid #0d9488', padding: '0.85rem 1rem', borderRadius: '6px' }}>
+                  <h4 style={{ fontSize: '0.86rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', letterSpacing: '0.02em' }}>
                     8. Valoración Sintética y Solicitud al Especialista Médico
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line' }}>{report.counselorSynthesisAndRecommendations}</p>
+                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem', color: '#0f172a' }}>{report.counselorSynthesisAndRecommendations}</p>
                 </div>
               </div>
 
               {/* Cláusula RGPD / Deontológica */}
-              <div style={{ marginTop: '1.25rem', paddingTop: '0.65rem', borderTop: '1px solid #e2e8f0', fontSize: '0.70rem', color: '#64748b', textAlign: 'justify', lineHeight: 1.35 }}>
-                <strong>Aviso de Confidencialidad y Secreto Profesional:</strong> El presente informe contiene datos de carácter personal y sensibles relativos a un menor de edad. Se expide con fines de coordinación sociosanitaria y educativa con amparo en la Ley Orgánica 3/2018 (LOPD-GDD) y el Reglamento General de Protección de Datos (UE 2016/679). Queda prohibida su reproducción o difusión no autorizada.
+              <div className="report-section" style={{ marginTop: '1.15rem', paddingTop: '0.65rem', borderTop: '1px solid #e2e8f0', fontSize: '0.70rem', color: '#64748b', textAlign: 'justify', lineHeight: 1.4 }}>
+                <strong>Aviso de Confidencialidad y Secreto Profesional (RGPD / LOPD-GDD):</strong> El presente documento contiene información confidencial y sensible relativa al desarrollo psicopedagógico de un menor de edad. Se expide exclusivamente para fines de coordinación sociosanitaria y educativa con facultativos médicos colegiados, al amparo del RGPD (UE 2016/679) y la LO 3/2018. Queda prohibida su reproducción, difusión o cesión no autorizada.
               </div>
 
               {/* Bloque de Firmas Oficiales y Sello */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem', marginTop: '1.5rem', paddingTop: '0.75rem', borderTop: '1px solid #cbd5e1', fontSize: '0.78rem', textAlign: 'center' }}>
+              <div className="report-signatures" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem', marginTop: '1.25rem', paddingTop: '0.65rem', borderTop: '1px solid #cbd5e1', fontSize: '0.76rem', textAlign: 'center' }}>
                 <div>
                   <div style={{ height: '42px' }}></div>
                   <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
                     <strong>Fdo.: {referralCase.teacherName}</strong>
-                    <div style={{ fontSize: '0.70rem', color: '#64748b' }}>Tutor/a del Grupo</div>
+                    <div style={{ fontSize: '0.68rem', color: '#64748b' }}>Tutor/a del Grupo</div>
                   </div>
                 </div>
 
@@ -443,19 +460,19 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
                   <div style={{ height: '42px' }}></div>
                   <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
                     <strong>Fdo.: {report.generatedByCounselorName}</strong>
-                    <div style={{ fontSize: '0.70rem', color: '#64748b' }}>Dpto. Orientación Psicopedagógica</div>
+                    <div style={{ fontSize: '0.68rem', color: '#64748b' }}>Dpto. Orientación Psicopedagógica</div>
                   </div>
                 </div>
 
                 <div>
                   <div style={{ height: '42px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ width: '50px', height: '35px', border: '1px dashed #94a3b8', borderRadius: '4px', fontSize: '0.62rem', color: '#94a3b8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '56px', height: '36px', border: '1.5px dashed #94a3b8', borderRadius: '4px', fontSize: '0.62rem', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 600 }}>
                       SELLO
                     </div>
                   </div>
                   <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
-                    <strong>Sello Oficial del Centro</strong>
-                    <div style={{ fontSize: '0.70rem', color: '#64748b' }}>Colegio San Buenaventura</div>
+                    <strong>Colegio San Buenaventura</strong>
+                    <div style={{ fontSize: '0.68rem', color: '#64748b' }}>Sello Oficial del Centro</div>
                   </div>
                 </div>
               </div>
