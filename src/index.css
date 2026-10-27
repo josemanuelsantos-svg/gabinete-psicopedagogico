@@ -399,39 +399,54 @@ button, input, select, textarea {
     height: auto !important;
   }
 
-  /* Documento oficial de Informe Médico / Neuropediatría: distribución optimizada */
+  /* Documento oficial de Informe Médico / Neuropediatría: distribución optimizada sin huecos */
   .medical-report-sheet {
     box-shadow: none !important;
     border: none !important;
-    padding: 4mm 6mm !important;
+    padding: 2mm 4mm !important;
     margin: 0 auto !important;
     max-width: 100% !important;
     height: auto !important;
     color: #0f172a !important;
-    line-height: 1.5 !important;
+    line-height: 1.4 !important;
   }
 
   .report-header {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    margin-bottom: 0.65rem !important;
+    margin-bottom: 0.35rem !important;
   }
 
   .report-filiation {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.45rem !important;
   }
 
   .report-section {
+    margin-bottom: 0.45rem !important;
+  }
+
+  .report-section h4 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .report-section p {
+    margin-bottom: 0.3rem !important;
+    line-height: 1.42 !important;
+  }
+
+  .report-box-callout {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.45rem !important;
   }
 
   .report-signatures {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    margin-top: 1rem !important;
+    margin-top: 0.65rem !important;
   }
 }

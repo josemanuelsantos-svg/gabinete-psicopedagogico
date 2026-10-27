@@ -20,6 +20,23 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
   onSaveReport,
   onClose
 }) => {
+  // Helper para renderizar párrafos limpios sin espacios muertos ni líneas en blanco redundantes
+  const renderFormattedParagraphs = (rawText: string) => {
+    if (!rawText) return null;
+    const normalized = rawText.replace(/\r/g, '').replace(/\n{3,}/g, '\n\n').trim();
+    const blocks = normalized.split('\n\n');
+
+    return blocks.map((block, idx) => {
+      const trimmed = block.trim();
+      if (!trimmed) return null;
+      return (
+        <p key={idx} style={{ margin: '0 0 0.32rem 0', whiteSpace: 'pre-line', lineHeight: 1.45, fontSize: '0.80rem' }}>
+          {trimmed}
+        </p>
+      );
+    });
+  };
+
   // Inicialización del informe redactado: cargamos el existente o generamos borrador
   const [report, setReport] = useState<GeneratedMedicalReport>(() => {
     if (referralCase.medicalReport) {
@@ -328,43 +345,43 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
             </div>
 
             {/* Hoja Formal Imprimible con Logo Oficial y Distribución Optimizada */}
-            <div className="medical-report-sheet" style={{ border: '1px solid #cbd5e1', borderRadius: '8px', padding: '1.75rem 2rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.5, fontSize: '0.84rem' }}>
+            <div className="medical-report-sheet" style={{ border: '1px solid #cbd5e1', borderRadius: '8px', padding: '1.25rem 1.75rem', background: '#ffffff', color: '#0f172a', lineHeight: 1.45, fontSize: '0.82rem' }}>
               
               {/* Membrete Oficial con Logo del Colegio */}
-              <div className="report-header" style={{ borderBottom: '2.5px solid #0d9488', paddingBottom: '0.85rem', marginBottom: '1.15rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div className="report-header" style={{ borderBottom: '2px solid #0d9488', paddingBottom: '0.5rem', marginBottom: '0.65rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <img 
                       src="/logo-colegio.png" 
                       alt="Logo Colegio San Buenaventura" 
-                      style={{ height: '52px', maxWidth: '200px', objectFit: 'contain' }} 
+                      style={{ height: '44px', maxWidth: '170px', objectFit: 'contain' }} 
                     />
                   </div>
                   <div style={{ textAlign: 'right', flex: 1 }}>
-                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#0f172a', fontWeight: 800 }}>
+                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#0f172a', fontWeight: 800 }}>
                       Colegio San Buenaventura • Madrid
                     </div>
-                    <div style={{ fontSize: '0.70rem', color: '#475569', fontWeight: 600, marginTop: '0.1rem' }}>
+                    <div style={{ fontSize: '0.67rem', color: '#475569', fontWeight: 600, marginTop: '0.05rem' }}>
                       Código de Centro: 28009033 • Departamento de Orientación Psicopedagógica
                     </div>
-                    <div style={{ fontSize: '0.67rem', color: '#64748b' }}>
+                    <div style={{ fontSize: '0.65rem', color: '#64748b' }}>
                       Calle El Greco, 16, 28011 Madrid • orientacion@sanbuenaventura.es
                     </div>
                   </div>
                 </div>
 
-                <div style={{ textAlign: 'center', marginTop: '0.85rem' }}>
-                  <h2 style={{ fontSize: '1.20rem', color: '#0f172a', margin: '0.2rem 0', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                <div style={{ textAlign: 'center', marginTop: '0.45rem' }}>
+                  <h2 style={{ fontSize: '1.12rem', color: '#0f172a', margin: '0.1rem 0', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.02em' }}>
                     Informe Escolar de Derivación y Coordinación Sanitaria
                   </h2>
-                  <div style={{ fontSize: '0.80rem', color: '#0f766e', fontWeight: 700 }}>
+                  <div style={{ fontSize: '0.76rem', color: '#0f766e', fontWeight: 700 }}>
                     A la atención preferente de: {report.targetSpecialistTitle}
                   </div>
                 </div>
               </div>
 
               {/* Ficha de Filiación */}
-              <div className="report-filiation" style={{ background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: '6px', padding: '0.75rem 1rem', marginBottom: '1.15rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem 1.25rem', fontSize: '0.81rem' }}>
+              <div className="report-filiation" style={{ background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: '6px', padding: '0.55rem 0.85rem', marginBottom: '0.65rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.25rem 1rem', fontSize: '0.79rem' }}>
                 <div><strong>Alumno/a:</strong> {referralCase.studentName}</div>
                 <div><strong>Curso y Etapa:</strong> {referralCase.grade} ({referralCase.stage})</div>
                 <div><strong>Tutor/a del Grupo:</strong> {referralCase.teacherName}</div>
@@ -373,106 +390,106 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
                 <div><strong>Fecha de Emisión:</strong> {report.signatureDate || new Date().toLocaleDateString('es-ES')}</div>
               </div>
 
-              {/* Secciones del Informe con Distribución Optimizada */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'justify' }}>
+              {/* Secciones del Informe con Distribución Continua y Optimizada */}
+              <div style={{ textAlign: 'justify' }}>
                 
                 {/* 1. Motivo */}
-                <div className="report-section">
-                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                <div className="report-section" style={{ marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.2rem 0', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.5rem', letterSpacing: '0.02em' }}>
                     1. Motivo Clínico de Derivación y Justificación Escolar
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.clinicalReasonNarrative}</p>
+                  {renderFormattedParagraphs(report.clinicalReasonNarrative)}
                 </div>
 
                 {/* 2. Rendimiento y Aprendizaje */}
-                <div className="report-section">
-                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                <div className="report-section" style={{ marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.2rem 0', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.5rem', letterSpacing: '0.02em' }}>
                     2. Desempeño Académico y Procesos de Aprendizaje
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.academicAndCognitiveNarrative}</p>
+                  {renderFormattedParagraphs(report.academicAndCognitiveNarrative)}
                 </div>
 
                 {/* 3. Atención y Funciones Ejecutivas */}
-                <div className="report-section">
-                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                <div className="report-section" style={{ marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.2rem 0', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.5rem', letterSpacing: '0.02em' }}>
                     3. Perfil de Atención Sostenida y Funciones Ejecutivas
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.attentionAndExecutiveNarrative}</p>
+                  {renderFormattedParagraphs(report.attentionAndExecutiveNarrative)}
                 </div>
 
                 {/* 4. Actividad Motora e Impulsividad */}
-                <div className="report-section">
-                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                <div className="report-section" style={{ marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.2rem 0', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.5rem', letterSpacing: '0.02em' }}>
                     4. Actividad Motora, Inquietud e Impulsividad
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.motorAndRestlessnessNarrative}</p>
+                  {renderFormattedParagraphs(report.motorAndRestlessnessNarrative)}
                 </div>
 
                 {/* 5. Lenguaje y Grafomotricidad */}
-                <div className="report-section">
-                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                <div className="report-section" style={{ marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.2rem 0', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.5rem', letterSpacing: '0.02em' }}>
                     5. Lenguaje, Comunicación y Desarrollo Grafomotor
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.languageAndCommunicationNarrative}</p>
+                  {renderFormattedParagraphs(report.languageAndCommunicationNarrative)}
                 </div>
 
                 {/* 6. Socioemocional */}
-                <div className="report-section">
-                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                <div className="report-section" style={{ marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.2rem 0', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.5rem', letterSpacing: '0.02em' }}>
                     6. Convivencia, Relaciones Sociales y Autorregulación Emocional
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.socioEmotionalNarrative}</p>
+                  {renderFormattedParagraphs(report.socioEmotionalNarrative)}
                 </div>
 
                 {/* 7. Medidas de Aula */}
-                <div className="report-section">
-                  <h4 style={{ fontSize: '0.84rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.55rem', letterSpacing: '0.02em' }}>
+                <div className="report-section" style={{ marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.2rem 0', borderLeft: '3.5px solid #0d9488', paddingLeft: '0.5rem', letterSpacing: '0.02em' }}>
                     7. Medidas Educativas Ordinarias Aplicadas y Evolución
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem' }}>{report.measuresAndEvolutionNarrative}</p>
+                  {renderFormattedParagraphs(report.measuresAndEvolutionNarrative)}
                 </div>
 
                 {/* 8. Conclusiones y Petición */}
-                <div className="report-section" style={{ background: '#f0fdfa', border: '1.5px solid #99f6e4', borderLeft: '4px solid #0d9488', padding: '0.85rem 1rem', borderRadius: '6px' }}>
-                  <h4 style={{ fontSize: '0.86rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem', letterSpacing: '0.02em' }}>
+                <div className="report-section report-box-callout" style={{ background: '#f0fdfa', border: '1px solid #99f6e4', borderLeft: '3.5px solid #0d9488', padding: '0.65rem 0.85rem', borderRadius: '6px', marginBottom: '0.55rem' }}>
+                  <h4 style={{ fontSize: '0.82rem', color: '#0f766e', fontWeight: 800, textTransform: 'uppercase', margin: '0 0 0.25rem 0', letterSpacing: '0.02em' }}>
                     8. Valoración Sintética y Solicitud al Especialista Médico
                   </h4>
-                  <p style={{ margin: 0, whiteSpace: 'pre-line', lineHeight: 1.55, fontSize: '0.81rem', color: '#0f172a' }}>{report.counselorSynthesisAndRecommendations}</p>
+                  {renderFormattedParagraphs(report.counselorSynthesisAndRecommendations)}
                 </div>
               </div>
 
               {/* Cláusula RGPD / Deontológica */}
-              <div className="report-section" style={{ marginTop: '1.15rem', paddingTop: '0.65rem', borderTop: '1px solid #e2e8f0', fontSize: '0.70rem', color: '#64748b', textAlign: 'justify', lineHeight: 1.4 }}>
+              <div style={{ marginTop: '0.55rem', paddingTop: '0.4rem', borderTop: '1px solid #e2e8f0', fontSize: '0.68rem', color: '#64748b', textAlign: 'justify', lineHeight: 1.35 }}>
                 <strong>Aviso de Confidencialidad y Secreto Profesional (RGPD / LOPD-GDD):</strong> El presente documento contiene información confidencial y sensible relativa al desarrollo psicopedagógico de un menor de edad. Se expide exclusivamente para fines de coordinación sociosanitaria y educativa con facultativos médicos colegiados, al amparo del RGPD (UE 2016/679) y la LO 3/2018. Queda prohibida su reproducción, difusión o cesión no autorizada.
               </div>
 
               {/* Bloque de Firmas Oficiales y Sello */}
-              <div className="report-signatures" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem', marginTop: '1.25rem', paddingTop: '0.65rem', borderTop: '1px solid #cbd5e1', fontSize: '0.76rem', textAlign: 'center' }}>
+              <div className="report-signatures" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.25rem', marginTop: '0.75rem', paddingTop: '0.45rem', borderTop: '1px solid #cbd5e1', fontSize: '0.75rem', textAlign: 'center' }}>
                 <div>
-                  <div style={{ height: '42px' }}></div>
-                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
+                  <div style={{ height: '36px' }}></div>
+                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.25rem' }}>
                     <strong>Fdo.: {referralCase.teacherName}</strong>
-                    <div style={{ fontSize: '0.68rem', color: '#64748b' }}>Tutor/a del Grupo</div>
+                    <div style={{ fontSize: '0.66rem', color: '#64748b' }}>Tutor/a del Grupo</div>
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ height: '42px' }}></div>
-                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
+                  <div style={{ height: '36px' }}></div>
+                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.25rem' }}>
                     <strong>Fdo.: {report.generatedByCounselorName}</strong>
-                    <div style={{ fontSize: '0.68rem', color: '#64748b' }}>Dpto. Orientación Psicopedagógica</div>
+                    <div style={{ fontSize: '0.66rem', color: '#64748b' }}>Dpto. Orientación Psicopedagógica</div>
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ height: '42px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ width: '56px', height: '36px', border: '1.5px dashed #94a3b8', borderRadius: '4px', fontSize: '0.62rem', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 600 }}>
+                  <div style={{ height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '52px', height: '32px', border: '1.5px dashed #94a3b8', borderRadius: '4px', fontSize: '0.60rem', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 600 }}>
                       SELLO
                     </div>
                   </div>
-                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.35rem' }}>
+                  <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.25rem' }}>
                     <strong>Colegio San Buenaventura</strong>
-                    <div style={{ fontSize: '0.68rem', color: '#64748b' }}>Sello Oficial del Centro</div>
+                    <div style={{ fontSize: '0.66rem', color: '#64748b' }}>Sello Oficial del Centro</div>
                   </div>
                 </div>
               </div>
