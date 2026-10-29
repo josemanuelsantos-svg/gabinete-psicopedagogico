@@ -98,8 +98,8 @@ export const TutorDevolutionSheet: React.FC<TutorDevolutionSheetProps> = ({
 
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2.5rem', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', fontSize: '0.8rem' }}>
             <div>
-              Firma del Orientador/a Psicopedagógico/a<br />
-              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Sello del Gabinete Escolar</span>
+              <strong>Fdo.: Mª Belén Hernando Martín</strong><br />
+              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Orientadora Psicopedagógica • Sello del Gabinete</span>
             </div>
             <div style={{ textAlign: 'right' }}>
               Firma y Recibido del Tutor/a<br />

@@ -71,10 +71,10 @@ export const GoogleAuthButton: React.FC<GoogleAuthButtonProps> = ({ onSuccess })
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => handleQuickDemoLogin('orientacion@sanbuenaventura.es', 'Equipo de Orientación', 'ORIENTADOR_ADMIN')}
+            onClick={() => handleQuickDemoLogin('orientacionep@sanbuenaventura.org', 'Mª Belén Hernando Martín (Orientadora)', 'ORIENTADOR_ADMIN')}
             style={{ padding: '0.35rem', fontSize: '0.72rem', minHeight: '34px', border: '1px solid #0d9488', color: '#0d9488' }}
           >
-            🧠 Gabinete Orientador
+            🧠 Mª Belén Hernando (Orientación)
           </button>
         </div>
       </div>

@@ -163,8 +163,8 @@ export function App() {
   const handleLoginSuccess = (mode: 'DOCENTE_NEAE' | 'ORIENTADOR_ADMIN', userProfile?: { name: string; email: string }) => {
     setAuthLevel(mode);
     const session: CurrentUserSession = {
-      name: userProfile?.name || (mode === 'DOCENTE_NEAE' ? 'Claustro Docente' : 'Equipo de Orientación'),
-      email: userProfile?.email || (mode === 'DOCENTE_NEAE' ? 'docentes@sanbuenaventura.es' : 'orientacion@sanbuenaventura.es'),
+      name: userProfile?.name || (mode === 'DOCENTE_NEAE' ? 'Claustro Docente' : 'Mª Belén Hernando Martín (Orientadora)'),
+      email: userProfile?.email || (mode === 'DOCENTE_NEAE' ? 'docentes@sanbuenaventura.es' : 'orientacionep@sanbuenaventura.org'),
       role: mode === 'DOCENTE_NEAE' ? 'DOCENTE' : 'ORIENTADOR'
     };
     setCurrentUser(session);
@@ -683,8 +683,8 @@ export function App() {
       {selectedCaseForMedicalReport && (
         <MedicalReportModal
           referralCase={selectedCaseForMedicalReport}
-          counselorName={currentUser?.name || 'Equipo de Orientación'}
-          counselorEmail={currentUser?.email || 'orientacion@sanbuenaventura.es'}
+          counselorName={currentUser?.name && currentUser.name !== 'Equipo de Orientación' ? currentUser.name : 'Mª Belén Hernando Martín'}
+          counselorEmail={currentUser?.email && currentUser.email !== 'orientacion@sanbuenaventura.es' ? currentUser.email : 'orientacionep@sanbuenaventura.org'}
           isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
           onSaveReport={handleSaveMedicalReport}
           onClose={() => setSelectedCaseForMedicalReport(null)}

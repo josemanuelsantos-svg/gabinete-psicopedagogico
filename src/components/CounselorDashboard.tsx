@@ -940,6 +940,7 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                   <div style={{ height: '38px' }}></div>
                   <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.3rem' }}>
                     <strong>Gabinete de Orientación • Col. San Buenaventura</strong>
+                    <div style={{ fontSize: '0.70rem', color: '#64748b' }}>Fdo.: Mª Belén Hernando Martín (Orientadora)</div>
                   </div>
                 </div>
               </div>

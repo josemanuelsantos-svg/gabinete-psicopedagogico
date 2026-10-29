@@ -63,7 +63,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
 
       if (isValid) {
         if (selectedRole === 'ORIENTADOR') {
-          onLoginSuccess('ORIENTADOR_ADMIN', { name: 'Equipo de Orientación', email: 'orientacion@sanbuenaventura.es' });
+          onLoginSuccess('ORIENTADOR_ADMIN', { name: 'Mª Belén Hernando Martín (Orientadora)', email: 'orientacionep@sanbuenaventura.org' });
         } else {
           localStorage.setItem('edubuenaventura_last_teacher_email', teacherEmail.trim());
           localStorage.setItem('edubuenaventura_last_teacher_name', teacherName.trim());

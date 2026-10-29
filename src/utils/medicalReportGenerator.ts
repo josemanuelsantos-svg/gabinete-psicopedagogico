@@ -2,8 +2,8 @@ import { ReferralCase, GeneratedMedicalReport } from '../types';
 
 export function generateMedicalReportDraft(
   referralCase: ReferralCase, 
-  counselorName: string,
-  counselorEmail: string = 'orientacion@sanbuenaventura.es'
+  counselorName: string = 'Mª Belén Hernando Martín',
+  counselorEmail: string = 'orientacionep@sanbuenaventura.org'
 ): GeneratedMedicalReport {
   const q = referralCase.questionnaire || ({} as any);
   const obs = referralCase.medicalObservations;
@@ -11,6 +11,12 @@ export function generateMedicalReportDraft(
   const student = referralCase.studentName || 'el/la alumno/a';
   const grade = referralCase.grade || 'Educación Primaria';
   const teacher = referralCase.teacherName || 'Tutor/a del Centro';
+  const effectiveCounselorName = counselorName && counselorName !== 'Equipo de Orientación' 
+    ? counselorName 
+    : 'Mª Belén Hernando Martín';
+  const effectiveCounselorEmail = counselorEmail && counselorEmail !== 'orientacion@sanbuenaventura.es'
+    ? counselorEmail
+    : 'orientacionep@sanbuenaventura.org';
   const todayFormatted = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
 
   // 1. Destinatario
@@ -32,7 +38,7 @@ export function generateMedicalReportDraft(
     `Alumno/a: ${student}`,
     `Curso y Etapa: ${grade} (${isInfantil ? 'Educación Infantil' : 'Educación Primaria'})`,
     `Tutor/a responsable de la observación: ${teacher}`,
-    `Orientador/a Psicopedagógico/a: ${counselorName}`,
+    `Orientador/a Psicopedagógico/a: ${effectiveCounselorName}`,
     `Fecha de emisión: ${todayFormatted}`
   ].join('\n');
 
@@ -143,8 +149,8 @@ export function generateMedicalReportDraft(
     id: `MED-REP-${Date.now()}`,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    generatedByCounselorName: counselorName,
-    counselorEmail: counselorEmail,
+    generatedByCounselorName: effectiveCounselorName,
+    counselorEmail: effectiveCounselorEmail,
     targetSpecialistTitle: targetTitle,
     studentIdentification,
     clinicalReasonNarrative,

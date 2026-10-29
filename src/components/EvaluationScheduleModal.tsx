@@ -19,7 +19,7 @@ export const EvaluationScheduleModal: React.FC<EvaluationScheduleModalProps> = (
   const [date, setDate] = useState<string>(new Date().toISOString().split('T')[0]);
   const [time, setTime] = useState<string>('10:00');
   const [testCode, setTestCode] = useState<string>('WISC-V');
-  const [counselorName, setCounselorName] = useState<string>('Dra. María Valls (Orientadora)');
+  const [counselorName, setCounselorName] = useState<string>('Mª Belén Hernando Martín (Orientadora)');
   const [location, setLocation] = useState<string>('Despacho de Orientación 2');
 
   if (!referralCase) return null;

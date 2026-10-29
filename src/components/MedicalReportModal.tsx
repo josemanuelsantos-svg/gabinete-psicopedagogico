@@ -37,12 +37,31 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
     });
   };
 
+  const defaultCounselorName = 'Mª Belén Hernando Martín';
+  const defaultCounselorEmail = 'orientacionep@sanbuenaventura.org';
+
   // Inicialización del informe redactado: cargamos el existente o generamos borrador
   const [report, setReport] = useState<GeneratedMedicalReport>(() => {
+    let rep: GeneratedMedicalReport;
     if (referralCase.medicalReport) {
-      return referralCase.medicalReport;
+      rep = { ...referralCase.medicalReport };
+    } else {
+      rep = generateMedicalReportDraft(
+        referralCase, 
+        counselorName && counselorName !== 'Equipo de Orientación' ? counselorName : defaultCounselorName, 
+        counselorEmail && counselorEmail !== 'orientacion@sanbuenaventura.es' ? counselorEmail : defaultCounselorEmail
+      );
     }
-    return generateMedicalReportDraft(referralCase, counselorName, counselorEmail);
+
+    // Auto-corregir si el informe guardado tenía el email antiguo o nombre genérico
+    if (!rep.generatedByCounselorName || rep.generatedByCounselorName === 'Equipo de Orientación') {
+      rep.generatedByCounselorName = counselorName && counselorName !== 'Equipo de Orientación' ? counselorName : defaultCounselorName;
+    }
+    if (!rep.counselorEmail || rep.counselorEmail === 'orientacion@sanbuenaventura.es') {
+      rep.counselorEmail = defaultCounselorEmail;
+    }
+
+    return rep;
   });
 
   const [activeView, setActiveView] = useState<'EDIT' | 'PREVIEW'>('PREVIEW');
@@ -70,7 +89,11 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
 
   const handleRegenerate = () => {
     if (window.confirm('¿Deseas regenerar el borrador automático a partir de las observaciones más recientes del tutor? Se sobreescribirán los párrafos actuales.')) {
-      const freshDraft = generateMedicalReportDraft(referralCase, counselorName, counselorEmail);
+      const freshDraft = generateMedicalReportDraft(
+        referralCase, 
+        report.generatedByCounselorName || (counselorName && counselorName !== 'Equipo de Orientación' ? counselorName : defaultCounselorName), 
+        report.counselorEmail || defaultCounselorEmail
+      );
       setReport(freshDraft);
       setSaveNotification('Redacción regenerada con éxito');
       setTimeout(() => setSaveNotification(null), 3000);
@@ -113,7 +136,7 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
               Informe de Derivación a Neuropediatría / Pediatría
             </h3>
             <p style={{ fontSize: '0.78rem', color: '#64748b', margin: 0 }}>
-              Alumno/a: <strong>{referralCase.studentName}</strong> ({referralCase.grade}) • Orientador/a: <strong>{counselorName}</strong>
+              Alumno/a: <strong>{referralCase.studentName}</strong> ({referralCase.grade}) • Orientadora: <strong>{report.generatedByCounselorName || defaultCounselorName}</strong>
             </p>
           </div>
 
@@ -166,6 +189,36 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
               >
                 <Sparkles size={13} /> Regenerar Borrador desde Observaciones
               </button>
+            </div>
+
+            {/* Datos de Autoría y Contacto del Departamento de Orientación */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.85rem', background: '#f0fdfa', padding: '0.85rem 1rem', borderRadius: '8px', border: '1px solid #99f6e4' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#0f766e', marginBottom: '0.25rem' }}>
+                  Orientador/a Responsable (Firma oficial):
+                </label>
+                <input
+                  type="text"
+                  className="input-field"
+                  value={report.generatedByCounselorName}
+                  onChange={(e) => setReport({ ...report, generatedByCounselorName: e.target.value })}
+                  placeholder="Mª Belén Hernando Martín"
+                  style={{ width: '100%', fontSize: '0.84rem' }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#0f766e', marginBottom: '0.25rem' }}>
+                  Correo Electrónico de Orientación:
+                </label>
+                <input
+                  type="email"
+                  className="input-field"
+                  value={report.counselorEmail}
+                  onChange={(e) => setReport({ ...report, counselorEmail: e.target.value })}
+                  placeholder="orientacionep@sanbuenaventura.org"
+                  style={{ width: '100%', fontSize: '0.84rem' }}
+                />
+              </div>
             </div>
 
             {/* 1. Motivo */}
@@ -365,7 +418,7 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
                       Código de Centro: 28009033 • Departamento de Orientación Psicopedagógica
                     </div>
                     <div style={{ fontSize: '0.65rem', color: '#64748b' }}>
-                      Calle El Greco, 16, 28011 Madrid • orientacion@sanbuenaventura.es
+                      Calle El Greco, 16, 28011 Madrid • {report.counselorEmail || defaultCounselorEmail}
                     </div>
                   </div>
                 </div>
@@ -385,7 +438,7 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
                 <div><strong>Alumno/a:</strong> {referralCase.studentName}</div>
                 <div><strong>Curso y Etapa:</strong> {referralCase.grade} ({referralCase.stage})</div>
                 <div><strong>Tutor/a del Grupo:</strong> {referralCase.teacherName}</div>
-                <div><strong>Orientador/a Responsable:</strong> {report.generatedByCounselorName}</div>
+                <div><strong>Orientador/a Responsable:</strong> {report.generatedByCounselorName || defaultCounselorName}</div>
                 <div><strong>Expediente Ref:</strong> {referralCase.id.slice(0, 8).toUpperCase()}</div>
                 <div><strong>Fecha de Emisión:</strong> {report.signatureDate || new Date().toLocaleDateString('es-ES')}</div>
               </div>
@@ -476,8 +529,8 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
                 <div>
                   <div style={{ height: '36px' }}></div>
                   <div style={{ borderTop: '1px solid #64748b', paddingTop: '0.25rem' }}>
-                    <strong>Fdo.: {report.generatedByCounselorName}</strong>
-                    <div style={{ fontSize: '0.66rem', color: '#64748b' }}>Dpto. Orientación Psicopedagógica</div>
+                    <strong>Fdo.: {report.generatedByCounselorName || defaultCounselorName}</strong>
+                    <div style={{ fontSize: '0.66rem', color: '#64748b' }}>Orientadora Psicopedagógica (Col. San Buenaventura)</div>
                   </div>
                 </div>
 
