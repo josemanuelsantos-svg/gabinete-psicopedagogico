@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ReferralCase, CaseStatus, CasePriority, ActionPlanGuidelines } from '../types';
-import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, RefreshCw, Trash2, AlertTriangle, Sparkles, Printer, FileCheck2, Stethoscope } from 'lucide-react';
+import { downloadCsvFile } from '../utils/csvExport';
+import { getAuditLogs, AccessAuditLogEntry } from '../utils/privacyAudit';
+import { Filter, FileText, Edit3, Check, Baby, School, ShieldCheck, RefreshCw, Trash2, AlertTriangle, Sparkles, Printer, FileCheck2, Stethoscope, Download, Clock, History, X } from 'lucide-react';
 
 interface CounselorDashboardProps {
   cases: ReferralCase[];
@@ -11,6 +13,15 @@ interface CounselorDashboardProps {
   onOpenMedicalObs?: (c: ReferralCase) => void;
   onRefresh?: () => void;
   isRefreshing?: boolean;
+  onNotify?: (type: 'success' | 'error' | 'warning' | 'info', message: string) => void;
+}
+
+function getDaysSince(dateStr?: string): number | null {
+  if (!dateStr) return null;
+  const parsed = new Date(dateStr);
+  if (Number.isNaN(parsed.getTime())) return null;
+  const diffMs = Date.now() - parsed.getTime();
+  return Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24)));
 }
 
 const CLINICAL_TEMPLATES: Record<string, {
@@ -198,8 +209,52 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
   onOpenMedicalReport,
   onOpenMedicalObs,
   onRefresh,
-  isRefreshing = false
+  isRefreshing = false,
+  onNotify
 }) => {
+  const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
+  const [auditLogs, setAuditLogs] = useState<AccessAuditLogEntry[]>([]);
+
+  const handleOpenAuditModal = () => {
+    setAuditLogs(getAuditLogs());
+    setIsAuditModalOpen(true);
+  };
+
+  const handleExportCasesCsv = () => {
+    const today = new Date().toISOString().split('T')[0];
+    const headers = [
+      'ID Expediente',
+      'Alumno/a',
+      'Etapa',
+      'Curso',
+      'Docente Solicitante',
+      'Email Docente',
+      'Fecha Envío',
+      'Prioridad',
+      'Estado',
+      'Motivo Principal',
+      'Pruebas Asignadas',
+      'Obs. Médica',
+      'Informe Médico'
+    ];
+    const rows = filteredCases.map(c => [
+      c.id,
+      c.studentName,
+      c.stage,
+      c.grade,
+      c.teacherName,
+      c.createdByEmail,
+      c.dateSubmitted,
+      c.priority,
+      c.status,
+      c.questionnaire?.mainReason || '',
+      (c.assignedTests || []).join(', '),
+      c.medicalObservations ? 'Sí' : 'No',
+      c.medicalReport?.isFinalized ? 'Finalizado' : (c.medicalReport ? 'Borrador' : 'No')
+    ]);
+    downloadCsvFile(`expedientes_orientacion_${today}.csv`, headers, rows);
+    onNotify?.('success', `Exportado listado Excel/CSV con ${filteredCases.length} expedientes.`);
+  };
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [filterPriority, setFilterPriority] = useState<string>('ALL');
   const [filterStage, setFilterStage] = useState<string>('ALL');
@@ -424,19 +479,41 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
             </select>
           </div>
 
-          {onRefresh && (
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={onRefresh}
-              disabled={isRefreshing}
-              style={{ marginLeft: 'auto', padding: '0.35rem 0.75rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
-              title="Sincronizar con la nube (Firestore)"
+              onClick={handleExportCasesCsv}
+              style={{ padding: '0.35rem 0.75rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+              title="Descargar expedientes filtrados en formato Excel/CSV"
             >
-              <RefreshCw size={14} className={isRefreshing ? 'animate-spin' : ''} />
-              {isRefreshing ? 'Sincronizando...' : 'Actualizar Bandeja'}
+              <Download size={14} /> Exportar Excel
             </button>
-          )}
+
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleOpenAuditModal}
+              style={{ padding: '0.35rem 0.75rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#0f766e', borderColor: '#99f6e4', background: '#f0fdfa' }}
+              title="Consultar registro de actividad y accesos RGPD de la sesión"
+            >
+              <History size={14} /> Auditoría RGPD
+            </button>
+
+            {onRefresh && (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={onRefresh}
+                disabled={isRefreshing}
+                style={{ padding: '0.35rem 0.75rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+                title="Sincronizar con la nube (Firestore)"
+              >
+                <RefreshCw size={14} className={isRefreshing ? 'animate-spin' : ''} />
+                {isRefreshing ? 'Sincronizando...' : 'Actualizar Bandeja'}
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -508,6 +585,31 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                     <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontFamily: 'monospace' }}>
                       ID: {c.id.slice(0, 8)}... • {c.dateSubmitted}
                     </span>
+                    {c.status === 'PENDIENTE_REVISION' && (() => {
+                      const days = getDaysSince(c.dateSubmitted);
+                      if (days === null) return null;
+                      const isUrgentAge = days >= 14;
+                      const isWarningAge = days >= 7 && days < 14;
+                      return (
+                        <span
+                          style={{
+                            fontSize: '0.7rem',
+                            fontWeight: 700,
+                            padding: '0.12rem 0.45rem',
+                            borderRadius: '10px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.2rem',
+                            background: isUrgentAge ? '#fee2e2' : isWarningAge ? '#fef3c7' : '#f1f5f9',
+                            color: isUrgentAge ? '#b91c1c' : isWarningAge ? '#92400e' : '#475569',
+                            border: `1px solid ${isUrgentAge ? '#fca5a5' : isWarningAge ? '#fcd34d' : '#cbd5e1'}`
+                          }}
+                          title={`Tiempo transcurrido desde el envío de la solicitud (${c.dateSubmitted})`}
+                        >
+                          <Clock size={11} /> {days === 0 ? 'Hoy' : days === 1 ? 'Hace 1 día' : `Hace ${days} días`}
+                        </span>
+                      );
+                    })()}
                   </div>
 
                   <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '0.2rem' }}>
@@ -982,6 +1084,66 @@ export const CounselorDashboard: React.FC<CounselorDashboardProps> = ({
                 Sí, Eliminar Solicitud
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      {/* MODAL VISOR DE AUDITORÍA RGPD */}
+      {isAuditModalOpen && (
+        <div className="modal-overlay no-print" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="modal-content" style={{ maxWidth: '720px', width: '95%', maxHeight: '82vh', overflowY: 'auto', padding: '1.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.75rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <ShieldCheck size={20} color="#0d9488" />
+                <div>
+                  <h3 style={{ fontSize: '1.1rem', margin: 0, color: '#0f172a' }}>Registro de Auditoría y Seguridad RGPD</h3>
+                  <p style={{ fontSize: '0.75rem', color: '#64748b', margin: 0 }}>Trazabilidad de accesos, consultas y modificaciones de la sesión actual</p>
+                </div>
+              </div>
+              <button type="button" className="btn btn-secondary" onClick={() => setIsAuditModalOpen(false)} style={{ padding: '0.35rem', minHeight: '32px' }}>
+                <X size={16} />
+              </button>
+            </div>
+
+            {auditLogs.length === 0 ? (
+              <div style={{ textAlign: 'center', padding: '2rem', color: '#64748b', fontSize: '0.88rem', background: '#f8fafc', borderRadius: '8px' }}>
+                No se han registrado eventos de auditoría todavía en esta sesión.
+              </div>
+            ) : (
+              <div style={{ overflowX: 'auto' }}>
+                <table className="custom-table" style={{ fontSize: '0.78rem' }}>
+                  <thead>
+                    <tr>
+                      <th>Fecha / Hora</th>
+                      <th>Acción</th>
+                      <th>Usuario</th>
+                      <th>Estado</th>
+                      <th>Detalle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {auditLogs.map(log => (
+                      <tr key={log.id}>
+                        <td style={{ whiteSpace: 'nowrap', fontFamily: 'monospace' }}>
+                          {new Date(log.timestamp).toLocaleString('es-ES', { hour12: false })}
+                        </td>
+                        <td>
+                          <span style={{ background: '#f1f5f9', padding: '0.15rem 0.45rem', borderRadius: '6px', fontWeight: 700, fontSize: '0.72rem' }}>
+                            {log.action}
+                          </span>
+                        </td>
+                        <td>{log.actorEmail} ({log.actorRole})</td>
+                        <td>
+                          <span style={{ color: log.success ? '#15803d' : '#b91c1c', fontWeight: 700 }}>
+                            {log.success ? '✓ OK' : '✕ Denegado'}
+                          </span>
+                        </td>
+                        <td style={{ color: '#475569' }}>{log.notes || log.caseIdMasked || '—'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       )}

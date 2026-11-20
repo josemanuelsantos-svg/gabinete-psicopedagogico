@@ -15,7 +15,16 @@ export interface PrivacyConsentRecord {
 export interface AccessAuditLogEntry {
   id: string;
   timestamp: string;
-  action: 'CONSULTA_EXPEDIENTE' | 'CREACION_EXPEDIENTE' | 'DICTAMEN_EXPEDIENTE' | 'CONSULTA_DENEGADA' | 'LOGIN_EXITOSO';
+  action:
+    | 'CONSULTA_EXPEDIENTE'
+    | 'CREACION_EXPEDIENTE'
+    | 'DICTAMEN_EXPEDIENTE'
+    | 'BAJA_EXPEDIENTE'
+    | 'EDICION_CENSO_NEAE'
+    | 'BAJA_CENSO_NEAE'
+    | 'CONSULTA_DENEGADA'
+    | 'LOGIN_EXITOSO'
+    | 'CIERRE_SESION_INACTIVIDAD';
   actorEmail: string;
   actorRole: string;
   caseIdMasked?: string;
@@ -94,8 +103,23 @@ export function recordSuccessfulLookup(userKey: string): void {
   lookupRateLimits.delete(userKey);
 }
 
-// In-memory audit log for security accountability
-const localAuditLogs: AccessAuditLogEntry[] = [];
+// Session-scoped audit log for security accountability (cleared when tab closes)
+const AUDIT_STORAGE_KEY = 'edubuenaventura_audit_logs';
+
+function loadSessionAuditLogs(): AccessAuditLogEntry[] {
+  try {
+    const raw = sessionStorage.getItem(AUDIT_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) return parsed;
+    }
+  } catch {
+    // ignore storage errors
+  }
+  return [];
+}
+
+const localAuditLogs: AccessAuditLogEntry[] = loadSessionAuditLogs();
 
 export function logSecurityEvent(entry: Omit<AccessAuditLogEntry, 'id' | 'timestamp'>): void {
   const logEntry: AccessAuditLogEntry = {
@@ -108,8 +132,13 @@ export function logSecurityEvent(entry: Omit<AccessAuditLogEntry, 'id' | 'timest
   if (localAuditLogs.length > 200) {
     localAuditLogs.shift();
   }
+  try {
+    sessionStorage.setItem(AUDIT_STORAGE_KEY, JSON.stringify(localAuditLogs));
+  } catch {
+    // ignore storage errors
+  }
 }
 
 export function getAuditLogs(): AccessAuditLogEntry[] {
-  return [...localAuditLogs];
+  return [...localAuditLogs].reverse();
 }

@@ -1,6 +1,6 @@
 import { PrivacyConsentRecord } from '../utils/privacyAudit';
 
-export type EducationalStage = 'INFANTIL' | 'PRIMARIA';
+export type EducationalStage = 'INFANTIL' | 'PRIMARIA' | 'SECUNDARIA';
 
 export type UserRole = 'DOCENTE' | 'ORIENTADOR';
 
@@ -217,6 +217,7 @@ export interface ActionPlanGuidelines {
   emotionalTips: string[];
   subjectSpecificGuidelines?: SubjectGuidelines[];
   ptHoursPerWeek?: number;
+  alHoursPerWeek?: number;
 }
 
 export interface ReferralCase {
@@ -265,7 +266,10 @@ export interface StudentNEAE {
   category: string;
   specificNeed?: string; // Necesidad específica / Diagnóstico: TDAH, Dislexia (DEA), Altas Capacidades (AACC), etc.
   tutor: string;
-  ptTeacher?: string; // Maestro/a especialista PT (Daniel Asenjo / María)
+  ptTeacher?: string | null; // Maestro/a especialista PT (Daniel Asenjo / María)
+  ptHours?: number;
+  alTeacher?: string | null; // Maestro/a especialista AL (Audición y Lenguaje)
+  alHours?: number;
   curricularAdaptation: 'No Significativa (ACNS)' | 'Significativa (ACS)' | 'Enriquecimiento' | 'Pautas Ordinarias';
   guidelines: ActionPlanGuidelines;
   supportSlots?: SpecialistSupportSlot[];

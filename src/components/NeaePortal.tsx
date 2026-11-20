@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StudentNEAE, EducationalStage } from '../types';
+import { StudentNEAE, EducationalStage, SubjectGuidelines } from '../types';
+import { downloadCsvFile } from '../utils/csvExport';
 import { 
   Sparkles, 
   BookOpen, 
@@ -17,7 +18,8 @@ import {
   Activity,
   Bookmark,
   GraduationCap,
-  ClipboardCheck
+  ClipboardCheck,
+  Download
 } from 'lucide-react';
 
 interface NeaePortalProps {
@@ -27,6 +29,7 @@ interface NeaePortalProps {
   onDeleteStudent?: (studentId: string) => Promise<void> | void;
   onBulkSaveStudents?: (students: StudentNEAE[]) => Promise<void> | void;
   onOpenQuarterlyReview?: (student: StudentNEAE) => void;
+  onNotify?: (type: 'success' | 'error' | 'warning' | 'info', message: string) => void;
 }
 
 function computeNextGrade(currentGrade: string): { nextGrade: string; nextStage: EducationalStage; isGraduatingPrimary: boolean } {
@@ -58,7 +61,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
   onSaveStudent,
   onDeleteStudent,
   onBulkSaveStudents,
-  onOpenQuarterlyReview
+  onOpenQuarterlyReview,
+  onNotify
 }) => {
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(students[0]?.id || null);
   const [filterNeed, setFilterNeed] = useState<string>('ALL');
@@ -88,14 +92,14 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     status: 'Activo' | 'En Seguimiento' | 'Alta';
     ptTeacher: string;
     ptHours: number;
-    alTeacher?: string;
-    alHours?: number;
+    alTeacher: string;
+    alHours: number;
     generalGoal: string;
     methodological: string;
     environmental: string;
     evaluation: string;
     emotional: string;
-    subjectSpecificGuidelines?: Record<string, string[]>;
+    subjectSpecificGuidelines?: SubjectGuidelines[];
   }>({
     id: '',
     name: '',
@@ -108,6 +112,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     status: 'Activo',
     ptTeacher: '',
     ptHours: 0,
+    alTeacher: '',
+    alHours: 0,
     generalGoal: 'Atención educativa personalizada y adaptada en el aula ordinaria.',
     methodological: 'Fraccionamiento de tareas en pasos sencillos.\nSupervisión y confirmación del trabajo realizado.\nUso de apoyos manipulativos y visuales.',
     environmental: 'Ubicación en primera fila cerca de la pizarra.\nMesa de trabajo libre de distracciones visuales.',
@@ -518,6 +524,9 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
 
     const tpl = templates[templateKey];
     if (!tpl) return;
+    const normalizedSubjects: SubjectGuidelines[] = Object.entries(tpl.subjectSpecificGuidelines).map(
+      ([subject, tips]) => ({ subject: subject as SubjectGuidelines['subject'], tips })
+    );
     setFormData(prev => ({
       ...prev,
       category: tpl.category,
@@ -528,7 +537,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       environmental: tpl.environmental.join('\n'),
       evaluation: tpl.evaluation.join('\n'),
       emotional: tpl.emotional.join('\n'),
-      subjectSpecificGuidelines: tpl.subjectSpecificGuidelines
+      subjectSpecificGuidelines: normalizedSubjects
     }));
   };
 
@@ -571,6 +580,44 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
     window.print();
   };
 
+  const handleExportCsv = () => {
+    const today = new Date().toISOString().split('T')[0];
+    const headers = [
+      'ID',
+      'Alumno/a',
+      'Etapa',
+      'Curso',
+      'Tutor/a',
+      'Categoría',
+      'Necesidad / Diagnóstico',
+      'Adaptación Curricular',
+      'Especialista PT',
+      'Horas PT/sem',
+      'Especialista AL',
+      'Horas AL/sem',
+      'Estado',
+      'Última Revisión'
+    ];
+    const rows = filteredStudents.map(s => [
+      s.id,
+      s.name,
+      s.stage || 'PRIMARIA',
+      s.grade,
+      s.tutor,
+      s.category,
+      s.specificNeed || s.category,
+      s.curricularAdaptation,
+      s.ptTeacher || '',
+      s.guidelines?.ptHoursPerWeek ?? 0,
+      s.alTeacher || '',
+      s.guidelines?.alHoursPerWeek ?? 0,
+      s.status,
+      s.lastReviewDate
+    ]);
+    downloadCsvFile(`censo_neae_san_buenaventura_${today}.csv`, headers, rows);
+    onNotify?.('success', `Exportado listado Excel/CSV con ${filteredStudents.length} alumnos NEAE.`);
+  };
+
   // Open modal for creating a new student
   const handleOpenAddModal = () => {
     const nextNumber = students.length + 1;
@@ -587,6 +634,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       status: 'Activo',
       ptTeacher: 'Daniel Asenjo (PT)',
       ptHours: 3,
+      alTeacher: '',
+      alHours: 0,
       generalGoal: 'Intervención y seguimiento pedagógico adaptado en el aula ordinaria.',
       methodological: 'Fraccionamiento de tareas en pasos breves.\nInstrucciones directas y apoyo visual.\nSupervisión periódica.',
       environmental: 'Ubicación en primera fila cerca del profesor y lejos de distracciones.',
@@ -613,6 +662,8 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       status: student.status || 'Activo',
       ptTeacher: student.ptTeacher || '',
       ptHours: student.guidelines?.ptHoursPerWeek || 0,
+      alTeacher: student.alTeacher || '',
+      alHours: student.guidelines?.alHoursPerWeek || 0,
       generalGoal: student.guidelines?.generalGoal || '',
       methodological: (student.guidelines?.methodologicalAdaptations || []).join('\n'),
       environmental: (student.guidelines?.environmentalAdaptations || []).join('\n'),
@@ -627,7 +678,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
   const handleSaveSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim()) {
-      alert('El nombre del alumno/a es obligatorio.');
+      onNotify?.('error', 'El nombre del alumno/a es obligatorio.');
       return;
     }
 
@@ -645,6 +696,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
       status: formData.status,
       lastReviewDate: new Date().toISOString().split('T')[0],
       ptTeacher: formData.ptTeacher.trim() || undefined,
+      alTeacher: formData.alTeacher.trim() || undefined,
       guidelines: {
         generalGoal: formData.generalGoal.trim() || 'Intervención educativa adaptada en aula.',
         methodologicalAdaptations: splitLines(formData.methodological),
@@ -652,6 +704,7 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
         evaluationAdaptations: splitLines(formData.evaluation),
         emotionalTips: splitLines(formData.emotional),
         ptHoursPerWeek: Number(formData.ptHours) || 0,
+        alHoursPerWeek: Number(formData.alHours) || 0,
         subjectSpecificGuidelines: formData.subjectSpecificGuidelines
       }
     };
@@ -741,6 +794,16 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
               )}
             </>
           )}
+
+          <button
+            type="button"
+            className="btn btn-secondary no-print"
+            onClick={handleExportCsv}
+            style={{ background: 'rgba(255,255,255,0.18)', color: 'white', border: '1px solid rgba(255,255,255,0.35)' }}
+            title="Descargar el listado filtrado actual en formato CSV compatible con Excel"
+          >
+            <Download size={16} /> Exportar Excel ({filteredStudents.length})
+          </button>
 
           <button className="btn btn-secondary no-print" onClick={handlePrint} style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}>
             <Printer size={16} /> Imprimir Ficha
@@ -1057,10 +1120,19 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                 </div>
               </div>
 
-              {/* Especialista PT Asignado */}
-              {selectedStudent.ptTeacher && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '0.85rem', background: '#e0e7ff', color: '#3730a3', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', fontSize: '0.85rem', border: '1px solid #c7d2fe' }}>
-                  <div><strong>Maestro Especialista PT:</strong> {selectedStudent.ptTeacher} ({guidelines.ptHoursPerWeek || 0} h/semana de atención directa)</div>
+              {/* Especialistas PT y AL Asignados */}
+              {(selectedStudent.ptTeacher || (guidelines.ptHoursPerWeek && guidelines.ptHoursPerWeek > 0) || selectedStudent.alTeacher || (guidelines.alHoursPerWeek && guidelines.alHoursPerWeek > 0)) && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', marginTop: '0.85rem' }}>
+                  {(selectedStudent.ptTeacher || (guidelines.ptHoursPerWeek && guidelines.ptHoursPerWeek > 0)) && (
+                    <div style={{ background: '#e0e7ff', color: '#3730a3', padding: '0.65rem 1rem', borderRadius: 'var(--radius-sm)', fontSize: '0.84rem', border: '1px solid #c7d2fe', flex: '1 1 240px' }}>
+                      <strong>Pedagogía Terapéutica (PT):</strong> {selectedStudent.ptTeacher || 'Especialista PT'} ({guidelines.ptHoursPerWeek || 0} h/semana)
+                    </div>
+                  )}
+                  {(selectedStudent.alTeacher || (guidelines.alHoursPerWeek && guidelines.alHoursPerWeek > 0)) && (
+                    <div style={{ background: '#fef3c7', color: '#92400e', padding: '0.65rem 1rem', borderRadius: 'var(--radius-sm)', fontSize: '0.84rem', border: '1px solid #fde68a', flex: '1 1 240px' }}>
+                      <strong>Audición y Lenguaje (AL):</strong> {selectedStudent.alTeacher || 'Especialista AL'} ({guidelines.alHoursPerWeek || 0} h/semana)
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -1418,6 +1490,27 @@ export const NeaePortal: React.FC<NeaePortalProps> = ({
                       className="input-text"
                       value={formData.ptHours}
                       onChange={(e) => setFormData({ ...formData, ptHours: Number(e.target.value) })}
+                    />
+                  </div>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Especialista AL (Audición y Lenguaje)</label>
+                    <input
+                      type="text"
+                      className="input-text"
+                      placeholder="Ej: Especialista AL (opcional)"
+                      value={formData.alTeacher}
+                      onChange={(e) => setFormData({ ...formData, alTeacher: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label className="form-label" style={{ fontSize: '0.78rem' }}>Horas AL a la semana</label>
+                    <input
+                      type="number"
+                      min="0"
+                      max="15"
+                      className="input-text"
+                      value={formData.alHours}
+                      onChange={(e) => setFormData({ ...formData, alHours: Number(e.target.value) })}
                     />
                   </div>
                 </div>

@@ -162,7 +162,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
                   type="email"
                   required
                   className="input-text"
-                  placeholder="ej: marta.lopez@sanbuenaventura.es"
+                  placeholder="ej: marta.lopez@sanbuenaventura.org"
                   value={teacherEmail}
                   onChange={(e) => { setTeacherEmail(e.target.value); setError(false); }}
                   style={{ fontSize: '0.85rem', minHeight: '38px', width: '100%' }}

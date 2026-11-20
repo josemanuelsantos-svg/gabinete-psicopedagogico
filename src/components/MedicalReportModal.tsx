@@ -10,6 +10,7 @@ interface MedicalReportModalProps {
   isCounselor: boolean;
   onSaveReport: (caseId: string, report: GeneratedMedicalReport) => Promise<void>;
   onClose: () => void;
+  onNotify?: (type: 'success' | 'error' | 'warning' | 'info', message: string) => void;
 }
 
 export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
@@ -18,7 +19,8 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
   counselorEmail,
   isCounselor,
   onSaveReport,
-  onClose
+  onClose,
+  onNotify
 }) => {
   // Helper para renderizar párrafos limpios sin espacios muertos ni líneas en blanco redundantes
   const renderFormattedParagraphs = (rawText: string) => {
@@ -116,7 +118,9 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
       setTimeout(() => setSaveNotification(null), 3000);
     } catch (err) {
       console.error(err);
-      alert('Error al guardar el informe.');
+      onNotify?.('error', 'Error al guardar el informe médico.');
+      setSaveNotification('Error al guardar el informe.');
+      setTimeout(() => setSaveNotification(null), 3500);
     } finally {
       setIsSaving(false);
     }

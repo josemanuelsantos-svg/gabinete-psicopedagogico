@@ -732,7 +732,7 @@ export const ReferralForm: React.FC<ReferralFormProps> = ({ currentUser, onSubmi
               <input
                 type="email"
                 className="input-text"
-                placeholder="ej: marta.lopez@sanbuenaventura.es"
+                placeholder="ej: marta.lopez@sanbuenaventura.org"
                 value={customTeacherEmail}
                 onChange={(e) => { setCustomTeacherEmail(e.target.value); setTeacherError(''); }}
                 style={{ fontSize: '0.85rem', minHeight: '38px', width: '100%' }}

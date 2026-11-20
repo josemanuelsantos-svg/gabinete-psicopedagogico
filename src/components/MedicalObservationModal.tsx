@@ -10,6 +10,7 @@ interface MedicalObservationModalProps {
   onSaveObservations: (caseId: string, obs: MedicalReferralObservations) => Promise<void>;
   onClose: () => void;
   onOpenReportGenerator?: () => void;
+  onNotify?: (type: 'success' | 'error' | 'warning' | 'info', message: string) => void;
 }
 
 export const MedicalObservationModal: React.FC<MedicalObservationModalProps> = ({
@@ -19,7 +20,8 @@ export const MedicalObservationModal: React.FC<MedicalObservationModalProps> = (
   isCounselor,
   onSaveObservations,
   onClose,
-  onOpenReportGenerator
+  onOpenReportGenerator,
+  onNotify
 }) => {
   const existing = referralCase.medicalObservations;
   const q = referralCase.questionnaire || ({} as any);
@@ -118,7 +120,7 @@ export const MedicalObservationModal: React.FC<MedicalObservationModalProps> = (
       }, 2500);
     } catch (err) {
       console.error(err);
-      alert('Error al guardar las observaciones médicas.');
+      onNotify?.('error', 'Error al guardar las observaciones médicas.');
     } finally {
       setIsSubmitting(false);
     }

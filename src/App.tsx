@@ -1,37 +1,82 @@
-import React, { useState, useEffect } from 'react';
-import { ReferralCase, StudentNEAE, EvaluationSession, QuarterlyReview } from './types';
-import { INITIAL_CASES, INITIAL_STUDENTS_NEAE } from './data/initialData';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
+import { ReferralCase, StudentNEAE, EvaluationSession, QuarterlyReview, MedicalReferralObservations, GeneratedMedicalReport } from './types';
+import { INITIAL_STUDENTS_NEAE } from './data/initialData';
 import { FirebaseService, CurrentUserSession } from './services/firebaseService';
+import { logSecurityEvent } from './utils/privacyAudit';
 import { Header } from './components/Header';
-import { CounselorDashboard } from './components/CounselorDashboard';
-import { ReferralForm } from './components/ReferralForm';
-import { NeaePortal } from './components/NeaePortal';
 import { CaseDetailModal } from './components/CaseDetailModal';
 import { AdminLoginModal } from './components/AdminLoginModal';
 import { EvaluationScheduleModal } from './components/EvaluationScheduleModal';
 import { QuarterlyReviewModal } from './components/QuarterlyReviewModal';
-import { SpecialistSchedulePortal } from './components/SpecialistSchedulePortal';
-import { CabinetAnnualReport } from './components/CabinetAnnualReport';
 import { CaseLookupModal } from './components/CaseLookupModal';
 import { TutorDevolutionSheet } from './components/TutorDevolutionSheet';
-import { MedicalObservationModal } from './components/MedicalObservationModal';
-import { MedicalReportModal } from './components/MedicalReportModal';
-import { MedicalReferralObservations, GeneratedMedicalReport } from './types';
+import { ToastContainer, ToastMessage, ToastType } from './components/ToastContainer';
 import { 
   LayoutDashboard, FilePlus, BookOpen, Lock, CheckCircle2, Calendar, 
   PieChart, Search, ShieldCheck, UserCheck, AlertCircle, Copy, Check, Stethoscope 
 } from 'lucide-react';
 
+// Code-splitting (lazy loading) para reducir drásticamente el tiempo de carga inicial
+const CounselorDashboard = lazy(() => import('./components/CounselorDashboard').then(m => ({ default: m.CounselorDashboard })));
+const ReferralForm = lazy(() => import('./components/ReferralForm').then(m => ({ default: m.ReferralForm })));
+const NeaePortal = lazy(() => import('./components/NeaePortal').then(m => ({ default: m.NeaePortal })));
+const SpecialistSchedulePortal = lazy(() => import('./components/SpecialistSchedulePortal').then(m => ({ default: m.SpecialistSchedulePortal })));
+const CabinetAnnualReport = lazy(() => import('./components/CabinetAnnualReport').then(m => ({ default: m.CabinetAnnualReport })));
+const MedicalObservationModal = lazy(() => import('./components/MedicalObservationModal').then(m => ({ default: m.MedicalObservationModal })));
+const MedicalReportModal = lazy(() => import('./components/MedicalReportModal').then(m => ({ default: m.MedicalReportModal })));
+
+const SESSION_STORAGE_KEY = 'edubuenaventura_active_session';
+const INACTIVITY_LIMIT_MS = 30 * 60 * 1000; // 30 minutos (RGPD ordenadores compartidos)
+
+interface StoredSessionPayload {
+  authLevel: 'DOCENTE_NEAE' | 'ORIENTADOR_ADMIN';
+  currentUser: CurrentUserSession;
+  activeTab: string;
+  lastActivity: number;
+}
+
+function loadValidSession(): StoredSessionPayload | null {
+  try {
+    const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as StoredSessionPayload;
+    if (!parsed?.currentUser || !parsed?.authLevel) return null;
+    if (Date.now() - (parsed.lastActivity || 0) > INACTIVITY_LIMIT_MS) {
+      sessionStorage.removeItem(SESSION_STORAGE_KEY);
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
 export function App() {
-  const [activeTab, setActiveTab] = useState<string>('HOME');
+  const initialSession = loadValidSession();
+  const [activeTab, setActiveTab] = useState<string>(initialSession?.activeTab || 'HOME');
 
   // Authentication State (Docente o Orientador)
-  const [authLevel, setAuthLevel] = useState<'PUBLIC' | 'DOCENTE_NEAE' | 'ORIENTADOR_ADMIN'>('PUBLIC');
-  const [currentUser, setCurrentUser] = useState<CurrentUserSession | null>(null);
+  const [authLevel, setAuthLevel] = useState<'PUBLIC' | 'DOCENTE_NEAE' | 'ORIENTADOR_ADMIN'>(initialSession?.authLevel || 'PUBLIC');
+  const [currentUser, setCurrentUser] = useState<CurrentUserSession | null>(initialSession?.currentUser || null);
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
   const [isLookupModalOpen, setIsLookupModalOpen] = useState<boolean>(false);
   const [pendingTabKey, setPendingTabKey] = useState<string | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+
+  // Toast Notifications
+  const [toasts, setToasts] = useState<ToastMessage[]>([]);
+  const addToast = useCallback((type: ToastType, message: string) => {
+    const id = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+    setToasts(prev => [...prev.slice(-3), { id, type, message }]);
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, 4500);
+  }, []);
+
+  const dismissToast = useCallback((id: string) => {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  }, []);
 
   // Non-predictable secure tracking code shown after submission
   const [submittedSecureId, setSubmittedSecureId] = useState<string | null>(null);
@@ -103,7 +148,12 @@ export function App() {
     });
 
     if (currentUser?.role === 'ORIENTADOR') {
-      await FirebaseService.saveNeaeStudent(student, currentUser);
+      const saved = await FirebaseService.saveNeaeStudent(student, currentUser);
+      if (saved) {
+        addToast('success', `Ficha NEAE de ${student.name} guardada y sincronizada.`);
+      } else {
+        addToast('warning', `Ficha de ${student.name} guardada localmente (sin conexión a la nube).`);
+      }
     }
   };
 
@@ -112,6 +162,7 @@ export function App() {
     localStorage.setItem('edubuenaventura_neae_census', JSON.stringify(updatedList));
     if (currentUser?.role === 'ORIENTADOR') {
       await FirebaseService.saveBulkNeaeStudents(updatedList, currentUser);
+      addToast('success', `Promoción de curso aplicada a ${updatedList.length} alumnos del censo.`);
     }
   };
 
@@ -124,6 +175,7 @@ export function App() {
 
     if (currentUser?.role === 'ORIENTADOR') {
       await FirebaseService.deleteNeaeStudent(studentId, currentUser);
+      addToast('info', 'Alumno dado de baja del censo oficial NEAE.');
     }
   };
 
@@ -136,8 +188,9 @@ export function App() {
       setCases(prev => [newCase, ...prev]);
       setSubmittedSecureId(newCase.id);
       setActiveTab('MY_CASES');
+      addToast('success', `Derivación de ${newCase.studentName} registrada correctamente.`);
     } else {
-      alert(saveResult.error || 'Error al guardar la derivación');
+      addToast('error', saveResult.error || 'Error al guardar la derivación');
     }
   };
 
@@ -152,7 +205,7 @@ export function App() {
       if (authLevel === 'ORIENTADOR_ADMIN') {
         setActiveTab(tabKey);
       } else {
-        alert('Esta sección está restringida exclusivamente al Equipo de Orientación.');
+        addToast('warning', 'Esta sección está restringida exclusivamente al Equipo de Orientación.');
       }
       return;
     }
@@ -164,27 +217,108 @@ export function App() {
     setAuthLevel(mode);
     const session: CurrentUserSession = {
       name: userProfile?.name || (mode === 'DOCENTE_NEAE' ? 'Claustro Docente' : 'Mª Belén Hernando Martín (Orientadora)'),
-      email: userProfile?.email || (mode === 'DOCENTE_NEAE' ? 'docentes@sanbuenaventura.es' : 'orientacionep@sanbuenaventura.org'),
+      email: userProfile?.email || (mode === 'DOCENTE_NEAE' ? 'docentes@sanbuenaventura.org' : 'orientacionep@sanbuenaventura.org'),
       role: mode === 'DOCENTE_NEAE' ? 'DOCENTE' : 'ORIENTADOR'
     };
     setCurrentUser(session);
     setIsLoginModalOpen(false);
 
-    if (pendingTabKey) {
-      setActiveTab(pendingTabKey);
-      setPendingTabKey(null);
-    } else {
-      setActiveTab(mode === 'DOCENTE_NEAE' ? 'NEW_FORM' : 'DASHBOARD');
+    logSecurityEvent({
+      action: 'LOGIN_EXITOSO',
+      actorEmail: session.email,
+      actorRole: session.role,
+      success: true,
+      notes: `Acceso concedido en modo ${mode}`
+    });
+
+    const targetTab = pendingTabKey || (mode === 'DOCENTE_NEAE' ? 'NEW_FORM' : 'DASHBOARD');
+    setActiveTab(targetTab);
+    if (pendingTabKey) setPendingTabKey(null);
+
+    try {
+      sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify({
+        authLevel: mode,
+        currentUser: session,
+        activeTab: targetTab,
+        lastActivity: Date.now()
+      }));
+    } catch {
+      // ignore storage errors
     }
+
+    addToast('success', `Sesión iniciada como ${session.name}.`);
   };
 
-  const handleLogout = () => {
+  const handleLogout = useCallback((dueToInactivity = false) => {
+    if (dueToInactivity && currentUser) {
+      logSecurityEvent({
+        action: 'CIERRE_SESION_INACTIVIDAD',
+        actorEmail: currentUser.email,
+        actorRole: currentUser.role,
+        success: true,
+        notes: 'Cierre automático de sesión tras 30 minutos de inactividad (RGPD)'
+      });
+    }
+    try {
+      sessionStorage.removeItem(SESSION_STORAGE_KEY);
+    } catch {
+      // ignore
+    }
     setAuthLevel('PUBLIC');
     setCurrentUser(null);
     setActiveTab('HOME');
     setCases([]);
     setNeaeStudents([]);
-  };
+    if (dueToInactivity) {
+      addToast('warning', 'Sesión cerrada automáticamente tras 30 minutos de inactividad por seguridad RGPD.');
+    }
+  }, [currentUser, addToast]);
+
+  // Persistencia de pestaña activa y control de inactividad RGPD (30 min)
+  useEffect(() => {
+    if (authLevel === 'PUBLIC' || !currentUser) return;
+
+    const persistActivity = () => {
+      try {
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify({
+          authLevel,
+          currentUser,
+          activeTab,
+          lastActivity: Date.now()
+        }));
+      } catch {
+        // ignore
+      }
+    };
+
+    persistActivity();
+
+    let lastRecorded = Date.now();
+    const handleUserActivity = () => {
+      const now = Date.now();
+      if (now - lastRecorded > 30000) {
+        lastRecorded = now;
+        persistActivity();
+      }
+    };
+
+    const inactivityInterval = window.setInterval(() => {
+      if (Date.now() - lastRecorded > INACTIVITY_LIMIT_MS) {
+        handleLogout(true);
+      }
+    }, 60000);
+
+    window.addEventListener('click', handleUserActivity);
+    window.addEventListener('keydown', handleUserActivity);
+    window.addEventListener('touchstart', handleUserActivity);
+
+    return () => {
+      window.clearInterval(inactivityInterval);
+      window.removeEventListener('click', handleUserActivity);
+      window.removeEventListener('keydown', handleUserActivity);
+      window.removeEventListener('touchstart', handleUserActivity);
+    };
+  }, [authLevel, currentUser, activeTab, handleLogout]);
 
   const handleUpdateCase = async (updatedCase: ReferralCase) => {
     setCases(cases.map(c => c.id === updatedCase.id ? updatedCase : c));
@@ -304,7 +438,7 @@ export function App() {
       <Header
         authLevel={authLevel}
         onOpenLogin={() => setIsLoginModalOpen(true)}
-        onLogout={handleLogout}
+        onLogout={() => handleLogout(false)}
       />
 
       <main className="main-content">
@@ -494,6 +628,13 @@ export function App() {
           </div>
         )}
 
+        <Suspense
+          fallback={
+            <div className="card" style={{ textAlign: 'center', padding: '3rem 1.5rem', color: 'var(--text-muted)' }}>
+              Cargando módulo...
+            </div>
+          }
+        >
         {/* VISTA 1: FORMULARIO DE DERIVACIÓN (SOLO DOCENTE AUTENTICADO) */}
         {authLevel === 'DOCENTE_NEAE' && currentUser && activeTab === 'NEW_FORM' && (
           <ReferralForm
@@ -600,6 +741,7 @@ export function App() {
             onDeleteStudent={handleDeleteNeaeStudent}
             onBulkSaveStudents={handleBulkSaveNeaeStudents}
             onOpenQuarterlyReview={(s) => setSelectedStudentForReview(s)}
+            onNotify={addToast}
           />
         )}
 
@@ -612,13 +754,20 @@ export function App() {
             onSelectCase={(c) => setSelectedCaseForModal(c)}
             onOpenMedicalReport={(c) => setSelectedCaseForMedicalReport(c)}
             onOpenMedicalObs={(c) => setSelectedCaseForMedicalObs(c)}
+            isRefreshing={isRefreshing}
+            onNotify={addToast}
             onRefresh={async () => {
               if (!currentUser) return;
+              setIsRefreshing(true);
               try {
                 const updated = await FirebaseService.getCases(currentUser);
                 setCases(updated || []);
+                addToast('success', `Bandeja sincronizada (${(updated || []).length} expedientes).`);
               } catch (e) {
                 console.error(e);
+                addToast('error', 'No se pudo sincronizar con la nube. Mostrando datos locales.');
+              } finally {
+                setIsRefreshing(false);
               }
             }}
           />
@@ -636,6 +785,7 @@ export function App() {
         {authLevel === 'ORIENTADOR_ADMIN' && activeTab === 'ANNUAL_REPORT' && (
           <CabinetAnnualReport cases={cases} studentsNEAE={neaeStudents} />
         )}
+        </Suspense>
       </main>
 
       {/* Modal de Consulta Segura */}
@@ -663,33 +813,37 @@ export function App() {
       />
 
       {/* Modal de Observaciones para Neuropediatra / Pediatra */}
-      {selectedCaseForMedicalObs && (
-        <MedicalObservationModal
-          referralCase={selectedCaseForMedicalObs}
-          currentUserName={currentUser?.name || 'Docente'}
-          currentUserEmail={currentUser?.email || 'docentes@sanbuenaventura.es'}
-          isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
-          onSaveObservations={handleSaveMedicalObservations}
-          onClose={() => setSelectedCaseForMedicalObs(null)}
-          onOpenReportGenerator={authLevel === 'ORIENTADOR_ADMIN' ? () => {
-            const c = selectedCaseForMedicalObs;
-            setSelectedCaseForMedicalObs(null);
-            setSelectedCaseForMedicalReport(c);
-          } : undefined}
-        />
-      )}
+      <Suspense fallback={null}>
+        {selectedCaseForMedicalObs && (
+          <MedicalObservationModal
+            referralCase={selectedCaseForMedicalObs}
+            currentUserName={currentUser?.name || 'Docente'}
+            currentUserEmail={currentUser?.email || 'docentes@sanbuenaventura.org'}
+            isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
+            onSaveObservations={handleSaveMedicalObservations}
+            onClose={() => setSelectedCaseForMedicalObs(null)}
+            onNotify={addToast}
+            onOpenReportGenerator={authLevel === 'ORIENTADOR_ADMIN' ? () => {
+              const c = selectedCaseForMedicalObs;
+              setSelectedCaseForMedicalObs(null);
+              setSelectedCaseForMedicalReport(c);
+            } : undefined}
+          />
+        )}
 
-      {/* Modal de Redacción y Emisión de Informe Médico Oficial (Solo Orientación) */}
-      {selectedCaseForMedicalReport && (
-        <MedicalReportModal
-          referralCase={selectedCaseForMedicalReport}
-          counselorName={currentUser?.name && currentUser.name !== 'Equipo de Orientación' ? currentUser.name : 'Mª Belén Hernando Martín'}
-          counselorEmail={currentUser?.email && currentUser.email !== 'orientacion@sanbuenaventura.es' ? currentUser.email : 'orientacionep@sanbuenaventura.org'}
-          isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
-          onSaveReport={handleSaveMedicalReport}
-          onClose={() => setSelectedCaseForMedicalReport(null)}
-        />
-      )}
+        {/* Modal de Redacción y Emisión de Informe Médico Oficial (Solo Orientación) */}
+        {selectedCaseForMedicalReport && (
+          <MedicalReportModal
+            referralCase={selectedCaseForMedicalReport}
+            counselorName={currentUser?.name && currentUser.name !== 'Equipo de Orientación' ? currentUser.name : 'Mª Belén Hernando Martín'}
+            counselorEmail={currentUser?.email && currentUser.email !== 'orientacion@sanbuenaventura.es' ? currentUser.email : 'orientacionep@sanbuenaventura.org'}
+            isCounselor={authLevel === 'ORIENTADOR_ADMIN'}
+            onSaveReport={handleSaveMedicalReport}
+            onClose={() => setSelectedCaseForMedicalReport(null)}
+            onNotify={addToast}
+          />
+        )}
+      </Suspense>
 
       {/* Modal de Devolución al Tutor */}
       <TutorDevolutionSheet
@@ -710,6 +864,9 @@ export function App() {
         onClose={() => setSelectedStudentForReview(null)}
         onAddReview={handleAddQuarterlyReview}
       />
+
+      {/* Notificaciones Toast */}
+      <ToastContainer toasts={toasts} onDismiss={dismissToast} />
     </div>
   );
 }
