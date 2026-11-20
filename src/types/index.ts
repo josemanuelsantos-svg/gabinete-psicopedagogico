@@ -59,40 +59,140 @@ export type MedicalSpecialistTarget =
   | 'SALUD_MENTAL_USMIJ' 
   | 'OTRO_ESPECIALISTA';
 
+export interface InfantilMeasureRow {
+  measure: string;
+  period: string;
+  result: string;
+}
+
 export interface MedicalReferralObservations {
   specialistTarget: MedicalSpecialistTarget;
   customSpecialistName?: string;
+  stageFormat?: 'INFANTIL' | 'PRIMARIA';
+  birthDate?: string;
+  studentAgeText?: string;
   consultationReason: string;
-  
-  // 1. Atención sostenida y funciones ejecutivas
+
+  // === FORMATO EDUCACIÓN INFANTIL (Apartados 01-07) ===
+  infantilDifficultyExamples?: string;
+  infantilSinceWhen?: string;
+  infantilSituations?: string;
+  infantilFrequencyIntensity?: string;
+  infantilContextsText?: string;
+  infantilContexts?: string[]; // ['Aula', 'Patio', 'Comedor', 'Otros']
+  infantilContextsOther?: string;
+  infantilRecentChanges?: string;
+  // 03. Áreas de desarrollo
+  infantilLanguage?: string;
+  infantilMotor?: string;
+  infantilCognitive?: string;
+  infantilAutonomy?: string;
+  infantilSocioEmotional?: string;
+  // 04. Juego, intereses y estilo de aprendizaje
+  infantilPlay?: string;
+  infantilCreativity?: string;
+  infantilLearningStyle?: string;
+  infantilSensoryRepetitive?: 'SI' | 'NO' | 'NO_CONSTA' | '';
+  infantilSensoryDetails?: string;
+  // 05. Competencia curricular y participación
+  infantilCurricularProgress?: string;
+  infantilAttendanceParticipation?: string;
+  // 06. Medidas y apoyos aplicados
+  infantilMeasuresTable?: InfantilMeasureRow[];
+  infantilExternalSupports?: string;
+  // 07. Síntesis del tutor/a
+  infantilStrengths?: string;
+  infantilAdditionalInfo?: string;
+
+  // === FORMATO EDUCACIÓN PRIMARIA (Apartados 01-03, 11 ámbitos) ===
+  // 02. Contexto escolar y apoyos
+  primariaGroupSupport?: string;
+  primariaPtSupport?: string;
+  primariaEvalMeasures?: string;
+  // 03. Desarrollo y funcionamiento en el aula (11 ámbitos)
+  primariaWorkPace?: string;            // 01 · Ritmo de trabajo
+  primariaEffortCapacity?: string;      // 02 · Capacidad de esfuerzo
+  primariaOralComprehension?: string;   // 03 · Comprensión oral
+  primariaOralCommunication?: string;   // 04 · Comunicación oral
+  primariaAttention?: string;           // 05 · Atención
+  primariaLogicalReasoning?: string;    // 06 · Razonamiento lógico
+  primariaMemory?: string;              // 07 · Memoria
+  primariaFrustrationTolerance?: string;// 08 · Tolerancia a la frustración
+  primariaSpatialOrientation?: string;  // 09 · Orientación espacial
+  primariaClassSocialization?: string;  // 10 · Socialización en clase
+  primariaAutonomy?: string;            // 11 · Autonomía
+
+  // Campos clásicos (mantenidos para retrocompatibilidad con casos previos)
   attentionAndFocus: string;
   taskCompletionAndPace: string;
-  
-  // 2. Control de impulsos, actividad motora e inquietud
   motorRestlessness: string;
   impulsivityControl: string;
-  
-  // 3. Lenguaje, comunicación y comprensión
   languageAndCommunication: string;
-  
-  // 4. Motricidad, grafomotricidad y coordinación
   fineMotorAndWriting: string;
   grossMotorCoordination: string;
-  
-  // 5. Autorregulación emocional y socialización
   emotionalRegulation: string;
   peerRelationships: string;
-  
-  // 6. Rendimiento curricular y asignaturas
   academicPerformance: string;
-  
-  // 7. Medidas pedagógicas de aula probadas
   measuresAppliedAndResults: string;
-  
+
   // Metadatos de cumplimentación
   filledByTeacherName: string;
   filledByTeacherEmail: string;
   filledDate: string;
+}
+
+export interface InfantilDevelopedReport {
+  // 02 · Motivo de la derivación
+  difficultyExamples: string;
+  sinceWhen: string;
+  situations: string;
+  frequencyIntensity: string;
+  contextsText: string;
+  contextsSelected: string[];
+  contextsOther: string;
+  recentChanges: string;
+  // 03 · Áreas de desarrollo
+  language: string;
+  motor: string;
+  cognitive: string;
+  autonomy: string;
+  socioEmotional: string;
+  // 04 · Juego, intereses y estilo de aprendizaje
+  play: string;
+  creativity: string;
+  learningStyle: string;
+  sensoryRepetitive: 'SI' | 'NO' | 'NO_CONSTA' | '';
+  sensoryDetails: string;
+  // 05 · Competencia curricular y participación
+  curricularProgress: string;
+  attendanceParticipation: string;
+  // 06 · Medidas y apoyos aplicados
+  measuresTable: InfantilMeasureRow[];
+  externalSupports: string;
+  // 07 · Síntesis del tutor/a
+  strengths: string;
+  additionalInfo: string;
+}
+
+export interface PrimariaDevelopedReport {
+  // 02 · Contexto escolar y apoyos
+  groupSupport: string;
+  ptSupport: string;
+  evalMeasures: string;
+  // 03 · Desarrollo y funcionamiento en el aula (11 ámbitos)
+  workPace: string;             // 01 · Ritmo de trabajo
+  effortCapacity: string;       // 02 · Capacidad de esfuerzo
+  oralComprehension: string;    // 03 · Comprensión oral
+  oralCommunication: string;    // 04 · Comunicación oral
+  attention: string;            // 05 · Atención
+  logicalReasoning: string;     // 06 · Razonamiento lógico
+  memory: string;               // 07 · Memoria
+  frustrationTolerance: string; // 08 · Tolerancia a la frustración
+  spatialOrientation: string;   // 09 · Orientación espacial
+  classSocialization: string;   // 10 · Socialización en clase
+  autonomy: string;             // 11 · Autonomía
+  // 04 · Cierre y coordinación
+  closingNote: string;
 }
 
 export interface GeneratedMedicalReport {
@@ -102,8 +202,16 @@ export interface GeneratedMedicalReport {
   generatedByCounselorName: string;
   counselorEmail: string;
   targetSpecialistTitle: string;
-  
-  // Secciones desarrolladas formalmente (editables por Orientación)
+  reportFormat?: 'INFANTIL' | 'PRIMARIA';
+  birthDate?: string;
+  studentAgeText?: string;
+  tutorName?: string;
+
+  // Datos estructurados desarrollados según el formato oficial del centro
+  infantilData?: InfantilDevelopedReport;
+  primariaData?: PrimariaDevelopedReport;
+
+  // Secciones clásicas (retrocompatibilidad)
   studentIdentification: string;
   clinicalReasonNarrative: string;
   academicAndCognitiveNarrative: string;
@@ -113,7 +221,7 @@ export interface GeneratedMedicalReport {
   socioEmotionalNarrative: string;
   measuresAndEvolutionNarrative: string;
   counselorSynthesisAndRecommendations: string;
-  
+
   isFinalized: boolean;
   signatureDate?: string;
 }

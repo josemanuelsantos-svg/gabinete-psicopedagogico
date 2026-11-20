@@ -1,5 +1,6 @@
 import React from 'react';
 import { Lock, LogOut, ShieldCheck } from 'lucide-react';
+import { OrientacionTau } from './FranciscanTauWord';
 
 interface HeaderProps {
   authLevel: 'PUBLIC' | 'DOCENTE_NEAE' | 'ORIENTADOR_ADMIN';
@@ -22,8 +23,10 @@ export const Header: React.FC<HeaderProps> = ({
             style={{ height: '48px', objectFit: 'contain' }}
           />
           <div style={{ borderLeft: '1px solid #cbd5e1', paddingLeft: '0.65rem', marginLeft: '0.2rem' }}>
-            <h1 className="logo-title" style={{ fontSize: '1.1rem' }}>EduBuenaventura</h1>
-            <p className="logo-sub" style={{ fontSize: '0.7rem' }}>Portal de Atención a la Diversidad • Col. San Buenaventura</p>
+            <h1 className="logo-title" style={{ fontSize: '1.1rem', color: '#002D62' }}>EduBuenaventura</h1>
+            <p className="logo-sub" style={{ fontSize: '0.72rem', color: '#334155', fontWeight: 600 }}>
+              Departamento de <OrientacionTau tauColor="#F5A800" style={{ color: '#002D62', fontWeight: 800 }} /> • Col. San Buenaventura
+            </p>
           </div>
         </div>
 

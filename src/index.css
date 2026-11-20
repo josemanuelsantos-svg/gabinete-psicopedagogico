@@ -400,7 +400,8 @@ button, input, select, textarea {
   }
 
   /* Documento oficial de Informe Médico / Neuropediatría: distribución optimizada sin huecos */
-  .medical-report-sheet {
+  .medical-report-sheet,
+  .printable-medical-report {
     box-shadow: none !important;
     border: none !important;
     padding: 2mm 4mm !important;
@@ -409,6 +410,8 @@ button, input, select, textarea {
     height: auto !important;
     color: #0f172a !important;
     line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   .report-header {
