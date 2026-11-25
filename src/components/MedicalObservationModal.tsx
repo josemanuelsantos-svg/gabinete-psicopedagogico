@@ -322,7 +322,7 @@ export const MedicalObservationModal: React.FC<MedicalObservationModalProps> = (
             </div>
             <div>
               <div style={{ fontSize: '0.72rem', color: '#FDE68A', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                Departamento de <OrientacionTau uppercase tauColor="#F5A800" style={{ color: '#ffffff', fontWeight: 800 }} /> · Colegio San Buenaventura
+                Departamento de <OrientacionTau uppercase style={{ color: '#ffffff', fontWeight: 800 }} /> · Colegio San Buenaventura
               </div>
               <h3 style={{ margin: '0.15rem 0 0 0', fontSize: '1.12rem', color: 'white', fontWeight: 800 }}>
                 {stageFormat === 'INFANTIL'

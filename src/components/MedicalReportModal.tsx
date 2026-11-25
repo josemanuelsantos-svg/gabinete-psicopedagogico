@@ -580,7 +580,7 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
                 </div>
                 <div>
                   <div style={{ fontSize: '0.76rem', fontWeight: 700, color: '#FEF08A', letterSpacing: '0.03em' }}>
-                    Departamento de <OrientacionTau tauColor={SCHOOL_GOLD} style={{ color: '#ffffff', fontWeight: 800 }} />
+                    Departamento de <OrientacionTau style={{ color: '#ffffff', fontWeight: 800 }} />
                   </div>
                   <h1 style={{ margin: '0.12rem 0 0 0', fontSize: '1.08rem', fontWeight: 800, color: '#ffffff', letterSpacing: '0.01em', lineHeight: 1.18 }}>
                     {isInfantil
@@ -592,7 +592,7 @@ export const MedicalReportModal: React.FC<MedicalReportModalProps> = ({
                       'Educación Infantil · Documento de apoyo para derivación y coordinación médica'
                     ) : (
                       <>
-                        Educación Primaria · Departamento de <OrientacionTau tauColor={SCHOOL_GOLD} style={{ color: '#ffffff', fontWeight: 700 }} />
+                        Educación Primaria · Departamento de <OrientacionTau style={{ color: '#ffffff', fontWeight: 700 }} />
                       </>
                     )}
                   </div>

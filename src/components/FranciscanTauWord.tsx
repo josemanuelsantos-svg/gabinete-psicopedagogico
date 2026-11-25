@@ -7,16 +7,17 @@ interface TauGlyphProps {
 }
 
 /**
- * Cruz Tau franciscana inspirada directamente en el logotipo oficial del Colegio San Buenaventura.
- * Diseñada para sustituir a la letra "T" / "t" dentro de la palabra "Orientación".
+ * Glifo tipográfico de Cruz Tau franciscana diseñado con proporciones de letra "T"
+ * para integrarse de forma natural y legible dentro de la palabra "Orientación".
+ * Hereda por defecto `currentColor` para mantener unidad tipográfica.
  */
 export const FranciscanTauGlyph: React.FC<TauGlyphProps> = ({
-  color = '#F5A800',
-  height = '1.08em',
+  color = 'currentColor',
+  height = '0.82em',
   style
 }) => (
   <svg
-    viewBox="0 0 28 32"
+    viewBox="0 0 20 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -24,14 +25,15 @@ export const FranciscanTauGlyph: React.FC<TauGlyphProps> = ({
       display: 'inline-block',
       height,
       width: 'auto',
-      verticalAlign: '-0.12em',
-      margin: '0 -0.02em',
+      verticalAlign: '-0.02em',
+      margin: '0 0.015em',
+      shapeRendering: 'geometricPrecision',
       ...style
     }}
   >
-    {/* Silueta orgánica fiel a la Tau del escudo del Colegio San Buenaventura */}
+    {/* Barra superior con suave arco franciscano y extremos ligeramente ensanchados + fuste esbelto apoyado en línea base */}
     <path
-      d="M2.2 4.6C6.4 3.4 10.6 3.1 14 3.1C17.4 3.1 21.6 3.4 25.8 4.6L26.9 9.2C23.5 8.1 20.1 7.7 16.9 7.8C16.6 13.8 17.2 21.8 18.8 29.8L10.3 25.6C11.4 20.2 11.7 13.4 11.4 7.8C8.1 7.7 4.6 8.1 1.1 9.2L2.2 4.6Z"
+      d="M1.4 2.4C4.6 3.1 7.4 3.4 10 3.4C12.6 3.4 15.4 3.1 18.6 2.4L19.1 6.4C16.5 5.9 14.1 5.7 11.75 5.75L12.1 22.8L7.9 21.8L8.25 5.75C5.9 5.7 3.5 5.9 0.9 6.4L1.4 2.4Z"
       fill={color}
     />
   </svg>
@@ -45,25 +47,25 @@ interface OrientacionTauProps {
 }
 
 /**
- * Renderiza "Orientación" o "ORIENTACIÓN" sustituyendo la "t"/"T" por la Cruz Tau franciscana.
+ * Renderiza "Orientación" o "ORIENTACIÓN" integrando la Cruz Tau franciscana
+ * como letra T con proporciones, grosor y línea base tipográficas limpias.
  */
 export const OrientacionTau: React.FC<OrientacionTauProps> = ({
   uppercase = false,
-  tauColor = '#F5A800',
+  tauColor = 'currentColor',
   className,
   style
 }) => (
   <span
     className={className}
     aria-label={uppercase ? 'ORIENTACIÓN' : 'Orientación'}
-    style={{ display: 'inline-flex', alignItems: 'baseline', ...style }}
+    style={{ display: 'inline', whiteSpace: 'nowrap', ...style }}
   >
-    <span>{uppercase ? 'ORIEN' : 'Orien'}</span>
+    {uppercase ? 'ORIEN' : 'Orien'}
     <FranciscanTauGlyph
       color={tauColor}
-      height={uppercase ? '0.96em' : '1.05em'}
-      style={{ verticalAlign: uppercase ? '-0.06em' : '-0.1em' }}
+      height={uppercase ? '0.78em' : '0.82em'}
     />
-    <span>{uppercase ? 'ACIÓN' : 'ación'}</span>
+    {uppercase ? 'ACIÓN' : 'ación'}
   </span>
 );
