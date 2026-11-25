@@ -7,17 +7,16 @@ interface TauGlyphProps {
 }
 
 /**
- * Glifo tipográfico de Cruz Tau franciscana diseñado con proporciones de letra "T"
- * para integrarse de forma natural y legible dentro de la palabra "Orientación".
- * Hereda por defecto `currentColor` para mantener unidad tipográfica.
+ * Glifo tipográfico de Cruz Tau franciscana recortado al ras del trazo
+ * y con kerning óptico ajustado para encajar sin huecos entre "Orien" y "ación".
  */
 export const FranciscanTauGlyph: React.FC<TauGlyphProps> = ({
-  color = 'currentColor',
+  color = '#F5A800',
   height = '0.82em',
   style
 }) => (
   <svg
-    viewBox="0 0 20 24"
+    viewBox="0.8 2.2 18.4 20.8"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -26,12 +25,11 @@ export const FranciscanTauGlyph: React.FC<TauGlyphProps> = ({
       height,
       width: 'auto',
       verticalAlign: '-0.02em',
-      margin: '0 0.015em',
+      margin: '0 -0.06em',
       shapeRendering: 'geometricPrecision',
       ...style
     }}
   >
-    {/* Barra superior con suave arco franciscano y extremos ligeramente ensanchados + fuste esbelto apoyado en línea base */}
     <path
       d="M1.4 2.4C4.6 3.1 7.4 3.4 10 3.4C12.6 3.4 15.4 3.1 18.6 2.4L19.1 6.4C16.5 5.9 14.1 5.7 11.75 5.75L12.1 22.8L7.9 21.8L8.25 5.75C5.9 5.7 3.5 5.9 0.9 6.4L1.4 2.4Z"
       fill={color}
@@ -47,12 +45,12 @@ interface OrientacionTauProps {
 }
 
 /**
- * Renderiza "Orientación" o "ORIENTACIÓN" integrando la Cruz Tau franciscana
- * como letra T con proporciones, grosor y línea base tipográficas limpias.
+ * Renderiza "Orientación" o "ORIENTACIÓN" sin espacios en blanco en JSX
+ * para que la Tau franciscana quede pegada y fluida con el resto de la palabra.
  */
 export const OrientacionTau: React.FC<OrientacionTauProps> = ({
   uppercase = false,
-  tauColor = 'currentColor',
+  tauColor = '#F5A800',
   className,
   style
 }) => (
@@ -60,12 +58,5 @@ export const OrientacionTau: React.FC<OrientacionTauProps> = ({
     className={className}
     aria-label={uppercase ? 'ORIENTACIÓN' : 'Orientación'}
     style={{ display: 'inline', whiteSpace: 'nowrap', ...style }}
-  >
-    {uppercase ? 'ORIEN' : 'Orien'}
-    <FranciscanTauGlyph
-      color={tauColor}
-      height={uppercase ? '0.78em' : '0.82em'}
-    />
-    {uppercase ? 'ACIÓN' : 'ación'}
-  </span>
+  >{uppercase ? 'ORIEN' : 'Orien'}<FranciscanTauGlyph color={tauColor} height={uppercase ? '0.78em' : '0.82em'} />{uppercase ? 'ACIÓN' : 'ación'}</span>
 );
